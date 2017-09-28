@@ -25,3 +25,15 @@ Abe (201) 957-4327
 John (201) 815-9696
 
 # MVP
+
+
+# User Stories
+  - User should be able to sign up
+  - User should be able to log in
+  - User should be given access to wallets upon signing up
+  - User should be able to buy/sell view wallets
+  - User should be able to request/send payments
+  - User should be able to view current market prices
+  - User should be able to see relevant market news (news feed)
+  - Users should be able to sign out
+  - Users should be able to set alerts based on market prices

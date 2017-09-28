@@ -37,3 +37,9 @@ John (201) 815-9696
   - User should be able to see relevant market news (news feed)
   - Users should be able to sign out
   - Users should be able to set alerts based on market prices
+  - When clicked on a specific wallet, user should be able to see all previous transactions
+
+  Stretch Goals
+  - Users should be able to bookmark items on their news feed
+    - Send messages based on news?
+  - 

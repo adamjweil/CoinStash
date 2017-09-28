@@ -43,4 +43,8 @@
   Stretch Goals
   - Users should be able to bookmark items on their news feed
     - Send messages based on news?
-  -
+
+# Back-End
+ -> Schema
+ https://schemadesigner.devbootcamp.com/
+ Screenshot in Repo

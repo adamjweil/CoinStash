@@ -24,6 +24,8 @@ Sarah (484) 832-0896
 Abe (201) 957-4327
 John (201) 815-9696
 
+- Have fun, don't stress!
+
 # MVP
 
 
@@ -42,4 +44,4 @@ John (201) 815-9696
   Stretch Goals
   - Users should be able to bookmark items on their news feed
     - Send messages based on news?
-  - 
+  -

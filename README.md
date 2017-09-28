@@ -19,10 +19,9 @@
 
     # GitHub Master => Adam
 # Contact Info
-Adam (908) 591-9920
-Sarah (484) 832-0896
-Abe (201) 957-4327
-John (201) 815-9696
+ - Preferred method of communication is via iMessage, however Slack is below
+  - #coinstash slack
+    https://nighthawks2017nyc.slack.com/messages/C7BDD97UN/
 
 - Have fun, don't stress!
 

@@ -30,6 +30,7 @@ export default class CoinStashReact extends Component {
   componentDidMount() {
     // This is an API we used to get access to bitcoin prices
     // fetch('https://api.coindesk.com/v1/bpi/currentprice.json')
+
     fetch('https://api.lionshare.capital/api/prices')
     .then(function(response) {
       // debugger

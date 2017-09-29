@@ -8,6 +8,7 @@ import React, { Component } from 'react';
 
 import MarqueeLabelVertical from 'react-native-lahk-marquee-label-vertical';
 import MarqueeLabel from 'react-native-lahk-marquee-label';
+import { Header } from 'react-native-elements';
 
 import {
   AppRegistry,
@@ -31,9 +32,28 @@ export default class CoinStashReact extends Component {
     };
   }
 
-  // window.setInterval(componentDidMount(), 1000);
+  getCurrentPrice = () => {
+    // console.log("hi")
+    fetch('https://api.lionshare.capital/api/prices')
+    .then(function(response) {
+      // debugger
+      return response.json()
+    }).then((obj) => {
+      console.log(this)
+      console.log(obj)
+      console.log(obj.data.BTC.length)
+      console.log(obj.data.ETH.length)
+      console.log(obj.data.LTC.length)
+      this.setState({bitcoinPrice: obj.data.BTC[obj.data.BTC.length - 1],
+                    ethereumPrice: obj.data.ETH[obj.data.ETH.length - 1],
+                    liteCoinPrice: obj.data.LTC[obj.data.LTC.length - 1]})
 
+                  })
+  }
   componentDidMount() {
+    this.getCurrentPrice()
+    setInterval(this.getCurrentPrice, 100000);
+
     // Yesterday's Bitcoin Price
     // fetch('https://api.coindesk.com/v1/bpi/currentprice.json')
     // .then(function(response) {
@@ -43,21 +63,12 @@ export default class CoinStashReact extends Component {
     //   this.setState({bitcoinYdayPrice: obj.data})
     // });
 
-    fetch('https://api.lionshare.capital/api/prices')
-    .then(function(response) {
-      // debugger
-      return response.json()
-    }).then((obj) => {
-      console.log(obj)
-      console.log(obj.data.BTC.length)
-      console.log(obj.data.ETH.length)
-      console.log(obj.data.LTC.length)
-      this.setState({bitcoinPrice: obj.data.BTC[obj.data.BTC.length - 1],
-                    ethereumPrice: obj.data.ETH[obj.data.ETH.length - 1],
-                    liteCoinPrice: obj.data.LTC[obj.data.LTC.length - 1]})
 
-    })
   }
+
+  // componentWillUnmount() {
+  //   clearInterval()
+  // }
 
   render() {
     // debugger
@@ -80,7 +91,7 @@ export default class CoinStashReact extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 2,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
@@ -109,6 +120,9 @@ const styles = StyleSheet.create({
       // fontSize:12,
       // fontWeight:'800',
       // color:'white',
+    },
+    header: {
+      backgroundColor: 'blue'
     }
 });
 

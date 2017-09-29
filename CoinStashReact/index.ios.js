@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-'use strict';
 import React, { Component } from 'react';
 
 import MarqueeLabelVertical from 'react-native-lahk-marquee-label-vertical';

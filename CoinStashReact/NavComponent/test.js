@@ -53,16 +53,9 @@ export default class CoinStashReact extends Component {
       <View style={styles.container}>
         <Text style={styles.welcome}>
           Welcome to CoinStash!
-
           Current Price of Bitcoin: ${this.state.bitcoinPrice}{'\n'}
           Current Price of LiteCoin: ${this.state.liteCoinPrice}{'\n'}
-
-
-
-
         </Text>
-
-
         <MarqueeLabel style={styles.marqueeLabel}
             scrollDuration={3.0} text="Hey"
             ><Text>Xyz</Text>

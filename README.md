@@ -51,3 +51,7 @@
 
 # Heroku
 https://dashboard.heroku.com/apps/fierce-bastion-98685
+
+# API's
+https://api.lionshare.capital/api/prices
+https://api.coindesk.com/v1/bpi/currentprice.json

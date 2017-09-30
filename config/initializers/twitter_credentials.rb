@@ -1,6 +1,5 @@
 require 'twitter'
 
-
 twitterProc = proc do |config|
   config.consumer_key = 'zJKXmNayoUhvawg4mTUjarghO'
   config.consumer_secret = '4lr5FMkTsZotJZP0Y42Se1QLdQypF9F9YF02N8FijNPfzAeU8R'

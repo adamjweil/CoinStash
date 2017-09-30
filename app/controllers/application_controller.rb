@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::API
-  protect_from_forgery
   before_action :load_tweets
   before_action :search_tweets
 

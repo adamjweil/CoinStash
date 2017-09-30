@@ -10,11 +10,13 @@ import MarqueeLabelVertical from 'react-native-lahk-marquee-label-vertical';
 import MarqueeLabel from 'react-native-lahk-marquee-label';
 import { Header } from 'react-native-elements';
 
+
 import {
   AppRegistry,
   StyleSheet,
   Text,
   View,
+  Image,
   Button
 } from 'react-native';
 // var MarqueeLabel = require('@remobile/react-native-marquee-label');
@@ -22,79 +24,222 @@ import {
 export default class home extends Component {
   constructor() {
     super();
-    console.log("hi")
     this.state = {
-      bitcoinPrice: "",
-      bitcoinYdayPrice: "",
-      ethereumPrice: "",
-      ethereumYdayPrice: "",
-      liteCoinPrice: "",
-      liteCoinYdayPrice: ""
+      newsFeed0: [],
+      newsFeed1: [],
+      newsFeed2: [],
+      newsFeed3: [],
+      newsFeed4: [],
+      newsFeed5: [],
+      newsFeed6: [],
+      newsFeed7: [],
+      newsFeed8: []
     };
   }
 
-  getCurrentPrice = () => {
-    // console.log("hi")
-    fetch('https://api.lionshare.capital/api/prices')
+  getCurrentNews = () => {
+    // TechCrunch
+    // fetch('https://newsapi.org/v1/articles?source=techcrunch&sortBy=top&apiKey=ed62d0aea575414fbdf6a1351c0fa66a')
+    fetch('https://newsapi.org/v1/articles?source=hacker-news&sortBy=latest&apiKey=ed62d0aea575414fbdf6a1351c0fa66a')
     .then(function(response) {
-      // debugger
-      return response.json()
-    }).then((obj) => {
-      console.log(this)
-      console.log(obj)
-      console.log(obj.data.BTC.length)
-      console.log(obj.data.ETH.length)
-      console.log(obj.data.LTC.length)
-      this.setState({bitcoinPrice: obj.data.BTC[obj.data.BTC.length - 1],
-                    ethereumPrice: obj.data.ETH[obj.data.ETH.length - 1],
-                    liteCoinPrice: obj.data.LTC[obj.data.LTC.length - 1]})
+      return response.json();
+      // console.log(response[0]);
+    }).catch((error) => console.warn("fetch error:", error))
+    .then((response) => {
+      console.log(response.articles);
+      console.log(response.articles[2].urlToImage);
 
-                  })
+      this.setState({newsFeed0: response.articles[response.articles.length - 1]})
+      this.setState({newsFeed1: response.articles[response.articles.length - 2]})
+      this.setState({newsFeed2: response.articles[response.articles.length - 3]})
+      this.setState({newsFeed3: response.articles[response.articles.length - 4]})
+      this.setState({newsFeed4: response.articles[response.articles.length - 5]})
+      this.setState({newsFeed5: response.articles[response.articles.length - 6]})
+      this.setState({newsFeed6: response.articles[response.articles.length - 7]})
+      this.setState({newsFeed7: response.articles[response.articles.length - 8]})
+      this.setState({newsFeed8: response.articles[response.articles.length - 9]})
+    })
   }
+
   componentDidMount() {
-    this.getCurrentPrice()
-    setInterval(this.getCurrentPrice, 100000);
-
-    // Yesterday's Bitcoin Price
-    // fetch('https://api.coindesk.com/v1/bpi/currentprice.json')
-    // .then(function(response) {
-    //   return response.json()
-    // }).then((obj) => {
-    //   console.log(JSON.parse(obj))
-    //   this.setState({bitcoinYdayPrice: obj.data})
-    // });
-
-
+    this.getCurrentNews();
+    setInterval(this.getCurrentNews, 10000);
   }
-
-  // componentWillUnmount() {
-  //   clearInterval()
-  // }
 
   static navigationOptions = {
     title: 'Home',
   };
 
   render() {
-    // debugger
+
     const { bitcoinPrice } = this.state;
     const { navigate } = this.props.navigation;
     return (
-      <View style={styles.buttonContainer}>
-        <Button
-          title={`Bitcoin:\n $${this.state.bitcoinPrice}`}
-          onPress={() => navigate('BitCoin')}>
-        </Button>
-        <View style={{marginHorizontal: 30}}>
-        <Button
-          title={`Ethereum:\n $${this.state.ethereumPrice}`}
-          onPress={() => navigate('Ethereum')}
-          />
+      <View style={styles.container}>
+        <View style={styles.buttonContainer}>
+          <Button
+            title={`Bitcoin:\n $${this.state.bitcoinPrice}`}
+            onPress={() => navigate('BitCoin')}>
+          </Button>
+          <View style={{marginHorizontal: 30}}>
+            <Button
+              title={`Ethereum:\n $${this.state.ethereumPrice}`}
+              onPress={() => navigate('Ethereum')}
+              />
+          </View>
+          <Button
+            title={`LiteCoin:\n $${this.state.liteCoinPrice}`}
+            onPress={() => navigate('LiteCoin')}
+            />
         </View>
-        <Button
-          title={`LiteCoin:\n $${this.state.liteCoinPrice}`}
-          onPress={() => navigate('LiteCoin')}
-          />
+
+        <View style={styles.marqueeContainer}>
+          <MarqueeLabel
+            duration={10000}
+            text={`Welcome to CoinStash!!`}
+            textStyle={{ fontSize: 20, color: 'white' }} />
+        </View>
+
+        <Text style={styles.welcome}>
+          CryptoNews!
+        </Text>
+        <Button title="BitCoin" onPress={() => navigate('BitCoin')} />
+
+        <View style={styles.newsWrapper}>
+          <Image style={{width: 50, height: 50}}
+                  source={{uri: '{this.state.newsFeed0.urlToImage}'}} />
+          <Text style={styles.newsTitle}>
+            {this.state.newsFeed0.title}
+          </Text>
+
+          <Text style={styles.newsAuthor}>
+            posted by.. {this.state.newsFeed0.author}
+          </Text>
+
+          <Text style={styles.newsDescription}>
+            {this.state.newsFeed0.description}
+          </Text>
+        </View>
+
+        <View style={styles.newsWrapper}>
+          <Image style={{width: 50, height: 50}}
+                  source={{uri: '{this.state.newsFeed1.urlToImage}'}} />
+          <Text style={styles.newsTitle}>
+            {this.state.newsFeed1.title}
+          </Text>
+
+          <Text style={styles.newsAuthor}>
+            posted by.. {this.state.newsFeed1.author}
+          </Text>
+
+          <Text style={styles.newsDescription}>
+            {this.state.newsFeed1.description}
+          </Text>
+        </View>
+
+        <View style={styles.newsWrapper}>
+          <Image source={{uri: '{this.state.newsFeed2.urlToImage}'}}
+     style={{width: 50, height: 50}} />
+          <Text style={styles.newsTitle}>
+            {this.state.newsFeed2.title}
+          </Text>
+
+          <Text style={styles.newsAuthor}>
+            posted by.. {this.state.newsFeed2.author}
+          </Text>
+
+          <Text style={styles.newsDescription}>
+            {this.state.newsFeed2.description}
+          </Text>
+        </View>
+
+        <View style={styles.newsWrapper}>
+          <Image source={{uri: '{this.state.newsFeed3.urlToImage}'}}
+     style={{width: 50, height: 50}} />
+          <Text style={styles.newsTitle}>
+            {this.state.newsFeed3.title}
+          </Text>
+
+          <Text style={styles.newsAuthor}>
+            posted by.. {this.state.newsFeed3.author}
+          </Text>
+
+          <Text style={styles.newsDescription}>
+            {this.state.newsFeed3.description}
+          </Text>
+        </View>
+
+        <View style={styles.newsWrapper}>
+          <Image source={{uri: '{this.state.newsFeed4.urlToImage}'}}
+     style={{width: 50, height: 50}} />
+          <Text style={styles.newsTitle}>
+            {this.state.newsFeed4.title}
+          </Text>
+
+          <Text style={styles.newsAuthor}>
+            posted by.. {this.state.newsFeed4.author}
+          </Text>
+
+          <Text style={styles.newsDescription}>
+            {this.state.newsFeed4.description}
+          </Text>
+        </View>
+
+        <View style={styles.newsWrapper}>
+          <Text style={styles.newsTitle}>
+            {this.state.newsFeed5.title}
+          </Text>
+
+          <Text style={styles.newsAuthor}>
+            posted by.. {this.state.newsFeed5.author}
+          </Text>
+
+          <Text style={styles.newsDescription}>
+            {this.state.newsFeed5.description}
+          </Text>
+        </View>
+
+        <View style={styles.newsWrapper}>
+          <Text style={styles.newsTitle}>
+            {this.state.newsFeed6.title}
+          </Text>
+
+          <Text style={styles.newsAuthor}>
+            posted by.. {this.state.newsFeed6.author}
+          </Text>
+
+          <Text style={styles.newsDescription}>
+            {this.state.newsFeed6.description}
+          </Text>
+        </View>
+
+        <View style={styles.newsWrapper}>
+          <Text style={styles.newsTitle}>
+            {this.state.newsFeed7.title}
+          </Text>
+
+          <Text style={styles.newsAuthor}>
+            posted by.. {this.state.newsFeed7.author}
+          </Text>
+
+          <Text style={styles.newsDescription}>
+            {this.state.newsFeed7.description}
+          </Text>
+        </View>
+
+        <View style={styles.newsWrapper}>
+          <Text style={styles.newsTitle}>
+            {this.state.newsFeed8.title}
+          </Text>
+
+          <Text style={styles.newsAuthor}>
+            posted by.. {this.state.newsFeed8.author}
+          </Text>
+
+          <Text style={styles.newsDescription}>
+            {this.state.newsFeed8.description}
+          </Text>
+        </View>
       </View>
     );
   }
@@ -118,7 +263,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
   },
   welcome: {
     fontSize: 20,
@@ -135,12 +279,38 @@ const styles = StyleSheet.create({
     backgroundColor: 'blue',
     width:400,
     height:50,
-    // fontSize:12,
-    // fontWeight:'800',
-    // color:'white',
   },
   header: {
-    backgroundColor: 'blue'
+    marginTop: 10,
+    backgroundColor: 'blue',
+    width:400,
+    height:50,
+    fontWeight:'900',
+  },
+  newsTitle: {
+    fontSize: 15,
+    color: '#333333',
+    textAlign: 'left',
+    fontWeight: 'bold',
+  },
+  newsDescription: {
+    fontSize: 12,
+    color: '#333333',
+    textAlign: 'left',
+    fontWeight: '300',
+    fontStyle: 'italic',
+  },
+  newsAuthor: {
+    fontSize: 8,
+    color: '#333333',
+    textAlign: 'center',
+  },
+  newsWrapper: {
+    borderRadius: 15,
+    borderWidth: 1,
+    borderColor: '#fff',
+    marginLeft: 10,
+    marginRight: 10
   }
 });
 

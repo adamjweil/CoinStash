@@ -33,21 +33,14 @@ export default class btc extends Component {
   }
 
   getCurrentPrice = () => {
-    // console.log("hi")
     fetch('https://api.lionshare.capital/api/prices')
     .then(function(response) {
       // debugger
       return response.json()
     }).then((obj) => {
-      console.log(this)
-      console.log(obj)
-      console.log(obj.data.BTC.length)
-      console.log(obj.data.ETH.length)
-      console.log(obj.data.LTC.length)
       this.setState({bitcoinPrice: obj.data.BTC[obj.data.BTC.length - 1],
                     ethereumPrice: obj.data.ETH[obj.data.ETH.length - 1],
                     liteCoinPrice: obj.data.LTC[obj.data.LTC.length - 1]})
-
                   })
   }
   componentDidMount() {
@@ -62,8 +55,6 @@ export default class btc extends Component {
     //   console.log(JSON.parse(obj))
     //   this.setState({bitcoinYdayPrice: obj.data})
     // });
-
-
   }
 
   // componentWillUnmount() {
@@ -75,7 +66,7 @@ export default class btc extends Component {
   };
 
   render() {
-    // debugger
+
     const { bitcoinPrice } = this.state
     return (
       <View style={styles.container}>
@@ -85,15 +76,20 @@ export default class btc extends Component {
           alignItems: 'flex-start',
           }}>
           <Text style={{
-              fontSize: 60,
-              fontWeight: 'bold',
-              justifyContent: 'center'
-            }}>BTC</Text>
-          </View>
-          <Text style={{
-              fontSize: 30
-            }}>{`$${this.state.bitcoinPrice}`}</Text>
+            fontSize: 60,
+            fontWeight: 'bold',
+            justifyContent: 'center'
+          }}>
+            BTC
+          </Text>
+        </View>
+        <Text style={{
+            fontSize: 30
+          }}>{`$${this.state.bitcoinPrice}`}
+        </Text>
+
       </View>
+
     );
   }
 }
@@ -102,32 +98,25 @@ const styles = StyleSheet.create({
   container: {
     flex: 2,
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#F5FCFF'
   },
   marqeeContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'blue',
+    height: 50
   },
   welcome: {
     fontSize: 20,
     textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    margin: 10  },
   marqueeLabel: {
-    marginBottom: 100,
+    marginTop: 10,
     backgroundColor: 'blue',
     width:400,
     height:50,
-    // fontSize:12,
-    // fontWeight:'800',
-    // color:'white',
+    fontWeight:'900'
   },
   header: {
     backgroundColor: 'blue'

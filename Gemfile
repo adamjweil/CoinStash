@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.3.3"
+ruby "2.3.4"
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -26,7 +26,10 @@ gem 'twitter'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
-# gem 'twitter'
+
+gem 'twitter'
+
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -17,7 +17,8 @@ import {
   Text,
   View,
   Image,
-  Button
+  Button,
+  ScrollView
 } from 'react-native';
 // var MarqueeLabel = require('@remobile/react-native-marquee-label');
 
@@ -35,6 +36,18 @@ export default class home extends Component {
       newsFeed7: [],
       newsFeed8: []
     };
+  }
+  getCurrentPrice = () => {
+    fetch('https://api.lionshare.capital/api/prices')
+    .then(function(response) {
+      // debugger
+      return response.json()
+    }).then((obj) => {
+      this.setState({
+        bitcoinPrice: obj.data.BTC[obj.data.BTC.length - 1],
+        ethereumPrice: obj.data.ETH[obj.data.ETH.length - 1],
+        liteCoinPrice: obj.data.LTC[obj.data.LTC.length - 1]})
+    })
   }
 
   getCurrentNews = () => {
@@ -64,6 +77,8 @@ export default class home extends Component {
   componentDidMount() {
     this.getCurrentNews();
     setInterval(this.getCurrentNews, 10000);
+    this.getCurrentPrice();
+    setInterval(this.getCurrentPrice, 10000);
   }
 
   static navigationOptions = {
@@ -71,175 +86,158 @@ export default class home extends Component {
   };
 
   render() {
-
     const { bitcoinPrice } = this.state;
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-        <View style={styles.buttonContainer}>
-          <Button
-            title={`Bitcoin:\n $${this.state.bitcoinPrice}`}
-            onPress={() => navigate('BitCoin')}>
-          </Button>
-          <View style={{marginHorizontal: 30}}>
+        <ScrollView>
+          <View style={styles.buttonContainer}>
             <Button
-              title={`Ethereum:\n $${this.state.ethereumPrice}`}
-              onPress={() => navigate('Ethereum')}
+              title={`Bitcoin:\n $${this.state.bitcoinPrice}`}
+              onPress={() => navigate('BitCoin')}>
+            </Button>
+            <View style={{marginHorizontal: 20}}>
+              <Button
+                title={`Ethereum:\n $${this.state.ethereumPrice}`}
+                onPress={() => navigate('Ethereum')}
+                />
+            </View>
+            <Button
+              title={`LiteCoin:\n $${this.state.liteCoinPrice}`}
+              onPress={() => navigate('LiteCoin')}
               />
           </View>
-          <Button
-            title={`LiteCoin:\n $${this.state.liteCoinPrice}`}
-            onPress={() => navigate('LiteCoin')}
-            />
-        </View>
 
-        <View style={styles.marqueeContainer}>
-          <MarqueeLabel
-            duration={10000}
-            text={`Welcome to CoinStash!!`}
-            textStyle={{ fontSize: 20, color: 'white' }} />
-        </View>
-
-        <Text style={styles.welcome}>
-          CryptoNews!
-        </Text>
-        <Button title="BitCoin" onPress={() => navigate('BitCoin')} />
-
-        <View style={styles.newsWrapper}>
-          <Image style={{width: 50, height: 50}}
-                  source={{uri: '{this.state.newsFeed0.urlToImage}'}} />
-          <Text style={styles.newsTitle}>
-            {this.state.newsFeed0.title}
+          <Text style={styles.welcome}>
+            CryptoNews!
           </Text>
 
-          <Text style={styles.newsAuthor}>
-            posted by.. {this.state.newsFeed0.author}
-          </Text>
+          <View style={styles.newsWrapper}>
+            <Text style={styles.newsTitle}>
+              {this.state.newsFeed0.title}
+            </Text>
 
-          <Text style={styles.newsDescription}>
-            {this.state.newsFeed0.description}
-          </Text>
-        </View>
+            <Text style={styles.newsAuthor}>
+              posted by.. {this.state.newsFeed0.author}
+            </Text>
 
-        <View style={styles.newsWrapper}>
-          <Image style={{width: 50, height: 50}}
-                  source={{uri: '{this.state.newsFeed1.urlToImage}'}} />
-          <Text style={styles.newsTitle}>
-            {this.state.newsFeed1.title}
-          </Text>
+            <Text style={styles.newsDescription}>
+              {this.state.newsFeed0.description}
+            </Text>
+          </View>
 
-          <Text style={styles.newsAuthor}>
-            posted by.. {this.state.newsFeed1.author}
-          </Text>
+          <View style={styles.newsWrapper}>
+            <Text style={styles.newsTitle}>
+              {this.state.newsFeed1.title}
+            </Text>
 
-          <Text style={styles.newsDescription}>
-            {this.state.newsFeed1.description}
-          </Text>
-        </View>
+            <Text style={styles.newsAuthor}>
+              posted by.. {this.state.newsFeed1.author}
+            </Text>
 
-        <View style={styles.newsWrapper}>
-          <Image source={{uri: '{this.state.newsFeed2.urlToImage}'}}
-     style={{width: 50, height: 50}} />
-          <Text style={styles.newsTitle}>
-            {this.state.newsFeed2.title}
-          </Text>
+            <Text style={styles.newsDescription}>
+              {this.state.newsFeed1.description}
+            </Text>
+          </View>
 
-          <Text style={styles.newsAuthor}>
-            posted by.. {this.state.newsFeed2.author}
-          </Text>
+          <View style={styles.newsWrapper}>
+            <Text style={styles.newsTitle}>
+              {this.state.newsFeed2.title}
+            </Text>
 
-          <Text style={styles.newsDescription}>
-            {this.state.newsFeed2.description}
-          </Text>
-        </View>
+            <Text style={styles.newsAuthor}>
+              posted by.. {this.state.newsFeed2.author}
+            </Text>
 
-        <View style={styles.newsWrapper}>
-          <Image source={{uri: '{this.state.newsFeed3.urlToImage}'}}
-     style={{width: 50, height: 50}} />
-          <Text style={styles.newsTitle}>
-            {this.state.newsFeed3.title}
-          </Text>
+            <Text style={styles.newsDescription}>
+              {this.state.newsFeed2.description}
+            </Text>
+          </View>
 
-          <Text style={styles.newsAuthor}>
-            posted by.. {this.state.newsFeed3.author}
-          </Text>
+          <View style={styles.newsWrapper}>
+            <Text style={styles.newsTitle}>
+              {this.state.newsFeed3.title}
+            </Text>
 
-          <Text style={styles.newsDescription}>
-            {this.state.newsFeed3.description}
-          </Text>
-        </View>
+            <Text style={styles.newsAuthor}>
+              posted by.. {this.state.newsFeed3.author}
+            </Text>
 
-        <View style={styles.newsWrapper}>
-          <Image source={{uri: '{this.state.newsFeed4.urlToImage}'}}
-     style={{width: 50, height: 50}} />
-          <Text style={styles.newsTitle}>
-            {this.state.newsFeed4.title}
-          </Text>
+            <Text style={styles.newsDescription}>
+              {this.state.newsFeed3.description}
+            </Text>
+          </View>
 
-          <Text style={styles.newsAuthor}>
-            posted by.. {this.state.newsFeed4.author}
-          </Text>
+          <View style={styles.newsWrapper}>
+            <Text style={styles.newsTitle}>
+              {this.state.newsFeed4.title}
+            </Text>
 
-          <Text style={styles.newsDescription}>
-            {this.state.newsFeed4.description}
-          </Text>
-        </View>
+            <Text style={styles.newsAuthor}>
+              posted by.. {this.state.newsFeed4.author}
+            </Text>
 
-        <View style={styles.newsWrapper}>
-          <Text style={styles.newsTitle}>
-            {this.state.newsFeed5.title}
-          </Text>
+            <Text style={styles.newsDescription}>
+              {this.state.newsFeed4.description}
+            </Text>
+          </View>
 
-          <Text style={styles.newsAuthor}>
-            posted by.. {this.state.newsFeed5.author}
-          </Text>
+          <View style={styles.newsWrapper}>
+            <Text style={styles.newsTitle}>
+              {this.state.newsFeed5.title}
+            </Text>
 
-          <Text style={styles.newsDescription}>
-            {this.state.newsFeed5.description}
-          </Text>
-        </View>
+            <Text style={styles.newsAuthor}>
+              posted by.. {this.state.newsFeed5.author}
+            </Text>
 
-        <View style={styles.newsWrapper}>
-          <Text style={styles.newsTitle}>
-            {this.state.newsFeed6.title}
-          </Text>
+            <Text style={styles.newsDescription}>
+              {this.state.newsFeed5.description}
+            </Text>
+          </View>
 
-          <Text style={styles.newsAuthor}>
-            posted by.. {this.state.newsFeed6.author}
-          </Text>
+          <View style={styles.newsWrapper}>
+            <Text style={styles.newsTitle}>
+              {this.state.newsFeed6.title}
+            </Text>
 
-          <Text style={styles.newsDescription}>
-            {this.state.newsFeed6.description}
-          </Text>
-        </View>
+            <Text style={styles.newsAuthor}>
+              posted by.. {this.state.newsFeed6.author}
+            </Text>
 
-        <View style={styles.newsWrapper}>
-          <Text style={styles.newsTitle}>
-            {this.state.newsFeed7.title}
-          </Text>
+            <Text style={styles.newsDescription}>
+              {this.state.newsFeed6.description}
+            </Text>
+          </View>
 
-          <Text style={styles.newsAuthor}>
-            posted by.. {this.state.newsFeed7.author}
-          </Text>
+          <View style={styles.newsWrapper}>
+            <Text style={styles.newsTitle}>
+              {this.state.newsFeed7.title}
+            </Text>
 
-          <Text style={styles.newsDescription}>
-            {this.state.newsFeed7.description}
-          </Text>
-        </View>
+            <Text style={styles.newsAuthor}>
+              posted by.. {this.state.newsFeed7.author}
+            </Text>
 
-        <View style={styles.newsWrapper}>
-          <Text style={styles.newsTitle}>
-            {this.state.newsFeed8.title}
-          </Text>
+            <Text style={styles.newsDescription}>
+              {this.state.newsFeed7.description}
+            </Text>
+          </View>
 
-          <Text style={styles.newsAuthor}>
-            posted by.. {this.state.newsFeed8.author}
-          </Text>
+          <View style={styles.newsWrapper}>
+            <Text style={styles.newsTitle}>
+              {this.state.newsFeed8.title}
+            </Text>
 
-          <Text style={styles.newsDescription}>
-            {this.state.newsFeed8.description}
-          </Text>
-        </View>
+            <Text style={styles.newsAuthor}>
+              posted by.. {this.state.newsFeed8.author}
+            </Text>
+
+            <Text style={styles.newsDescription}>
+              {this.state.newsFeed8.description}
+            </Text>
+          </View>
+        </ScrollView>
       </View>
     );
   }
@@ -301,16 +299,15 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
   },
   newsAuthor: {
-    fontSize: 8,
+    fontSize: 16,
     color: '#333333',
     textAlign: 'center',
   },
   newsWrapper: {
-    borderRadius: 15,
+    backgroundColor: 'lightgray',
+    borderColor: 'white',
     borderWidth: 1,
-    borderColor: '#fff',
-    marginLeft: 10,
-    marginRight: 10
+    padding: 10
   }
 });
 

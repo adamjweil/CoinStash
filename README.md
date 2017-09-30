@@ -57,3 +57,5 @@ https://dashboard.heroku.com/apps/fierce-bastion-98685
   - https://api.coindesk.com/v1/bpi/currentprice.json
   News
   - https://newsapi.org | login: adamjweil@gmail.com | key: ed62d0aea575414fbdf6a1351c0fa66a
+   - http://localhost:3000/tweets/hashtag
+   - http://localhost:3000/tweets

@@ -18,7 +18,7 @@ import {
 } from 'react-native';
 // var MarqueeLabel = require('@remobile/react-native-marquee-label');
 
-export default class btc extends Component {
+export default class ltc extends Component {
   constructor() {
     super();
     console.log("hi")
@@ -71,7 +71,7 @@ export default class btc extends Component {
   // }
 
   static navigationOptions = {
-    title: 'BitCoin',
+    title: 'LiteCoin',
   };
 
   render() {
@@ -88,11 +88,11 @@ export default class btc extends Component {
               fontSize: 60,
               fontWeight: 'bold',
               justifyContent: 'center'
-            }}>BTC</Text>
+            }}>LTC</Text>
           </View>
           <Text style={{
               fontSize: 30
-            }}>{`$${this.state.bitcoinPrice}`}</Text>
+            }}>{`$${this.state.liteCoinPrice}`}</Text>
       </View>
     );
   }
@@ -135,4 +135,4 @@ const styles = StyleSheet.create({
 });
 
 
-AppRegistry.registerComponent('btc', () => btc);
+AppRegistry.registerComponent('ltc', () => ltc);

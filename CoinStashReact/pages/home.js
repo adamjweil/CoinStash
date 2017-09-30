@@ -72,7 +72,7 @@ export default class home extends Component {
   // }
 
   static navigationOptions = {
-    title: 'Welcome',
+    title: 'Home',
   };
 
   render() {
@@ -80,18 +80,20 @@ export default class home extends Component {
     const { bitcoinPrice } = this.state;
     const { navigate } = this.props.navigation;
     return (
-      <View style={styles.container}>
-        <MarqueeLabel
-          duration={5000}
-          text={`Bitcoin: $${this.state.bitcoinPrice}  |  Ethereum: $${this.state.ethereumPrice}  |  LiteCoin: $${this.state.liteCoinPrice}`}
-          textStyle={{ fontSize: 20, color: 'blue' }} />
-
-        <Text style={styles.welcome}>
-          Welcome to CoinStash!{'\n'}
-        </Text>
+      <View style={styles.buttonContainer}>
         <Button
-          title="BitCoin"
-          onPress={() => navigate('BitCoin')}
+          title={`Bitcoin:\n $${this.state.bitcoinPrice}`}
+          onPress={() => navigate('BitCoin')}>
+        </Button>
+        <View style={{marginHorizontal: 30}}>
+        <Button
+          title={`Ethereum:\n $${this.state.ethereumPrice}`}
+          onPress={() => navigate('Ethereum')}
+          />
+        </View>
+        <Button
+          title={`LiteCoin:\n $${this.state.liteCoinPrice}`}
+          onPress={() => navigate('LiteCoin')}
           />
       </View>
     );
@@ -105,11 +107,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
+  buttonContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    marginTop: 10
+  },
   marqeeContainer: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#F5FCFF',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
   },
   welcome: {
     fontSize: 20,
@@ -121,18 +130,18 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
-    marqueeLabel: {
-      marginBottom: 100,
-      backgroundColor: 'blue',
-      width:400,
-      height:50,
-      // fontSize:12,
-      // fontWeight:'800',
-      // color:'white',
-    },
-    header: {
-      backgroundColor: 'blue'
-    }
+  marqueeLabel: {
+    marginBottom: 100,
+    backgroundColor: 'blue',
+    width:400,
+    height:50,
+    // fontSize:12,
+    // fontWeight:'800',
+    // color:'white',
+  },
+  header: {
+    backgroundColor: 'blue'
+  }
 });
 
 

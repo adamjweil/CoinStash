@@ -16,53 +16,46 @@ import {
   Text,
   View
 } from 'react-native';
-// var MarqueeLabel = require('@remobile/react-native-marquee-label');
 
 export default class eth extends Component {
   constructor() {
     super();
-    console.log("hi")
     this.state = {
-      bitcoinPrice: "",
-      bitcoinYdayPrice: "",
       ethereumPrice: "",
-      ethereumYdayPrice: "",
-      liteCoinPrice: "",
-      liteCoinYdayPrice: ""
+      ethereumYdayPrice: ""
     };
   }
 
   getCurrentPrice = () => {
-    // console.log("hi")
     fetch('https://api.lionshare.capital/api/prices')
     .then(function(response) {
-      // debugger
       return response.json()
-    }).then((obj) => {
-      console.log(this)
-      console.log(obj)
-      console.log(obj.data.BTC.length)
-      console.log(obj.data.ETH.length)
-      console.log(obj.data.LTC.length)
-      this.setState({bitcoinPrice: obj.data.BTC[obj.data.BTC.length - 1],
-                    ethereumPrice: obj.data.ETH[obj.data.ETH.length - 1],
-                    liteCoinPrice: obj.data.LTC[obj.data.LTC.length - 1]})
+    })
+    .then((obj) => {
+      this.setState({ethereumPrice: obj.data.ETH[obj.data.ETH.length - 1]})
+    })
+  }
 
-                  })
+  getYesterdayPrice = () => {
+    fetch('https://www.bitstamp.net/api/v2/ticker/ethusd')
+    .then(function(response) {
+      return response.json();
+    })
+    .then((obj => {
+      this.setState({ethereumYdayPrice: obj.open})
+    }))
   }
   componentDidMount() {
     this.getCurrentPrice()
     setInterval(this.getCurrentPrice, 100000);
+    this.getYesterdayPrice()
+    setInterval(this.getYesterdayPrice, 100000);
 
-    // Yesterday's Bitcoin Price
-    // fetch('https://api.coindesk.com/v1/bpi/currentprice.json')
-    // .then(function(response) {
-    //   return response.json()
-    // }).then((obj) => {
-    //   console.log(JSON.parse(obj))
-    //   this.setState({bitcoinYdayPrice: obj.data})
-    // });
-
+    let today = this.state.ethereumPrice
+    let yday = Math.round(this.state.ethereumYdayPrice)
+    let diff = this.state.ethereumPrice - this.state.ethereumYdayPrice
+    let change = diff.toFixed(2);
+    let colorBool = (change >= 0) ? "green" : "red";
 
   }
 
@@ -75,7 +68,11 @@ export default class eth extends Component {
   };
 
   render() {
-    // debugger
+    let yday = Math.round(this.state.ethereumYdayPrice)
+    let diff = this.state.ethereumPrice - this.state.ethereumYdayPrice
+    let change = diff.toFixed(2);
+    let colorBool = (change >= 0) ? "green" : "red";
+
     const { bitcoinPrice } = this.state
     return (
       <View style={styles.container}>
@@ -90,9 +87,17 @@ export default class eth extends Component {
               justifyContent: 'center'
             }}>ETH</Text>
           </View>
-          <Text style={{
-              fontSize: 30
-            }}>{`$${this.state.ethereumPrice}`}</Text>
+
+          <Text style={{fontSize: 30}}>{`$${this.state.ethereumPrice}`}{'\n'}<Text
+            style={styles.yDay}>Yesterday EOD: ${this.state.ethereumYdayPrice}</Text>
+          </Text>
+
+            <Text style={styles.yDayPrice}>
+              <Text style={{color: colorBool}}>
+                  Daily Change: ${change}
+              </Text>
+            </Text>
+
       </View>
     );
   }
@@ -125,12 +130,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'blue',
     width:400,
     height:50,
-    // fontSize:12,
-    // fontWeight:'800',
-    // color:'white',
   },
   header: {
     backgroundColor: 'blue'
+  },
+  yDay: {
+    fontSize: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
   }
 });
 

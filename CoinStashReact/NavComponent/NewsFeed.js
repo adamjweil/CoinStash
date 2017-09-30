@@ -17,19 +17,18 @@ export default class NewsFeed extends Component {
   constructor() {
     super();
     this.state = {
-
       posts: []
     };
   }
 
   componentDidMount() {
-    fetch('https://newsapi.org/v1/articles?source=techradar&sortBy=top&apiKey=ed62d0aea575414fbdf6a1351c0fa66a')
+    fetch('https://newsapi.org/v1/articles?source=bloomberg&sortBy=top&apiKey=ed62d0aea575414fbdf6a1351c0fa66a')
     .then(function(response) {
-      return response;
+      return response.json();
       })
     .then((obj) => {
       this.setState({newsFeed: obj.articles})
-      console.log(newsFeed)
+      console.logx(newsFeed)
 
     })
   }

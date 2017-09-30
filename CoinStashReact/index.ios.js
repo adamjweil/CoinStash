@@ -18,7 +18,6 @@ import {
   View
 } from 'react-native';
 
-
 import CoinStashReact from './pages/app'
 
 

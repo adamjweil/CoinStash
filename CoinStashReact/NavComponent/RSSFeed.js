@@ -13,7 +13,7 @@ export default class RSSFeed extends Component {
   constructor() {
     super();
     this.state = {
-      rssFeed: []
+      rssPosts: []
     };
   }
 
@@ -21,51 +21,40 @@ export default class RSSFeed extends Component {
     fetch('https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fwww.bitnewz.net%2Frss%2FFeed%2F25')
     .then(function(response) {
       return response.json();
-
     })
     .then((obj) => {
       console.log(obj.items)
-      this.setState({rssFeed: obj})
+      this.setState({rssPosts: obj.items})
     })
   }
 
   render() {
-
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
 
+      <View style={styles.rssView}>
 
-        </Text>
+          {this.state.rssPosts.map((rss) =>
+            <Text style={styles.rssPost}>
+              {rss.title}{'\n'}
+              {rss.pubDate}{'\n'}
+            </Text>
+          )}
+
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-    width: 300,
-    height: 300,
+  rssView: {
+    // borderWidth: 1,
+    // borderRadius: 1
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-    width: 300,
-    height: 300,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-    width: 300,
-    height: 300,
-  },
-  header: {
-    backgroundColor: 'blue'
+  rssPost: {
+    fontSize: 12,
+    textAlign: 'left',
+    margin: 2,
+    borderWidth: 1,
+    borderRadius: 5
   },
 });

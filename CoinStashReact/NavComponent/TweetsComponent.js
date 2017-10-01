@@ -10,10 +10,7 @@ export default class TweetsComponent extends Component {
   constructor() {
     super();
     this.state = {
-      tweet0: [],
-      tweet1: [],
-      tweet2: [],
-      tweet3: [],
+      tweets: []
     }
   }
   componentDidMount() {
@@ -22,49 +19,37 @@ export default class TweetsComponent extends Component {
   }
 
   getCurrentTweets = () => {
-    fetch('http://localhost:3000/tweets')
+    fetch('http://localhost:3000/tweets/hashtag')
     .then(function(response) {
       return response.json();
     })
     .then((obj) => {
-      this.setState({tweet0: obj[0]})
-      this.setState({tweet1: obj[1]})
-      this.setState({tweet2: obj[2]})
-      this.setState({tweet3: obj[3]})
+      this.setState({tweets: obj})
     })
   }
   render() {
-    const { title, description, url, urlToImage, author } = this.props
+
     return (
-      <View>
-        <Text style={styles.tweetContainer}>
-          {this.state.tweet0.text}
-        </Text>
 
-        <Text style={styles.tweetContainer}>
-          {this.state.tweet1.text}
-        </Text>
+      <View style={styles.tweetStyle}>
+        {this.state.tweets.map((tweet) =>
+          <Text style={styles.tweetText}>
+            {tweet.text}{'\n'}
+              {tweet.entities.hashtags.map((hash) =>
+                <Text style={styles.tweetHashtag}>#{hash.text}</Text>
+                )}
+                {'\n'}
+            <Text style={styles.tweetAuthor}>.....posted by{tweet.user.name}</Text>
+          </Text>
+        )}
 
-        <Text style={styles.tweetContainer}>
-          {this.state.tweet2.text}
-        </Text>
-
-        <Text style={styles.tweetContainer}>
-          {this.state.tweet3.text}
-        </Text>
       </View>
+
     )
   }
 }
 
 const styles = StyleSheet.create({
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-    width: 300,
-    height: 300,
-  },
   tweetContainer: {
     fontSize: 20,
     textAlign: 'left',
@@ -72,4 +57,15 @@ const styles = StyleSheet.create({
     width: 300,
     height: 100,
   },
+  tweetAuthor: {
+    fontSize: 10,
+    textAlign: 'center',
+    justifyContent: 'center',
+    marginLeft: 20
+  },
+  tweetHashtag: {
+    fontSize: 10,
+    fontWeight: 'bold',
+    textAlign: 'center'
+  }
 });

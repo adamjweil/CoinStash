@@ -95,6 +95,12 @@ export default class home extends Component {
               style={{width: 125, height: 125, marginLeft: 120, marginBottom: -75}}
       />
 
+                  <TouchableOpacity onPress={() => navigate('Form')} style={styles.navTextContainer} >
+                    <Text>
+                      Form
+                    </Text>
+                  </TouchableOpacity>
+
 
         <ScrollView style={styles.scrollView}>
           <View style={styles.buttonContainer}>
@@ -115,6 +121,7 @@ export default class home extends Component {
                 {`LTC:\n $${this.state.liteCoinPrice}`}
               </Text>
             </TouchableOpacity>
+
           </View>
           <View style={styles.container}>
               <View style={styles.newsPhoto}>

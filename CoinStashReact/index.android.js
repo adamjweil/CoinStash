@@ -10,7 +10,7 @@ import {
   StyleSheet,
   Text,
   View
-} from 'react-native';
+} from 'react-native'; 
 
 export default class CoinStashReact extends Component {
   render() {

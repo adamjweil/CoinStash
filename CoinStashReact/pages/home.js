@@ -5,10 +5,12 @@
  */
 'use strict';
 import React, { Component } from 'react';
+//
+// import MarqueeLabelVertical from 'react-native-lahk-marquee-label-vertical';
+// import MarqueeLabel from 'react-native-lahk-marquee-label';
+import { Button } from 'react-native-elements';
 
-import MarqueeLabelVertical from 'react-native-lahk-marquee-label-vertical';
-import MarqueeLabel from 'react-native-lahk-marquee-label';
-import { Header } from 'react-native-elements';
+import LinearGradient from 'react-native-linear-gradient';
 
 
 import {
@@ -17,8 +19,8 @@ import {
   Text,
   View,
   Image,
-  Button,
-  ScrollView
+  ScrollView,
+  TouchableOpacity
 } from 'react-native';
 // var MarqueeLabel = require('@remobile/react-native-marquee-label');
 
@@ -53,13 +55,14 @@ export default class home extends Component {
   getCurrentNews = () => {
     // TechCrunch
     // fetch('https://newsapi.org/v1/articles?source=techcrunch&sortBy=top&apiKey=ed62d0aea575414fbdf6a1351c0fa66a')
-    fetch('https://newsapi.org/v1/articles?source=hacker-news&sortBy=latest&apiKey=ed62d0aea575414fbdf6a1351c0fa66a')
+    fetch('https://newsapi.org/v1/articles?source=business-insider&sortBy=latest&apiKey=ed62d0aea575414fbdf6a1351c0fa66a')
     .then(function(response) {
       return response.json();
       // console.log(response[0]);
     }).catch((error) => console.warn("fetch error:", error))
     .then((response) => {
       console.log(response.articles);
+      // debugger
       console.log(response.articles[2].urlToImage);
 
       this.setState({newsFeed0: response.articles[response.articles.length - 1]})
@@ -82,163 +85,142 @@ export default class home extends Component {
   }
 
   static navigationOptions = {
-    title: 'Home',
+    header: null,
+    title: 'Dashboard',
+
   };
+
+
+
 
   render() {
     const { bitcoinPrice } = this.state;
     const { navigate } = this.props.navigation;
     return (
-      <View style={styles.container}>
-        <ScrollView>
+      <LinearGradient colors={['#43cea2', '#185a9d']} style={styles.linearGradient}>
+      <Image source={{uri: 'http://www.freepngimg.com/thumb/mustache/5-2-no-shave-movember-day-mustache-png-image-thumb.png'}}
+              style={{width: 125, height: 125, marginLeft: 120, marginBottom: -75}}
+      />
+
+
+        <ScrollView style={styles.scrollView}>
           <View style={styles.buttonContainer}>
-            <Button
-              title={`Bitcoin:\n $${this.state.bitcoinPrice}`}
-              onPress={() => navigate('BitCoin')}>
-            </Button>
-            <View style={{marginHorizontal: 20}}>
-              <Button
-                title={`Ethereum:\n $${this.state.ethereumPrice}`}
-                onPress={() => navigate('Ethereum')}
-                />
+            <TouchableOpacity onPress={() => navigate('BitCoin')} style={styles.navTextContainer} >
+              <Text style={styles.navButtons}>
+                {`BTC:\n $${this.state.bitcoinPrice}`}
+              </Text>
+            </TouchableOpacity>
+            <View style={{marginHorizontal: 11}}>
+            <TouchableOpacity onPress={() => navigate('Ethereum')} style={styles.navTextContainer} >
+              <Text style={styles.navButtons}>
+                {`ETH:\n $${this.state.ethereumPrice}`}
+              </Text>
+            </TouchableOpacity>
             </View>
-            <Button
-              title={`LiteCoin:\n $${this.state.liteCoinPrice}`}
-              onPress={() => navigate('LiteCoin')}
-              />
+            <TouchableOpacity onPress={() => navigate('LiteCoin')} style={styles.navTextContainer} >
+              <Text style={styles.navButtons}>
+                {`LTC:\n $${this.state.liteCoinPrice}`}
+              </Text>
+            </TouchableOpacity>
           </View>
+          <View style={styles.container}>
+              <View style={styles.newsPhoto}>
+                  <Image source={{uri: `${this.state.newsFeed0.urlToImage}`}} style={styles.photo} />
+              </View>
+              <View style={styles.newsItem}>
+                  <View style={styles.newsText}>
+                      <View style={styles.text_container}>
+                          <Text style={styles.title}>{this.state.newsFeed0.title}</Text>
+                          <Text style={styles.description}>{this.state.newsFeed0.description}</Text>
+                          <Button
+                            fontWeight={"700"}
+                            buttonStyle={styles.readMoreButtton}
+                            title={`READ ME`}
+                          />
+                      </View>
+                  </View>
+              </View>
 
-          <Text style={styles.welcome}>
-            CryptoNews!
-          </Text>
+              <View style={styles.newsPhoto}>
+                    <Image source={{uri: `${this.state.newsFeed1.urlToImage}`}} style={styles.photo} />
+              </View>
+              <View style={styles.newsItem}>
 
-          <View style={styles.newsWrapper}>
-            <Text style={styles.newsTitle}>
-              {this.state.newsFeed0.title}
-            </Text>
+                  <View style={styles.newsText}>
+                      <View style={styles.text_container}>
+                          <Text style={styles.title}>{this.state.newsFeed1.title}</Text>
+                          <Text style={styles.description}>{this.state.newsFeed1.description}</Text>
+                          <Button
+                            fontWeight={"700"}
+                            buttonStyle={styles.readMoreButtton}
+                            title={`READ ME`}
+                          />
+                      </View>
+                  </View>
+              </View>
 
-            <Text style={styles.newsAuthor}>
-              posted by.. {this.state.newsFeed0.author}
-            </Text>
+              <View style={styles.newsPhoto}>
+                  <Image source={{uri: `${this.state.newsFeed2.urlToImage}`}} style={styles.photo} />
+              </View>
+              <View style={styles.newsItem}>
+                  <View style={styles.newsText}>
+                      <View style={styles.text_container}>
+                          <Text style={styles.title}>{this.state.newsFeed2.title}</Text>
+                          <Text style={styles.description}>{this.state.newsFeed2.description}</Text>
+                          <Button
+                            fontWeight={"700"}
+                            buttonStyle={styles.readMoreButtton}
+                            title={`READ ME`}
+                          />
+                      </View>
+                  </View>
+              </View>
 
-            <Text style={styles.newsDescription}>
-              {this.state.newsFeed0.description}
-            </Text>
-          </View>
 
-          <View style={styles.newsWrapper}>
-            <Text style={styles.newsTitle}>
-              {this.state.newsFeed1.title}
-            </Text>
+              <View style={styles.newsPhoto}>
+                  <Image source={{uri: `${this.state.newsFeed3.urlToImage}`}} style={styles.photo} />
+              </View>
+              <View style={styles.newsItem}>
+                  <View style={styles.newsText}>
+                      <View style={styles.text_container}>
+                          <Text style={styles.title}>{this.state.newsFeed3.title}</Text>
+                          <Text style={styles.description}>{this.state.newsFeed3.description}</Text>
+                          <Button
+                            fontWeight={"700"}
+                            buttonStyle={styles.readMoreButtton}
+                            title={`READ ME`}
+                          />
+                      </View>
+                  </View>
+              </View>
 
-            <Text style={styles.newsAuthor}>
-              posted by.. {this.state.newsFeed1.author}
-            </Text>
 
-            <Text style={styles.newsDescription}>
-              {this.state.newsFeed1.description}
-            </Text>
-          </View>
+              <View style={styles.newsPhoto}>
+                  <Image source={{uri: `${this.state.newsFeed4.urlToImage}`}} style={styles.photo} />
+              </View>
+              <View style={styles.newsItem}>
+                  <View style={styles.newsText}>
+                      <View style={styles.text_container}>
+                          <Text style={styles.title}>{this.state.newsFeed4.title}</Text>
+                          <Text style={styles.description}>{this.state.newsFeed4.description}</Text>
+                          <Button
+                            fontWeight={"700"}
+                            buttonStyle={styles.readMoreButtton}
+                            title={`Read More`}
 
-          <View style={styles.newsWrapper}>
-            <Text style={styles.newsTitle}>
-              {this.state.newsFeed2.title}
-            </Text>
+                          />
+                      </View>
+                  </View>
+              </View>
 
-            <Text style={styles.newsAuthor}>
-              posted by.. {this.state.newsFeed2.author}
-            </Text>
 
-            <Text style={styles.newsDescription}>
-              {this.state.newsFeed2.description}
-            </Text>
-          </View>
 
-          <View style={styles.newsWrapper}>
-            <Text style={styles.newsTitle}>
-              {this.state.newsFeed3.title}
-            </Text>
 
-            <Text style={styles.newsAuthor}>
-              posted by.. {this.state.newsFeed3.author}
-            </Text>
 
-            <Text style={styles.newsDescription}>
-              {this.state.newsFeed3.description}
-            </Text>
-          </View>
 
-          <View style={styles.newsWrapper}>
-            <Text style={styles.newsTitle}>
-              {this.state.newsFeed4.title}
-            </Text>
-
-            <Text style={styles.newsAuthor}>
-              posted by.. {this.state.newsFeed4.author}
-            </Text>
-
-            <Text style={styles.newsDescription}>
-              {this.state.newsFeed4.description}
-            </Text>
-          </View>
-
-          <View style={styles.newsWrapper}>
-            <Text style={styles.newsTitle}>
-              {this.state.newsFeed5.title}
-            </Text>
-
-            <Text style={styles.newsAuthor}>
-              posted by.. {this.state.newsFeed5.author}
-            </Text>
-
-            <Text style={styles.newsDescription}>
-              {this.state.newsFeed5.description}
-            </Text>
-          </View>
-
-          <View style={styles.newsWrapper}>
-            <Text style={styles.newsTitle}>
-              {this.state.newsFeed6.title}
-            </Text>
-
-            <Text style={styles.newsAuthor}>
-              posted by.. {this.state.newsFeed6.author}
-            </Text>
-
-            <Text style={styles.newsDescription}>
-              {this.state.newsFeed6.description}
-            </Text>
-          </View>
-
-          <View style={styles.newsWrapper}>
-            <Text style={styles.newsTitle}>
-              {this.state.newsFeed7.title}
-            </Text>
-
-            <Text style={styles.newsAuthor}>
-              posted by.. {this.state.newsFeed7.author}
-            </Text>
-
-            <Text style={styles.newsDescription}>
-              {this.state.newsFeed7.description}
-            </Text>
-          </View>
-
-          <View style={styles.newsWrapper}>
-            <Text style={styles.newsTitle}>
-              {this.state.newsFeed8.title}
-            </Text>
-
-            <Text style={styles.newsAuthor}>
-              posted by.. {this.state.newsFeed8.author}
-            </Text>
-
-            <Text style={styles.newsDescription}>
-              {this.state.newsFeed8.description}
-            </Text>
           </View>
         </ScrollView>
-      </View>
+      </LinearGradient>
     );
   }
 }
@@ -248,14 +230,16 @@ const styles = StyleSheet.create({
     flex: 2,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+
   },
   buttonContainer: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'center',
-    marginTop: 10
+    marginTop: 15,
+    backgroundColor: 'transparent',
+    marginBottom: 15
   },
   marqeeContainer: {
     flex: 1,
@@ -286,7 +270,7 @@ const styles = StyleSheet.create({
     fontWeight:'900',
   },
   newsTitle: {
-    fontSize: 15,
+    fontSize: 14,
     color: '#333333',
     textAlign: 'left',
     fontWeight: 'bold',
@@ -304,11 +288,97 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   newsWrapper: {
+    alignItems: "flex-start",
     backgroundColor: 'lightgray',
     borderColor: 'white',
     borderWidth: 1,
     padding: 10
-  }
+  },
+  linearGradient: {
+    paddingLeft: 15,
+    paddingRight: 15,
+  },
+  navButtons: {
+    color: '#ffffff',
+    textAlign: 'center',
+    fontSize: 20,
+    // backgroundColor: "#0A2540"
+  },
+  navTextContainer: {
+    textAlign: 'center',
+    borderWidth: 3,
+    paddingHorizontal: 9,
+    paddingVertical: 5,
+    borderColor: 'white'
+    // backgroundColor: "rgb(29,78,85)"
+  },
+  newsItem: {
+       flex: 1,
+       flexDirection: 'row',
+       paddingRight: 22,
+       paddingLeft: 22,
+       paddingTop: 10,
+       paddingBottom: 30,
+       marginBottom: 30,
+       backgroundColor: 'rgba(0,0,0,.5)',
+       shadowColor: '#777',
+       shadowOffset: { width: 0, height: 2 },
+       shadowOpacity: 1,
+       shadowRadius: 2,
+       height: 242.5
+
+   },
+   newsText: {
+       flex: 2,
+       flexDirection: 'row',
+       padding: 10,
+       borderColor: "#EFEFEF",
+   },
+   number: {
+   flex: 0.5,
+    },
+    text_container: {
+       flex: 3
+    },
+    pretext: {
+    color: '#3F3F3F',
+    fontSize: 20
+    },
+    title: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#fff',
+        fontFamily: 'Avenir',
+        textAlign: 'center',
+        lineHeight: 20,
+        marginTop: 10
+
+    },
+    newsPhoto: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom:-242.5
+    },
+    photo: {
+        width: 345,
+        height: 242.5,
+        marginTop: 15,
+    },
+    description: {
+      color: "#FFF",
+      textAlign: 'center'
+    },
+    readMoreButtton: {
+      borderRadius: 0,
+      marginTop: 10,
+      backgroundColor: "rgba(0,0,0,0)",
+      borderWidth:3,
+      borderColor: 'white'
+    },
+    scrollView: {
+      marginTop: 50
+    }
 });
 
 

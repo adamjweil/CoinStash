@@ -3,7 +3,8 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  ScrollView
 } from 'react-native';
 
 export default class TweetsComponent extends Component {
@@ -15,7 +16,7 @@ export default class TweetsComponent extends Component {
   }
   componentDidMount() {
     this.getCurrentTweets();
-    setInterval(this.getCurrentTweets, 100000);
+    setInterval(this.getCurrentTweets, 50000);
   }
 
   getCurrentTweets = () => {
@@ -31,6 +32,7 @@ export default class TweetsComponent extends Component {
 
     return (
 
+      <ScrollView style={styles.scrollView}>
       <View style={styles.tweetStyle}>
         {this.state.tweets.map((tweet) =>
           <Text style={styles.tweetText}>
@@ -44,7 +46,7 @@ export default class TweetsComponent extends Component {
         )}
 
       </View>
-
+    </ScrollView>
     )
   }
 }
@@ -67,5 +69,8 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontWeight: 'bold',
     textAlign: 'center'
+  },
+  ScrollView: {
+
   }
 });

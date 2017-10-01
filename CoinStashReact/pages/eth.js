@@ -16,7 +16,8 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  ScrollView
 } from 'react-native';
 
 export default class eth extends Component {
@@ -77,6 +78,8 @@ export default class eth extends Component {
 
     const { bitcoinPrice } = this.state
     return (
+
+    <ScrollView style={styles.scrollView}>
       <View style={styles.container}>
         <View style={{
           marginTop: 10,
@@ -101,6 +104,7 @@ export default class eth extends Component {
             </Text>
           <RSSFeed />
       </View>
+    </ScrollView>
     );
   }
 }
@@ -141,6 +145,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
+  },
+  ScrollView: {
+
   }
 });
 

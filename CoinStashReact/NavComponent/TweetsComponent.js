@@ -27,8 +27,6 @@ export default class TweetsComponent extends Component {
       return response.json();
     })
     .then((obj) => {
-      console.log(obj[0]);
-      console.log(obj[0].user.name);
       this.setState({tweet0: obj[0]})
       this.setState({tweet1: obj[1]})
       this.setState({tweet2: obj[2]})

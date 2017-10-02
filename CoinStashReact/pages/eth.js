@@ -9,12 +9,15 @@ import React, { Component } from 'react';
 import MarqueeLabelVertical from 'react-native-lahk-marquee-label-vertical';
 import MarqueeLabel from 'react-native-lahk-marquee-label';
 import { Header } from 'react-native-elements';
+import RSSFeed from '../NavComponent/RSSFeed'
+
 
 import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  ScrollView
 } from 'react-native';
 
 export default class eth extends Component {
@@ -75,6 +78,8 @@ export default class eth extends Component {
 
     const { bitcoinPrice } = this.state
     return (
+
+    <ScrollView style={styles.scrollView}>
       <View style={styles.container}>
         <View style={{
           marginTop: 10,
@@ -97,8 +102,9 @@ export default class eth extends Component {
                   Daily Change: ${change}
               </Text>
             </Text>
-
+          <RSSFeed />
       </View>
+    </ScrollView>
     );
   }
 }
@@ -139,6 +145,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
+  },
+  ScrollView: {
+
   }
 });
 

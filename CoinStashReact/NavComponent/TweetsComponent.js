@@ -3,73 +3,105 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  ScrollView,
+  Image,
+  Linking
 } from 'react-native';
 
 export default class TweetsComponent extends Component {
   constructor() {
     super();
     this.state = {
-      tweet0: [],
-      tweet1: [],
-      tweet2: [],
-      tweet3: [],
+      tweets: []
     }
   }
   componentDidMount() {
     this.getCurrentTweets();
-    setInterval(this.getCurrentTweets, 100000);
+    setInterval(this.getCurrentTweets, 10000);
   }
 
   getCurrentTweets = () => {
-    fetch('http://localhost:3000/tweets')
+    fetch('http://localhost:3000/tweets/hashtag')
     .then(function(response) {
       return response.json();
     })
     .then((obj) => {
-      this.setState({tweet0: obj[0]})
-      this.setState({tweet1: obj[1]})
-      this.setState({tweet2: obj[2]})
-      this.setState({tweet3: obj[3]})
+      // console.log(obj[0])
+      this.setState({tweets: obj})
     })
   }
   render() {
-    const { title, description, url, urlToImage, author } = this.props
+
     return (
-      <View>
-        <Text style={styles.tweetContainer}>
-          {this.state.tweet0.text}
-        </Text>
+      <ScrollView style={styles.scrollView}>
+        {this.state.tweets.map((tweet, i) =>
+        <View style={styles.tweetContainer}>
 
-        <Text style={styles.tweetContainer}>
-          {this.state.tweet1.text}
-        </Text>
+            <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start'}}>
+              <View>
+                <Image source={{uri: tweet.user.profile_image_url_https}} style={styles.tweetPhoto} />
+              </View>
+              <View style={styles.tweetText}>
+                <Text style={styles.tweetTextView}>{tweet.text}<Text style={styles.tweetAuthor}>...posted by <Text style={{fontWeight: 'bold'}}>@{tweet.user.screen_name}</Text></Text> </Text>
+              </View>
+            </View>
 
-        <Text style={styles.tweetContainer}>
-          {this.state.tweet2.text}
-        </Text>
+            <View style={styles.tweetMentions}>
+              <Text style={styles.tweetMentions}>Retweets: {tweet.retweet_count} | Favorites: {tweet.favorite_count}</Text>
+            </View>
 
-        <Text style={styles.tweetContainer}>
-          {this.state.tweet3.text}
-        </Text>
-      </View>
+        </View>
+      )}
+
+    </ScrollView>
+
     )
   }
 }
 
 const styles = StyleSheet.create({
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-    width: 300,
-    height: 300,
-  },
   tweetContainer: {
-    fontSize: 20,
+    borderRadius: 5,
+    borderWidth: 1,
+    marginBottom: 5,
     textAlign: 'left',
-    margin: 10,
-    width: 300,
-    height: 100,
+    flex: 1
   },
+  tweetAuthor: {
+    fontSize: 10,
+    textAlign: 'center',
+    justifyContent: 'center',
+    fontWeight: '300'
+  },
+  tweetHashtag: {
+    fontSize: 10,
+    fontWeight: 'bold',
+    textAlign: 'center'
+  },
+  tweetPhoto: {
+    width: 50,
+    height: 50,
+    borderRadius: 10
+  },
+  tweetTextView: {
+    width: 320,
+    fontSize: 12,
+    textAlign: 'center'
+  },
+  tweetAuthorView: {
+    flex: 1,
+  },
+  ScrollView: {
+    flex: 1
+  },
+  tweetText: {
+    flexWrap: 'wrap'
+  },
+  tweetMentions: {
+    fontSize: 8,
+    fontWeight: '200',
+    textAlign: 'center',
+    justifyContent: 'center'
+  }
 });

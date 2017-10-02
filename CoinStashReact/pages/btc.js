@@ -18,7 +18,9 @@ import {
   StyleSheet,
   Text,
   View,
-  ScrollView
+  ScrollView,
+  Image
+  
 } from 'react-native';
 
 export default class btc extends Component {

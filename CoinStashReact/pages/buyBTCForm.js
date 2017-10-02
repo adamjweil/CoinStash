@@ -26,7 +26,7 @@ export default class form extends Component {
   constructor() {
     super();
     this.state = {
-      selectedIndex: 2,
+      selectedIndex: 0,
       text: '00.00'
     }
     this.updateIndex = this.updateIndex.bind(this)
@@ -56,18 +56,13 @@ export default class form extends Component {
   componentDidMount() {
   }
 
-  static navigationOptions = {
-    title: 'Form',
-  };
-
   render() {
     let state = this.state;
-    const { navigate } = this.props.navigation;
     const buttons = ['BTC', 'ETH', 'LTC']
     const { selectedIndex } = this.state
     return (
       <View style={styles.container}>
-        <Text style={styles.formTitle}>BUY/SELL</Text>
+        <Text style={styles.formTitle}>BUY</Text>
         <ButtonGroup
           onPress={this.updateIndex}
           selectedIndex={selectedIndex}
@@ -143,10 +138,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   flexDirectionColumn: {
-      flexDirection: 'column',
-      backgroundColor: '#eee',
-      alignItems: 'center',
-      flex: 1
+    flexDirection: 'column',
+    backgroundColor: '#eee',
+    alignItems: 'center',
+    flex: 1
   },
   labelTitle: {
     textAlign: 'left',
@@ -201,13 +196,9 @@ const styles = StyleSheet.create({
     marginRight: -50
   },
   depositWallet: {
-      alignItems: 'flex-start',
-      marginLeft: 40,
-      borderBottomColor: 'rgba(24, 90, 157, .5)',
-      borderBottomWidth: 1,
-
+    alignItems: 'flex-start',
+    marginLeft: 40,
+    borderBottomColor: 'rgba(24, 90, 157, .5)',
+    borderBottomWidth: 1,
   }
 });
-
-
-AppRegistry.registerComponent('form', () => form);

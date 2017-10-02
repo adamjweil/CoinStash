@@ -12,6 +12,7 @@ import { Button } from 'react-native-elements';
 
 import LinearGradient from 'react-native-linear-gradient';
 
+import { CoinStashReact2 } from './app'
 
 import {
   AppRegistry,
@@ -58,9 +59,13 @@ export default class home extends Component {
     fetch('https://newsapi.org/v1/articles?source=business-insider&sortBy=latest&apiKey=ed62d0aea575414fbdf6a1351c0fa66a')
     .then(function(response) {
       return response.json();
-    })
-    .catch((error) => console.warn("fetch error:", error))
+      // console.log(response[0]);
+    }).catch((error) => console.warn("fetch error:", error))
     .then((response) => {
+      console.log(response.articles);
+      // debugger
+      console.log(response.articles[2].urlToImage);
+
       this.setState({newsFeed0: response.articles[response.articles.length - 1]})
       this.setState({newsFeed1: response.articles[response.articles.length - 2]})
       this.setState({newsFeed2: response.articles[response.articles.length - 3]})
@@ -83,40 +88,42 @@ export default class home extends Component {
   static navigationOptions = {
     header: null,
     title: 'Dashboard',
-
   };
+
+
+
 
   render() {
     const { bitcoinPrice } = this.state;
-    const { navigate } = this.props.navigation;
     return (
       <LinearGradient colors={['#43cea2', '#185a9d']} style={styles.linearGradient}>
       <Image source={{uri: 'http://www.freepngimg.com/thumb/mustache/5-2-no-shave-movember-day-mustache-png-image-thumb.png'}}
               style={{width: 125, height: 125, marginLeft: 120, marginBottom: -75}}
       />
 
-                  <TouchableOpacity onPress={() => navigate('Form')} style={styles.navTextContainer} >
-                    <Text>
-                      Form
-                    </Text>
-                  </TouchableOpacity>
+    <Text
+      style={{color: 'white'}}
+      onPress={()=> this.props.navigation.navigate('DrawerOpen')}
+      >MENU</Text>
 
+
+               
 
         <ScrollView style={styles.scrollView}>
           <View style={styles.buttonContainer}>
-            <TouchableOpacity onPress={() => navigate('BitCoin')} style={styles.navTextContainer} >
+            <TouchableOpacity style={styles.navTextContainer} >
               <Text style={styles.navButtons}>
                 {`BTC:\n $${this.state.bitcoinPrice}`}
               </Text>
             </TouchableOpacity>
             <View style={{marginHorizontal: 11}}>
-            <TouchableOpacity onPress={() => navigate('Ethereum')} style={styles.navTextContainer} >
+            <TouchableOpacity style={styles.navTextContainer} >
               <Text style={styles.navButtons}>
                 {`ETH:\n $${this.state.ethereumPrice}`}
               </Text>
             </TouchableOpacity>
             </View>
-            <TouchableOpacity onPress={() => navigate('LiteCoin')} style={styles.navTextContainer} >
+            <TouchableOpacity style={styles.navTextContainer} >
               <Text style={styles.navButtons}>
                 {`LTC:\n $${this.state.liteCoinPrice}`}
               </Text>
@@ -124,25 +131,25 @@ export default class home extends Component {
 
           </View>
           <View style={styles.container}>
-              <View style={styles.newsPhoto}>
-                  <Image source={{uri: `${this.state.newsFeed0.urlToImage}`}} style={styles.photo} />
+            <View style={styles.newsPhoto}>
+              <Image source={{uri: `${this.state.newsFeed0.urlToImage}`}} style={styles.photo} />
+            </View>
+            <View style={styles.newsItem}>
+              <View style={styles.newsText}>
+                <View style={styles.text_container}>
+                  <Text style={styles.title}>{this.state.newsFeed0.title}</Text>
+                  <Text style={styles.description}>{this.state.newsFeed0.description}</Text>
+                  <Button
+                    fontWeight={"700"}
+                    buttonStyle={styles.readMoreButtton}
+                    title={`READ ME`}
+                  />
+                </View>
               </View>
-              <View style={styles.newsItem}>
-                  <View style={styles.newsText}>
-                      <View style={styles.text_container}>
-                          <Text style={styles.title}>{this.state.newsFeed0.title}</Text>
-                          <Text style={styles.description}>{this.state.newsFeed0.description}</Text>
-                          <Button
-                            fontWeight={"700"}
-                            buttonStyle={styles.readMoreButtton}
-                            title={`READ ME`}
-                          />
-                      </View>
-                  </View>
-              </View>
+            </View>
 
               <View style={styles.newsPhoto}>
-                    <Image source={{uri: `${this.state.newsFeed1.urlToImage}`}} style={styles.photo} />
+                <Image source={{uri: `${this.state.newsFeed1.urlToImage}`}} style={styles.photo} />
               </View>
               <View style={styles.newsItem}>
 
@@ -212,12 +219,6 @@ export default class home extends Component {
                       </View>
                   </View>
               </View>
-
-
-
-
-
-
           </View>
         </ScrollView>
       </LinearGradient>

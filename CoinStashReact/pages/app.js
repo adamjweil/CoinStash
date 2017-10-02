@@ -6,7 +6,7 @@ import {
   View
 } from 'react-native';
 
-import { StackNavigator } from 'react-navigation';
+import { StackNavigator, DrawerNavigator } from 'react-navigation';
 
 import HomeScreen from './home';
 import BitCoin from './btc';
@@ -14,12 +14,23 @@ import Ethereum from './eth';
 import LiteCoin from './ltc';
 import Form from './form';
 
-const CoinStashReact = StackNavigator({
-  Home: { screen: HomeScreen },
-  BitCoin: { screen: BitCoin },
-  Ethereum: { screen: Ethereum },
-  LiteCoin: { screen: LiteCoin },
-  Form: { screen: Form }
-});
+
+
+
+const CoinStashReact = DrawerNavigator(
+  {
+    Home: { screen: HomeScreen },
+    BitCoin: { screen: BitCoin },
+    Ethereum: { screen: Ethereum },
+    LiteCoin: { screen: LiteCoin },
+     Form: { screen: Form }
+  },
+  {
+    initialRouteName: 'Home',
+    drawerPosition: 'left'
+  }
+);
+
+
 
 export default CoinStashReact;

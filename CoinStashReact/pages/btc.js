@@ -11,13 +11,16 @@ import MarqueeLabelVertical from 'react-native-lahk-marquee-label-vertical';
 import MarqueeLabel from 'react-native-lahk-marquee-label';
 import { Header } from 'react-native-elements';
 import TweetsComponent from '../NavComponent/TweetsComponent';
+import LinearGradient from 'react-native-linear-gradient';
 
 import {
   AppRegistry,
   StyleSheet,
   Text,
   View,
+  ScrollView,
   Image
+  
 } from 'react-native';
 
 export default class btc extends Component {
@@ -73,10 +76,6 @@ export default class btc extends Component {
   //   clearInterval()
   // }
 
-  static navigationOptions = {
-    title: 'BitCoin',
-  };
-
   render() {
     let yday = Math.round(this.state.bitcoinYdayPrice)
     let diff = this.state.bitcoinPrice - this.state.bitcoinYdayPrice
@@ -84,32 +83,49 @@ export default class btc extends Component {
     let colorBool = (change >= 0) ? "green" : "red";
 
     const { bitcoinPrice, bitcoinYdayPrice } = this.state
+    const { navigate } = this.props.navigation;
     return (
-      <View style={styles.container}>
-        <View style={{
-          marginTop: 10,
-          flexDirection: 'row',
-          alignItems: 'flex-start',
-          }}>
-          <Text style={{
-            fontSize: 60,
-            fontWeight: 'bold',
-            justifyContent: 'center'
-          }}>
-            BTC
+        
+        <View style={styles.container}>
+          <View style={{flexDirection: 'row', marginTop: 30}}>
+            <Text
+              style={{ paddingLeft: 15, paddingRight: 15, paddingTop: 20}}
+              onPress={() => navigate('Home')}>
+              BACK
+            </Text>
+            <Text style={{
+              flex: 1,
+              fontSize: 60,
+              fontWeight: 'bold',
+              textAlign: 'center'
+              }}>
+              BTC
+            </Text>
+              <Text
+                style={{color: 'rgba(1,1,1,0)', paddingLeft: 15, paddingRight: 15}}>
+                BACK
+              </Text>
+          </View>
+
+          <Text style={styles.coinPriceText}>
+            {`$${this.state.bitcoinPrice}`}{'\n'}
+            <Text style={styles.yDay}>Yesterday EOD: ${yday}</Text>
           </Text>
+
+          <Text style={styles.yDayPrice}>
+            <Text style={{color: colorBool}}>
+                Daily Change: ${change}
+            </Text>
+          </Text>
+          <View>
+            <Text>
+              BTC Feed:
+            </Text>
+          </View>
+          <ScrollView style="">
+            <TweetsComponent />
+          </ScrollView>
         </View>
-
-        <Text style={{ fontSize: 30 }}>{`$${this.state.bitcoinPrice}`}{'\n'}<Text style={styles.yDay}>Yesterday EOD: ${yday} </Text>
-        </Text>
-
-        <Text style={styles.yDayPrice}>
-          <Text style={{color: colorBool}}>
-              Daily Change: ${change}
-          </Text>
-        </Text>
-        <TweetsComponent />
-      </View>
 
     );
   }
@@ -117,37 +133,24 @@ export default class btc extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 2,
+    flex: 1,
     alignItems: 'center',
     backgroundColor: '#F5FCFF'
   },
-  marqeeContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'blue',
-    height: 50
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10
-  },
-  marqueeLabel: {
-    marginTop: 10,
-    backgroundColor: 'blue',
-    width:400,
-    height:50,
-    fontWeight:'900'
-  },
-  header: {
-    backgroundColor: 'blue'
+  coinPriceText: {
+    fontSize: 30,
+    textAlign: 'center'
   },
   yDay: {
-    fontSize: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
+    fontSize: 17,
     textAlign: 'center'
+  },
+  linearGradient: {
+    paddingLeft: 15,
+    paddingRight: 15,
+  },
+  backButtonStyle: {
+
   }
 });
 

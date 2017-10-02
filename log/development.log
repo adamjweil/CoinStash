@@ -6230,3 +6230,130 @@ Migrating to CreateUsers (20170928205122)
   [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "tony@example.org"], ["LIMIT", 1]]
   [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("firstName", "lastName", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["firstName", "Pete"], ["lastName", "Sauer"], ["email", "tony@example.org"], ["password_digest", "$2a$10$RrYhAxwaNGps0Agx2UeL3Oh3x3BT5sbmuP1tNVH2vBERzcvOafFUa"], ["created_at", "2017-10-01 20:09:05.286543"], ["updated_at", "2017-10-01 20:09:05.286543"]]
   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/users" for 127.0.0.1 at 2017-10-01 20:42:02 -0400
+  [1m[35m (7.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+Completed 500 Internal Server Error in 686ms (ActiveRecord: 2.6ms)
+
+
+  
+NoMethodError (undefined method `vattr_accessor' for #<Class:0x007fa9d29ab338>
+Did you mean?  attr_accessor
+               cattr_accessor
+               mattr_accessor):
+  
+app/models/user.rb:2:in `<class:User>'
+app/models/user.rb:1:in `<top (required)>'
+app/controllers/users_controller.rb:7:in `index'
+Started POST "/users" for 192.168.169.43 at 2017-10-01 20:42:43 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as JSON
+  Parameters: {"user"=>{"first_name"=>"John", "last_name"=>"Herbs", "email"=>"john@john.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "errors"=>[], "showProgress"=>false}}
+Unpermitted parameters: :errors, :showProgress
+Completed 500 Internal Server Error in 898ms (ActiveRecord: 6.2ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'first_name' for User.):
+  
+app/controllers/users_controller.rb:30:in `create'
+  [1m[35m (77.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (106.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (198.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (82.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (90.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (121.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (2775.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "CoinStash-API_development"[0m
+  [1m[35m (1441.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "CoinStash-API_test"[0m
+  [1m[35m (403.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (44.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5066494568939396040)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20170928205122)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(5066494568939396040)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5066494568939396040)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20170928205122)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (45.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "admin" boolean DEFAULT 'f', "password_digest" character varying, "remember_digest" character varying, "access_token" character varying, "reset_digest" character varying, "reset_sent_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX  "index_users_on_access_token" ON "users"  ("access_token")[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170928205122"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-10-02 00:46:52.618566"], ["updated_at", "2017-10-02 00:46:52.618566"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5066494568939396040)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "enola.farrell@example.net"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."access_token" = $1 LIMIT $2[0m  [["access_token", "d5wo2nXX7ntj317yxH1DKw"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Melany"], ["last_name", "Abbott"], ["email", "enola.farrell@example.net"], ["password_digest", "$2a$10$Mf.G5m55S4wePnkQ9wuAy.VqibEqZuxBJOBwN2fmvauFzbP7cZlCu"], ["access_token", "d5wo2nXX7ntj317yxH1DKw"], ["created_at", "2017-10-02 00:47:07.134497"], ["updated_at", "2017-10-02 00:47:07.134497"]]
+  [1m[35m (40.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "heloise_walsh@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."access_token" = $1 LIMIT $2[0m  [["access_token", "L1T5xNSWNZOiKcmaO3fkMw"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Nathanael"], ["last_name", "Mann"], ["email", "heloise_walsh@example.com"], ["password_digest", "$2a$10$69xAMKFFdNneE1LzgRZEKuxdUIEQlP4F0qIGf4nHA7CNK78IvGNlW"], ["access_token", "L1T5xNSWNZOiKcmaO3fkMw"], ["created_at", "2017-10-02 00:47:07.258130"], ["updated_at", "2017-10-02 00:47:07.258130"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "yasmeen.botsford@example.org"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."access_token" = $1 LIMIT $2[0m  [["access_token", "mbEpE1jcWdSQmhUuHefM2w"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Pablo"], ["last_name", "Hermiston"], ["email", "yasmeen.botsford@example.org"], ["password_digest", "$2a$10$RGGg27je.Toy5k7do6cPIe22mmsCVEcmBJTFOdaLRVidwDlHk.A9K"], ["access_token", "mbEpE1jcWdSQmhUuHefM2w"], ["created_at", "2017-10-02 00:47:07.337421"], ["updated_at", "2017-10-02 00:47:07.337421"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "blanca_von@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."access_token" = $1 LIMIT $2[0m  [["access_token", "lcgrz6QkHX3IwLgI6qtKxQ"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Angela"], ["last_name", "King"], ["email", "blanca_von@example.com"], ["password_digest", "$2a$10$1TXeqloVGRTdEze0OP7HKuDXDTgZXjsntFt.58sOYdoRYevM8Znw6"], ["access_token", "lcgrz6QkHX3IwLgI6qtKxQ"], ["created_at", "2017-10-02 00:47:07.419853"], ["updated_at", "2017-10-02 00:47:07.419853"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "demetrius@example.org"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."access_token" = $1 LIMIT $2[0m  [["access_token", "1ly20yk54Jht-2CtTOrNBA"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Forrest"], ["last_name", "Russel"], ["email", "demetrius@example.org"], ["password_digest", "$2a$10$qdOXERL2mYAYTlW6siKaWORujYlU4NPIRba3hAacjV6JCZnjJ01ZG"], ["access_token", "1ly20yk54Jht-2CtTOrNBA"], ["created_at", "2017-10-02 00:47:07.503078"], ["updated_at", "2017-10-02 00:47:07.503078"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/users" for 127.0.0.1 at 2017-10-01 20:48:21 -0400
+  [1m[35m (8.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+Completed 204 No Content in 786ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-10-01 20:48:26 -0400
+Processing by UsersController#index as HTML
+Completed 204 No Content in 381ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-10-01 20:48:49 -0400
+Processing by UsersController#index as HTML
+Completed 204 No Content in 577ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-10-01 20:48:56 -0400
+Processing by UsersController#index as HTML
+Completed 204 No Content in 401ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-10-01 20:50:28 -0400
+Processing by UsersController#index as HTML
+Completed 204 No Content in 427ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-10-01 20:51:59 -0400
+Started GET "/users" for 127.0.0.1 at 2017-10-01 20:51:59 -0400
+Started GET "/users" for 127.0.0.1 at 2017-10-01 20:52:00 -0400
+  [1m[35m (333.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (333.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (198.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+Processing by UsersController#index as HTML
+Processing by UsersController#index as HTML
+Completed 204 No Content in 1773ms (ActiveRecord: 0.0ms)
+
+
+Completed 204 No Content in 1877ms (ActiveRecord: 0.0ms)
+
+
+Completed 204 No Content in 1674ms (ActiveRecord: 0.0ms)
+
+

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  vattr_accessor :remember_token, :reset_token
+  attr_accessor :remember_token, :reset_token
   before_save   :downcase_email
   before_create :generate_access_token
 

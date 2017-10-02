@@ -9,33 +9,33 @@ import {
   Linking
 } from 'react-native';
 
-export default class TweetsComponent extends Component {
+export default class LiteCoinTweets extends Component {
   constructor() {
     super();
     this.state = {
-      tweets: []
+      LiteCoinTweets: []
     }
   }
   componentDidMount() {
-    this.getCurrentTweets();
-    setInterval(this.getCurrentTweets, 100000);
+    this.getLitecoinTweets();
+    setInterval(this.getLitecoinTweets, 100000);
   }
 
-  getCurrentTweets = () => {
-    fetch('http://localhost:3000/tweets/hashtag')
+  getLitecoinTweets = () => {
+    fetch('http://localhost:3000/tweets/litecoin')
     .then(function(response) {
       return response.json();
     })
     .then((obj) => {
       // console.log(obj[0])
-      this.setState({tweets: obj})
+      this.setState({LiteCoinTweets: obj})
     })
   }
   render() {
 
     return (
       <ScrollView style={styles.scrollView}>
-        {this.state.tweets.map((tweet, i) =>
+        {this.state.LiteCoinTweets.map((tweet, i) =>
         <View style={styles.tweetContainer}>
 
             <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start'}}>

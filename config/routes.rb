@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
  get '/tweets', to: 'tweets#find_by_user', as: "tweets"
  get '/tweets/hashtag', to: 'tweets#find_by_hashtag'
+ get '/tweets/ethereum', to: 'tweets#find_ethereum'
+ get '/tweets/litecoin', to: 'tweets#find_litecoin'
+ get '/tweets/bitcoin', to: 'tweets#find_bitcoin'
 
   # resources :coinbases, only: [:index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

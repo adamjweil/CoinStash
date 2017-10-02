@@ -9,33 +9,33 @@ import {
   Linking
 } from 'react-native';
 
-export default class TweetsComponent extends Component {
+export default class EthereumTweets extends Component {
   constructor() {
     super();
     this.state = {
-      tweets: []
+      EthereumTweets: []
     }
   }
   componentDidMount() {
-    this.getCurrentTweets();
-    setInterval(this.getCurrentTweets, 100000);
+    this.getEthereumTweets();
+    setInterval(this.getEthereumTweets, 100000);
   }
 
-  getCurrentTweets = () => {
-    fetch('http://localhost:3000/tweets/hashtag')
+  getEthereumTweets = () => {
+    fetch('http://localhost:3000/tweets/ethereum')
     .then(function(response) {
       return response.json();
     })
     .then((obj) => {
       // console.log(obj[0])
-      this.setState({tweets: obj})
+      this.setState({EthereumTweets: obj})
     })
   }
   render() {
 
     return (
       <ScrollView style={styles.scrollView}>
-        {this.state.tweets.map((tweet, i) =>
+        {this.state.EthereumTweets.map((tweet, i) =>
         <View style={styles.tweetContainer}>
 
             <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start'}}>

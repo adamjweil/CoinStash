@@ -14,9 +14,7 @@ import { StackNavigator} from 'react-navigation';
 import buyETHForm from './forms/buyETHForm';
 import sellETHForm from './forms/sellETHForm';
 import { BackToHomeBTN } from '../NavComponent/BackToHomeBTN';
-import RSSFeed from '../NavComponent/RSSFeed'
 import TopNewsMarquee from '../NavComponent/TopNewsMarquee'
-import EthereumTweets from '../NavComponent/EthereumTweets'
 
 
 import {
@@ -96,7 +94,7 @@ class eth extends Component {
               BACK
             </Text>
 
-   
+
           </View>
 
           <Text style={styles.coinPriceText}>

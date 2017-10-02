@@ -4,7 +4,9 @@ import {
   StyleSheet,
   Text,
   View,
-  ScrollView
+  ScrollView,
+  Image,
+  Linking
 } from 'react-native';
 
 export default class TweetsComponent extends Component {
@@ -16,7 +18,7 @@ export default class TweetsComponent extends Component {
   }
   componentDidMount() {
     this.getCurrentTweets();
-    setInterval(this.getCurrentTweets, 50000);
+    setInterval(this.getCurrentTweets, 10000);
   }
 
   getCurrentTweets = () => {
@@ -25,52 +27,81 @@ export default class TweetsComponent extends Component {
       return response.json();
     })
     .then((obj) => {
+      // console.log(obj[0])
       this.setState({tweets: obj})
     })
   }
   render() {
 
     return (
-
       <ScrollView style={styles.scrollView}>
-      <View style={styles.tweetStyle}>
-        {this.state.tweets.map((tweet) =>
-          <Text style={styles.tweetText}>
-            {tweet.text}{'\n'}
-              {tweet.entities.hashtags.map((hash) =>
-                <Text style={styles.tweetHashtag}>#{hash.text}</Text>
-                )}
-                {'\n'}
-            <Text style={styles.tweetAuthor}>.....posted by{tweet.user.name}</Text>
-          </Text>
-        )}
+        {this.state.tweets.map((tweet, i) =>
+        <View style={styles.tweetContainer}>
 
-      </View>
+            <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start'}}>
+              <View>
+                <Image source={{uri: tweet.user.profile_image_url_https}} style={styles.tweetPhoto} />
+              </View>
+              <View style={styles.tweetText}>
+                <Text style={styles.tweetTextView}>{tweet.text}<Text style={styles.tweetAuthor}>...posted by <Text style={{fontWeight: 'bold'}}>@{tweet.user.screen_name}</Text></Text> </Text>
+              </View>
+            </View>
+
+            <View style={styles.tweetMentions}>
+              <Text style={styles.tweetMentions}>Retweets: {tweet.retweet_count} | Favorites: {tweet.favorite_count}</Text>
+            </View>
+
+        </View>
+      )}
+
     </ScrollView>
+
     )
   }
 }
 
 const styles = StyleSheet.create({
   tweetContainer: {
-    fontSize: 20,
+    borderRadius: 5,
+    borderWidth: 1,
+    marginBottom: 5,
     textAlign: 'left',
-    margin: 10,
-    width: 300,
-    height: 100,
+    flex: 1
   },
   tweetAuthor: {
     fontSize: 10,
     textAlign: 'center',
     justifyContent: 'center',
-    marginLeft: 20
+    fontWeight: '300'
   },
   tweetHashtag: {
     fontSize: 10,
     fontWeight: 'bold',
     textAlign: 'center'
   },
+  tweetPhoto: {
+    width: 50,
+    height: 50,
+    borderRadius: 10
+  },
+  tweetTextView: {
+    width: 320,
+    fontSize: 12,
+    textAlign: 'center'
+  },
+  tweetAuthorView: {
+    flex: 1,
+  },
   ScrollView: {
-
+    flex: 1
+  },
+  tweetText: {
+    flexWrap: 'wrap'
+  },
+  tweetMentions: {
+    fontSize: 8,
+    fontWeight: '200',
+    textAlign: 'center',
+    justifyContent: 'center'
   }
 });

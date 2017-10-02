@@ -10,6 +10,7 @@ import MarqueeLabelVertical from 'react-native-lahk-marquee-label-vertical';
 import MarqueeLabel from 'react-native-lahk-marquee-label';
 import { Header } from 'react-native-elements';
 import RSSFeed from '../NavComponent/RSSFeed'
+import EthereumTweets from '../NavComponent/EthereumTweets'
 
 
 import {
@@ -103,6 +104,12 @@ export default class eth extends Component {
               </Text>
             </Text>
           <RSSFeed />
+          <View>
+            <Text>
+              Ethereum Tweets
+            </Text>
+          </View>
+          <EthereumTweets />
       </View>
     </ScrollView>
     );

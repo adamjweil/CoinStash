@@ -18,7 +18,7 @@ export default class TweetsComponent extends Component {
   }
   componentDidMount() {
     this.getCurrentTweets();
-    setInterval(this.getCurrentTweets, 10000);
+    setInterval(this.getCurrentTweets, 100000);
   }
 
   getCurrentTweets = () => {

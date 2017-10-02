@@ -12,6 +12,7 @@ import MarqueeLabel from 'react-native-lahk-marquee-label';
 import { Header } from 'react-native-elements';
 import TweetsComponent from '../NavComponent/TweetsComponent';
 import LinearGradient from 'react-native-linear-gradient';
+import BitCoinTweets from '../NavComponent/BitCoinTweets';
 
 import {
   AppRegistry,
@@ -20,7 +21,7 @@ import {
   View,
   ScrollView,
   Image
-  
+
 } from 'react-native';
 
 export default class btc extends Component {
@@ -85,7 +86,7 @@ export default class btc extends Component {
     const { bitcoinPrice, bitcoinYdayPrice } = this.state
     const { navigate } = this.props.navigation;
     return (
-        
+
         <View style={styles.container}>
           <View style={{flexDirection: 'row', marginTop: 30}}>
             <Text
@@ -123,7 +124,13 @@ export default class btc extends Component {
             </Text>
           </View>
           <ScrollView style="">
-            <TweetsComponent />
+            <View>
+              <Text>
+                Bitcoin Tweets
+              </Text>
+            </View>
+            <BitCoinTweets />
+
           </ScrollView>
         </View>
 

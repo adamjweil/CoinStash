@@ -1,23 +1,20 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+* Sample React Native App
+* https://github.com/facebook/react-native
+* @flow
+*/
 
 'use strict';
 import React, { Component } from 'react';
 
-import MarqueeLabelVertical from 'react-native-lahk-marquee-label-vertical';
-import MarqueeLabel from 'react-native-lahk-marquee-label';
 import { Header } from 'react-native-elements';
 import TweetsComponent from '../NavComponent/TweetsComponent';
-import LinearGradient from 'react-native-linear-gradient';
 import BitCoinTweets from '../NavComponent/BitCoinTweets';
 import { Button, ButtonGroup, FormLabel, FormInput } from 'react-native-elements';
 import { StackNavigator} from 'react-navigation';
-import buyBTCForm from './buyBTCForm';
-import sellBTCForm from './sellBTCForm';
-
+import buyBTCForm from './forms/buyBTCForm';
+import sellBTCForm from './forms/sellBTCForm';
+import { BackToHomeBTN } from '../NavComponent/BackToHomeBTN';
 
 import {
   AppRegistry,
@@ -97,23 +94,12 @@ class btc extends Component {
 
       <View style={styles.container}>
         <View style={{flexDirection: 'row', marginTop: 30}}>
+          <BackToHomeBTN navigate={navigate} />
+          <Text style={styles.coinPriceTitle}>BTC</Text>
           <Text
-            style={{ paddingLeft: 15, paddingRight: 15, paddingTop: 20}}
-            onPress={() => navigate('Home')}>
+            style={{color: 'rgba(1,1,1,0)', paddingLeft: 15, paddingRight: 15}}>
             BACK
           </Text>
-          <Text style={{
-            flex: 1,
-            fontSize: 60,
-            fontWeight: 'bold',
-            textAlign: 'center'
-            }}>
-            BTC
-          </Text>
-            <Text
-              style={{color: 'rgba(1,1,1,0)', paddingLeft: 15, paddingRight: 15}}>
-              BACK
-            </Text>
         </View>
 
         <Text style={styles.coinPriceText}>
@@ -123,15 +109,15 @@ class btc extends Component {
 
         <Text style={styles.yDayPrice}>
           <Text style={{color: colorBool}}>
-              Daily Change: ${change}
+            Daily Change: ${change}
           </Text>
         </Text>
-        <View>
-          <Text>
-            BTC Feed:
-          </Text>
-        </View>
-        <ScrollView style="">
+
+        <Text style={{fontSize: 20, paddingTop: 15, paddingBottom: 5}}>
+          BTC Feed:
+        </Text>
+
+        <ScrollView>
           <BitCoinTweets />
         </ScrollView>
         <View style={{flexDirection: 'row'}}>
@@ -141,21 +127,21 @@ class btc extends Component {
             textStyle={{textAlign: 'center'}}
             title={`BUY`}
             onPress={()=> navigate('buyBTCForm')}
-          />
+            />
           <Button
             raised
             buttonStyle={{backgroundColor: '#185A9D', borderRadius: 2, marginTop: 10, marginRight: 15, width: 200}}
             textStyle={{textAlign: 'center'}}
             title={`SELL`}
             onPress={()=> navigate('sellBTCForm')}
-          />
+            />
         </View>
       </View>
     );
   }
 }
 
-const stackNav = StackNavigator({
+const btcNav = StackNavigator({
   selfBTC: {
     screen: btc
   },
@@ -184,6 +170,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF'
   },
+  coinPriceTitle: {
+    flex: 1,
+    fontSize: 60,
+    fontWeight: 'bold',
+    textAlign: 'center'
+  },
   coinPriceText: {
     fontSize: 30,
     textAlign: 'center'
@@ -191,14 +183,7 @@ const styles = StyleSheet.create({
   yDay: {
     fontSize: 17,
     textAlign: 'center'
-  },
-  linearGradient: {
-    paddingLeft: 15,
-    paddingRight: 15,
-  },
-  backButtonStyle: {
-
   }
 });
 
-export default stackNav;
+export default btcNav;

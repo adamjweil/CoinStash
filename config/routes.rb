@@ -14,5 +14,12 @@ Rails.application.routes.draw do
   get '/coinbases/primaryaccount', to: 'coinbases#primary_account'
   get '/coinbases/transactions', to: 'coinbases#transactions'
 
+  get '/signup'    => 'users#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
+  get    'verify'  => 'sessions#verify_access_token'
+
+  resources :users, param: :access_token
+  resources :password_resets, only: [:new, :create, :edit, :update]
 
 end

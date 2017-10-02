@@ -10,6 +10,7 @@ import MarqueeLabelVertical from 'react-native-lahk-marquee-label-vertical';
 import MarqueeLabel from 'react-native-lahk-marquee-label';
 import { Header } from 'react-native-elements';
 import RSSFeed from '../NavComponent/RSSFeed'
+import TopNewsMarquee from '../NavComponent/TopNewsMarquee'
 import EthereumTweets from '../NavComponent/EthereumTweets'
 
 
@@ -81,6 +82,7 @@ export default class eth extends Component {
     return (
 
     <ScrollView style={styles.scrollView}>
+      <TopNewsMarquee />
       <View style={styles.container}>
         <View style={{
           marginTop: 10,

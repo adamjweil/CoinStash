@@ -1,17 +1,19 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+* Sample React Native App
+* https://github.com/facebook/react-native
+* @flow
+*/
 'use strict';
 import React, { Component } from 'react';
 
-import MarqueeLabelVertical from 'react-native-lahk-marquee-label-vertical';
-import MarqueeLabel from 'react-native-lahk-marquee-label';
 import { Header } from 'react-native-elements';
-import RSSFeed from '../NavComponent/RSSFeed'
-import EthereumTweets from '../NavComponent/EthereumTweets'
-
+import RSSFeed from '../NavComponent/RSSFeed';
+import EthereumTweets from '../NavComponent/EthereumTweets';
+import { Button, ButtonGroup, FormLabel, FormInput } from 'react-native-elements';
+import { StackNavigator} from 'react-navigation';
+import buyETHForm from './forms/buyETHForm';
+import sellETHForm from './forms/sellETHForm';
+import { BackToHomeBTN } from '../NavComponent/BackToHomeBTN';
 
 import {
   AppRegistry,
@@ -21,7 +23,7 @@ import {
   ScrollView
 } from 'react-native';
 
-export default class eth extends Component {
+class eth extends Component {
   constructor() {
     super();
     this.state = {
@@ -77,74 +79,107 @@ export default class eth extends Component {
     let change = diff.toFixed(2);
     let colorBool = (change >= 0) ? "green" : "red";
 
-    const { bitcoinPrice } = this.state
+    const { navigate } = this.props.navigation;
     return (
 
-    <ScrollView style={styles.scrollView}>
-      <View style={styles.container}>
-        <View style={{
-          marginTop: 10,
-          flexDirection: 'row',
-          alignItems: 'flex-start',
-          }}>
-          <Text style={{
-              fontSize: 60,
-              fontWeight: 'bold',
-              justifyContent: 'center'
-            }}>ETH</Text>
+        <View style={styles.container}>
+          <View style={{marginTop: 30, flexDirection: 'row'}}>
+            <BackToHomeBTN navigate={navigate} />
+            <Text style={styles.coinPriceTitle}>ETH</Text>
+            <Text
+              style={{color: 'rgba(1,1,1,0)', paddingLeft: 15, paddingRight: 15}}>
+              BACK
+            </Text>
           </View>
 
-          <Text style={{fontSize: 30}}>{`$${this.state.ethereumPrice}`}{'\n'}<Text
-            style={styles.yDay}>Yesterday EOD: ${this.state.ethereumYdayPrice}</Text>
+          <Text style={styles.coinPriceText}>
+            {`$${this.state.ethereumPrice}`}{'\n'}
+            <Text style={styles.yDay}>Yesterday EOD: ${this.state.ethereumYdayPrice}</Text>
           </Text>
 
-            <Text style={styles.yDayPrice}>
-              <Text style={{color: colorBool}}>
-                  Daily Change: ${change}
-              </Text>
+          <Text style={styles.yDayPrice}>
+            <Text style={{color: colorBool}}>
+              Daily Change: ${change}
             </Text>
+          </Text>
+
+          <Text style={{fontSize: 20, paddingTop: 15, paddingBottom: 5}}>
+            ETH Feed:
+          </Text>
+
+          <ScrollView>
           <RSSFeed />
-          <View>
-            <Text>
-              Ethereum Tweets
-            </Text>
-          </View>
+          <Text>
+            Ethereum Tweets
+          </Text>
           <EthereumTweets />
-      </View>
-    </ScrollView>
+          </ScrollView>
+          <View style={{flexDirection: 'row'}}>
+            <Button
+              raised
+              buttonStyle={{backgroundColor: '#185A9D', borderRadius: 2, marginTop: 10, marginLeft: 15, width: 200}}
+              textStyle={{textAlign: 'center'}}
+              title={`BUY`}
+              onPress={()=> navigate('buyETHForm')}
+              />
+            <Button
+              raised
+              buttonStyle={{backgroundColor: '#185A9D', borderRadius: 2, marginTop: 10, marginRight: 15, width: 200}}
+              textStyle={{textAlign: 'center'}}
+              title={`SELL`}
+              onPress={()=> navigate('sellETHForm')}
+              />
+          </View>
+        </View>
     );
   }
 }
 
+const ethNav = StackNavigator({
+  selfETH: {
+    screen: eth
+  },
+  buyETHForm: {
+    screen: buyETHForm,
+    navigationOptions: {
+      title: 'Buy ETH',
+      headerBackTitle: 'ETH'
+    }
+  },
+  sellETHForm: {
+    screen: sellETHForm,
+    navigationOptions: {
+      title: 'Sell ETH',
+      headerBackTitle: 'ETH'
+    }
+  }
+},
+{
+  initialRouteName: 'selfETH'
+});
+
 const styles = StyleSheet.create({
   container: {
-    flex: 2,
+    flex: 1,
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  coinPriceTitle: {
+    flex: 1,
+    fontSize: 60,
+    fontWeight: 'bold',
+    textAlign: 'center'
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-  header: {
-    backgroundColor: 'blue'
+  coinPriceText: {
+    fontSize: 30,
+    textAlign: 'center'
   },
   yDay: {
     fontSize: 10,
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
-  },
-  ScrollView: {
-
   }
 });
 
-
-AppRegistry.registerComponent('eth', () => eth);
+export default ethNav;

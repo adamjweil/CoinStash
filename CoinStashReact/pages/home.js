@@ -57,12 +57,13 @@ export default class home extends Component {
     // TechCrunch
     // fetch('https://newsapi.org/v1/articles?source=techcrunch&sortBy=top&apiKey=ed62d0aea575414fbdf6a1351c0fa66a')
     fetch('https://newsapi.org/v1/articles?source=business-insider&sortBy=latest&apiKey=ed62d0aea575414fbdf6a1351c0fa66a')
+    // fetch('https://rss2json.com/#rss_url=https%3A%2F%2Fwww.reddit.com%2Fr%2FBitcoin%2F.rss')
     .then(function(response) {
       return response.json();
       // console.log(response[0]);
     }).catch((error) => console.warn("fetch error:", error))
     .then((response) => {
-      console.log(response.articles);
+      console.log(response);
       // debugger
       console.log(response.articles[2].urlToImage);
 

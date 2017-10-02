@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby "~> 2.3.3"
 
+gem 'dotenv-rails', groups: [:development, :test]
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")

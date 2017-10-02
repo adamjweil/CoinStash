@@ -6357,3 +6357,192 @@ Completed 204 No Content in 1877ms (ActiveRecord: 0.0ms)
 Completed 204 No Content in 1674ms (ActiveRecord: 0.0ms)
 
 
+  [1m[35m (219.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (104.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (306.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (120.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (303.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (90.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (525.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "CoinStash-API_development"[0m
+  [1m[35m (299.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "CoinStash-API_test"[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5066494568939396040)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20170928205122)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (44.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "admin" boolean DEFAULT 'f', "password_digest" character varying, "remember_digest" character varying, "access_token" character varying, "reset_digest" character varying, "reset_sent_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE  INDEX  "index_users_on_access_token" ON "users"  ("access_token")[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170928205122"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-10-02 21:58:25.837988"], ["updated_at", "2017-10-02 21:58:25.837988"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5066494568939396040)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "silas_kovacek@example.org"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."access_token" = $1 LIMIT $2[0m  [["access_token", "aitTgTuLpkBuI_IZ6OnbOw"], ["LIMIT", 1]]
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Maggie"], ["last_name", "Buckridge"], ["email", "silas_kovacek@example.org"], ["password_digest", "$2a$10$yXsE0opkS.1.bLejOO3QZ.VQYvQc.6L95dA2xKkMJTzZE6U11Gday"], ["access_token", "aitTgTuLpkBuI_IZ6OnbOw"], ["created_at", "2017-10-02 21:58:37.266534"], ["updated_at", "2017-10-02 21:58:37.266534"]]
+  [1m[35m (40.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "london@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."access_token" = $1 LIMIT $2[0m  [["access_token", "VDesyI50g16D1uc_cDKhQw"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Jeremy"], ["last_name", "Rutherford"], ["email", "london@example.com"], ["password_digest", "$2a$10$t11TcR6htX4lMXKHA6JPCuLB9LhPreUAcUCWlENAz.AZlZgESsyO6"], ["access_token", "VDesyI50g16D1uc_cDKhQw"], ["created_at", "2017-10-02 21:58:37.390417"], ["updated_at", "2017-10-02 21:58:37.390417"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "trystan@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."access_token" = $1 LIMIT $2[0m  [["access_token", "cOD-16e0CG1k1DU8PZTGHw"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Emmalee"], ["last_name", "Wiza"], ["email", "trystan@example.com"], ["password_digest", "$2a$10$GB6DojtnYJSua84PP5q9QOwbbkPwtbDDwYVaQvkKAUtz/9C.Lgzsa"], ["access_token", "cOD-16e0CG1k1DU8PZTGHw"], ["created_at", "2017-10-02 21:58:37.467707"], ["updated_at", "2017-10-02 21:58:37.467707"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "britney_watsica@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."access_token" = $1 LIMIT $2[0m  [["access_token", "VWU53LtXlqvj1MCjG-q6HA"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Abraham"], ["last_name", "Block"], ["email", "britney_watsica@example.com"], ["password_digest", "$2a$10$C9vJhQXJ2xm0C.yJ4tUE7.u1dvnKxc7vvgg0QhWWNsVzwQvk0sp1S"], ["access_token", "VWU53LtXlqvj1MCjG-q6HA"], ["created_at", "2017-10-02 21:58:37.547350"], ["updated_at", "2017-10-02 21:58:37.547350"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "nakia@example.net"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."access_token" = $1 LIMIT $2[0m  [["access_token", "RaVk71UmZbeEwb6Qi9HVQQ"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Edmond"], ["last_name", "Hansen"], ["email", "nakia@example.net"], ["password_digest", "$2a$10$utefP41TttnfdzRhC2/k9Oa.F0YO63fzZoFZmwilgOEHWHJRKgo6q"], ["access_token", "RaVk71UmZbeEwb6Qi9HVQQ"], ["created_at", "2017-10-02 21:58:37.623617"], ["updated_at", "2017-10-02 21:58:37.623617"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/login" for 192.168.169.43 at 2017-10-02 18:14:41 -0400
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"session"=>{"email"=>"sarah@sarah.com", "password"=>"[FILTERED]", "error"=>"", "showProgress"=>false}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sarah@sarah.com"], ["LIMIT", 1]]
+Completed 200 OK in 656ms (Views: 0.5ms | ActiveRecord: 4.1ms)
+
+
+Started POST "/login" for 192.168.169.43 at 2017-10-02 18:17:33 -0400
+Processing by SessionsController#create as JSON
+  Parameters: {"session"=>{"email"=>"sarah@sarah.com", "password"=>"[FILTERED]", "error"=>"", "showProgress"=>false}}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sarah@sarah.com"], ["LIMIT", 1]]
+Completed 200 OK in 495ms (Views: 0.2ms | ActiveRecord: 7.1ms)
+
+
+Started POST "/login" for 192.168.169.43 at 2017-10-02 18:19:41 -0400
+Processing by SessionsController#create as JSON
+  Parameters: {"session"=>{"email"=>"sarah@sarah.com", "password"=>"[FILTERED]", "error"=>"", "showProgress"=>false}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sarah@sarah.com"], ["LIMIT", 1]]
+Completed 200 OK in 388ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-02 18:21:05 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/apprentice/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/railties-5.1.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/apprentice/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/railties-5.1.4/lib/rails/templates/rails/welcome/index.html.erb (7.4ms)
+Completed 200 OK in 205ms (Views: 133.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2017-10-02 18:21:10 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/login"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/login" for 192.168.169.43 at 2017-10-02 18:22:00 -0400
+Processing by SessionsController#create as JSON
+  Parameters: {"session"=>{"email"=>"sarah@sarah.com", "password"=>"[FILTERED]", "error"=>"", "showProgress"=>false}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sarah@sarah.com"], ["LIMIT", 1]]
+Completed 200 OK in 670ms (Views: 0.3ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/login" for 192.168.169.43 at 2017-10-02 18:25:43 -0400
+Processing by SessionsController#create as JSON
+  Parameters: {"session"=>{"email"=>"sarah@sarah.com", "password"=>"[FILTERED]", "error"=>"", "showProgress"=>false}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sarah@sarah.com"], ["LIMIT", 1]]
+Completed 200 OK in 459ms (Views: 0.3ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/login" for 192.168.169.43 at 2017-10-02 18:28:15 -0400
+Processing by SessionsController#create as JSON
+  Parameters: {"session"=>{"email"=>"sarah@sarah.com", "password"=>"[FILTERED]", "error"=>"", "showProgress"=>false}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sarah@sarah.com"], ["LIMIT", 1]]
+Completed 200 OK in 402ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/login" for 192.168.169.43 at 2017-10-02 18:29:52 -0400
+Processing by SessionsController#create as JSON
+  Parameters: {"session"=>{"email"=>"sarah@sarah.com", "password"=>"[FILTERED]", "error"=>"", "showProgress"=>false}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sarah@sarah.com"], ["LIMIT", 1]]
+Completed 200 OK in 422ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/login" for 192.168.169.43 at 2017-10-02 18:31:49 -0400
+Processing by SessionsController#create as JSON
+  Parameters: {"session"=>{"email"=>"sarah@sarah.com", "password"=>"[FILTERED]", "error"=>"", "showProgress"=>false}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sarah@sarah.com"], ["LIMIT", 1]]
+Completed 200 OK in 513ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/login" for 192.168.169.43 at 2017-10-02 18:37:31 -0400
+Processing by SessionsController#create as JSON
+  Parameters: {"session"=>{"email"=>"sarah@sarah.com", "password"=>"[FILTERED]", "error"=>"", "showProgress"=>false}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sarah@sarah.com"], ["LIMIT", 1]]
+Completed 200 OK in 730ms (Views: 0.2ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/login" for 192.168.169.43 at 2017-10-02 18:39:09 -0400
+Processing by SessionsController#create as JSON
+  Parameters: {"session"=>{"email"=>"sarah@sarah.com", "password"=>"[FILTERED]", "error"=>"", "showProgress"=>false}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sarah@sarah.com"], ["LIMIT", 1]]
+Completed 200 OK in 636ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/login" for 192.168.169.43 at 2017-10-02 18:46:19 -0400
+Processing by SessionsController#create as JSON
+  Parameters: {"session"=>{"email"=>"sarah@sarah.com", "password"=>"[FILTERED]", "error"=>"", "showProgress"=>false}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sarah@sarah.com"], ["LIMIT", 1]]
+Completed 200 OK in 419ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "sarah@sarah.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."access_token" = $1 LIMIT $2[0m  [["access_token", "IeWbFbRkercM6JczEG-DDQ"], ["LIMIT", 1]]
+  [1m[35mSQL (40.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "sarah"], ["last_name", "schaab"], ["email", "sarah@sarah.com"], ["password_digest", "$2a$10$BJ1hdx3rTav8fFnduk6JTOrFJotkr3is9CQZal4izPj2iH.4OU7tK"], ["access_token", "IeWbFbRkercM6JczEG-DDQ"], ["created_at", "2017-10-02 22:50:19.348512"], ["updated_at", "2017-10-02 22:50:19.348512"]]
+  [1m[35m (10.5ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/login" for 192.168.169.43 at 2017-10-02 18:51:32 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"session"=>{"email"=>"sarah@sarah.com", "password"=>"[FILTERED]", "error"=>"", "showProgress"=>false}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sarah@sarah.com"], ["LIMIT", 1]]
+Completed 200 OK in 791ms (Views: 1.8ms | ActiveRecord: 5.4ms)
+
+
+Started POST "/login" for 192.168.169.43 at 2017-10-02 18:55:18 -0400
+Processing by SessionsController#create as JSON
+  Parameters: {"session"=>{"email"=>"sarah@sarah.com", "password"=>"[FILTERED]", "error"=>"", "showProgress"=>false}}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sarah@sarah.com"], ["LIMIT", 1]]
+Completed 200 OK in 676ms (Views: 1.0ms | ActiveRecord: 54.2ms)
+
+

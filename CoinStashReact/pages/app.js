@@ -17,6 +17,10 @@ import Form from './buyBTCForm';
 import p2pForm from './p2pform';
 
 
+// use getScreen instead of screen
+// , getScreen: (importantStuff) => <Ethereum {...importantStuff} myPropName={myPropValue} />
+//  ^-----CHECK DOCS
+
 const CoinStashReact = DrawerNavigator(
   {
     Home: { screen: HomeScreen },

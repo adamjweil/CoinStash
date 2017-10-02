@@ -12,18 +12,19 @@ import {
   KeyboardAvoidingView } from 'react-native';
 import LoginForm from './LoginForm'
 
+
 export default class Login extends Component {
 
   render () {
     return (
     <KeyboardAvoidingView behavior="padding" style={styles.container}>
       <View style={styles.logoContainer}>
-        <Image style={styles.logo} source={require('../../images/logo-placeholder.png')} />
+
         <Text style={styles.title}>CoinStash</Text>
         <Text style={styles.subtitle}>Login to CoinStash</Text>
       </View>
       <View style={styles.formContainer}>
-        <LoginForm />
+        <LoginForm handleToken2={this.props.handleToken}/>
       </View>
     </KeyboardAvoidingView>
     );

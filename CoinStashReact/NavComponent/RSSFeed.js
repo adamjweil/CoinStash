@@ -41,6 +41,7 @@ export default class RSSFeed extends Component {
           )}
 
       </View>
+
     )
   }
 }

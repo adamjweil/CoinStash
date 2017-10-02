@@ -3,7 +3,7 @@
  * https://github.com/facebook/react-native
  * @flow
  */
- 
+
 'use strict';
 import React, { Component } from 'react';
 
@@ -16,7 +16,8 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Image
 } from 'react-native';
 
 export default class btc extends Component {

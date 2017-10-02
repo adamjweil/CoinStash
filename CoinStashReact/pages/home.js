@@ -90,138 +90,133 @@ export default class home extends Component {
     title: 'Dashboard',
   };
 
-
-
-
   render() {
     const { bitcoinPrice } = this.state;
     return (
       <LinearGradient colors={['#43cea2', '#185a9d']} style={styles.linearGradient}>
-      <Image source={{uri: 'http://www.freepngimg.com/thumb/mustache/5-2-no-shave-movember-day-mustache-png-image-thumb.png'}}
-              style={{width: 125, height: 125, marginLeft: 120, marginBottom: -75}}
-      />
+        <Image source={{uri: 'http://www.freepngimg.com/thumb/mustache/5-2-no-shave-movember-day-mustache-png-image-thumb.png'}}
+                style={{width: 125, height: 125, marginLeft: 120, marginBottom: -75}}
+        />
 
-    <Text
-      style={{color: 'white'}}
-      onPress={()=> this.props.navigation.navigate('DrawerOpen')}
-      >MENU</Text>
-
-
-               
-
-        <ScrollView style={styles.scrollView}>
-          <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.navTextContainer} >
-              <Text style={styles.navButtons}>
-                {`BTC:\n $${this.state.bitcoinPrice}`}
-              </Text>
-            </TouchableOpacity>
-            <View style={{marginHorizontal: 11}}>
-            <TouchableOpacity style={styles.navTextContainer} >
-              <Text style={styles.navButtons}>
-                {`ETH:\n $${this.state.ethereumPrice}`}
-              </Text>
-            </TouchableOpacity>
-            </View>
-            <TouchableOpacity style={styles.navTextContainer} >
-              <Text style={styles.navButtons}>
-                {`LTC:\n $${this.state.liteCoinPrice}`}
-              </Text>
-            </TouchableOpacity>
-
+      <Text
+        style={{color: 'white'}}
+        onPress={()=> this.props.navigation.navigate('DrawerOpen')}
+        >MENU</Text>
+      <View style={styles.buttonContainer}>
+        <Text style={styles.navTextContainer} >
+          <Text style={styles.navButtons}>
+            {`BTC:\n $${this.state.bitcoinPrice}`}
+          </Text>
+        </Text>
+        <View style={{marginHorizontal: 11}}>
+          <Text style={styles.navTextContainer} >
+            <Text style={styles.navButtons}>
+              {`ETH:\n $${this.state.ethereumPrice}`}
+            </Text>
+          </Text>
+        </View>
+        <Text style={styles.navTextContainer} >
+          <Text style={styles.navButtons}>
+            {`LTC:\n $${this.state.liteCoinPrice}`}
+          </Text>
+        </Text>
+      </View>
+      <Text
+        style={{textAlign: 'center', color: 'white', fontWeight: 'bold', paddingTop: 20, fontSize: 20}}
+        >Latest Cryptocurreny News</Text>
+      <ScrollView style={styles.scrollView}>
+        <View style={styles.container}>
+          <View style={styles.newsPhoto}>
+            <Image source={{uri: `${this.state.newsFeed0.urlToImage}`}} style={styles.photo} />
           </View>
-          <View style={styles.container}>
+          <View style={styles.newsItem}>
+            <View style={styles.newsText}>
+              <View style={styles.text_container}>
+                <Text style={styles.title}>{this.state.newsFeed0.title}</Text>
+                <Text style={styles.description}>{this.state.newsFeed0.description}</Text>
+                <Button
+                  fontWeight={"700"}
+                  buttonStyle={styles.readMoreButtton}
+                  title={`READ ME`}
+                />
+              </View>
+            </View>
+          </View>
+
             <View style={styles.newsPhoto}>
-              <Image source={{uri: `${this.state.newsFeed0.urlToImage}`}} style={styles.photo} />
+              <Image source={{uri: `${this.state.newsFeed1.urlToImage}`}} style={styles.photo} />
             </View>
             <View style={styles.newsItem}>
-              <View style={styles.newsText}>
-                <View style={styles.text_container}>
-                  <Text style={styles.title}>{this.state.newsFeed0.title}</Text>
-                  <Text style={styles.description}>{this.state.newsFeed0.description}</Text>
-                  <Button
-                    fontWeight={"700"}
-                    buttonStyle={styles.readMoreButtton}
-                    title={`READ ME`}
-                  />
+
+                <View style={styles.newsText}>
+                    <View style={styles.text_container}>
+                        <Text style={styles.title}>{this.state.newsFeed1.title}</Text>
+                        <Text style={styles.description}>{this.state.newsFeed1.description}</Text>
+                        <Button
+                          fontWeight={"700"}
+                          buttonStyle={styles.readMoreButtton}
+                          title={`READ ME`}
+                        />
+                    </View>
                 </View>
-              </View>
             </View>
 
-              <View style={styles.newsPhoto}>
-                <Image source={{uri: `${this.state.newsFeed1.urlToImage}`}} style={styles.photo} />
-              </View>
-              <View style={styles.newsItem}>
-
-                  <View style={styles.newsText}>
-                      <View style={styles.text_container}>
-                          <Text style={styles.title}>{this.state.newsFeed1.title}</Text>
-                          <Text style={styles.description}>{this.state.newsFeed1.description}</Text>
-                          <Button
-                            fontWeight={"700"}
-                            buttonStyle={styles.readMoreButtton}
-                            title={`READ ME`}
-                          />
-                      </View>
-                  </View>
-              </View>
-
-              <View style={styles.newsPhoto}>
-                  <Image source={{uri: `${this.state.newsFeed2.urlToImage}`}} style={styles.photo} />
-              </View>
-              <View style={styles.newsItem}>
-                  <View style={styles.newsText}>
-                      <View style={styles.text_container}>
-                          <Text style={styles.title}>{this.state.newsFeed2.title}</Text>
-                          <Text style={styles.description}>{this.state.newsFeed2.description}</Text>
-                          <Button
-                            fontWeight={"700"}
-                            buttonStyle={styles.readMoreButtton}
-                            title={`READ ME`}
-                          />
-                      </View>
-                  </View>
-              </View>
+            <View style={styles.newsPhoto}>
+                <Image source={{uri: `${this.state.newsFeed2.urlToImage}`}} style={styles.photo} />
+            </View>
+            <View style={styles.newsItem}>
+                <View style={styles.newsText}>
+                    <View style={styles.text_container}>
+                        <Text style={styles.title}>{this.state.newsFeed2.title}</Text>
+                        <Text style={styles.description}>{this.state.newsFeed2.description}</Text>
+                        <Button
+                          fontWeight={"700"}
+                          buttonStyle={styles.readMoreButtton}
+                          title={`READ ME`}
+                        />
+                    </View>
+                </View>
+            </View>
 
 
-              <View style={styles.newsPhoto}>
-                  <Image source={{uri: `${this.state.newsFeed3.urlToImage}`}} style={styles.photo} />
-              </View>
-              <View style={styles.newsItem}>
-                  <View style={styles.newsText}>
-                      <View style={styles.text_container}>
-                          <Text style={styles.title}>{this.state.newsFeed3.title}</Text>
-                          <Text style={styles.description}>{this.state.newsFeed3.description}</Text>
-                          <Button
-                            fontWeight={"700"}
-                            buttonStyle={styles.readMoreButtton}
-                            title={`READ ME`}
-                          />
-                      </View>
-                  </View>
-              </View>
+            <View style={styles.newsPhoto}>
+                <Image source={{uri: `${this.state.newsFeed3.urlToImage}`}} style={styles.photo} />
+            </View>
+            <View style={styles.newsItem}>
+                <View style={styles.newsText}>
+                    <View style={styles.text_container}>
+                        <Text style={styles.title}>{this.state.newsFeed3.title}</Text>
+                        <Text style={styles.description}>{this.state.newsFeed3.description}</Text>
+                        <Button
+                          fontWeight={"700"}
+                          buttonStyle={styles.readMoreButtton}
+                          title={`READ ME`}
+                        />
+                    </View>
+                </View>
+            </View>
 
 
-              <View style={styles.newsPhoto}>
-                  <Image source={{uri: `${this.state.newsFeed4.urlToImage}`}} style={styles.photo} />
-              </View>
-              <View style={styles.newsItem}>
-                  <View style={styles.newsText}>
-                      <View style={styles.text_container}>
-                          <Text style={styles.title}>{this.state.newsFeed4.title}</Text>
-                          <Text style={styles.description}>{this.state.newsFeed4.description}</Text>
-                          <Button
-                            fontWeight={"700"}
-                            buttonStyle={styles.readMoreButtton}
-                            title={`Read More`}
+            <View style={styles.newsPhoto}>
+                <Image source={{uri: `${this.state.newsFeed4.urlToImage}`}} style={styles.photo} />
+            </View>
+            <View style={styles.newsItem}>
+                <View style={styles.newsText}>
+                    <View style={styles.text_container}>
+                        <Text style={styles.title}>{this.state.newsFeed4.title}</Text>
+                        <Text style={styles.description}>{this.state.newsFeed4.description}</Text>
+                        <Button
+                          fontWeight={"700"}
+                          buttonStyle={styles.readMoreButtton}
+                          title={`Read More`}
 
-                          />
-                      </View>
-                  </View>
-              </View>
-          </View>
-        </ScrollView>
-      </LinearGradient>
+                        />
+                    </View>
+                </View>
+            </View>
+        </View>
+      </ScrollView>
+    </LinearGradient>
     );
   }
 }
@@ -234,13 +229,11 @@ const styles = StyleSheet.create({
 
   },
   buttonContainer: {
-    flex: 1,
     flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'center',
-    marginTop: 15,
+    marginTop: 40,
     backgroundColor: 'transparent',
-    marginBottom: 15
   },
   marqeeContainer: {
     flex: 1,
@@ -378,7 +371,7 @@ const styles = StyleSheet.create({
       borderColor: 'white'
     },
     scrollView: {
-      marginTop: 50
+      marginTop: 15
     }
 });
 

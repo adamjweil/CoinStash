@@ -9,6 +9,7 @@ import React, { Component } from 'react';
 import MarqueeLabelVertical from 'react-native-lahk-marquee-label-vertical';
 import MarqueeLabel from 'react-native-lahk-marquee-label';
 import { Header } from 'react-native-elements';
+import LiteCoinTweets from '../NavComponent/LiteCoinTweets'
 
 import {
   AppRegistry,
@@ -98,6 +99,13 @@ export default class ltc extends Component {
                   Daily Change: ${change}
               </Text>
             </Text>
+            <View>
+              <Text>
+                LiteCoin Tweets
+              </Text>
+            </View>
+
+            <LiteCoinTweets />
 
       </View>
     );

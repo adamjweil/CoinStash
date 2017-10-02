@@ -68,4 +68,17 @@ class ApplicationController < ActionController::API
   def search_tweets
     @search = Rails.application.config.assets.twitter_client.search('#cryptocurrency -rt', lang: "en", count: 20 )
   end
+
+  def ethereum_tweets
+    @ETH_tweets = Rails.application.config.assets.twitter_client.search('#ethereum -rt', lang: "en", count: 10)
+  end
+
+  def litecoin_tweets
+    @LiteCoin_tweets = Rails.application.config.assets.twitter_client.search('#litecoin -rt', lang: "en", count: 10)
+  end
+
+  def bitcoin_tweets
+    @BitCoin_tweets = Rails.application.config.assets.twitter_client.search('#bitcoin -rt', lang: "en", count: 20)
+  end
+
 end

@@ -13,6 +13,7 @@ import BitCoin from './btc';
 import Ethereum from './eth';
 import LiteCoin from './ltc';
 import Form from './form';
+import p2pForm from './p2pform';
 
 
 
@@ -23,7 +24,8 @@ const CoinStashReact = DrawerNavigator(
     BitCoin: { screen: BitCoin },
     Ethereum: { screen: Ethereum },
     LiteCoin: { screen: LiteCoin },
-     Form: { screen: Form }
+    Form: { screen: Form },
+    p2pForm: { screen: p2pForm } 
   },
   {
     initialRouteName: 'Home',

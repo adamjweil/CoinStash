@@ -6,7 +6,6 @@
 'use strict';
 import React, { Component } from 'react';
 import { Button, ButtonGroup, FormLabel, FormInput } from 'react-native-elements'
-import LinearGradient from 'react-native-linear-gradient';
 import SelectInput from 'react-native-select-input-ios';
 
 import {
@@ -18,7 +17,6 @@ import {
   ScrollView,
   TouchableOpacity,
   TextInput,
-  Picker
 } from 'react-native';
 // var MarqueeLabel = require('@remobile/react-native-marquee-label');
 
@@ -139,8 +137,9 @@ export default class form extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
+    marginTop: 15,
   },
   flexDirectionColumn: {
       flexDirection: 'column',

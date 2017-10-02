@@ -19,6 +19,7 @@ import {
 } from 'react-native';
 
 import CoinStashReact from './pages/app'
+console.disableYellowBox = true;
 
 
 AppRegistry.registerComponent('CoinStashReact', () => CoinStashReact);

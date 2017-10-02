@@ -14,6 +14,10 @@ import { StackNavigator} from 'react-navigation';
 import buyETHForm from './forms/buyETHForm';
 import sellETHForm from './forms/sellETHForm';
 import { BackToHomeBTN } from '../NavComponent/BackToHomeBTN';
+import RSSFeed from '../NavComponent/RSSFeed'
+import TopNewsMarquee from '../NavComponent/TopNewsMarquee'
+import EthereumTweets from '../NavComponent/EthereumTweets'
+
 
 import {
   AppRegistry,
@@ -82,6 +86,7 @@ class eth extends Component {
     const { navigate } = this.props.navigation;
     return (
 
+
         <View style={styles.container}>
           <View style={{marginTop: 30, flexDirection: 'row'}}>
             <BackToHomeBTN navigate={navigate} />
@@ -90,6 +95,8 @@ class eth extends Component {
               style={{color: 'rgba(1,1,1,0)', paddingLeft: 15, paddingRight: 15}}>
               BACK
             </Text>
+
+   
           </View>
 
           <Text style={styles.coinPriceText}>

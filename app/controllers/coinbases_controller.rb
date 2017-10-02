@@ -2,7 +2,9 @@ require 'coinbase/wallet'
 class CoinbasesController < ActionController::API
 
   def client
-     CB_VERSION: 'YYYY-MM-DD')
+    @client = Coinbase::Wallet::Client.new(api_key: ENV['CBKEY'],
+                                     api_secret: ENV['CBSECRET'],
+                                     CB_VERSION: 'YYYY-MM-DD')
   end
 
   def accounts

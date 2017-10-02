@@ -5,15 +5,9 @@
 */
 'use strict';
 import React, { Component } from 'react';
-//
-// import MarqueeLabelVertical from 'react-native-lahk-marquee-label-vertical';
-// import MarqueeLabel from 'react-native-lahk-marquee-label';
 import { Button } from 'react-native-elements';
-
 import LinearGradient from 'react-native-linear-gradient';
-
 import { CoinStashReact2 } from './app'
-
 import {
   AppRegistry,
   StyleSheet,
@@ -23,7 +17,6 @@ import {
   ScrollView,
   TouchableOpacity
 } from 'react-native';
-// var MarqueeLabel = require('@remobile/react-native-marquee-label');
 
 export default class home extends Component {
   constructor() {
@@ -59,13 +52,9 @@ export default class home extends Component {
       fetch('https://newsapi.org/v1/articles?source=business-insider&sortBy=latest&apiKey=ed62d0aea575414fbdf6a1351c0fa66a')
       .then(function(response) {
         return response.json();
-        // console.log(response[0]);
-      }).catch((error) => console.warn("fetch error:", error))
-      .then((response) => {
-        console.log(response.articles);
-        // debugger
-        console.log(response.articles[2].urlToImage);
-
+      })
+       .catch((error) => console.warn("fetch error:", error))
+       .then((response) => {
         this.setState({newsFeed0: response.articles[response.articles.length - 1]})
         this.setState({newsFeed1: response.articles[response.articles.length - 2]})
         this.setState({newsFeed2: response.articles[response.articles.length - 3]})

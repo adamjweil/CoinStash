@@ -8,22 +8,29 @@ import {
   Text,
   View
 } from 'react-native';
+import { ListItem, Thumbnail, Body } from 'native-base';
+// var MarqueeLabel = require('@remobile/react-native-marquee-label');
+// import TopNewsMarquee from 'TopNewsMarquee';
 
 export default class RSSFeed extends Component {
   constructor() {
     super();
     this.state = {
-      rssPosts: []
+      rssPosts: [],
+      rss2: [],
+      rss3: [],
+      rss4: [],
+      rss5: []
     };
   }
 
   componentDidMount() {
-    fetch('https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fwww.bitnewz.net%2Frss%2FFeed%2F25')
+    // fetch('https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fwww.bitnewz.net%2Frss%2FFeed%2F25')
+    fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.reddit.com%2Fr%2FBitcoin%2F.rss')
     .then(function(response) {
       return response.json();
     })
     .then((obj) => {
-      console.log(obj.items)
       this.setState({rssPosts: obj.items})
     })
   }
@@ -34,10 +41,11 @@ export default class RSSFeed extends Component {
       <View style={styles.rssView}>
 
           {this.state.rssPosts.map((rss) =>
-            <Text style={styles.rssPost}>
-              {rss.title}{'\n'}
-              {rss.pubDate}{'\n'}
-            </Text>
+            <ListItem>
+                <Text style={styles.rssPost}>
+                  {rss.title} <Text style={styles.rssPubDate}>published on.. {rss.pubDate}</Text>
+                </Text>
+            </ListItem>
           )}
 
       </View>
@@ -48,14 +56,20 @@ export default class RSSFeed extends Component {
 
 const styles = StyleSheet.create({
   rssView: {
-    // borderWidth: 1,
-    // borderRadius: 1
+    flex: 1,
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    backgroundColor: '#F5FCFF',
   },
   rssPost: {
     fontSize: 12,
     textAlign: 'left',
     margin: 2,
-    borderWidth: 1,
-    borderRadius: 5
+    // borderWidth: 1,
+    // borderRadius: 5
   },
+  rssPubDate: {
+    fontSize: 8,
+    fontWeight: '300'
+  }
 });

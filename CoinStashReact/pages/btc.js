@@ -12,15 +12,12 @@ import MarqueeLabel from 'react-native-lahk-marquee-label';
 import { Header } from 'react-native-elements';
 import TweetsComponent from '../NavComponent/TweetsComponent';
 import LinearGradient from 'react-native-linear-gradient';
-<<<<<<< HEAD
 import BitCoinTweets from '../NavComponent/BitCoinTweets';
-=======
 import { Button, ButtonGroup, FormLabel, FormInput } from 'react-native-elements';
-
 import { StackNavigator} from 'react-navigation';
 import buyBTCForm from './buyBTCForm';
 import sellBTCForm from './sellBTCForm';
->>>>>>> nav-updates
+
 
 import {
   AppRegistry,
@@ -28,12 +25,7 @@ import {
   Text,
   View,
   ScrollView,
-<<<<<<< HEAD
   Image
-=======
-  Image,
->>>>>>> nav-updates
-
 } from 'react-native';
 
 class btc extends Component {

@@ -12,13 +12,9 @@ import HomeScreen from './home';
 import BitCoin from './btc';
 import Ethereum from './eth';
 import LiteCoin from './ltc';
-<<<<<<< HEAD
-import Form from './form';
+
+import Form from './buyBTCForm';
 import p2pForm from './p2pform';
-
-=======
->>>>>>> nav-updates
-
 
 
 const CoinStashReact = DrawerNavigator(
@@ -31,13 +27,9 @@ const CoinStashReact = DrawerNavigator(
       }
     },
     Ethereum: { screen: Ethereum },
-<<<<<<< HEAD
     LiteCoin: { screen: LiteCoin },
     Form: { screen: Form },
-    p2pForm: { screen: p2pForm } 
-=======
-    LiteCoin: { screen: LiteCoin }
->>>>>>> nav-updates
+    p2pForm: { screen: p2pForm }
   },
   {
     initialRouteName: 'Home',

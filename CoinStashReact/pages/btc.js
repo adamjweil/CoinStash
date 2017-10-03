@@ -28,11 +28,70 @@ import {
 class btc extends Component {
   constructor() {
     super();
-    console.log("hi")
     this.state = {
       bitcoinPrice: "",
-      bitcoinYdayPrice: ""
-    };
+      bitcoinYdayPrice: "",
+      selectedIndex: 3,
+      prevPriceString: "",
+      prevPriceNum: ""
+    }
+    this.updateIndex = this.updateIndex.bind(this)
+  }
+  updateIndex (selectedIndex) {
+    this.setState({selectedIndex})
+    if (this.state.selectedIndex === 0){
+      this.setState({prevPriceString: "Daily Change: "})
+        fetch('https://api.coindesk.com/v1/bpi/historical/close.json?for=yesterday')
+        .then(function(response) {
+          return response.json();
+        }).then((obj) => {
+            let o = JSON.stringify(obj.bpi)
+            let split = o.split(":")
+            let yDay = split[1]
+            let choppedYdayPrice = yDay.substring(0, yDay.length - 1);
+            let now = this.state.bitcoinPrice;
+            let diff = now - choppedYdayPrice;
+            let diffRounded = diff.toFixed(2)
+          this.setState({prevPriceNum: diffRounded})
+        })
+    }
+    else if (this.state.selectedIndex === 1) {
+      this.setState({prevPriceString: "Weekly Change: "})
+        fetch('https://api.coindesk.com/v1/bpi/historical/close.json')
+        .then(function(response) {
+          return response.json();
+        }).then((obj) => {
+          let day = getDate() - 7
+          let mon = getMonth();
+          let year = getFullYear();
+          if (mon < 10) {mon="0"+mon}
+          if (day < 10) {day="0"+day}
+          let m = year + "-" + mon + "-" + day
+          // console.log(m)
+          // debugger
+          // console.log(m)
+          // var length = obj.bpi.length - 7;
+          // let o = JSON.stringify(obj.bpi)
+          // console.log(length)
+          // console.log(obj.bpi[length])
+          // var weekAgo = length - 7;
+          // d.setDate(d.getDate() - 7);
+          // console.log(d)
+          // console.log(obj.bpi[weekAgo])
+        })
+    }
+    else if (this.state.selectedIndex === 2) {
+      this.setState({prevPriceString: "Monthly Change: "})
+      fetch('https://api.coindesk.com/v1/bpi/historical/close.json')
+      .then(function(response) {
+        return response.json();
+      }).then((obj) => {
+        // Need to work on
+      })
+    }
+    else if (this.state.selectedIndex === 3) {
+      this.setState({prevPriceString: "Yealy Change: "})
+    }
   }
 
   getCurrentPrice = () => {
@@ -90,6 +149,9 @@ class btc extends Component {
 
     const { bitcoinPrice, bitcoinYdayPrice } = this.state
     const { navigate } = this.props.navigation;
+    const buttons = ['Daily', 'Weekly', 'Monthly', 'Yearly']
+    const { selectedIndex } = this.state
+
     return (
 
       <View style={styles.container}>
@@ -103,15 +165,21 @@ class btc extends Component {
         </View>
 
         <Text style={styles.coinPriceText}>
-          {`$${this.state.bitcoinPrice}`}{'\n'}
-          <Text style={styles.yDay}>Yesterday EOD: ${yday}</Text>
+          {`$${this.state.bitcoinPrice}`}
         </Text>
 
         <Text style={styles.yDayPrice}>
           <Text style={{color: colorBool}}>
-            Daily Change: ${change}
+            {this.state.prevPriceString} {`$${this.state.prevPriceNum}`}
           </Text>
         </Text>
+
+        <ButtonGroup
+          onPress={this.updateIndex}
+          selectedIndex={selectedIndex}
+          buttons={buttons}
+          containerStyle={{height: 50}}
+         />
 
         <Text style={{fontSize: 20, paddingTop: 15, paddingBottom: 5}}>
           BTC Feed:

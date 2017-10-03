@@ -5,19 +5,21 @@
  */
 'use strict';
 import React, { Component } from 'react';
-import { StackNavigator } from 'react-navigation';
+
+import MarqueeLabelVertical from 'react-native-lahk-marquee-label-vertical';
+import MarqueeLabel from 'react-native-lahk-marquee-label';
+import { Header } from 'react-native-elements';
 // import  NewsFeed  from './NavComponent/NewsFeed'
+
 import {
-  AppRegistry
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View
 } from 'react-native';
-import {LoginStuff} from './pages/app'
 
-export default class MyProject extends Component {
-  render() {
-    return (
-      <LoginStuff/>
-    );
-  }
-}
+import CoinStashReact from './pages/app'
+console.disableYellowBox = true;
 
-AppRegistry.registerComponent('CoinStashReact', () => MyProject);
+
+AppRegistry.registerComponent('CoinStashReact', () => CoinStashReact);

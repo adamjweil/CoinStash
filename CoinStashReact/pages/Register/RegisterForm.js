@@ -38,7 +38,6 @@ export default class RegisterForm extends Component {
     onChangePasswordConfirmation = this.handleInputChange.bind(this, "password_confirmation")
 
     handlePress() {
-    let that = this
     const { user } = this.state
     fetch("http://192.168.169.43:3000/users", {
       method: 'post',
@@ -47,94 +46,78 @@ export default class RegisterForm extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({user})
-    }).then((response) => {console.log(response)})
+    }).then((response) => console.log(response))
   }
 
   handleNewUserSubmit = this.handlePress.bind(this)
 
 
   render () {
-    console.log('key is: ', this.props.navigation)
-    let { navigate } = this.props.navigation
     return (
-    <View style={styles.wrapper}>
-      <View  style={styles.container}>
-        <StatusBar
-          barStyle="light-content"
-        />
-        <TextInput
-          onChangeText={this.onChangeFirstName}
-          placeholder="First Name"
+    <View  style={styles.container}>
+      <StatusBar
+        barStyle="light-content"
+      />
+      <TextInput
+        onChangeText={this.onChangeFirstName}
+        placeholder="First Name"
+        placeholderTextColor="gray"
+        returnKeyType="next"
+        onSubmitEditing={() => this.lastNameInput.focus()}
+        autoCorrect={false}
+        style={styles.input}
+        ref={(input) => this.firstNameInput = input}/>
+
+      <TextInput
+        onChangeText={this.onChangeLastName}
+        placeholder="Last Name"
+        placeholderTextColor="gray"
+        returnKeyType="next"
+        onSubmitEditing={() => this.emailInput.focus()}
+        autoCorrect={false}
+        style={styles.input}
+        ref={(input) => this.lastNameInput = input}/>
+
+      <TextInput
+        onChangeText={this.onChangeEmail}
+        placeholder="Email"
+        placeholderTextColor="gray"
+        returnKeyType="next"
+        onSubmitEditing={() => this.passwordInput.focus()}
+        keyboardType="email-address"
+        autoCapitalize="none"
+        autoCorrect={false}
+        style={styles.input}
+        ref={(input) => this.emailInput = input}/>
+
+      <TextInput
+        onChangeText={this.onChangePassword}
+        placeholder="Password"
+        placeholderTextColor="gray"
+        returnKeyType="go"
+        secureTextEntry={true}
+        style={styles.input}
+        ref={(input) => this.passwordInput = input}/>
+
+      <TextInput
+          onChangeText={this.onChangePasswordConfirmation}
+          placeholder="Password Confirmation"
           placeholderTextColor="gray"
-          returnKeyType="next"
-          onSubmitEditing={() => this.lastNameInput.focus()}
-          autoCorrect={false}
+          returnKeyType="go"
+          secureTextEntry={true}
           style={styles.input}
-          ref={(input) => this.firstNameInput = input}/>
+          ref={(input) => this.passwordInput = input}/>
 
-          <TextInput
-            onChangeText={this.onChangeLastName}
-            placeholder="Last Name"
-            placeholderTextColor="gray"
-            returnKeyType="next"
-            onSubmitEditing={() => this.emailInput.focus()}
-            autoCorrect={false}
-            style={styles.input}
-            ref={(input) => this.lastNameInput = input}/>
-
-            <TextInput
-              onChangeText={this.onChangeEmail}
-              placeholder="Email"
-              placeholderTextColor="gray"
-              returnKeyType="next"
-              onSubmitEditing={() => this.passwordInput.focus()}
-              keyboardType="email-address"
-              autoCapitalize="none"
-              autoCorrect={false}
-              style={styles.input}
-              ref={(input) => this.emailInput = input}/>
-
-            <TextInput
-              onChangeText={this.onChangePassword}
-              placeholder="Password"
-              placeholderTextColor="gray"
-              returnKeyType="go"
-              secureTextEntry={true}
-              style={styles.input}
-              ref={(input) => this.passwordInput = input}/>
-
-            <TextInput
-              onChangeText={this.onChangePasswordConfirmation}
-              placeholder="Password Confirmation"
-              placeholderTextColor="gray"
-              returnKeyType="go"
-              secureTextEntry={true}
-              style={styles.input}
-              ref={(input) => this.passwordInput = input}/>
-
-            <TouchableOpacity
-              onPress={this.handleNewUserSubmit}
-              style={styles.buttonContainer}>
-              <Text style={styles.buttonText}>Register</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              onPress={() => navigate('Login')}
-              style={styles.buttonContainer}>
-              <Text style={styles.buttonText}>Login</Text>
-            </TouchableOpacity>
-        </View>
+      <TouchableOpacity
+        onPress={this.handleNewUserSubmit}
+        style={styles.buttonContainer}>
+        <Text style={styles.buttonText}>Register</Text>
+      </TouchableOpacity>
     </View>
     );
   }
 }
 const styles = StyleSheet.create({
-  wrapper: {
-    backgroundColor: '#bdc3c7',
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   container: {
     flex: 1,
     padding: 20,

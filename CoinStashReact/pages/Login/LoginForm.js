@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { StackNavigator } from 'react-navigation';
 import {
   AsyncStorage,
   Text,
@@ -8,14 +7,12 @@ import {
   TextInput,
   TouchableOpacity,
   StatusBar
+
 } from 'react-native';
 
 const ACCESS_TOKEN = 'access_token';
 
 export default class LoginForm extends Component {
-  static navigationOptions = {
-    title: 'Login Here'
-  };
   constructor(){
     super();
 
@@ -56,27 +53,23 @@ export default class LoginForm extends Component {
       // console.log('key is: ', ACCESS_TOKEN)
       // console.log('value is: ', accessToken)
 
-
-      await AsyncStorage.setItem('access_token', accessToken, (err)=> {
+      await AsyncStorage.setItem(ACCESS_TOKEN, accessToken, (err)=> {
         if(err){
           console.error("an error");
           console.error(err);
         }
       })
-      this.props.handleToken2()
 
-      // var value = await AsyncStorage.getItem('access_token')
-      //
-      // console.log(value)
+      var value = await AsyncStorage.getItem(ACCESS_TOKEN)
+
+      console.log(value)
   }
 
 
   handleUserSubmit = this.handlePress.bind(this)
-  // handleUserSignUp =
+
 
   render () {
-    console.log('key is: ', this.props.navigation)
-    let { navigate } = this.props.navigation
     return (
     <View  style={styles.container}>
       <StatusBar
@@ -109,13 +102,6 @@ export default class LoginForm extends Component {
         style={styles.buttonContainer}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
-
-      <TouchableOpacity
-        onPress={() => navigate('Register')}
-        style={styles.buttonContainer}>
-        <Text style={styles.buttonText}>Sign Up</Text>
-      </TouchableOpacity>
-
       <Text style={styles.error}>
           {this.state.error}
         </Text>

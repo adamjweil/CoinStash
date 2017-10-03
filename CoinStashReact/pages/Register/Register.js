@@ -19,7 +19,7 @@ export default class Register extends Component {
           <Text style={styles.subtitle}>Register for CoinStash</Text>
         </View>
         <View style={styles.formContainer}>
-          <RegisterForm handleToken2={this.props.handleToken} switchPages={this.props.switchPages}/>
+          <RegisterForm handleToken2={this.props.handleToken} switchPages={this.props.switchPages} stringTokenCallBack={this.stringTokenCallBack}/>
         </View>
       </KeyboardAvoidingView>
     </View>

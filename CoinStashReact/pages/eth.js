@@ -9,12 +9,17 @@ import React, { Component } from 'react';
 import { Header } from 'react-native-elements';
 import RSSFeed from '../NavComponent/RSSFeed';
 import EthereumTweets from '../NavComponent/EthereumTweets';
-import { Button, ButtonGroup, FormLabel, FormInput } from 'react-native-elements';
+import {
+  Button,
+  ButtonGroup,
+  FormLabel,
+  FormInput
+  } from 'react-native-elements';
 import { StackNavigator} from 'react-navigation';
 import buyETHForm from './forms/buyETHForm';
 import sellETHForm from './forms/sellETHForm';
 import { BackToHomeBTN } from '../NavComponent/BackToHomeBTN';
-import TopNewsMarquee from '../NavComponent/TopNewsMarquee'
+// import TopNewsMarquee from '../NavComponent/TopNewsMarquee'
 
 
 import {
@@ -126,7 +131,7 @@ class eth extends Component {
               title={`BUY`}
               onPress={()=> navigate('buyETHForm')}
               />
-            <Button          
+            <Button
               buttonStyle={{backgroundColor: '#185A9D', borderRadius: 0, marginTop: 0, marginLeft: -20, width: "100%"}}
               textStyle={{textAlign: 'center'}}
               title={`SELL`}

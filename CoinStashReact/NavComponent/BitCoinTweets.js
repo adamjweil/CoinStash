@@ -9,7 +9,12 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-import { ListItem, Thumbnail, Text, Body } from 'native-base';
+import {
+  ListItem,
+  Thumbnail,
+  Text,
+  Body
+} from 'native-base';
 
 export default class BitCoinTweets extends Component {
   constructor() {
@@ -48,25 +53,23 @@ export default class BitCoinTweets extends Component {
         {this.state.BitCoinTweets.map((tweet, i) =>
           <View style={styles.tweetContainer} key={i}>
             <ListItem>
-                <Thumbnail style={styles.twitterAvatar} size={60} source={{uri: tweet.user.profile_image_url_https}} />
-                <Body>
-                  <View style={styles.nameContainer}>
-                    <Text style={styles.name}>@{tweet.user.screen_name}</Text>
-                  </View>
-                  <Text style={styles.content}>{tweet.text}</Text>
-                  {tweet.user.url ? this.twitterButton(tweet) : <Text style={styles.content}></Text>}
-                </Body>
+              <Thumbnail style={styles.twitterAvatar} size={60} source={{uri: tweet.user.profile_image_url_https}} />
+              <Body>
+                <View style={styles.nameContainer}>
+                  <Text style={styles.name}>@{tweet.user.screen_name}</Text>
+                </View>
+                <Text style={styles.content}>{tweet.text}</Text>
+                {tweet.user.url ? this.twitterButton(tweet) : <Text style={styles.content}></Text>}
+              </Body>
             </ListItem>
           </View>
-      )}
-
-    </ScrollView>
-
+        )}
+      </ScrollView>
     )
   }
-  }
+}
 
-  const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   tweetContainer: {
     width: 400,
     marginRight: 50,
@@ -93,5 +96,4 @@ export default class BitCoinTweets extends Component {
     paddingLeft: 30,
     marginLeft: 30
   }
-
-  });
+});

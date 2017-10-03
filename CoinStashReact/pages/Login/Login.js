@@ -1,35 +1,42 @@
 import React, { Component } from 'react';
+import { StackNavigator } from 'react-navigation';
 import {
   AsyncStorage,
   Text,
   StyleSheet,
+  Button,
   View,
   TextInput,
   Image,
   TouchableOpacity,
+  TouchableHighlight,
   StatusBar,
   ActivityIndicatorIOS,
   KeyboardAvoidingView } from 'react-native';
 import LoginForm from './LoginForm'
 
+
 export default class Login extends Component {
 
   render () {
     return (
-    <KeyboardAvoidingView behavior="padding" style={styles.container}>
-      <View style={styles.logoContainer}>
-        <Image style={styles.logo} source={require('../../images/logo-placeholder.png')} />
-        <Text style={styles.title}>CoinStash</Text>
-        <Text style={styles.subtitle}>Login to CoinStash</Text>
+      <View style={styles.wrapper}>
+        <View style={styles.container}>
+          <View style={styles.logoContainer}>
+            <Text style={styles.title}>CoinStash</Text>
+            <Text style={styles.subtitle}>Login to CoinStash Or Sign Up</Text>
+          </View>
+          <View style={styles.formContainer}>
+            <LoginForm handleToken2={this.props.handleToken} switchPages={this.props.switchPages}/>
+          </View>
+        </View>
       </View>
-      <View style={styles.formContainer}>
-        <LoginForm />
-      </View>
-    </KeyboardAvoidingView>
     );
   }
 }
+
 const styles = StyleSheet.create({
+
   container: {
     flex: 1,
   },
@@ -60,5 +67,21 @@ const styles = StyleSheet.create({
     width: 200,
     textAlign: 'center',
     fontSize: 16
+  },
+  buttonContainer: {
+    height: 30,
+    backgroundColor: 'rgba(255,255,255,0.2)',
+    paddingVertical:  15,
+    borderWidth: 1,
+    borderColor: 'gray',
+    alignContent: 'center',
+    justifyContent: 'center',
+    padding: 30,
+
+  },
+  buttonText: {
+    textAlign: 'center',
+    backgroundColor: 'rgba(255,255,255,0.0)',
+    alignItems: 'center',
   }
 });

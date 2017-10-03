@@ -34,12 +34,9 @@ export default class RSSFeed extends Component {
       this.setState({rssPosts: obj.items})
     })
   }
-
   render() {
     return (
-
       <View style={styles.rssView}>
-
           {this.state.rssPosts.map((rss) =>
             <ListItem>
                 <Text style={styles.rssPost}>
@@ -47,7 +44,6 @@ export default class RSSFeed extends Component {
                 </Text>
             </ListItem>
           )}
-
       </View>
 
     )
@@ -60,16 +56,23 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
     // alignItems: 'center',
     backgroundColor: '#F5FCFF',
+    width: 390,
+    marginLeft: -20,
+    
   },
   rssPost: {
     fontSize: 12,
     textAlign: 'left',
     margin: 2,
-    // borderWidth: 1,
-    // borderRadius: 5
+    paddingLeft: 20
+
   },
   rssPubDate: {
     fontSize: 8,
     fontWeight: '300'
+  },
+  redditReadMore: {
+    marginLeft: -325,
+    marginTop: 40
   }
 });

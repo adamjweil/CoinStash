@@ -5,7 +5,8 @@ import {
   View,
   ScrollView,
   Image,
-  Linking
+  Linking,
+  TouchableOpacity
 } from 'react-native';
 
 import { ListItem, Thumbnail, Text, Body } from 'native-base';
@@ -32,6 +33,13 @@ export default class LiteCoinTweets extends Component {
       this.setState({LiteCoinTweets: obj})
     })
   }
+  twitterButton = (tweet) => {
+    return(
+      <TouchableOpacity onPress={()=> Linking.openURL(tweet.user.url)}>
+        <Text style={styles.name}>Read More..</Text>
+      </TouchableOpacity>
+    )
+  }
   render() {
 
     return (
@@ -45,6 +53,7 @@ export default class LiteCoinTweets extends Component {
                     <Text style={styles.name}>@{tweet.user.screen_name}</Text>
                   </View>
                   <Text style={styles.content}>{tweet.text}</Text>
+                  {tweet.user.url ? this.twitterButton(tweet) : <Text style={styles.content}></Text>}
                 </Body>
             </ListItem>
           </View>
@@ -58,8 +67,9 @@ export default class LiteCoinTweets extends Component {
 
 const styles = StyleSheet.create({
   tweetContainer: {
-    width: 320,
-    marginRight: 20
+    width: 400,
+    marginRight: 50,
+    marginLeft: -20,
   },
   nameContainer: {
     flex: 1,
@@ -78,7 +88,9 @@ const styles = StyleSheet.create({
   },
   twitterAvatar: {
     paddingBottom: 50,
-    marginTop: -8
+    marginTop: -8,
+    paddingLeft: 30,
+    marginLeft: 30
   }
 
 });

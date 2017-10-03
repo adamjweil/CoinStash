@@ -6703,3 +6703,8 @@ Processing by TweetsController#find_ethereum as */*
 Completed 200 OK in 807ms (Views: 33.2ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 17:46:47 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 750ms (Views: 34.5ms | ActiveRecord: 0.0ms)
+
+

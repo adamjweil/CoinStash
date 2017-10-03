@@ -1,8 +1,8 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+* Sample React Native App
+* https://github.com/facebook/react-native
+* @flow
+*/
 'use strict';
 import React, { Component } from 'react';
 import { Button, ButtonGroup, FormLabel, FormInput } from 'react-native-elements'
@@ -17,7 +17,6 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
-// var MarqueeLabel = require('@remobile/react-native-marquee-label');
 
 export default class p2pForm extends Component {
   constructor() {
@@ -47,53 +46,53 @@ export default class p2pForm extends Component {
     const { selectedIndex } = this.state
     return (
       <View style={styles.container}>
-          <Text style={styles.formTitle}>Send</Text>
+        <Text style={styles.formTitle}>Send</Text>
 
-      <View style={styles.formContainer}>
-            <View style={styles.formInputContainer}>
-              <Text style={styles.labelTitle}>From Wallet: </Text>
-              <ButtonGroup
-                onPress={this.updateIndex}
-                selectedIndex={selectedIndex}
-                buttons={buttons}
-                containerStyle={{height: 50, marginLeft: 50, marginTop: 10}}
-               />
-            </View>
-
-
-
-
-
-        <View style={styles.formInputContainer}>
-          <Text style={styles.labelTitle}>Send to: </Text>
-          <TextInput
-
-            placeholder={"Enter email"}
-            keyboardType={'default'}
-            style={styles.sendPaymentAddress, styles.sendPaymentValue}
-            onChangeText={(input) => this.setState({input})}
-            value={this.state.input}
+        <View style={styles.formContainer}>
+          <View style={styles.formInputContainer}>
+            <Text style={styles.labelTitle}>From Wallet: </Text>
+            <ButtonGroup
+              onPress={this.updateIndex}
+              selectedIndex={selectedIndex}
+              buttons={buttons}
+              containerStyle={{height: 50, marginLeft: 50, marginTop: 10}}
             />
+          </View>
+
+
+
+
+
+          <View style={styles.formInputContainer}>
+            <Text style={styles.labelTitle}>Send to: </Text>
+            <TextInput
+
+              placeholder={"Enter email"}
+              keyboardType={'default'}
+              style={styles.sendPaymentAddress, styles.sendPaymentValue}
+              onChangeText={(input) => this.setState({input})}
+              value={this.state.input}
+            />
+          </View>
+
+          <View style={styles.formInputContainer}>
+            <Text style={styles.labelTitle}>Amount</Text>
+
+            <TextInput
+              placeholder={"Enter amouasdfant"}
+              keyboardType={'numeric'}
+              style={styles.sendPaymentValue}
+              onChangeText={(text) => this.setState({text})}
+              value={this.state.text}
+            />
+          </View>
+
         </View>
-
-        <View style={styles.formInputContainer}>
-              <Text style={styles.labelTitle}>Amount</Text>
-
-              <TextInput
-                placeholder={"Enter amouasdfant"}
-                keyboardType={'numeric'}
-                style={styles.sendPaymentValue}
-                onChangeText={(text) => this.setState({text})}
-                value={this.state.text}
-                />
-        </View>
-
-      </View>
-      <Button
-        buttonStyle={{backgroundColor: '#185A9D', borderRadius: 2, marginTop: 10, width: 300}}
-        textStyle={{textAlign: 'center'}}
-        title={`SEND`}
-      />
+        <Button
+          buttonStyle={{backgroundColor: '#185A9D', borderRadius: 2, marginTop: 10, width: 300}}
+          textStyle={{textAlign: 'center'}}
+          title={`SEND`}
+        />
 
       </View>
     );

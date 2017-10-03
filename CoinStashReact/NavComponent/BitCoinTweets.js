@@ -37,7 +37,7 @@ export default class BitCoinTweets extends Component {
   twitterButton = (tweet) => {
     return(
       <TouchableOpacity onPress={()=> Linking.openURL(tweet.user.url)}>
-        <Text style={styles.name}>tap to link</Text>
+        <Text style={styles.name}>Read More..</Text>
       </TouchableOpacity>
     )
   }
@@ -68,13 +68,13 @@ export default class BitCoinTweets extends Component {
 
   const styles = StyleSheet.create({
   tweetContainer: {
-    width: 320,
-    marginRight: 20
+    width: 400,
+    marginRight: 50,
+    marginLeft: -20,
   },
   nameContainer: {
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: 'red'
   },
   name: {
     fontWeight: '600',
@@ -89,7 +89,9 @@ export default class BitCoinTweets extends Component {
   },
   twitterAvatar: {
     paddingBottom: 50,
-    marginTop: -8
+    marginTop: -8,
+    paddingLeft: 30,
+    marginLeft: 30
   }
 
   });

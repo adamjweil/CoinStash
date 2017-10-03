@@ -5,7 +5,7 @@
  */
 'use strict';
 import React, { Component } from 'react';
-import { Button, ButtonGroup, FormLabel, FormInput } from 'react-native-elements'
+import { Button, FormLabel, FormInput } from 'react-native-elements'
 import SelectInput from 'react-native-select-input-ios';
 
 import {
@@ -24,30 +24,29 @@ export default class form extends Component {
   constructor() {
     super();
     this.state = {
-      selectedIndex: 0,
-      text: '00.00'
+      usdInput: '00.00',
+      ethInput: '00.00',
     }
-    this.updateIndex = this.updateIndex.bind(this)
   }
-  updateIndex (selectedIndex) {
-    this.setState({selectedIndex})
-  }
-
-
-  getPickerOptions() {
+  getPickerOptionsSellFrom() {
     return [
-      { value: 0, label: 'Select Wallet...' },
-      { value: 1, label: 'USD Wallet'      },
-      { value: 2, label: 'BTC Wallet'     },
-      { value: 3, label: 'ETH Wallet'     },
-      { value: 4, label: 'LTC Wallet' },
-
+      { value: 0, label: 'ETH Wallet'     },
+    ];
+  }
+  getPickerOptionsDepositTo() {
+    return [
+      { value: 0, label: 'USD Wallet'      },
     ];
   }
 
-  onSubmitEditingLarge(value) {
+  onSubmitDepositTo(value) {
     this.setState({
-      valueLarge: value
+      depositWallet: value
+    });
+  }
+  onSubmitSellFrom(value) {
+    this.setState({
+      sellFrom: value
     });
   }
 
@@ -57,24 +56,17 @@ export default class form extends Component {
   render() {
     let state = this.state;
     const { navigate } = this.props.navigation;
-    const buttons = ['BTC', 'ETH', 'LTC']
-    const { selectedIndex } = this.state
     return (
       <View style={styles.container}>
-        <Text style={styles.formTitle}>SELL</Text>
-        <ButtonGroup
-          onPress={this.updateIndex}
-          selectedIndex={selectedIndex}
-          buttons={buttons}
-          containerStyle={{height: 50}} />
+        <Text style={styles.formTitle}></Text>
 
           <View style={styles.inputContainer}>
-            <Text style={styles.labelTitle}>Payment Method:</Text>
+            <Text style={styles.labelTitle}>Sell from:</Text>
             <SelectInput
-              value={state.valueLarge}
-              options={this.getPickerOptions()}
+              value={state.sellFrom}
+              options={this.getPickerOptionsSellFrom()}
               onCancelEditing={() => console.log('onCancel')}
-              onSubmitEditing={this.onSubmitEditingLarge.bind(this)}
+              onSubmitEditing={this.onSubmitSellFrom.bind(this)}
               style={[styles.paymentMethod, styles.selectInputLarge]}
             />
           </View>
@@ -87,8 +79,8 @@ export default class form extends Component {
               <TextInput
                 keyboardType={'numeric'}
                 style={styles.paymentInteger}
-                onChangeText={(text) => this.setState({text})}
-                value={this.state.text}
+                onChangeText={(usdInput) => this.setState({usdInput})}
+                value={this.state.usdInput}
                 />
             </View>
           </View>
@@ -101,8 +93,8 @@ export default class form extends Component {
               <TextInput
                 keyboardType={'numeric'}
                 style={styles.paymentInteger}
-                onChangeText={(text) => this.setState({text})}
-                value={this.state.text}
+                onChangeText={(ethInput) => this.setState({ethInput})}
+                value={this.state.ethInput}
                 />
             </View>
           </View>
@@ -112,18 +104,17 @@ export default class form extends Component {
         <View style={styles.inputContainer}>
           <Text style={styles.labelTitle}>Deposit to:</Text>
           <SelectInput
-            value={state.valueLarge}
-            options={this.getPickerOptions()}
+            value={state.depositWallet}
+            options={this.getPickerOptionsDepositTo()}
             onCancelEditing={() => console.log('onCancel')}
-            onSubmitEditing={this.onSubmitEditingLarge.bind(this)}
+            onSubmitEditing={this.onSubmitDepositTo.bind(this)}
             style={[styles.paymentMethod, styles.selectInputLarge]}
           />
         </View>
         <Button
-          raised
           buttonStyle={{backgroundColor: '#185A9D', borderRadius: 2, marginTop: 10, width: 300}}
           textStyle={{textAlign: 'center'}}
-          title={`BUY`}
+          title={`SELL`}
         />
       </View>
     );

@@ -121,15 +121,13 @@ class eth extends Component {
           </ScrollView>
           <View style={{flexDirection: 'row'}}>
             <Button
-              raised
-              buttonStyle={{backgroundColor: '#185A9D', borderRadius: 2, marginTop: 10, marginLeft: 15, width: 200}}
+              buttonStyle={{backgroundColor: '#185A9D', borderRadius: 0, marginTop: 0, marginRight: -20, marginLeft: 20, width: "100%"}}
               textStyle={{textAlign: 'center'}}
               title={`BUY`}
               onPress={()=> navigate('buyETHForm')}
               />
-            <Button
-              raised
-              buttonStyle={{backgroundColor: '#185A9D', borderRadius: 2, marginTop: 10, marginRight: 15, width: 200}}
+            <Button          
+              buttonStyle={{backgroundColor: '#185A9D', borderRadius: 0, marginTop: 0, marginLeft: -20, width: "100%"}}
               textStyle={{textAlign: 'center'}}
               title={`SELL`}
               onPress={()=> navigate('sellETHForm')}

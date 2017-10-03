@@ -5,7 +5,8 @@ import {
   View,
   ScrollView,
   Image,
-  Linking
+  Linking,
+  TouchableOpacity
 } from 'react-native';
 
 import { ListItem, Thumbnail, Text, Body } from 'native-base';
@@ -17,7 +18,8 @@ export default class BitCoinTweets extends Component {
       BitCoinTweets: []
     }
   }
-  componentDidMount() {
+
+  componentWillMount() {
     this.getBitcoinTweets();
     setInterval(this.getBitcoinTweets, 100000);
   }
@@ -32,12 +34,19 @@ export default class BitCoinTweets extends Component {
       this.setState({BitCoinTweets: obj})
     })
   }
+  twitterButton = (tweet) => {
+    return(
+      <TouchableOpacity onPress={()=> Linking.openURL(tweet.user.url)}>
+        <Text style={styles.name}>tap to link</Text>
+      </TouchableOpacity>
+    )
+  }
   render() {
 
     return (
       <ScrollView style={styles.scrollView}>
         {this.state.BitCoinTweets.map((tweet, i) =>
-          <View style={styles.tweetContainer}>
+          <View style={styles.tweetContainer} key={i}>
             <ListItem>
                 <Thumbnail style={styles.twitterAvatar} size={60} source={{uri: tweet.user.profile_image_url_https}} />
                 <Body>
@@ -45,6 +54,7 @@ export default class BitCoinTweets extends Component {
                     <Text style={styles.name}>@{tweet.user.screen_name}</Text>
                   </View>
                   <Text style={styles.content}>{tweet.text}</Text>
+                  {tweet.user.url ? this.twitterButton(tweet) : <Text style={styles.content}></Text>}
                 </Body>
             </ListItem>
           </View>
@@ -64,6 +74,7 @@ export default class BitCoinTweets extends Component {
   nameContainer: {
     flex: 1,
     flexDirection: 'row',
+    backgroundColor: 'red'
   },
   name: {
     fontWeight: '600',

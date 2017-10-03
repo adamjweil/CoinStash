@@ -15,7 +15,8 @@ import {
   View,
   Image,
   ScrollView,
-  TouchableOpacity
+  TouchableOpacity,
+  Linking
 } from 'react-native';
 
 export default class home extends Component {
@@ -126,6 +127,7 @@ export default class home extends Component {
                     <Button
                       fontWeight={"700"}
                       buttonStyle={styles.readMoreButtton}
+                      onPress={()=> Linking.openURL(this.state.newsFeed0.url)}
                       title={`READ ME`}
                       />
                   </View>
@@ -144,6 +146,7 @@ export default class home extends Component {
                     <Button
                       fontWeight={"700"}
                       buttonStyle={styles.readMoreButtton}
+                      onPress={()=> Linking.openURL(this.state.newsFeed1.url)}
                       title={`READ ME`}
                       />
                   </View>
@@ -161,6 +164,7 @@ export default class home extends Component {
                     <Button
                       fontWeight={"700"}
                       buttonStyle={styles.readMoreButtton}
+                      onPress={()=> Linking.openURL(this.state.newsFeed2.url)}
                       title={`READ ME`}
                       />
                   </View>
@@ -179,6 +183,7 @@ export default class home extends Component {
                     <Button
                       fontWeight={"700"}
                       buttonStyle={styles.readMoreButtton}
+                      onPress={()=> Linking.openURL(this.state.newsFeed3.url)}
                       title={`READ ME`}
                       />
                   </View>
@@ -197,6 +202,7 @@ export default class home extends Component {
                     <Button
                       fontWeight={"700"}
                       buttonStyle={styles.readMoreButtton}
+                      onPress={()=> Linking.openURL(this.state.newsFeed4.url)}
                       title={`Read More`}
 
                       />
@@ -280,6 +286,7 @@ export default class home extends Component {
     linearGradient: {
       paddingLeft: 15,
       paddingRight: 15,
+      flex: 1
     },
     navButtons: {
       color: '#ffffff',

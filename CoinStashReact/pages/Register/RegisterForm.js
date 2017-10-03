@@ -63,6 +63,7 @@ export default class RegisterForm extends Component {
       }
     })
     this.props.handleToken2()
+    this.props.stringTokenCallBack()
   }
 
   handleNewUserSubmit = this.handlePress.bind(this)

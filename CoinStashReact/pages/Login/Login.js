@@ -27,7 +27,7 @@ export default class Login extends Component {
             <Text style={styles.subtitle}>Login to CoinStash Or Sign Up</Text>
           </View>
           <View style={styles.formContainer}>
-            <LoginForm handleToken2={this.props.handleToken} switchPages={this.props.switchPages}/>
+            <LoginForm handleToken2={this.props.handleToken} switchPages={this.props.switchPages} stringTokenCallBack={this.stringTokenCallBack}/>
           </View>
         </View>
       </View>

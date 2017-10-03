@@ -64,10 +64,12 @@ export default class LoginForm extends Component {
         }
       })
       this.props.handleToken2()
-
-      // var value = await AsyncStorage.getItem('access_token')
+      this.props.stringTokenCallBack()
+      debugger
+      var value = await AsyncStorage.getItem('access_token')
+      debugger
       //
-      // console.log(value)
+
   }
 
 

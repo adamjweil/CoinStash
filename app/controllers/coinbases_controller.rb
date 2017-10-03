@@ -14,17 +14,17 @@ class CoinbasesController < ActionController::API
 
   def usd_wallet
      client
-     render json: @client.accounts[0]
+     render json: @client.accounts[2]
   end
 
   def ltc_wallet
      client
-     render json: @client.accounts[1]
+     render json: @client.accounts[0]
   end
 
   def eth_wallet
      client
-     render json: @client.accounts[2]
+     render json: @client.accounts[1]
   end
 
   def btc_wallet

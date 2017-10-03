@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { StackNavigator } from 'react-navigation';
 import {
   AsyncStorage,
   Text,
@@ -12,6 +13,9 @@ import {
 const ACCESS_TOKEN = 'access_token';
 
 export default class LoginForm extends Component {
+  static navigationOptions = {
+    title: 'Login Here'
+  };
   constructor(){
     super();
 
@@ -68,9 +72,11 @@ export default class LoginForm extends Component {
 
 
   handleUserSubmit = this.handlePress.bind(this)
-
+  // handleUserSignUp =
 
   render () {
+    console.log('key is: ', this.props.navigation)
+    let { navigate } = this.props.navigation
     return (
     <View  style={styles.container}>
       <StatusBar
@@ -103,6 +109,13 @@ export default class LoginForm extends Component {
         style={styles.buttonContainer}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={() => navigate('Register')}
+        style={styles.buttonContainer}>
+        <Text style={styles.buttonText}>Sign Up</Text>
+      </TouchableOpacity>
+
       <Text style={styles.error}>
           {this.state.error}
         </Text>

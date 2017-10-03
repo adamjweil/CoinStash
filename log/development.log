@@ -6546,3 +6546,149 @@ Processing by SessionsController#create as JSON
 Completed 200 OK in 676ms (Views: 1.0ms | ActiveRecord: 54.2ms)
 
 
+Started POST "/login" for 192.168.169.43 at 2017-10-02 23:39:35 -0400
+  [1m[35m (21.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"session"=>{"email"=>"sarah@sarah.com", "password"=>"[FILTERED]", "error"=>"", "showProgress"=>false}}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sarah@sarah.com"], ["LIMIT", 1]]
+Completed 200 OK in 990ms (Views: 2.4ms | ActiveRecord: 6.8ms)
+
+
+Started POST "/login" for 192.168.169.43 at 2017-10-02 23:49:29 -0400
+Processing by SessionsController#create as JSON
+  Parameters: {"session"=>{"email"=>"", "password"=>"[FILTERED]", "error"=>"", "showProgress"=>false}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+Completed 200 OK in 622ms (Views: 1.0ms | ActiveRecord: 63.8ms)
+
+
+Started POST "/users" for 192.168.169.43 at 2017-10-03 00:18:56 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"user"=>{"first_name"=>"Roman", "last_name"=>"Roman", "email"=>"roman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "errors"=>[], "showProgress"=>false}}
+Unpermitted parameters: :errors, :showProgress
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "roman"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 1550ms (Views: 0.3ms | ActiveRecord: 48.2ms)
+
+
+Started POST "/users" for 192.168.169.43 at 2017-10-03 00:19:21 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"user"=>{"first_name"=>"Roman", "last_name"=>"Roman", "email"=>"roman@roman.roman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "errors"=>[], "showProgress"=>false}}
+Unpermitted parameters: :errors, :showProgress
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "roman@roman.roman"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 551ms (Views: 0.3ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/users" for 192.168.169.43 at 2017-10-03 00:19:53 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"user"=>{"first_name"=>"Roman", "last_name"=>"Roman", "email"=>"roman@roman.roman", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "errors"=>[], "showProgress"=>false}}
+Unpermitted parameters: :errors, :showProgress
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "roman@roman.roman"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."access_token" = $1 LIMIT $2[0m  [["access_token", "tliO7R0sr2A5mq-yfEGxgQ"], ["LIMIT", 1]]
+  [1m[35mSQL (60.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Roman"], ["last_name", "Roman"], ["email", "roman@roman.roman"], ["password_digest", "$2a$10$rm75b0EWzRGG3aFt/BCPxO63C4wcntxp275pq7wzKzYQVG.LLhET6"], ["access_token", "tliO7R0sr2A5mq-yfEGxgQ"], ["created_at", "2017-10-03 04:19:54.266181"], ["updated_at", "2017-10-03 04:19:54.266181"]]
+  [1m[35m (35.8ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 581ms (Views: 0.4ms | ActiveRecord: 97.4ms)
+
+
+Started POST "/users" for 192.168.169.43 at 2017-10-03 00:20:40 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"user"=>{"first_name"=>"", "last_name"=>"", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "errors"=>[], "showProgress"=>false}}
+Unpermitted parameters: :errors, :showProgress
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 474ms (Views: 0.3ms | ActiveRecord: 5.0ms)
+
+
+Started POST "/users" for 192.168.169.43 at 2017-10-03 00:21:19 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"user"=>{"first_name"=>"", "last_name"=>"", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "errors"=>[], "showProgress"=>false}}
+Unpermitted parameters: :errors, :showProgress
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 469ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users" for 192.168.169.43 at 2017-10-03 00:22:02 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"user"=>{"first_name"=>"", "last_name"=>"", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "errors"=>[], "showProgress"=>false}}
+Unpermitted parameters: :errors, :showProgress
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 433ms (Views: 0.3ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/users" for 192.168.169.43 at 2017-10-03 00:22:19 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"user"=>{"first_name"=>"", "last_name"=>"", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "errors"=>[], "showProgress"=>false}}
+Unpermitted parameters: :errors, :showProgress
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 399ms (Views: 0.3ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/login" for 192.168.169.43 at 2017-10-03 00:28:27 -0400
+Processing by SessionsController#create as JSON
+  Parameters: {"session"=>{"email"=>"sarah@sarah.com", "password"=>"[FILTERED]", "error"=>"", "showProgress"=>false}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sarah@sarah.com"], ["LIMIT", 1]]
+Completed 200 OK in 454ms (Views: 0.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-03 00:29:17 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 599ms (Views: 23.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 192.168.169.43 at 2017-10-03 00:29:42 -0400
+Processing by SessionsController#create as JSON
+  Parameters: {"session"=>{"email"=>"sarah@sarah.com", "password"=>"[FILTERED]", "error"=>"", "showProgress"=>false}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sarah@sarah.com"], ["LIMIT", 1]]
+Completed 200 OK in 451ms (Views: 0.8ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/login" for 192.168.169.43 at 2017-10-03 00:39:59 -0400
+Processing by SessionsController#create as JSON
+  Parameters: {"session"=>{"email"=>"sarah@sarah.com", "password"=>"[FILTERED]", "error"=>"", "showProgress"=>false}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sarah@sarah.com"], ["LIMIT", 1]]
+Completed 200 OK in 489ms (Views: 0.8ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/users" for 192.168.169.43 at 2017-10-03 00:40:24 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"user"=>{"first_name"=>"Roman", "last_name"=>"Roman", "email"=>"roman@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "errors"=>[], "showProgress"=>false}}
+Unpermitted parameters: :errors, :showProgress
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "roman@mail.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."access_token" = $1 LIMIT $2[0m  [["access_token", "BtJCgtUfbYGfY3euoS6RFw"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Roman"], ["last_name", "Roman"], ["email", "roman@mail.com"], ["password_digest", "$2a$10$4Pjzb3/TYjdbo/Tiz3HsyeYQHBG7QAVdKE.gqlS.z2Pm.ipaGWqRW"], ["access_token", "BtJCgtUfbYGfY3euoS6RFw"], ["created_at", "2017-10-03 04:40:24.608576"], ["updated_at", "2017-10-03 04:40:24.608576"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 546ms (Views: 0.2ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/login" for 192.168.169.43 at 2017-10-03 00:54:58 -0400
+Processing by SessionsController#create as JSON
+  Parameters: {"session"=>{"email"=>"sarah@sarah.com", "password"=>"[FILTERED]", "error"=>"", "showProgress"=>false}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sarah@sarah.com"], ["LIMIT", 1]]
+Completed 200 OK in 493ms (Views: 0.8ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/login" for 192.168.169.43 at 2017-10-03 00:55:27 -0400
+Processing by SessionsController#create as JSON
+  Parameters: {"session"=>{"email"=>"sarah@sarah.com", "password"=>"[FILTERED]", "error"=>"", "showProgress"=>false}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sarah@sarah.com"], ["LIMIT", 1]]
+Completed 200 OK in 437ms (Views: 1.1ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/login" for 192.168.169.43 at 2017-10-03 00:57:14 -0400
+Processing by SessionsController#create as JSON
+  Parameters: {"session"=>{"email"=>"sarah@sarah.com", "password"=>"[FILTERED]", "error"=>"", "showProgress"=>false}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sarah@sarah.com"], ["LIMIT", 1]]
+Completed 200 OK in 597ms (Views: 0.8ms | ActiveRecord: 0.4ms)
+
+

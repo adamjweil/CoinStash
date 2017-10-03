@@ -6,7 +6,7 @@ import {
   View
 } from 'react-native';
 
-import { DrawerNavigator } from 'react-navigation';
+import { DrawerNavigator, StackNavigator } from 'react-navigation';
 
 import HomeScreen from './home';
 import BitCoin from './btc';
@@ -14,7 +14,13 @@ import Ethereum from './eth';
 import LiteCoin from './ltc';
 
 import p2pForm from './p2pform';
+import Register from './Register/Register'
+import Login from './Login/Login'
+import Main from './Main'
 
+// use getScreen instead of screen
+// , getScreen: (importantStuff) => <Ethereum {...importantStuff} myPropName={myPropValue} />
+//  ^-----CHECK DOCS
 
 const CoinStashReact = DrawerNavigator(
   {
@@ -35,6 +41,18 @@ const CoinStashReact = DrawerNavigator(
   }
 );
 
+const LoginStuff = DrawerNavigator(
+  {
+    Main: {screen: Main},
+    Register: {screen: Register},
+    Login: {screen: Login}
+  },
+  {
+    initialRouteName: 'Main',
+    drawerPosition: 'left'
+  }
+);
 
 
-export default CoinStashReact;
+
+export {CoinStashReact, LoginStuff};

@@ -57,7 +57,6 @@ class ProfilePage extends Component {
   .then(function(response) {
     return response.json();
   }).then((obj) => {
-    console.log(obj)
       let ethB = obj.balance.amount
       let ethN = obj.name
       let ethC = obj.balance.currency
@@ -67,7 +66,6 @@ class ProfilePage extends Component {
   .then(function(response) {
     return response.json();
   }).then((obj) => {
-    console.log(obj)
       let ltcB = obj.balance.amount
       let ltcN = obj.name
       let ltcC = obj.balance.currency

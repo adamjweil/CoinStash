@@ -53,10 +53,6 @@ export default class LoginForm extends Component {
 
       let accessToken = responseJson.access_token
 
-      // console.log('key is: ', ACCESS_TOKEN)
-      // console.log('value is: ', accessToken)
-
-
       await AsyncStorage.setItem('access_token', accessToken, (err)=> {
         if(err){
           console.error("an error");
@@ -68,13 +64,10 @@ export default class LoginForm extends Component {
       debugger
       var value = await AsyncStorage.getItem('access_token')
       debugger
-      //
-
   }
 
 
   handleUserSubmit = this.handlePress.bind(this)
-  // handleUserSignUp =
 
   render () {
     return (

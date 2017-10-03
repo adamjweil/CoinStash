@@ -4,15 +4,9 @@ import {
   AsyncStorage,
   Text,
   StyleSheet,
-  Button,
   View,
-  TextInput,
   Image,
-  TouchableOpacity,
-  TouchableHighlight,
-  StatusBar,
-  ActivityIndicatorIOS,
-  KeyboardAvoidingView } from 'react-native';
+  } from 'react-native';
 import LoginForm from './LoginForm'
 
 

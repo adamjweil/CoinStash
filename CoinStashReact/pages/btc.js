@@ -10,7 +10,11 @@ import React, { Component } from 'react';
 import { Header } from 'react-native-elements';
 import TweetsComponent from '../NavComponent/TweetsComponent';
 import BitCoinTweets from '../NavComponent/BitCoinTweets';
-import { Button, ButtonGroup, FormLabel, FormInput } from 'react-native-elements';
+import { Button,
+  ButtonGroup,
+  FormLabel,
+  FormInput
+} from 'react-native-elements';
 import { StackNavigator} from 'react-navigation';
 import buyBTCForm from './forms/buyBTCForm';
 import sellBTCForm from './forms/sellBTCForm';

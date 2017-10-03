@@ -5,7 +5,11 @@
  */
 'use strict';
 import React, { Component } from 'react';
-import { Button, FormLabel, FormInput } from 'react-native-elements'
+import {
+  Button,
+  FormLabel,
+  FormInput
+} from 'react-native-elements'
 import SelectInput from 'react-native-select-input-ios';
 
 import {

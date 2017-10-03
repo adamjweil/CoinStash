@@ -71,7 +71,7 @@ export default class LoginForm extends Component {
 
   render () {
     return (
-    <View  style={styles.container}>
+    <View  style={styles.wrapper}>
       <StatusBar
         barStyle="light-content"
       />
@@ -118,12 +118,18 @@ export default class LoginForm extends Component {
   }
 }
 const styles = StyleSheet.create({
+  wrapper: {
+    backgroundColor: '#bdc3c7',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   container: {
     flex: 1,
     padding: 20,
   },
   input: {
-    height: 30,
+    height: 25,
     backgroundColor: 'rgba(255,255,255,0.2)',
     borderWidth: 1,
     borderColor: 'gray',
@@ -132,7 +138,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   buttonContainer: {
-    height: 30,
+    height: 25,
     backgroundColor: 'rgba(255,255,255,0.2)',
     paddingVertical:  15,
     borderWidth: 1,
@@ -146,10 +152,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     backgroundColor: 'rgba(255,255,255,0.0)',
     alignItems: 'center',
-  },
-  error: {
-    color: 'red',
   }
 });
-
-export { LoginForm }

@@ -16,8 +16,8 @@ export default class Login extends Component {
     return (
       <View style={styles.wrapper}>
         <View style={styles.container}>
-          <View style={styles.logoContainer}>
-            <Text style={styles.title}>CoinStash</Text>
+          <View style={styles.llogoContainer}>
+            <Text style={styles.ttitle}>CoinStash</Text>
             <Text style={styles.subtitle}>Login to CoinStash Or Sign Up</Text>
           </View>
           <View style={styles.formContainer}>
@@ -30,7 +30,12 @@ export default class Login extends Component {
 }
 
 const styles = StyleSheet.create({
-
+  wrapper: {
+    backgroundColor: '#bdc3c7',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   container: {
     flex: 1,
   },
@@ -61,21 +66,5 @@ const styles = StyleSheet.create({
     width: 200,
     textAlign: 'center',
     fontSize: 16
-  },
-  buttonContainer: {
-    height: 30,
-    backgroundColor: 'rgba(255,255,255,0.2)',
-    paddingVertical:  15,
-    borderWidth: 1,
-    borderColor: 'gray',
-    alignContent: 'center',
-    justifyContent: 'center',
-    padding: 30,
-
-  },
-  buttonText: {
-    textAlign: 'center',
-    backgroundColor: 'rgba(255,255,255,0.0)',
-    alignItems: 'center',
   }
 });

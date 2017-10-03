@@ -370,6 +370,3 @@ export default class home extends Component {
       marginTop: 15
     }
   });
-
-
-  AppRegistry.registerComponent('home', () => home);

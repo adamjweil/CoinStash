@@ -138,6 +138,3 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
 });
-
-
-AppRegistry.registerComponent('p2pform', () => p2pForm);

@@ -43,9 +43,14 @@ class CoinbasesController < ActionController::API
   end
 
   def send_payment
+    @payment = Payment.new(payment_params)
     client
     primary_account.send(to: address, amount: '0.0001', currency: 'BTC', description: 'For being a dick!')
   end
 
+  private
 
+  def payment_params
+    params.require(:payment).permit(:to, :amount, :description)
+  end
 end

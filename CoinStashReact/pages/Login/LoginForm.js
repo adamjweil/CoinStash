@@ -40,7 +40,7 @@ export default class LoginForm extends Component {
       this.setState({showProgress: true})
       const { session } = this.state
 
-      var responseJson = await fetch("http://192.168.169.43:3000/login", {
+      var responseJson = await fetch("http://localhost:3000/login", {
         method: 'post',
         headers: {
           'Accept': 'application/json',

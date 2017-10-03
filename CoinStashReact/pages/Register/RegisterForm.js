@@ -41,7 +41,7 @@ export default class RegisterForm extends Component {
     this.setState({showProgress: true})
     const { user } = this.state
 
-    var accessToken = await fetch("http://192.168.169.43:3000/users", {
+    var accessToken = await fetch("http://localhost:3000/users", {
       method: 'post',
       headers: {
         'Accept': 'application/json',

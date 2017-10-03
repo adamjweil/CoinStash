@@ -4,15 +4,15 @@ class SessionsController < ApplicationController
     #If user login data are valid it will return the access_token so the
     #client app can use it for future request for the specific user.
     def create
-    user = User.find_by(email: params[:session][:email])
-      if user && user.authenticate(params[:session][:password])
-        session[:user_id] = user.id
-        puts session[:user_id]
-        render json: user
-      else
-        render json: {errors: "login failed."}
-      end
-  end
+      user = User.find_by(email: params[:session][:email])
+        if user && user.authenticate(params[:session][:password])
+          session[:user_id] = user.id
+          puts session[:user_id]
+          render json: user
+        else
+          render json: {errors: "login failed."}
+        end
+    end
         #Verifies the access_token so the client app would know if to login the user.
     def destroy
       if session.clear

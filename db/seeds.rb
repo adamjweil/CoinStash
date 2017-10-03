@@ -8,7 +8,7 @@
 require 'faker'
 User.delete_all
 
-coinbaseAccount = User.create(first_name: "CoinStash Test 1", last_name: "Final Project", email: "email@email.com", password: "password", password_confirmation: "password")
+# coinbaseAccount = User.create(first_name: "CoinStash Test 1", last_name: "Final Project", email: "email@email.com", password: "password", password_confirmation: "password")
 
 # Second Test Account
 # coinbaseAccount2 = User.create(first_name: "CoinStash Test 2", last_name: "Final Project", email: "coin@coin.com", password: "password", password_confirmation: "password")

@@ -4,9 +4,10 @@ import React, { Component } from 'react';
 
 import { StackNavigator} from 'react-navigation';
 import  { BackToHomeBTN }  from '../NavComponent/BackToHomeBTN';
-import { Button, ButtonGroup, FormLabel, FormInput } from 'react-native-elements';
+import { ButtonGroup, FormLabel, FormInput } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
 import Transactions from './Transactions';
+import Button from 'apsl-react-native-button'
 
 import {
   AppRegistry,
@@ -32,9 +33,17 @@ class ProfilePage extends Component {
       btcCCY: "",
       ethName: "",
       ethBal: "",
-      ethCCY: ""
+      ethCCY: "",
     };
   }
+  showTransactions() {
+    return(
+      <View>
+        <Transactions />
+      </View>
+    );
+  }
+
 
   componentDidMount() {
     fetch('http://localhost:3000/coinbases/usdwallet')
@@ -82,6 +91,7 @@ class ProfilePage extends Component {
   };
 
   render() {
+
     const { navigate } = this.props.navigation;
     return (
       <LinearGradient colors={['#43cea2', '#185a9d']} style={styles.linearGradient}>
@@ -100,32 +110,40 @@ class ProfilePage extends Component {
         </View>
 
         <ScrollView style={styles.scrollView}>
-          <View style={styles.accountWrapper}>
-            <View style={styles.accouontInfo}>
-              <Text style={styles.accountName}>Account Name: {this.state.usdName}{'\n'}</Text>
-              <Text>Balance: {this.state.usdBal}{'\n'}</Text>
-              <Text style={styles.currency}>Currency: {this.state.usdCCY}</Text>
-            </View>
+          <View>
+            <View style={styles.accountWrapper}>
+              <View style={styles.accouontInfo}>
+                <Text style={styles.accountName}>Account Name: {this.state.usdName}{'\n'}</Text>
+                <Text>Balance: {this.state.usdBal}{'\n'}</Text>
+                <Text style={styles.currency}>Currency: {this.state.usdCCY}</Text>
+              </View>
 
-            <View style={styles.accouontInfo}>
-              <Text style={styles.accountName}>Account Name: {this.state.btcName}{'\n'}</Text>
-              <Text>Balance: {this.state.btcBal}{'\n'}</Text>
-              <Text style={styles.currency}>Currency: {this.state.btcCCY}{'\n'}</Text>
-            </View>
+              <View style={styles.accouontInfo}>
+                <Text style={styles.accountName}>Account Name: {this.state.btcName}{'\n'}</Text>
+                <Text>Balance: {this.state.btcBal}{'\n'}</Text>
+                <Text style={styles.currency}>Currency: {this.state.btcCCY}{'\n'}</Text>
+              </View>
 
-            <View style={styles.accouontInfo}>
-              <Text style={styles.accountName}>Account Name: {this.state.ethName}{'\n'}</Text>
-              <Text>Balance: {this.state.ethBal}{'\n'}</Text>
-              <Text style={styles.currency}>Currency: {this.state.ethCCY}{'\n'}</Text>
-            </View>
+              <View style={styles.accouontInfo}>
+                <Text style={styles.accountName}>Account Name: {this.state.ethName}{'\n'}</Text>
+                <Text>Balance: {this.state.ethBal}{'\n'}</Text>
+                <Text style={styles.currency}>Currency: {this.state.ethCCY}{'\n'}</Text>
+              </View>
 
-            <View style={styles.accouontInfo}>
-              <Text style={styles.accountName}>Account Name: {this.state.ltcName}{'\n'}</Text>
-              <Text>Balance: {this.state.ltcBal}{'\n'}</Text>
-              <Text style={styles.currency}>Currency: {this.state.ltcCCY}{'\n'}</Text>
+              <View style={styles.accouontInfo}>
+                <Text style={styles.accountName}>Account Name: {this.state.ltcName}{'\n'}</Text>
+                <Text>Balance: {this.state.ltcBal}{'\n'}</Text>
+                <Text style={styles.currency}>Currency: {this.state.ltcCCY}{'\n'}</Text>
+              </View>
             </View>
           </View>
-      <Transactions />
+
+          <View>
+            <Button style={styles.transactionButton}
+                    onPress={() => this.showTransactions}>
+                    <Text>Transactions</Text>
+            </Button>
+          </View>
     </ScrollView>
   </LinearGradient>
     );
@@ -143,8 +161,8 @@ const styles = StyleSheet.create({
     // alignItems: 'left',
     padding: 10,
     marginBottom: 10,
-    width: 300,
-    height: 130,
+    width: 350,
+    height: 120,
     borderRadius: 10,
     borderWidth: 2,
     backgroundColor: '#F8F8F8'
@@ -161,6 +179,18 @@ const styles = StyleSheet.create({
   },
   accountWrapper: {
     alignItems: 'center'
+  },
+  transactionButton: {
+    backgroundColor: 'orange',
+    borderRadius: 5,
+    borderWidth: 2,
+    width: 300,
+    marginLeft: 40,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  transactionButtonFont: {
+    fontSize:18,
   }
 });
 

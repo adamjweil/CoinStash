@@ -10,9 +10,13 @@ class TransactionDetails extends Component {
   constructor() {
     super();
     this.state = {
-      transactions: [],
+      transactions: []
     };
     this.callFunc = this.callFunc.bind(this)
+  }
+  componentDidMount() {
+    this.getTransactions()
+    setInterval(this.getTransactions, 10000);
   }
 
   callFunc(){
@@ -23,11 +27,6 @@ class TransactionDetails extends Component {
     }
   }
 
-  componentDidMount() {
-    this.getTransactions()
-    setInterval(this.getTransactions, 10000);
-  }
-
   getTransactions = () => {
     fetch('http://localhost:3000/coinbases/transactions')
     .then(function(response){
@@ -36,6 +35,8 @@ class TransactionDetails extends Component {
       this.setState({transactions: obj})
     })
   }
+
+
 
   render() {
     return (
@@ -73,7 +74,6 @@ class TransactionDetails extends Component {
     );
   }
 }
-
 
 const styles = StyleSheet.create({
   transactionTitle: {

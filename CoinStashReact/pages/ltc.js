@@ -8,6 +8,7 @@ import React, { Component } from 'react';
 
 import { Header } from 'react-native-elements';
 import RSSFeed from '../NavComponent/RSSFeed';
+import TweetsComponent from '../NavComponent/TweetsComponent';
 import LiteCoinTweets from '../NavComponent/LiteCoinTweets'
 import { Button, ButtonGroup, FormLabel, FormInput } from 'react-native-elements';
 import { StackNavigator} from 'react-navigation';
@@ -20,7 +21,8 @@ import {
   StyleSheet,
   Text,
   View,
-  ScrollView
+  ScrollView,
+  Image
 } from 'react-native';
 
 class ltc extends Component {
@@ -28,8 +30,108 @@ class ltc extends Component {
     super();
     this.state = {
       liteCoinPrice: "",
-      liteCoinYdayPrice: ""
-    };
+      liteCoinYdayPrice: "",
+      selectedIndex: 0,
+      prevPriceString: "",
+      prevPriceNum: ""
+    }
+    this.updateIndex = this.updateIndex.bind(this)
+  }
+
+  updateIndex (selectedIndex) {
+    this.setState({selectedIndex})
+    if (this.state.selectedIndex === 0){
+      let d = new Date();
+      let yday = Math.floor(d.setDate(d.getDate() - 1) / 1000);
+      this.setState({prevPriceString: "Daily Change: "})
+      fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=LTC&tsyms=USD&ts=' + yday)
+      .then(function(response) {
+        return response.json();
+      }).then((obj) => {
+        let yday = obj.LTC.USD;
+        // console.log(yday);
+        fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=LTC&tsyms=USD')
+        .then(function(response) {
+          return response.json();
+        }).then((obj) => {
+          let today = obj.LTC.USD;
+          let todayNum = Math.floor(today)
+          let yDayCalcLTC = today - yday
+          let yDayLTC = yDayCalcLTC.toFixed(2);
+          console.log(todayNum)
+          this.setState({prevPriceNum: yDayLTC });
+        })
+      })
+    }
+    else if (this.state.selectedIndex === 1) {
+      let d = new Date();
+      let lWeek = Math.floor(d.setDate(d.getDate() - 7) / 1000);
+      this.setState({prevPriceString: "Weekly Change: "})
+      fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=LTC&tsyms=USD&ts=' + lWeek)
+      .then(function(response) {
+        return response.json();
+      }).then((obj) => {
+        let lWeek = obj.LTC.USD;
+        console.log(lWeek);
+        fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=LTC&tsyms=USD')
+        .then(function(response) {
+          return response.json();
+        }).then((obj) => {
+          let today = obj.LTC.USD;
+          let todayNum = Math.floor(today)
+          let lWeekCalcLTC = todayNum - lWeek
+          let lWeekLTC = lWeekCalcLTC.toFixed(2);
+          console.log(lWeekLTC)
+          this.setState({prevPriceNum: lWeekLTC });
+        })
+      })
+    }
+    else if (this.state.selectedIndex === 2) {
+      let d = new Date();
+      let lMonth = Math.floor(d.setMonth(d.getMonth() - 1) / 1000);
+      this.setState({prevPriceString: "Monthly Change: "})
+      fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=LTC&tsyms=USD&ts=' + lMonth)
+      .then(function(response) {
+        return response.json();
+      }).then((obj) => {
+        let lMonth = obj.LTC.USD;
+        console.log(lMonth);
+        fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=LTC&tsyms=USD')
+        .then(function(response) {
+          return response.json();
+        }).then((obj) => {
+          let today = obj.LTC.USD;
+          let todayNum = Math.floor(today)
+          let lMonthCalcLTC = todayNum - lMonth
+          let lMonthLTC = lMonthCalcLTC.toFixed(2);
+          console.log(lMonthLTC)
+          this.setState({prevPriceNum: lMonthLTC });
+        })
+      })
+    }
+    else if (this.state.selectedIndex === 3) {
+      let d = new Date();
+      let lYear = Math.floor(d.setFullYear(d.getFullYear() - 1) / 1000);
+      this.setState({prevPriceString: "Yearly Change: "})
+      fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=LTC&tsyms=USD&ts=' + lYear)
+      .then(function(response) {
+        return response.json();
+      }).then((obj) => {
+        let lYear = obj.LTC.USD;
+        console.log(lYear);
+        fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=LTC&tsyms=USD')
+        .then(function(response) {
+          return response.json();
+        }).then((obj) => {
+          let today = obj.LTC.USD;
+          let todayNum = Math.floor(today)
+          let lYearCalcLTC = todayNum - lYear
+          let lYearLTC = lYearCalcLTC.toFixed(2);
+          console.log(lYearLTC)
+          this.setState({prevPriceNum: lYearLTC });
+        })
+      })
+    }
   }
 
   getCurrentPrice = () => {
@@ -41,21 +143,11 @@ class ltc extends Component {
     })
   }
 
-  getYesterdayPrice = () => {
-    fetch('https://www.bitstamp.net/api/v2/ticker/ltcusd')
-    .then(function(response) {
-      return response.json();
-    })
-    .then((obj => {
-      this.setState({liteCoinYdayPrice: obj.open})
-    }))
-  }
-
   componentDidMount() {
     this.getCurrentPrice()
     setInterval(this.getCurrentPrice, 100000);
-    this.getYesterdayPrice()
-    setInterval(this.getYesterdayPrice, 100000);
+    this.updateIndex()
+    setInterval(this.updateIndex, 100000);
 
     let today = this.state.liteCoinPrice
     let yday = Math.round(this.state.liteCoinYdayPrice)
@@ -79,7 +171,10 @@ class ltc extends Component {
     let change = diff.toFixed(2);
     let colorBool = (change >= 0) ? "green" : "red";
 
+    const { liteCoinPrice, liteCoinYdayPrice } = this.state
     const { navigate } = this.props.navigation;
+    const buttons = ['Daily', 'Weekly', 'Monthly', 'Yearly']
+    const { selectedIndex } = this.state
     return (
       <View style={styles.container}>
         <View style={{marginTop: 30, flexDirection: 'row'}}>
@@ -92,15 +187,21 @@ class ltc extends Component {
         </View>
 
         <Text style={styles.coinPriceText}>
-          {`$${this.state.liteCoinPrice}`}{'\n'}
-          <Text style={styles.yDay}>Yesterday EOD: ${this.state.liteCoinYdayPrice}</Text>
+          {`$${this.state.liteCoinPrice}`}
         </Text>
 
         <Text style={styles.yDayPrice}>
           <Text style={{color: colorBool}}>
-            Daily Change: ${change}
+            {this.state.prevPriceString} {`$${this.state.prevPriceNum}`}
           </Text>
         </Text>
+
+        <ButtonGroup
+          onPress={this.updateIndex}
+          selectedIndex={selectedIndex}
+          buttons={buttons}
+          containerStyle={{height: 30}}
+         />
 
         <Text style={{fontSize: 20, paddingTop: 15, paddingBottom: 5}}>
           LTC Feed:

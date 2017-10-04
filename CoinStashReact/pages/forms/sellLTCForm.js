@@ -18,7 +18,6 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
-// var MarqueeLabel = require('@remobile/react-native-marquee-label');
 
 export default class form extends Component {
   constructor() {

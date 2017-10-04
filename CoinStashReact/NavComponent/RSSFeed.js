@@ -8,9 +8,11 @@ import {
   Text,
   View
 } from 'react-native';
-import { ListItem, Thumbnail, Body } from 'native-base';
-// var MarqueeLabel = require('@remobile/react-native-marquee-label');
-// import TopNewsMarquee from 'TopNewsMarquee';
+import {
+  ListItem,
+  Thumbnail,
+  Body
+} from 'native-base';
 
 export default class RSSFeed extends Component {
   constructor() {
@@ -37,13 +39,13 @@ export default class RSSFeed extends Component {
   render() {
     return (
       <View style={styles.rssView}>
-          {this.state.rssPosts.map((rss) =>
-            <ListItem>
-                <Text style={styles.rssPost}>
-                  {rss.title} <Text style={styles.rssPubDate}>published on.. {rss.pubDate}</Text>
-                </Text>
-            </ListItem>
-          )}
+        {this.state.rssPosts.map((rss) =>
+          <ListItem>
+            <Text style={styles.rssPost}>
+              {rss.title} <Text style={styles.rssPubDate}>published on.. {rss.pubDate}</Text>
+            </Text>
+          </ListItem>
+        )}
       </View>
 
     )

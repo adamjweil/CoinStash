@@ -1,8 +1,8 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+* Sample React Native App
+* https://github.com/facebook/react-native
+* @flow
+*/
 'use strict';
 import React, { Component } from 'react';
 
@@ -10,7 +10,12 @@ import { Header } from 'react-native-elements';
 import RSSFeed from '../NavComponent/RSSFeed';
 import TweetsComponent from '../NavComponent/TweetsComponent';
 import LiteCoinTweets from '../NavComponent/LiteCoinTweets'
-import { Button, ButtonGroup, FormLabel, FormInput } from 'react-native-elements';
+import {
+  Button,
+  ButtonGroup,
+  FormLabel,
+  FormInput
+} from 'react-native-elements';
 import { StackNavigator} from 'react-navigation';
 import buyLTCForm from './forms/buyLTCForm';
 import sellLTCForm from './forms/sellLTCForm';
@@ -208,6 +213,7 @@ class ltc extends Component {
         </Text>
 
         <ScrollView>
+
         <Text style={{color: '#185A9D', textAlign: 'center', fontWeight: 'bold', fontSize: 15}}>
           LiteCoin Tweets
         </Text>
@@ -216,6 +222,7 @@ class ltc extends Component {
           LiteCoin RSS Feeds
         </Text>
         <RSSFeed />
+
         </ScrollView>
         <View style={{flexDirection: 'row'}}>
           <Button
@@ -223,14 +230,14 @@ class ltc extends Component {
             textStyle={{textAlign: 'center'}}
             title={`BUY`}
             onPress={()=> navigate('buyLTCForm')}
-            />
+          />
           <Button
             raised
             buttonStyle={styles.buySellBtnStyleRight}
             textStyle={{textAlign: 'center'}}
             title={`SELL`}
             onPress={()=> navigate('sellLTCForm')}
-            />
+          />
         </View>
       </View>
     );

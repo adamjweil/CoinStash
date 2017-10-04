@@ -6357,3 +6357,354 @@ Completed 204 No Content in 1877ms (ActiveRecord: 0.0ms)
 Completed 204 No Content in 1674ms (ActiveRecord: 0.0ms)
 
 
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-03 14:30:03 -0400
+  [1m[35m (120.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 780ms (Views: 15.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 14:30:05 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 903ms (Views: 15.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/litecoin" for 127.0.0.1 at 2017-10-03 14:30:07 -0400
+Processing by TweetsController#find_litecoin as */*
+Completed 200 OK in 647ms (Views: 20.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-03 14:31:43 -0400
+Processing by TweetsController#find_bitcoin as */*
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 14:31:46 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 3475ms (Views: 10.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/litecoin" for 127.0.0.1 at 2017-10-03 14:31:48 -0400
+Processing by TweetsController#find_litecoin as */*
+Completed 200 OK in 3583ms (Views: 9.6ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 3655ms (Views: 18.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/litecoin" for 127.0.0.1 at 2017-10-03 14:34:28 -0400
+Processing by TweetsController#find_litecoin as */*
+Completed 200 OK in 3005ms (Views: 19.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/litecoin" for 127.0.0.1 at 2017-10-03 14:36:08 -0400
+Processing by TweetsController#find_litecoin as */*
+Completed 200 OK in 791ms (Views: 30.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/litecoin" for 127.0.0.1 at 2017-10-03 14:37:49 -0400
+Processing by TweetsController#find_litecoin as */*
+Completed 200 OK in 3515ms (Views: 14.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/litecoin" for 127.0.0.1 at 2017-10-03 14:39:28 -0400
+Processing by TweetsController#find_litecoin as */*
+Completed 200 OK in 679ms (Views: 18.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/litecoin" for 127.0.0.1 at 2017-10-03 14:41:08 -0400
+Processing by TweetsController#find_litecoin as */*
+Completed 200 OK in 703ms (Views: 15.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/litecoin" for 127.0.0.1 at 2017-10-03 14:42:48 -0400
+Processing by TweetsController#find_litecoin as */*
+Completed 200 OK in 806ms (Views: 13.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/litecoin" for 127.0.0.1 at 2017-10-03 14:44:29 -0400
+Processing by TweetsController#find_litecoin as */*
+Completed 200 OK in 3282ms (Views: 13.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/litecoin" for 127.0.0.1 at 2017-10-03 14:50:40 -0400
+Processing by TweetsController#find_litecoin as */*
+Completed 200 OK in 3257ms (Views: 17.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-03 14:51:58 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 3835ms (Views: 23.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 192.168.169.43 at 2017-10-03 14:55:26 -0400
+Processing by SessionsController#create as JSON
+  Parameters: {"session"=>{"email"=>"sarah@sarah.com", "password"=>"[FILTERED]", "error"=>"", "showProgress"=>false}}
+  [1m[36mUser Load (99.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sarah@sarah.com"], ["LIMIT", 1]]
+Completed 200 OK in 4245ms (Views: 1.1ms | ActiveRecord: 1018.0ms)
+
+
+Started POST "/login" for 192.168.169.43 at 2017-10-03 14:55:52 -0400
+Processing by SessionsController#create as JSON
+  Parameters: {"session"=>{"email"=>"sarah@sarah.com", "password"=>"[FILTERED]", "error"=>"", "showProgress"=>false}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sarah@sarah.com"], ["LIMIT", 1]]
+Completed 200 OK in 674ms (Views: 0.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-03 14:55:56 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 742ms (Views: 21.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-03 14:57:36 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 599ms (Views: 7.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-03 14:59:16 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 660ms (Views: 16.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-03 15:00:56 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 690ms (Views: 14.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 192.168.169.43 at 2017-10-03 15:01:42 -0400
+Processing by SessionsController#create as JSON
+  Parameters: {"session"=>{"email"=>"sarah@sarah.com", "password"=>"[FILTERED]", "error"=>"", "showProgress"=>false}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sarah@sarah.com"], ["LIMIT", 1]]
+Completed 200 OK in 631ms (Views: 1.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-03 15:01:45 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 734ms (Views: 7.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-03 15:03:25 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 760ms (Views: 18.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 192.168.169.43 at 2017-10-03 15:13:06 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"user"=>{"first_name"=>"Abe", "last_name"=>"Abe", "email"=>"abe@abe.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "errors"=>[], "showProgress"=>false}}
+Unpermitted parameters: :errors, :showProgress
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "abe@abe.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."access_token" = $1 LIMIT $2[0m  [["access_token", "lr7yRcpw_lLLO5wdiyjRDw"], ["LIMIT", 1]]
+  [1m[35mSQL (57.0ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Abe"], ["last_name", "Abe"], ["email", "abe@abe.com"], ["password_digest", "$2a$10$hFGrcZg5fiJ.oru2INUua.39zwajPogSEWZCEv7vndTwa76KPCZuq"], ["access_token", "lr7yRcpw_lLLO5wdiyjRDw"], ["created_at", "2017-10-03 19:13:06.958164"], ["updated_at", "2017-10-03 19:13:06.958164"]]
+  [1m[35m (9.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 778ms (Views: 0.2ms | ActiveRecord: 120.8ms)
+
+
+Started POST "/users" for 192.168.169.43 at 2017-10-03 15:15:41 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"user"=>{"first_name"=>"H", "last_name"=>"H", "email"=>"h@h.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "errors"=>[], "showProgress"=>false}}
+Unpermitted parameters: :errors, :showProgress
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "h@h.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."access_token" = $1 LIMIT $2[0m  [["access_token", "agAEm3lh4qVkOjdFHnaTgA"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "H"], ["last_name", "H"], ["email", "h@h.com"], ["password_digest", "$2a$10$SP.pbAS/qK0s20iVGQeuJufitFxROQDWFOdEC6kdrTfEuz66wvT6q"], ["access_token", "agAEm3lh4qVkOjdFHnaTgA"], ["created_at", "2017-10-03 19:15:42.017990"], ["updated_at", "2017-10-03 19:15:42.017990"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 490ms (Views: 0.1ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/users" for 192.168.169.43 at 2017-10-03 15:21:31 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"user"=>{"first_name"=>"Hi", "last_name"=>"Hi", "email"=>"hi@hi.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "errors"=>[], "showProgress"=>false}}
+Unpermitted parameters: :errors, :showProgress
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "hi@hi.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."access_token" = $1 LIMIT $2[0m  [["access_token", "b2-1t7-65MOKHYn25JnT_w"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "access_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Hi"], ["last_name", "Hi"], ["email", "hi@hi.com"], ["password_digest", "$2a$10$fw5hbrLH.p/SftHU6gsMr..KTYzYipjXTC7z0sor/v.NRt1Ef625K"], ["access_token", "b2-1t7-65MOKHYn25JnT_w"], ["created_at", "2017-10-03 19:21:31.776688"], ["updated_at", "2017-10-03 19:21:31.776688"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 615ms (Views: 0.1ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/login" for 192.168.169.43 at 2017-10-03 15:27:48 -0400
+Processing by SessionsController#create as JSON
+  Parameters: {"session"=>{"email"=>"sarah@sarah.com", "password"=>"[FILTERED]", "error"=>"", "showProgress"=>false}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sarah@sarah.com"], ["LIMIT", 1]]
+Completed 200 OK in 1011ms (Views: 0.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 15:27:53 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 941ms (Views: 26.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2017-10-03 16:48:10 -0400
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"session"=>{"email"=>"sarah@sarah.com", "password"=>"[FILTERED]", "error"=>"", "showProgress"=>false}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sarah@sarah.com"], ["LIMIT", 1]]
+Completed 200 OK in 846ms (Views: 1.5ms | ActiveRecord: 5.8ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2017-10-03 16:49:38 -0400
+Processing by SessionsController#create as JSON
+  Parameters: {"session"=>{"email"=>"sarah@sarah.com", "password"=>"[FILTERED]", "error"=>"", "showProgress"=>false}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sarah@sarah.com"], ["LIMIT", 1]]
+Completed 200 OK in 584ms (Views: 0.7ms | ActiveRecord: 50.4ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2017-10-03 16:52:08 -0400
+Processing by SessionsController#create as JSON
+  Parameters: {"session"=>{"email"=>"sarah@sarah.com", "password"=>"[FILTERED]", "error"=>"", "showProgress"=>false}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sarah@sarah.com"], ["LIMIT", 1]]
+Completed 200 OK in 637ms (Views: 1.2ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2017-10-03 16:53:33 -0400
+Processing by SessionsController#create as JSON
+  Parameters: {"session"=>{"email"=>"sarah@sarah.com", "password"=>"[FILTERED]", "error"=>"", "showProgress"=>false}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sarah@sarah.com"], ["LIMIT", 1]]
+Completed 200 OK in 555ms (Views: 0.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2017-10-03 17:00:27 -0400
+Processing by SessionsController#create as JSON
+  Parameters: {"session"=>{"email"=>"sarah@sarah.com", "password"=>"[FILTERED]", "error"=>"", "showProgress"=>false}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sarah@sarah.com"], ["LIMIT", 1]]
+Completed 200 OK in 590ms (Views: 1.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 17:01:47 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 774ms (Views: 14.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 17:03:27 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 715ms (Views: 20.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 17:05:07 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 725ms (Views: 13.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 17:06:47 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 746ms (Views: 22.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 17:08:27 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 742ms (Views: 22.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 17:10:07 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 973ms (Views: 22.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 17:11:47 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 909ms (Views: 24.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 17:13:27 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 787ms (Views: 20.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 17:15:07 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 783ms (Views: 23.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 17:16:47 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 864ms (Views: 13.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 17:18:27 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 814ms (Views: 25.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 17:20:07 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 787ms (Views: 14.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 17:21:47 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 802ms (Views: 27.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 17:23:27 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 730ms (Views: 23.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 17:25:07 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 1055ms (Views: 25.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 17:26:47 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 822ms (Views: 26.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 17:28:27 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 725ms (Views: 27.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 17:30:07 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 737ms (Views: 25.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 17:31:47 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 718ms (Views: 23.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 17:33:27 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 748ms (Views: 32.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 17:35:07 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 682ms (Views: 18.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 17:36:47 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 707ms (Views: 32.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 17:38:27 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 748ms (Views: 13.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 17:40:07 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 751ms (Views: 10.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 17:41:47 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 669ms (Views: 12.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 17:43:27 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 977ms (Views: 33.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 17:45:07 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 807ms (Views: 33.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-03 17:46:47 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 750ms (Views: 34.5ms | ActiveRecord: 0.0ms)
+
+

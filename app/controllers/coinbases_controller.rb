@@ -14,21 +14,20 @@ class CoinbasesController < ActionController::API
 
   def usd_wallet
      client
-     render json: @client.accounts[0]
+     render json: @client.accounts[2]
   end
 
   def ltc_wallet
      client
-     render json: @client.accounts[1]
+     render json: @client.accounts[0]
   end
 
   def eth_wallet
      client
-     render json: @client.accounts[2]
+     render json: @client.accounts[1]
   end
 
   def btc_wallet
-     client
      render json: @client.accounts[3]
   end
 
@@ -42,10 +41,22 @@ class CoinbasesController < ActionController::API
     render json: @client.primary_account.transactions
   end
 
-  def send_payment
+  def account_id
     client
-    primary_account.send(to: address, amount: '0.0001', currency: 'BTC', description: 'For being a dick!')
+    render json: @client[0].id
   end
 
+  def send_payment
+    client
+    primary_account = client.primary_account
+    response = primary_account.send({:to => 'WALLET_ADDRESS',
+                           :amount => '0.001',
+                           :currency => 'BTC'})
+  end
 
+  private
+
+  def payment_params
+    params.require(:payment).permit(:to, :amount, :description)
+  end
 end

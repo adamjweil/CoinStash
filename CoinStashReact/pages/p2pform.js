@@ -1,3 +1,4 @@
+
 /**
 * Sample React Native App
 * https://github.com/facebook/react-native
@@ -21,57 +22,45 @@ import {
 export default class p2pForm extends Component {
   constructor() {
     super();
-    this.state = {
+    this.state = { session: {
       selectedIndex: 0,
-      email: "",
-      amount: '00.00'
+      to: "no",
+      amount: '00.00',
+      currency: 'BTC'
     }
+  };
     this.updateIndex = this.updateIndex.bind(this)
   }
   updateIndex (selectedIndex) {
     this.setState({selectedIndex})
-    let currency = ""
-    if (selectedIndex = 0) {
-      currency = 'BTC'
-    } else if (selectedIndex = 1){
-      currency = 'ETH'
-    } else if (selectedIndex = 2){
-      currency = 'LTC'
-    } else if (selectedIndex = 3){
-      currency = 'USD'
-    } else {
-      currency = "invalid"
-    }
   }
+  handleInputChange(name, val) {
+    const session = this.state.session;
+    session[name] = val;
+    this.setState({session: session})
+  }
+  onChangeEmail = this.handleInputChange.bind(this, "to")
+  onChangeAmount = this.handleInputChange.bind(this, "amount")
 
 
   handlePress() {
-    this.setState()
-    const { sendMoney } = this.state
-
-    var responseJson = await fetch("http://localhost:3000/coinbases/sendpayment", {
+    const { session } = this.state
+    let responseJson = fetch ("http://localhost:3000/coinbases/sendpayment", {
       method: 'post',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({session})
+      body: JSON.stringify({
+        to: session.to,
+        amount: session.amount,
+        currency: session.currency
+       })
     })
     .then(function(response) {return response.json()} )
     .catch(error => console.error("fetch error: ", error))
 
-    let accessToken = responseJson.access_token
-
-    await AsyncStorage.setItem('access_token', accessToken, (err)=> {
-      if(err){
-        console.error("an error");
-        console.error(err);
-      }
-    })
-    this.props.handleToken2()
-    this.props.stringTokenCallBack()
-
-    var value = await AsyncStorage.getItem('access_token')
+    let sendParams = responseJson
 }
 
 
@@ -109,7 +98,7 @@ handleUserSubmit = this.handlePress.bind(this)
               placeholder={"Enter email"}
               keyboardType={'email-address'}
               style={styles.sendPaymentAddress, styles.sendPaymentValue}
-              onChangeText={(email) => this.setState({email})}
+              onChangeText={this.onChangeEmail}
               value={this.state.input} />
             </View>
 
@@ -119,7 +108,7 @@ handleUserSubmit = this.handlePress.bind(this)
                 placeholder={"Enter amount"}
                 keyboardType={'numeric'}
                 style={styles.sendPaymentValue}
-                onChangeText={(amount) => this.setState({amount})}
+                onChangeText={this.onChangeAmount}
                 value={this.state.amount} />
               </View>
 

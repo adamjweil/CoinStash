@@ -59,7 +59,7 @@ class CoinbasesController < ActionController::API
 
   def transactions
     client
-    render json: @client.primary_account.transactions
+    render json: @client.primary_account.transactionsp
   end
 
   def account_id
@@ -73,11 +73,12 @@ class CoinbasesController < ActionController::API
   end
 
   def send_payment
+    
     client
     primary_account = client.primary_account
-    response = primary_account.send({:to => 'example@gmail.com',
-                           :amount => '0.0008',
-                           :currency => 'BTC'})
+    response = primary_account.send({:to => params[:to],
+                           :amount => params[:amount],
+                           :currency => params[:currency]})
   end
 
   def buy
@@ -103,6 +104,6 @@ class CoinbasesController < ActionController::API
   private
 
   def payment_params
-    params.require(:payment).permit(:to, :amount, :description)
+    params.require(:payment).permit(:to, :amount, :currency)
   end
 end

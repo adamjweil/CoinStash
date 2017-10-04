@@ -6,23 +6,15 @@ import { AppRegistry, StyleSheet, Text, View, ScrollView } from 'react-native';
 import { ListItem, Thumbnail, Body } from 'native-base';
 import Button from 'apsl-react-native-button'
 
-class Transactions extends Component {
+class BitTransactions extends Component {
   constructor() {
     super();
     this.state = {
-      transactions: [],
-
+      bitTransactions: [],
     };
     this.callFunc = this.callFunc.bind(this)
   }
 
-  callFunc(){
-    if(this.transBoolean){
-      this.setState({transBoolean: false});
-    } else {
-      this.setState({transBoolean: true});
-    }
-  }
 
   componentDidMount() {
     this.getTransactions()
@@ -30,11 +22,12 @@ class Transactions extends Component {
   }
 
   getTransactions = () => {
-    fetch('http://localhost:3000/coinbases/transactions')
+    fetch('http://localhost:3000/coinbases/transactions/btc')
     .then(function(response){
       return response.json();
     }).then((obj) => {
-      this.setState({transactions: obj})
+      console.log(obj)
+      this.setState({bitTransactions: obj})
     })
   }
 
@@ -45,7 +38,7 @@ class Transactions extends Component {
         <View>
           <Text style={styles.transactionTitle}>Transaction History</Text>
         </View>
-        {this.state.transactions.map((trans, i) =>
+        {this.state.bitTransactions.map((trans, i) =>
           <View style={styles.transactionsContainer}>
             <View style={styles.index}><Text style={styles.index}>{i+1}</Text></View>
             <ListItem>
@@ -110,4 +103,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Transactions;
+export default BitTransactions;

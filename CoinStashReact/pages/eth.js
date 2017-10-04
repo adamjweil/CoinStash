@@ -11,8 +11,8 @@ import TweetsComponent from '../NavComponent/TweetsComponent';
 import EthereumTweets from '../NavComponent/EthereumTweets';
 import { Button, ButtonGroup, FormLabel, FormInput } from 'react-native-elements';
 import { StackNavigator} from 'react-navigation';
-import buyETHForm from './forms/buyETHForm';
-import sellETHForm from './forms/sellETHForm';
+import BuyETHForm from './forms/buyETHForm';
+import SellETHForm from './forms/sellETHForm';
 import { BackToHomeBTN } from '../NavComponent/BackToHomeBTN';
 import { AppRegistry, StyleSheet, Text, View, ScrollView, Image } from 'react-native';
 
@@ -205,13 +205,13 @@ class eth extends Component {
             buttonStyle={styles.buySellBtnStyleLeft}
             textStyle={{textAlign: 'center'}}
             title={`BUY`}
-            onPress={()=> navigate('buyETHForm')}
+            onPress={()=> navigate('BuyETHForm')}
             />
           <Button
             buttonStyle={styles.buySellBtnStyleRight}
             textStyle={{textAlign: 'center'}}
             title={`SELL`}
-            onPress={()=> navigate('sellETHForm')}
+            onPress={()=> navigate('SellETHForm')}
             />
         </View>
       </View>
@@ -223,15 +223,15 @@ const ethNav = StackNavigator({
   selfETH: {
     screen: eth
   },
-  buyETHForm: {
-    screen: buyETHForm,
+  BuyETHForm: {
+    screen: BuyETHForm,
     navigationOptions: {
       title: 'Buy ETH',
       headerBackTitle: 'ETH'
     }
   },
-  sellETHForm: {
-    screen: sellETHForm,
+  SellETHForm: {
+    screen: SellETHForm,
     navigationOptions: {
       title: 'Sell ETH',
       headerBackTitle: 'ETH'

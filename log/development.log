@@ -6905,3 +6905,442 @@ Completed 500 Internal Server Error in 571ms (ActiveRecord: 0.0ms)
 Coinbase::Wallet::ValidationError (You can't send a payment from an account to itself.):
   
 app/controllers/coinbases_controller.rb:79:in `send_payment'
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:14:21 -0400
+  [1m[35m (3.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1112ms (Views: 29.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:16:01 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1723ms (Views: 37.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:17:41 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1581ms (Views: 236.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:19:21 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1181ms (Views: 38.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:21:01 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1652ms (Views: 53.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:22:41 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1402ms (Views: 164.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:24:21 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1192ms (Views: 61.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:26:01 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1578ms (Views: 69.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:27:41 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1168ms (Views: 36.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:29:14 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1494ms (Views: 76.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:29:21 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1034ms (Views: 24.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:30:54 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1710ms (Views: 59.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:31:01 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1096ms (Views: 126.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:32:34 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1279ms (Views: 55.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:32:41 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1100ms (Views: 48.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:34:14 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1531ms (Views: 36.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:34:21 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1392ms (Views: 60.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-04 15:34:33 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 1082ms (Views: 26.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:35:26 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1523ms (Views: 66.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:35:54 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1186ms (Views: 41.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:36:01 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1037ms (Views: 20.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-04 15:36:13 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 949ms (Views: 53.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:37:06 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1167ms (Views: 76.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:37:34 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1115ms (Views: 57.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:37:41 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1076ms (Views: 47.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-04 15:37:53 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 1164ms (Views: 41.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:38:46 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 974ms (Views: 34.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:39:14 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1284ms (Views: 34.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:39:21 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1004ms (Views: 28.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/ethereum" for 127.0.0.1 at 2017-10-04 15:39:33 -0400
+Processing by TweetsController#find_ethereum as */*
+Completed 200 OK in 985ms (Views: 28.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:40:26 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1013ms (Views: 20.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:43:54 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1425ms (Views: 70.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:45:34 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1347ms (Views: 53.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:47:14 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1058ms (Views: 44.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:48:54 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1098ms (Views: 55.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:50:34 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1180ms (Views: 42.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/coinbases/paymentmethods" for 127.0.0.1 at 2017-10-04 15:51:45 -0400
+Processing by CoinbasesController#payment_methods as HTML
+Completed 200 OK in 337ms (Views: 4.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:52:14 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 969ms (Views: 6.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:53:54 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1391ms (Views: 77.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:55:34 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 762ms (Views: 17.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:57:14 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1360ms (Views: 58.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 15:58:54 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 813ms (Views: 33.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:00:34 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 794ms (Views: 19.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:02:14 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 848ms (Views: 53.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:03:54 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 953ms (Views: 39.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:04:21 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 959ms (Views: 83.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/coinbases/buy" for 127.0.0.1 at 2017-10-04 16:04:35 -0400
+Processing by CoinbasesController#buy as JSON
+  Parameters: {"amount"=>"1", "coinbasis"=>{"amount"=>"1"}}
+Completed 204 No Content in 1483ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:06:01 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 928ms (Views: 72.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:07:41 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 859ms (Views: 40.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:09:21 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 848ms (Views: 41.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:11:01 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1555ms (Views: 48.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:12:41 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1068ms (Views: 54.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:13:49 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1200ms (Views: 16.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:14:57 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1142ms (Views: 58.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:16:37 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 803ms (Views: 54.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:18:17 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1250ms (Views: 51.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:18:42 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 955ms (Views: 34.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:20:23 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1352ms (Views: 31.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:22:13 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1092ms (Views: 76.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:23:53 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1268ms (Views: 209.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/coinbases/sell" for 127.0.0.1 at 2017-10-04 16:25:32 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/coinbases/sell"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:25:33 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 940ms (Views: 44.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:27:04 -0400
+  [1m[35m (7.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1137ms (Views: 12.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/coinbases/sell" for 127.0.0.1 at 2017-10-04 16:27:21 -0400
+Processing by CoinbasesController#sell as JSON
+  Parameters: {"amount"=>"0.0002", "coinbasis"=>{"amount"=>"0.0002"}}
+Completed 500 Internal Server Error in 2467ms (ActiveRecord: 0.0ms)
+
+
+  
+Coinbase::Wallet::ParamRequiredError (Required parameter missing: currency):
+  
+app/controllers/coinbases_controller.rb:98:in `sell'
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:28:44 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 737ms (Views: 7.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:30:24 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 794ms (Views: 15.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:32:04 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 917ms (Views: 21.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:32:41 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1019ms (Views: 50.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/coinbases/sellBTC" for 127.0.0.1 at 2017-10-04 16:33:06 -0400
+Processing by CoinbasesController#sellBTC as JSON
+  Parameters: {"amount"=>"0.0002", "coinbasis"=>{"amount"=>"0.0002"}}
+Completed 500 Internal Server Error in 753ms (ActiveRecord: 0.0ms)
+
+
+  
+Coinbase::Wallet::ValidationError (The transfer amount is less than the fee (0.00023600 BTC). Please enter a larger value.):
+  
+app/controllers/coinbases_controller.rb:98:in `sellBTC'
+Started POST "/coinbases/sellBTC" for 127.0.0.1 at 2017-10-04 16:33:49 -0400
+Processing by CoinbasesController#sellBTC as JSON
+  Parameters: {"amount"=>"0.000236", "coinbasis"=>{"amount"=>"0.000236"}}
+Completed 500 Internal Server Error in 755ms (ActiveRecord: 0.0ms)
+
+
+  
+Coinbase::Wallet::ValidationError (The total must be positive. Please enter a larger value.):
+  
+app/controllers/coinbases_controller.rb:98:in `sellBTC'
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:34:21 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 759ms (Views: 62.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:36:01 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1207ms (Views: 27.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:37:41 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 958ms (Views: 68.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:39:21 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 960ms (Views: 29.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:41:01 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1551ms (Views: 40.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:41:21 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 937ms (Views: 51.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/coinbases/sellBTC" for 127.0.0.1 at 2017-10-04 16:41:43 -0400
+Processing by CoinbasesController#sellBTC as JSON
+  Parameters: {"amount"=>"0.00024", "coinbasis"=>{"amount"=>"0.00024"}}
+Completed 204 No Content in 1355ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:43:01 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 1412ms (Views: 50.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:44:41 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 676ms (Views: 56.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tweets/bitcoin" for 127.0.0.1 at 2017-10-04 16:46:21 -0400
+Processing by TweetsController#find_bitcoin as */*
+Completed 200 OK in 740ms (Views: 23.0ms | ActiveRecord: 0.0ms)
+
+

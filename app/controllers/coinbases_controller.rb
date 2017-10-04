@@ -59,7 +59,7 @@ class CoinbasesController < ActionController::API
 
   def transactions
     client
-    render json: @client.primary_account.transactionsp
+    render json: @client.primary_account.transactions
   end
 
   def account_id
@@ -73,7 +73,7 @@ class CoinbasesController < ActionController::API
   end
 
   def send_payment
-    
+
     client
     primary_account = client.primary_account
     response = primary_account.send({:to => params[:to],
@@ -81,7 +81,7 @@ class CoinbasesController < ActionController::API
                            :currency => params[:currency]})
   end
 
-  def buy
+  def buyBTC
     client
     account = client.primary_account
     payment_method = client.payment_methods.first
@@ -90,13 +90,53 @@ class CoinbasesController < ActionController::API
                      :payment_method => payment_method.id})
   end
 
-  def sell
+  def sellBTC
     client
     account = client.primary_account
     payment_method = client.payment_methods.first
 
-    sell = account.sell({:amount => ".00004",
+    sell = account.sell({:amount => params[:amount],
                        :currency => "BTC",
+                       :payment_method => payment_method.id})
+
+  end
+
+  def buyETH
+    client
+    account = client.primary_account
+    payment_method = client.payment_methods.first
+    buy = account.buy({:amount => "1.36",
+                     :currency => "USD",
+                     :payment_method => payment_method.id})
+  end
+
+  def sellETH
+    client
+    account = client.primary_account
+    payment_method = client.payment_methods.first
+
+    sell = account.sell({:amount => params[:amount],
+                       :currency => "ETH",
+                       :payment_method => payment_method.id})
+
+  end
+
+  def buyLTC
+    client
+    account = client.primary_account
+    payment_method = client.payment_methods.first
+    buy = account.buy({:amount => "1.36",
+                     :currency => "USD",
+                     :payment_method => payment_method.id})
+  end
+
+  def sellLTC
+    client
+    account = client.primary_account
+    payment_method = client.payment_methods.first
+
+    sell = account.sell({:amount => params[:amount],
+                       :currency => "LTC",
                        :payment_method => payment_method.id})
 
   end

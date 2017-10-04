@@ -11,8 +11,8 @@ import TweetsComponent from '../NavComponent/TweetsComponent';
 import LiteCoinTweets from '../NavComponent/LiteCoinTweets'
 import { Button, ButtonGroup, FormLabel, FormInput } from 'react-native-elements';
 import { StackNavigator} from 'react-navigation';
-import buyLTCForm from './forms/buyLTCForm';
-import sellLTCForm from './forms/sellLTCForm';
+import BuyLTCForm from './forms/buyLTCForm';
+import SellLTCForm from './forms/sellLTCForm';
 import { BackToHomeBTN } from '../NavComponent/BackToHomeBTN';
 import { AppRegistry, StyleSheet, Text, View, ScrollView, Image } from 'react-native';
 
@@ -207,14 +207,14 @@ class ltc extends Component {
             buttonStyle={styles.buySellBtnStyleLeft}
             textStyle={{textAlign: 'center'}}
             title={`BUY`}
-            onPress={()=> navigate('buyLTCForm')}
+            onPress={()=> navigate('BuyLTCForm')}
           />
           <Button
             raised
             buttonStyle={styles.buySellBtnStyleRight}
             textStyle={{textAlign: 'center'}}
             title={`SELL`}
-            onPress={()=> navigate('sellLTCForm')}
+            onPress={()=> navigate('SellLTCForm')}
           />
         </View>
       </View>
@@ -226,15 +226,15 @@ const ltcNav = StackNavigator({
   selfLTC: {
     screen: ltc
   },
-  buyLTCForm: {
-    screen: buyLTCForm,
+  BuyLTCForm: {
+    screen: BuyLTCForm,
     navigationOptions: {
       title: 'Buy LTC',
       headerBackTitle: 'LTC'
     }
   },
-  sellLTCForm: {
-    screen: sellLTCForm,
+  SellLTCForm: {
+    screen: SellLTCForm,
     navigationOptions: {
       title: 'Sell LTC',
       headerBackTitle: 'LTC'

@@ -178,7 +178,7 @@ class eth extends Component {
           <Text style={styles.coinPriceText}>
             {`$${this.state.ethereumPrice}`}
           </Text>
-        </View>
+
 
           <Text style={styles.yDayPrice}>
             <Text style={{color: `${this.state.colorBoolean}`, fontWeight: 'bold'}}>

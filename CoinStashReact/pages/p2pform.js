@@ -45,34 +45,34 @@ export default class p2pForm extends Component {
   }
 
 
-  handlePress() {
-    this.setState()
-    const { sendMoney } = this.state
-
-    var responseJson = await fetch("http://localhost:3000/coinbases/sendpayment", {
-      method: 'post',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({session})
-    })
-    .then(function(response) {return response.json()} )
-    .catch(error => console.error("fetch error: ", error))
-
-    let accessToken = responseJson.access_token
-
-    await AsyncStorage.setItem('access_token', accessToken, (err)=> {
-      if(err){
-        console.error("an error");
-        console.error(err);
-      }
-    })
-    this.props.handleToken2()
-    this.props.stringTokenCallBack()
-
-    var value = await AsyncStorage.getItem('access_token')
-}
+//   handlePress() {
+//     this.setState()
+//     const { sendMoney } = this.state
+//
+//     var responseJson = await fetch("http://localhost:3000/coinbases/sendpayment", {
+//       method: 'post',
+//       headers: {
+//         'Accept': 'application/json',
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify({session})
+//     })
+//     .then(function(response) {return response.json()} )
+//     .catch(error => console.error("fetch error: ", error))
+//
+//     let accessToken = responseJson.access_token
+//
+//     await AsyncStorage.setItem('access_token', accessToken, (err)=> {
+//       if(err){
+//         console.error("an error");
+//         console.error(err);
+//       }
+//     })
+//     this.props.handleToken2()
+//     this.props.stringTokenCallBack()
+//
+//     var value = await AsyncStorage.getItem('access_token')
+// }
 
 
 handleUserSubmit = this.handlePress.bind(this)

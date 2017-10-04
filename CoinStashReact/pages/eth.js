@@ -176,12 +176,16 @@ class eth extends Component {
       <View style={styles.container}>
         <View style={styles.backBTNStyle}>
           <BackToHomeBTN navigate={navigate} />
-          <Text style={styles.coinPriceTitle}>ETH</Text>
+
           <Text
             style={{color: 'rgba(1,1,1,0)', paddingLeft: 15, paddingRight: 15}}>
             BACK
           </Text>
         </View>
+
+        <Text style={styles.feedTitle}>
+          ETH Feed:
+        </Text>
 
           <Text style={styles.coinPriceText}>
             {`$${this.state.ethereumPrice}`}
@@ -200,16 +204,14 @@ class eth extends Component {
           containerStyle={styles.btnGroupStyle}
           />
 
-        <Text style={styles.feedTitle}>
-          ETH Feed:
-        </Text>
+
 
         <ScrollView>
-          <Text style={{color: '#185A9D', textAlign: 'center', fontWeight: 'bold', fontSize: 15}}>
+          <Text style={{color: '#185A9D', textAlign: 'center', fontWeight: 'bold', fontSize: 15, marginBottom: 10}}>
             Ethereum Tweets
           </Text>
           <EthereumTweets />
-          <Text style={{color: '#185A9D', textAlign: 'center', fontWeight: 'bold', fontSize: 15, paddingTop: 10, paddingBottom: 5}}>
+          <Text style={{color: '#185A9D', textAlign: 'center', fontWeight: 'bold', fontSize: 15, paddingTop: 10, paddingBottom: 5, marginBottom: 5}}>
             Ethereum RSS Feeds
           </Text>
           <RSSFeed />
@@ -263,13 +265,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF'
   },
   backBTNStyle: {
-    flexDirection: 'row',
-    marginTop: 30
-    // marginLeft: 0
+    flexDirection: 'column',
+    marginTop: 30,
+    marginLeft: -300,
+    marginBottom: -50
   },
   btnGroupStyle: {
-    height: 50,
-    marginTop: 10
+    height: 30,
+    marginTop: 10,
+    marginBottom: 10
   },
   coinPriceTitle: {
     flex: 1,
@@ -288,7 +292,8 @@ const styles = StyleSheet.create({
   feedTitle: {
     fontSize: 20,
     paddingTop: 15,
-    paddingBottom: 7
+    paddingBottom: 0,
+    fontWeight: "500"
   },
   buySellBtnStyleLeft: {
     backgroundColor: '#185A9D',

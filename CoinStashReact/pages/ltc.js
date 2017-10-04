@@ -174,12 +174,15 @@ class ltc extends Component {
       <View style={styles.container}>
         <View style={styles.backBTNStyle}>
           <BackToHomeBTN navigate={navigate} />
-          <Text style={styles.coinPriceTitle}>LTC</Text>
           <Text
             style={{color: 'rgba(1,1,1,0)', paddingLeft: 15, paddingRight: 15}}>
             BACK
           </Text>
         </View>
+
+       <Text style={styles.feedTitle}>
+         LTC Feed:
+       </Text>
 
         <Text style={styles.coinPriceText}>
           {`$${this.state.liteCoinPrice}`}
@@ -198,17 +201,13 @@ class ltc extends Component {
           containerStyle={styles.btnGroupStyle}
          />
 
-        <Text style={styles.feedTitle}>
-          LTC Feed:
-        </Text>
-
         <ScrollView>
 
-        <Text style={{color: '#185A9D', textAlign: 'center', fontWeight: 'bold', fontSize: 15}}>
+        <Text style={{color: '#185A9D', textAlign: 'center', fontWeight: 'bold', fontSize: 15, marginBottom: 10}}>
           LiteCoin Tweets
         </Text>
         <LiteCoinTweets />
-        <Text style={{color: '#185A9D', textAlign: 'center', fontWeight: 'bold', fontSize: 15, paddingTop: 10, paddingBottom: 5}}>
+        <Text style={{color: '#185A9D', textAlign: 'center', fontWeight: 'bold', fontSize: 15, paddingTop: 10, paddingBottom: 5, marginBottom: 5}}>
           LiteCoin RSS Feeds
         </Text>
         <RSSFeed />
@@ -264,12 +263,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF'
   },
   backBTNStyle: {
-    flexDirection: 'row',
-    marginTop: 30
+    flexDirection: 'column',
+    marginTop: 30,
+    marginLeft: -300,
+    marginBottom: -50
   },
   btnGroupStyle: {
-    height: 50,
-    marginTop: 10
+    height: 30,
+    marginTop: 10,
+    marginBottom: 10
   },
   coinPriceTitle: {
     flex: 1,
@@ -284,12 +286,12 @@ const styles = StyleSheet.create({
   yDay: {
     fontSize: 17,
     textAlign: 'center',
-
   },
   feedTitle: {
     fontSize: 20,
     paddingTop: 15,
-    paddingBottom: 7
+    paddingBottom: 0,
+    fontWeight: "500"
   },
   buySellBtnStyleLeft: {
     backgroundColor: '#185A9D',

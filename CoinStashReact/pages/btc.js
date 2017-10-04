@@ -182,6 +182,9 @@ class btc extends Component {
           </Text>
         </View>
 
+        <Text style={styles.feedTitle}>
+            BTC Feed:
+        </Text>
         <Text style={styles.coinPriceText}>
           {`$${this.state.bitcoinPrice}`}
         </Text>
@@ -198,17 +201,12 @@ class btc extends Component {
           buttons={buttons}
           containerStyle={styles.btnGroupStyle}
          />
-
-       <Text style={styles.feedTitle}>
-          BTC Feed:
-        </Text>
-
         <ScrollView>
-          <Text style={{color: '#185A9D', textAlign: 'center', fontWeight: 'bold', fontSize: 15}}>
+          <Text style={{color: '#185A9D', textAlign: 'center', fontWeight: 'bold', fontSize: 15, marginBottom: 10}}>
             BitCoin Tweets
           </Text>
           <BitCoinTweets />
-          <Text style={{color: '#185A9D', textAlign: 'center', fontWeight: 'bold', fontSize: 15, paddingTop: 10, paddingBottom: 5}}>
+          <Text style={{color: '#185A9D', textAlign: 'center', fontWeight: 'bold', fontSize: 15, paddingTop: 10, paddingBottom: 5, marginBottom: 5}}>
             BitCoin RSS Feeds
           </Text>
           <RSSFeed />
@@ -262,12 +260,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF'
   },
   backBTNStyle: {
-    flexDirection: 'row',
-    marginTop: 30
+    flexDirection: 'column',
+    marginTop: 30,
+    marginLeft: -300,
+    marginBottom: -50,
+    color:"#185A9D"
   },
   btnGroupStyle: {
-    height: 50,
-    marginTop: 10
+    height: 30,
+    marginTop: 10,
+    marginBottom: 10
   },
   coinPriceTitle: {
     flex: 1,
@@ -286,7 +288,8 @@ const styles = StyleSheet.create({
   feedTitle: {
     fontSize: 20,
     paddingTop: 15,
-    paddingBottom: 7
+    paddingBottom: 0,
+    fontWeight: "500"
   },
   buySellBtnStyleLeft: {
     backgroundColor: '#185A9D',

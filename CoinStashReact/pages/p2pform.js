@@ -31,9 +31,11 @@ export default class p2pForm extends Component {
   };
     this.updateIndex = this.updateIndex.bind(this)
   }
+  
   updateIndex (selectedIndex) {
     this.setState({selectedIndex})
   }
+
   handleInputChange(name, val) {
     const session = this.state.session;
     session[name] = val;

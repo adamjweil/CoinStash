@@ -162,7 +162,7 @@ class btc extends Component {
   //   clearInterval()
   // }
   static navigationOptions = {
-    title: 'BitCoin'
+    header: null
   }
 
   render() {
@@ -179,7 +179,7 @@ class btc extends Component {
     return (
 
       <View style={styles.container}>
-        <View style={{flexDirection: 'row', marginTop: 30}}>
+        <View style={styles.backBTNStyle}>
           <BackToHomeBTN navigate={navigate} />
           <Text style={styles.coinPriceTitle}>BTC</Text>
           <Text
@@ -202,25 +202,32 @@ class btc extends Component {
           onPress={this.updateIndex}
           selectedIndex={selectedIndex}
           buttons={buttons}
-          containerStyle={{height: 30}}
+          containerStyle={styles.btnGroupStyle}
          />
 
-        <Text style={{fontSize: 20, paddingTop: 15, paddingBottom: 5}}>
+       <Text style={styles.feedTitle}>
           BTC Feed:
         </Text>
 
         <ScrollView>
+          <Text style={{color: '#185A9D', textAlign: 'center', fontWeight: 'bold', fontSize: 15}}>
+            Ethereum Tweets
+          </Text>
           <BitCoinTweets />
+          <Text style={{color: '#185A9D', textAlign: 'center', fontWeight: 'bold', fontSize: 15, paddingTop: 10, paddingBottom: 5}}>
+            Ethereum RSS Feeds
+          </Text>
+          <RSSFeed />
         </ScrollView>
         <View style={{flexDirection: 'row'}}>
           <Button
-            buttonStyle={{backgroundColor: '#185A9D', borderRadius: 0, marginTop: 0, marginRight: -20, marginLeft: 20, width: "100%"}}
+            buttonStyle={styles.buySellBtnStyleLeft}
             textStyle={{textAlign: 'center'}}
             title={`BUY`}
             onPress={()=> navigate('buyBTCForm')}
             />
           <Button
-            buttonStyle={{backgroundColor: '#185A9D', borderRadius: 0, marginTop: 0, marginLeft: -20, width: "100%"}}
+            buttonStyle={styles.buySellBtnStyleRight}
             textStyle={{textAlign: 'center'}}
             title={`SELL`}
             onPress={()=> navigate('sellBTCForm')}
@@ -233,7 +240,7 @@ class btc extends Component {
 
 const btcNav = StackNavigator({
   selfBTC: {
-    screen: btc
+    screen: btc,
   },
   buyBTCForm: {
     screen: buyBTCForm,
@@ -260,6 +267,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF'
   },
+  backBTNStyle: {
+    flexDirection: 'row',
+    marginTop: 30
+  },
+  btnGroupStyle: {
+    height: 50,
+    marginTop: 10
+  },
   coinPriceTitle: {
     flex: 1,
     fontSize: 60,
@@ -272,7 +287,28 @@ const styles = StyleSheet.create({
   },
   yDay: {
     fontSize: 17,
-    textAlign: 'center'
+    textAlign: 'center',
+  },
+  feedTitle: {
+    fontSize: 20,
+    paddingTop: 15,
+    paddingBottom: 7
+  },
+  buySellBtnStyleLeft: {
+    backgroundColor: '#185A9D',
+    borderRadius: 0,
+    marginTop: 0,
+    marginRight: -20,
+    marginLeft: 20,
+    width: "100%"
+  },
+  buySellBtnStyleRight: {
+    backgroundColor: '#185A9D',
+    borderRadius: 0,
+    marginTop: 0,
+    marginRight: 20,
+    marginLeft: -20,
+    width: "100%"
   }
 });
 

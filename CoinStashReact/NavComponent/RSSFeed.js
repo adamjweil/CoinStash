@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
     width: 390,
     marginLeft: -20,
-    
+
   },
   rssPost: {
     fontSize: 12,
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
 
   },
   rssPubDate: {
-    fontSize: 8,
+    fontSize: 9,
     fontWeight: '300'
   },
   redditReadMore: {

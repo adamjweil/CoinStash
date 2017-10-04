@@ -11,8 +11,8 @@ import TweetsComponent from '../NavComponent/TweetsComponent';
 import BitCoinTweets from '../NavComponent/BitCoinTweets';
 import { Button, ButtonGroup, FormLabel, FormInput } from 'react-native-elements';
 import { StackNavigator} from 'react-navigation';
-import buyBTCForm from './forms/buyBTCForm';
-import sellBTCForm from './forms/sellBTCForm';
+import BTCBuyForm from './forms/BTCBuyForm';
+import SellBTCForm from './forms/SellBTCForm';
 import { BackToHomeBTN } from '../NavComponent/BackToHomeBTN';
 import { AppRegistry, StyleSheet, Text, View, ScrollView, Image } from 'react-native';
 
@@ -204,13 +204,13 @@ class btc extends Component {
             buttonStyle={styles.buySellBtnStyleLeft}
             textStyle={{textAlign: 'center'}}
             title={`BUY`}
-            onPress={()=> navigate('buyBTCForm')}
+            onPress={()=> navigate('BTCBuyForm')}
             />
           <Button
             buttonStyle={styles.buySellBtnStyleRight}
             textStyle={{textAlign: 'center'}}
             title={`SELL`}
-            onPress={()=> navigate('sellBTCForm')}
+            onPress={()=> navigate('SellBTCForm')}
             />
         </View>
       </View>
@@ -222,15 +222,15 @@ const btcNav = StackNavigator({
   selfBTC: {
     screen: btc
   },
-  buyBTCForm: {
-    screen: buyBTCForm,
+  BTCBuyForm: {
+    screen: BTCBuyForm,
     navigationOptions: {
       title: 'Buy BTC',
       headerBackTitle: 'BTC'
     }
   },
-  sellBTCForm: {
-    screen: sellBTCForm,
+  SellBTCForm: {
+    screen: SellBTCForm,
     navigationOptions: {
       title: 'Sell BTC',
       headerBackTitle: 'BTC'

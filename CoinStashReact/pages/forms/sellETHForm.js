@@ -87,6 +87,8 @@ export default class SellETHForm extends Component {
   componentDidMount() {
   }
 
+
+
   render() {
     let state = this.state;
     const { navigate } = this.props.navigation;

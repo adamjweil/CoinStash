@@ -239,7 +239,7 @@ class eth extends Component {
 
 const ethNav = StackNavigator({
   selfETH: {
-    screen: eth,
+    screen: eth
   },
   buyETHForm: {
     screen: buyETHForm,
@@ -257,7 +257,7 @@ const ethNav = StackNavigator({
   }
 },
 {
-  initialRouteName: 'selfETH'
+    initialRouteName: 'selfETH'
 });
 
 const styles = StyleSheet.create({

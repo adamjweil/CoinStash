@@ -188,14 +188,12 @@ class btc extends Component {
       <View style={styles.container}>
 
         <View style={styles.backBTNStyle}>
-
           <BackToHomeBTN navigate={navigate} />
-
           <Text
             style={{color: 'rgba(1,1,1,0)', paddingLeft: 15, paddingRight: 15}}>
             BACK
-
           </Text>
+        </View>
 
         <Text style={styles.coinPriceText}>
           {`$${this.state.bitcoinPrice}`}

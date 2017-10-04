@@ -1,8 +1,8 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+* Sample React Native App
+* https://github.com/facebook/react-native
+* @flow
+*/
 
 import React, { Component } from 'react';
 import { Header } from 'react-native-elements';
@@ -25,7 +25,7 @@ export default class NewsFeed extends Component {
     fetch('https://newsapi.org/v1/articles?source=bloomberg&sortBy=top&apiKey=ed62d0aea575414fbdf6a1351c0fa66a')
     .then(function(response) {
       return response.json();
-      })
+    })
     .then((obj) => {
       this.setState({newsFeed: obj.articles})
       console.logx(newsFeed)
@@ -39,7 +39,6 @@ export default class NewsFeed extends Component {
       <View style={styles.container}>
         <Text style={styles.welcome}>
           {this.state.newsFeed}
-
         </Text>
       </View>
     )

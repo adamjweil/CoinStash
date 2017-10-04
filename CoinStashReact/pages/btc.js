@@ -3,14 +3,18 @@
 * https://github.com/facebook/react-native
 * @flow
 */
-
 'use strict';
 import React, { Component } from 'react';
 
 import { Header } from 'react-native-elements';
+import RSSFeed from '../NavComponent/RSSFeed';
 import TweetsComponent from '../NavComponent/TweetsComponent';
 import BitCoinTweets from '../NavComponent/BitCoinTweets';
-import { Button, ButtonGroup, FormLabel, FormInput } from 'react-native-elements';
+import { Button,
+  ButtonGroup,
+  FormLabel,
+  FormInput
+} from 'react-native-elements';
 import { StackNavigator} from 'react-navigation';
 import buyBTCForm from './forms/buyBTCForm';
 import sellBTCForm from './forms/sellBTCForm';
@@ -31,66 +35,107 @@ class btc extends Component {
     this.state = {
       bitcoinPrice: "",
       bitcoinYdayPrice: "",
-      selectedIndex: 3,
+      selectedIndex: 0,
       prevPriceString: "",
-      prevPriceNum: ""
+      prevPriceNum: "",
+      colorBoolean: ""
     }
     this.updateIndex = this.updateIndex.bind(this)
   }
+
   updateIndex (selectedIndex) {
     this.setState({selectedIndex})
     if (this.state.selectedIndex === 0){
+      let d = new Date();
+      let yday = Math.floor(d.setDate(d.getDate() - 1) / 1000);
       this.setState({prevPriceString: "Daily Change: "})
-        fetch('https://api.coindesk.com/v1/bpi/historical/close.json?for=yesterday')
-        .then(function(response) {
-          return response.json();
-        }).then((obj) => {
-            let o = JSON.stringify(obj.bpi)
-            let split = o.split(":")
-            let yDay = split[1]
-            let choppedYdayPrice = yDay.substring(0, yDay.length - 1);
-            let now = this.state.bitcoinPrice;
-            let diff = now - choppedYdayPrice;
-            let diffRounded = diff.toFixed(2)
-          this.setState({prevPriceNum: diffRounded})
-        })
-    }
-    else if (this.state.selectedIndex === 1) {
-      this.setState({prevPriceString: "Weekly Change: "})
-        fetch('https://api.coindesk.com/v1/bpi/historical/close.json')
-        .then(function(response) {
-          return response.json();
-        }).then((obj) => {
-          let day = getDate() - 7
-          let mon = getMonth();
-          let year = getFullYear();
-          if (mon < 10) {mon="0"+mon}
-          if (day < 10) {day="0"+day}
-          let m = year + "-" + mon + "-" + day
-          // console.log(m)
-          // debugger
-          // console.log(m)
-          // var length = obj.bpi.length - 7;
-          // let o = JSON.stringify(obj.bpi)
-          // console.log(length)
-          // console.log(obj.bpi[length])
-          // var weekAgo = length - 7;
-          // d.setDate(d.getDate() - 7);
-          // console.log(d)
-          // console.log(obj.bpi[weekAgo])
-        })
-    }
-    else if (this.state.selectedIndex === 2) {
-      this.setState({prevPriceString: "Monthly Change: "})
-      fetch('https://api.coindesk.com/v1/bpi/historical/close.json')
+      fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=BTC&tsyms=USD&ts=' + yday)
       .then(function(response) {
         return response.json();
       }).then((obj) => {
-        // Need to work on
+        let yday = obj.BTC.USD;
+        fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=BTC&tsyms=USD')
+        .then(function(response) {
+          return response.json();
+        }).then((obj) => {
+          let today = obj.BTC.USD;
+          let todayNum = Math.floor(today)
+          let yDayCalcBTC = today - yday
+          let yDayBTC = yDayCalcBTC.toFixed(2);
+          this.setState({prevPriceNum: yDayBTC })
+          let colorBool = (yDayBTC >= 0) ? "green" : "red";
+          this.setState({colorBoolean: colorBool})
+        })
+      })
+    }
+    else if (this.state.selectedIndex === 1) {
+      let d = new Date();
+      let lWeek = Math.floor(d.setDate(d.getDate() - 7) / 1000);
+      this.setState({prevPriceString: "Weekly Change: "})
+      fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=BTC&tsyms=USD&ts=' + lWeek)
+      .then(function(response) {
+        return response.json();
+      }).then((obj) => {
+        let lWeek = obj.BTC.USD;
+        fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=BTC&tsyms=USD')
+        .then(function(response) {
+          return response.json();
+        }).then((obj) => {
+          let today = obj.BTC.USD;
+          let todayNum = Math.floor(today)
+          let lWeekCalcBTC = todayNum - lWeek
+          let lWeekBTC = lWeekCalcBTC.toFixed(2);
+          this.setState({prevPriceNum: lWeekBTC })
+          let colorBool = (lWeekBTC >= 0) ? "green" : "red";
+          this.setState({colorBoolean: colorBool})
+        })
+      })
+    }
+    else if (this.state.selectedIndex === 2) {
+      let d = new Date();
+      let lMonth = Math.floor(d.setMonth(d.getMonth() - 1) / 1000);
+      this.setState({prevPriceString: "Monthly Change: "})
+      fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=BTC&tsyms=USD&ts=' + lMonth)
+      .then(function(response) {
+        return response.json();
+      }).then((obj) => {
+        let lMonth = obj.BTC.USD;
+        fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=BTC&tsyms=USD')
+        .then(function(response) {
+          return response.json();
+        }).then((obj) => {
+          let today = obj.BTC.USD;
+          let todayNum = Math.floor(today)
+          let lMonthCalcBTC = todayNum - lMonth
+          let lMonthBTC = lMonthCalcBTC.toFixed(2);
+          this.setState({prevPriceNum: lMonthBTC })
+          let colorBool = (lMonthBTC >= 0) ? "green" : "red";
+          this.setState({colorBoolean: colorBool})
+        })
       })
     }
     else if (this.state.selectedIndex === 3) {
-      this.setState({prevPriceString: "Yealy Change: "})
+      let d = new Date();
+      let lYear = Math.floor(d.setFullYear(d.getFullYear() - 1) / 1000);
+      this.setState({prevPriceString: "Yearly Change: "})
+      fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=BTC&tsyms=USD&ts=' + lYear)
+      .then(function(response) {
+        return response.json();
+      }).then((obj) => {
+        let lYear = obj.BTC.USD;
+        fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=BTC&tsyms=USD')
+        .then(function(response) {
+          return response.json();
+        }).then((obj) => {
+          let today = obj.BTC.USD;
+          let todayNum = Math.floor(today)
+          let lYearCalcBTC = todayNum - lYear
+          let lYearBTC = lYearCalcBTC.toFixed(2);
+          this.setState({prevPriceNum: lYearBTC })
+          let colorBool = (lYearBTC >= 0) ? "green" : "red";
+          this.setState({colorBoolean: colorBool})
+        })
+      })
     }
   }
 
@@ -104,32 +149,19 @@ class btc extends Component {
     })
   }
 
-  getYesterdayPrice = () => {
-    fetch('https://api.coindesk.com/v1/bpi/historical/close.json?for=yesterday')
-    .then(function(response) {
-      return response.json();
-    })
-    .then((obj) => {
-      let o = JSON.stringify(obj.bpi)
-      let split = o.split(":")
-      let yDay = split[1]
-      let choppedYdayPrice = yDay.substring(0, yDay.length - 1);
-
-      this.setState({bitcoinYdayPrice: choppedYdayPrice})
-    })
-  }
-
   componentDidMount() {
     this.getCurrentPrice()
     setInterval(this.getCurrentPrice, 10000);
-    this.getYesterdayPrice()
-    setInterval(this.getYesterdayPrice, 10000);
+    this.updateIndex()
+    setInterval(this.updateIndex, 10000);
 
     let today = this.state.bitcoinPrice
     let yday = Math.round(this.state.bitcoinYdayPrice)
-    let diff = this.state.bitcoinPrice - this.state.bitcoinYdayPrice
+    let diff = this.state.bitcoinPrice - this.state.prevPriceNum
     let change = diff.toFixed(2);
-    let colorBool = (change >= 0) ? "green" : "red";
+
+    console.log(change)
+    // let colorBool = (change >= 0) ? "green" : "red";
 
   }
 
@@ -137,13 +169,12 @@ class btc extends Component {
   //   clearInterval()
   // }
   static navigationOptions = {
-    header: null,
-    title: 'BTC'
+    title: 'BitCoin'
   }
 
   render() {
     let yday = Math.round(this.state.bitcoinYdayPrice)
-    let diff = this.state.bitcoinPrice - this.state.bitcoinYdayPrice
+    let diff = this.state.bitcoinPrice - this.state.prevPriceNum
     let change = diff.toFixed(2);
     let colorBool = (change >= 0) ? "green" : "red";
 
@@ -169,7 +200,7 @@ class btc extends Component {
         </Text>
 
         <Text style={styles.yDayPrice}>
-          <Text style={{color: colorBool}}>
+          <Text style={{color: `${this.state.colorBoolean}`}}>
             {this.state.prevPriceString} {`$${this.state.prevPriceNum}`}
           </Text>
         </Text>

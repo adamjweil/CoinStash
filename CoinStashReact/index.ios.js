@@ -19,7 +19,6 @@ console.disableYellowBox = true;
 
 class App extends Component {
   constructor(props) {
-
     super(props)
     this.state = {
       accessToken: false,
@@ -29,17 +28,20 @@ class App extends Component {
     }
   }
 
+  stringTokenCallBack = (token) => {
+    console.log('callback success!: ', token)
+  }
 
   accessTokenCallBack = () => {
-    //stuff that happens when you get the token
     this.setState({accessToken: true})
   }
+
   switchLoginPage = () => {
   this.setState({loginOrRegister: !this.state.loginOrRegister})
 }
 
   render(){
-    const { accessToken, loginOrRegister } = this.state
+    const { accessToken, loginOrRegister, token} = this.state
     if (accessToken){
       return (
         <CoinStashReact />
@@ -47,11 +49,11 @@ class App extends Component {
     }else {
       if (loginOrRegister){
         return (
-          <Login switchPages={this.switchLoginPage} handleToken={this.accessTokenCallBack} />
+          <Login switchPages={this.switchLoginPage} handleToken={this.accessTokenCallBack} stringTokenCallBack={this.stringTokenCallBack} />
         )
       } else {
         return (
-          <Register switchPages={this.switchLoginPage} handleToken={this.accessTokenCallBack}/>
+          <Register switchPages={this.switchLoginPage} handleToken={this.accessTokenCallBack} stringTokenCallBack={this.stringTokenCallBack}/>
         )
       }
     }

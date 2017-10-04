@@ -1,8 +1,8 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+* Sample React Native App
+* https://github.com/facebook/react-native
+* @flow
+*/
 'use strict';
 import React, { Component } from 'react';
 import { Button, ButtonGroup, FormLabel, FormInput } from 'react-native-elements'
@@ -17,7 +17,6 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
-// var MarqueeLabel = require('@remobile/react-native-marquee-label');
 
 export default class p2pForm extends Component {
   constructor() {
@@ -57,6 +56,7 @@ export default class p2pForm extends Component {
     const { selectedIndex } = this.state
     return (
       <View style={styles.container}>
+
           <Text style={styles.formTitle}>Send</Text>
 
         <View style={styles.formContainer}>
@@ -68,7 +68,9 @@ export default class p2pForm extends Component {
                 buttons={buttons}
                 containerStyle={{height: 50, marginLeft: 50, marginTop: 10}}
                />
+
           </View>
+
 
 
 
@@ -94,12 +96,13 @@ export default class p2pForm extends Component {
                 value={this.state.text} />
         </View>
 
-      </View>
-      <Button
-        buttonStyle={{backgroundColor: '#185A9D', borderRadius: 2, marginTop: 10, width: 300}}
-        textStyle={{textAlign: 'center'}}
-        title={`SEND`}
-      />
+
+        </View>
+        <Button
+          buttonStyle={{backgroundColor: '#185A9D', borderRadius: 2, marginTop: 10, width: 300}}
+          textStyle={{textAlign: 'center'}}
+          title={`SEND`}
+        />
 
       </View>
     );

@@ -9,7 +9,12 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-import { ListItem, Thumbnail, Text, Body } from 'native-base';
+import {
+  ListItem,
+  Thumbnail,
+  Text,
+  Body
+} from 'native-base';
 
 export default class EthereumTweets extends Component {
   constructor() {
@@ -47,20 +52,18 @@ export default class EthereumTweets extends Component {
         {this.state.EthereumTweets.map((tweet, i) =>
           <View style={styles.tweetContainer}>
             <ListItem>
-                <Thumbnail style={styles.twitterAvatar} size={60} source={{uri: tweet.user.profile_image_url_https}} />
-                <Body>
-                  <View style={styles.nameContainer}>
-                    <Text style={styles.name}>@{tweet.user.screen_name}</Text>
-                  </View>
-                  <Text style={styles.content}>{tweet.text}</Text>
-                  {tweet.user.url ? this.twitterButton(tweet) : <Text style={styles.content}></Text>}
-                </Body>
+              <Thumbnail style={styles.twitterAvatar} size={60} source={{uri: tweet.user.profile_image_url_https}} />
+              <Body>
+                <View style={styles.nameContainer}>
+                  <Text style={styles.name}>@{tweet.user.screen_name}</Text>
+                </View>
+                <Text style={styles.content}>{tweet.text}</Text>
+                {tweet.user.url ? this.twitterButton(tweet) : <Text style={styles.content}></Text>}
+              </Body>
             </ListItem>
           </View>
-      )}
-
-    </ScrollView>
-
+        )}
+      </ScrollView>
     )
   }
 }

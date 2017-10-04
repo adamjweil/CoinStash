@@ -12,7 +12,7 @@ import BitCoinTweets from '../NavComponent/BitCoinTweets';
 import { Button, ButtonGroup, FormLabel, FormInput } from 'react-native-elements';
 import { StackNavigator} from 'react-navigation';
 import BTCBuyForm from './forms/BTCBuyForm';
-import SellBTCForm from './forms/sellBTCForm';
+import SellBTCForm from './forms/SellBTCForm';
 import { BackToHomeBTN } from '../NavComponent/BackToHomeBTN';
 import { AppRegistry, StyleSheet, Text, View, ScrollView, Image } from 'react-native';
 

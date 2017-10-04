@@ -16,22 +16,39 @@ import LiteCoin from './ltc';
 import p2pForm from './p2pform';
 import ProfilePage from './ProfilePage';
 
-
-
-
 const CoinStashReact = DrawerNavigator(
   {
-    Home: { screen: HomeScreen },
+    Home: { screen: HomeScreen, },
     BitCoin: {
       screen: BitCoin,
       navigationOptions: {
-        title: 'BitCoin'
+        title: 'BitCoin Dashboard'
       }
     },
-    Ethereum: { screen: Ethereum },
-    LiteCoin: { screen: LiteCoin },
-    p2pForm: { screen: p2pForm },
-    Profile: { screen: ProfilePage }
+    Ethereum: {
+      screen: Ethereum,
+      navigationOptions: {
+        title: 'Ethereum Dashboard'
+      }
+    },
+    LiteCoin: {
+      screen: LiteCoin,
+      navigationOptions: {
+        title: 'LiteCoin Dashboard'
+      }
+    },
+    Profile: {
+      screen: ProfilePage,
+      navigationOptions: {
+        title: 'My Wallets'
+      }
+    },
+    p2pForm: {
+      screen: p2pForm,
+      navigationOptions: {
+        title: 'Send Payments'
+      }
+    }
   },
   {
     initialRouteName: 'Home',

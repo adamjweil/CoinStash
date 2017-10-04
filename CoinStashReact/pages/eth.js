@@ -38,7 +38,8 @@ class eth extends Component {
       ethereumYdayPrice: "",
       selectedIndex: 0,
       prevPriceString: "",
-      prevPriceNum: ""
+      prevPriceNum: "",
+      colorBoolean: ""
     }
     this.updateIndex = this.updateIndex.bind(this)
   }
@@ -54,7 +55,6 @@ class eth extends Component {
         return response.json();
       }).then((obj) => {
         let yday = obj.ETH.USD;
-        // console.log(yday);
         fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=ETH&tsyms=USD')
         .then(function(response) {
           return response.json();
@@ -63,8 +63,9 @@ class eth extends Component {
           let todayNum = Math.floor(today)
           let yDayCalcETH = today - yday
           let yDayETH = yDayCalcETH.toFixed(2);
-          console.log(todayNum)
           this.setState({prevPriceNum: yDayETH });
+          let colorBool = (yDayETH >= 0) ? "green" : "red";
+          this.setState({colorBoolean: colorBool})
         })
       })
     }
@@ -77,7 +78,6 @@ class eth extends Component {
         return response.json();
       }).then((obj) => {
         let lWeek = obj.ETH.USD;
-        console.log(lWeek);
         fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=ETH&tsyms=USD')
         .then(function(response) {
           return response.json();
@@ -86,8 +86,9 @@ class eth extends Component {
           let todayNum = Math.floor(today)
           let lWeekCalcETH = todayNum - lWeek
           let lWeekETH = lWeekCalcETH.toFixed(2);
-          console.log(lWeekETH)
           this.setState({prevPriceNum: lWeekETH });
+          let colorBool = (lWeekETH >= 0) ? "green" : "red";
+          this.setState({colorBoolean: colorBool})
         })
       })
     }
@@ -100,7 +101,6 @@ class eth extends Component {
         return response.json();
       }).then((obj) => {
         let lMonth = obj.ETH.USD;
-        console.log(lMonth);
         fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=ETH&tsyms=USD')
         .then(function(response) {
           return response.json();
@@ -109,8 +109,9 @@ class eth extends Component {
           let todayNum = Math.floor(today)
           let lMonthCalcETH = todayNum - lMonth
           let lMonthETH = lMonthCalcETH.toFixed(2);
-          console.log(lMonthETH)
           this.setState({prevPriceNum: lMonthETH });
+          let colorBool = (lMonthETH >= 0) ? "green" : "red";
+          this.setState({colorBoolean: colorBool})
         })
       })
     }
@@ -123,7 +124,6 @@ class eth extends Component {
         return response.json();
       }).then((obj) => {
         let lYear = obj.ETH.USD;
-        console.log(lYear);
         fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=ETH&tsyms=USD')
         .then(function(response) {
           return response.json();
@@ -132,8 +132,9 @@ class eth extends Component {
           let todayNum = Math.floor(today)
           let lYearCalcETH = todayNum - lYear
           let lYearETH = lYearCalcETH.toFixed(2);
-          console.log(lYearETH)
           this.setState({prevPriceNum: lYearETH });
+          let colorBool = (lYearETH >= 0) ? "green" : "red";
+          this.setState({colorBoolean: colorBool})
         })
       })
     }
@@ -154,13 +155,6 @@ class eth extends Component {
     setInterval(this.getCurrentPrice, 100000);
     this.updateIndex()
     setInterval(this.updateIndex, 100000);
-
-    let today = this.state.ethereumPrice
-    let yday = Math.round(this.state.ethereumYdayPrice)
-    let diff = this.state.ethereumPrice - this.state.ethereumYdayPrice
-    let change = diff.toFixed(2);
-    let colorBool = (change >= 0) ? "green" : "red";
-
   }
 
   // componentWillUnmount() {
@@ -193,16 +187,17 @@ class eth extends Component {
           </Text>
         </View>
 
-        <Text style={styles.coinPriceText}>
-          {`$${this.state.ethereumPrice}`}
-        </Text>
 
-        <Text style={styles.yDayPrice}>
-          <Text style={{color: colorBool}}>
-            {this.state.prevPriceString} {`$${this.state.prevPriceNum}`}
+          <Text style={styles.yDayPrice}>
+            <Text style={{color: `${this.state.colorBoolean}`}}>
+              {this.state.prevPriceString} {`$${this.state.prevPriceNum}`}
+            </Text>
+
+            <Text style={styles.coinPriceText}>
+              {`$${this.state.ethereumPrice}`}
+            </Text>
           </Text>
-        </Text>
-
+        
         <ButtonGroup
           onPress={this.updateIndex}
           selectedIndex={selectedIndex}

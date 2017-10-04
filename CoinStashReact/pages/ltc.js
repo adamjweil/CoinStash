@@ -38,7 +38,8 @@ class ltc extends Component {
       liteCoinYdayPrice: "",
       selectedIndex: 0,
       prevPriceString: "",
-      prevPriceNum: ""
+      prevPriceNum: "",
+      colorBoolean: ""
     }
     this.updateIndex = this.updateIndex.bind(this)
   }
@@ -65,6 +66,8 @@ class ltc extends Component {
           let yDayLTC = yDayCalcLTC.toFixed(2);
           console.log(todayNum)
           this.setState({prevPriceNum: yDayLTC });
+          let colorBool = (yDayLTC >= 0) ? "green" : "red";
+          this.setState({colorBoolean: colorBool})
         })
       })
     }
@@ -88,6 +91,8 @@ class ltc extends Component {
           let lWeekLTC = lWeekCalcLTC.toFixed(2);
           console.log(lWeekLTC)
           this.setState({prevPriceNum: lWeekLTC });
+          let colorBool = (lWeekLTC >= 0) ? "green" : "red";
+          this.setState({colorBoolean: colorBool})
         })
       })
     }
@@ -111,6 +116,8 @@ class ltc extends Component {
           let lMonthLTC = lMonthCalcLTC.toFixed(2);
           console.log(lMonthLTC)
           this.setState({prevPriceNum: lMonthLTC });
+          let colorBool = (lMonthLTC >= 0) ? "green" : "red";
+          this.setState({colorBoolean: colorBool})
         })
       })
     }
@@ -134,6 +141,8 @@ class ltc extends Component {
           let lYearLTC = lYearCalcLTC.toFixed(2);
           console.log(lYearLTC)
           this.setState({prevPriceNum: lYearLTC });
+          let colorBool = (lYearLTC >= 0) ? "green" : "red";
+          this.setState({colorBoolean: colorBool})
         })
       })
     }
@@ -196,7 +205,7 @@ class ltc extends Component {
         </Text>
 
         <Text style={styles.yDayPrice}>
-          <Text style={{color: colorBool}}>
+          <Text style={{color: `${this.state.colorBoolean}`}}>
             {this.state.prevPriceString} {`$${this.state.prevPriceNum}`}
           </Text>
         </Text>

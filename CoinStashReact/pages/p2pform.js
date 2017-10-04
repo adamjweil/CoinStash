@@ -33,7 +33,17 @@ export default class p2pForm extends Component {
   }
 
   componentDidMount() {
-  }
+    fetch('http://localhost:3000/coinbases/usdwallet')
+    .then(function(response) {
+      return response.json();
+    }).then((obj) => {
+      let usdN = obj.name
+      let usdB = obj.balance.amount
+      let usdC = obj.balance.currency
+    this.setState({usdName: usdN, usdBal: usdB, usdCCY: usdC})
+  })
+
+}
 
   static navigationOptions = {
     title: 'p2pForm',
@@ -46,46 +56,46 @@ export default class p2pForm extends Component {
     const { selectedIndex } = this.state
     return (
       <View style={styles.container}>
-        <Text style={styles.formTitle}>Send</Text>
+
+          <Text style={styles.formTitle}>Send</Text>
 
         <View style={styles.formContainer}>
-          <View style={styles.formInputContainer}>
-            <Text style={styles.labelTitle}>From Wallet: </Text>
-            <ButtonGroup
-              onPress={this.updateIndex}
-              selectedIndex={selectedIndex}
-              buttons={buttons}
-              containerStyle={{height: 50, marginLeft: 50, marginTop: 10}}
-            />
+            <View style={styles.formInputContainer}>
+              <Text style={styles.labelTitle}>From Wallet: </Text>
+              <ButtonGroup
+                onPress={this.updateIndex}
+                selectedIndex={selectedIndex}
+                buttons={buttons}
+                containerStyle={{height: 50, marginLeft: 50, marginTop: 10}}
+               />
+
           </View>
 
 
 
 
 
-          <View style={styles.formInputContainer}>
-            <Text style={styles.labelTitle}>Send to: </Text>
-            <TextInput
 
-              placeholder={"Enter email"}
-              keyboardType={'default'}
-              style={styles.sendPaymentAddress, styles.sendPaymentValue}
-              onChangeText={(input) => this.setState({input})}
-              value={this.state.input}
-            />
-          </View>
+        <View style={styles.formInputContainer}>
+          <Text style={styles.labelTitle}>Send to: </Text>
+           <TextInput
+            placeholder={"Enter email"}
+            keyboardType={'default'}
+            style={styles.sendPaymentAddress, styles.sendPaymentValue}
+            onChangeText={(input) => this.setState({input})}
+            value={this.state.input} />
+        </View>
 
-          <View style={styles.formInputContainer}>
+        <View style={styles.formInputContainer}>
             <Text style={styles.labelTitle}>Amount</Text>
+                <TextInput
+                placeholder={"Enter amount"}
+                keyboardType={'numeric'}
+                style={styles.sendPaymentValue}
+                onChangeText={(text) => this.setState({text})}
+                value={this.state.text} />
+        </View>
 
-            <TextInput
-              placeholder={"Enter amouasdfant"}
-              keyboardType={'numeric'}
-              style={styles.sendPaymentValue}
-              onChangeText={(text) => this.setState({text})}
-              value={this.state.text}
-            />
-          </View>
 
         </View>
         <Button

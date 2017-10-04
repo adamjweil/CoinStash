@@ -162,7 +162,6 @@ class btc extends Component {
 
         <View style={styles.backBTNStyle}>
           <BackToHomeBTN navigate={navigate} />
-          <Text style={styles.coinPriceTitle}></Text>
           <Text
             style={{color: 'rgba(1,1,1,0)', paddingLeft: 15, paddingRight: 15}}>
             BACK

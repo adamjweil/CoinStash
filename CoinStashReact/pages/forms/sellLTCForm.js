@@ -19,14 +19,43 @@ import {
   TextInput,
 } from 'react-native';
 
-export default class form extends Component {
+export default class SellLTCForm extends Component {
   constructor() {
     super();
     this.state = {
-      usdInput: '00.00',
-      ltcInput: '00.00',
+      session: {
+        amount: '00.00',
+        usdInput: '00.00'
+      }
     }
   }
+
+  handleInputChange(name, val) {
+    const session = this.state.session;
+    session[name] = val;
+    this.setState({session: session})
+  }
+  onChangeAmount = this.handleInputChange.bind(this, "amount")
+
+  handlePress() {
+    const { session } = this.state
+    let responseJson = fetch ("http://localhost:3000/coinbases/sellLTC", {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        amount: session.amount
+      })
+    })
+    .then(function(response) {return response.json()} )
+    .catch(error => console.error("fetch error: ", error))
+
+    let sendParams = responseJson
+  }
+
+  handleUserSubmit = this.handlePress.bind(this)
 
   getPickerOptionsSellFrom() {
     return [
@@ -72,15 +101,15 @@ export default class form extends Component {
           </View>
 
         <View style={styles.twoColumnLayout}>
-
           <View style={styles.flexDirectionColumn, styles.firstPaymentColumn}>
             <View style={styles.currencyInputContainer}>
-              <Text style={styles.currencyPriceLabel}>USD</Text>
+              <Text style={styles.currencyPriceLabel}>LTC</Text>
               <TextInput
+                placeholder="0.00000000"
                 keyboardType={'numeric'}
                 style={styles.paymentInteger}
-                onChangeText={(usdInput) => this.setState({usdInput})}
-                value={this.state.usdInput}
+                onChangeText={this.onChangeAmount}
+                value={this.state.amount}
                 />
             </View>
           </View>
@@ -88,17 +117,17 @@ export default class form extends Component {
           <View style={styles.flexDirectionColumn, styles.secondPaymentColumn}>
             <View style={styles.currencyInputContainer}>
               <Text style={styles.currencyPriceLabel}>
-                  LTC
+                  USD
               </Text>
               <TextInput
+                placeholder="0.00"
                 keyboardType={'numeric'}
                 style={styles.paymentInteger}
-                onChangeText={(ltcInput) => this.setState({ltcInput})}
-                value={this.state.ltcInput}
+                onChangeText={(usdInput) => this.setState({usdInput})}
+                value={this.state.usdInput}
                 />
             </View>
           </View>
-
         </View>
 
         <View style={styles.inputContainer}>
@@ -113,8 +142,9 @@ export default class form extends Component {
         </View>
         <Button
           buttonStyle={{backgroundColor: '#185A9D', borderRadius: 2, marginTop: 10, width: 300}}
+          onPress={this.handleUserSubmit}
           textStyle={{textAlign: 'center'}}
-          title={`BUY`}
+          title={`SELL`}
         />
       </View>
     );

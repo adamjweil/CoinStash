@@ -129,7 +129,6 @@ export default class SellBTCForm extends Component {
                 />
             </View>
           </View>
-
         </View>
 
         <View style={styles.inputContainer}>

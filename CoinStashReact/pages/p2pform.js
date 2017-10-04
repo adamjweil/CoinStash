@@ -42,7 +42,6 @@ export default class p2pForm extends Component {
   onChangeEmail = this.handleInputChange.bind(this, "to")
   onChangeAmount = this.handleInputChange.bind(this, "amount")
 
-
   handlePress() {
     const { session } = this.state
     let responseJson = fetch ("http://localhost:3000/coinbases/sendpayment", {

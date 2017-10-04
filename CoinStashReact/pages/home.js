@@ -82,13 +82,12 @@ export default class home extends Component {
     render() {
       const { bitcoinPrice } = this.state;
       return (
-        <LinearGradient colors={['#43cea2', '#185a9d']} style={styles.linearGradient}>
+        <LinearGradient colors={['#F5FCFF', '#F5FCFF']} style={styles.linearGradient}>
           <Image source={{uri: 'http://www.freepngimg.com/thumb/mustache/5-2-no-shave-movember-day-mustache-png-image-thumb.png'}}
-            style={{width: 125, height: 125, marginLeft: 120, marginBottom: -75}}
+            style={{width: 125, height: 125, marginLeft: 110, marginBottom: -75}}
             />
-
           <Text
-            style={{color: 'white'}}
+            style={{color: '#185A9D'}}
             onPress={()=> this.props.navigation.navigate('DrawerOpen')}
             >MENU</Text>
           <View style={styles.buttonContainer}>
@@ -111,7 +110,7 @@ export default class home extends Component {
             </Text>
           </View>
           <Text
-            style={{textAlign: 'center', color: 'white', fontWeight: 'bold', paddingTop: 20, fontSize: 20}}
+            style={{textAlign: 'center', color: '#185A9D', fontWeight: 'bold', paddingTop: 20, fontSize: 20}}
             >Latest Cryptocurreny News</Text>
           <ScrollView style={styles.scrollView}>
             <View style={styles.container}>
@@ -288,17 +287,16 @@ export default class home extends Component {
       flex: 1
     },
     navButtons: {
-      color: '#ffffff',
+      color: '#185A9D',
       textAlign: 'center',
       fontSize: 20,
       // backgroundColor: "#0A2540"
     },
     navTextContainer: {
       textAlign: 'center',
-      borderWidth: 3,
-      paddingHorizontal: 9,
+      paddingHorizontal: 12,
       paddingVertical: 5,
-      borderColor: 'white'
+
       // backgroundColor: "rgb(29,78,85)"
     },
     newsItem: {

@@ -5,29 +5,16 @@
 */
 'use strict';
 import React, { Component } from 'react';
-
 import { Header } from 'react-native-elements';
 import RSSFeed from '../NavComponent/RSSFeed';
 import TweetsComponent from '../NavComponent/TweetsComponent';
 import BitCoinTweets from '../NavComponent/BitCoinTweets';
-import { Button,
-  ButtonGroup,
-  FormLabel,
-  FormInput
-} from 'react-native-elements';
+import { Button, ButtonGroup, FormLabel, FormInput } from 'react-native-elements';
 import { StackNavigator} from 'react-navigation';
 import buyBTCForm from './forms/buyBTCForm';
 import sellBTCForm from './forms/sellBTCForm';
 import { BackToHomeBTN } from '../NavComponent/BackToHomeBTN';
-
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  Image
-} from 'react-native';
+import { AppRegistry, StyleSheet, Text, View, ScrollView, Image } from 'react-native';
 
 class btc extends Component {
   constructor() {
@@ -164,7 +151,6 @@ class btc extends Component {
   }
 
   render() {
-
     const { bitcoinPrice, bitcoinYdayPrice } = this.state
     const { navigate } = this.props.navigation
     const buttons = ['Daily', 'Weekly', 'Monthly', 'Yearly']
@@ -182,12 +168,17 @@ class btc extends Component {
           </Text>
         </View>
 
+        <Text style={styles.feedTitle}>
+            BTC Feed:
+        </Text>
         <Text style={styles.coinPriceText}>
           {`$${this.state.bitcoinPrice}`}
         </Text>
 
+
+
         <Text style={styles.yDayPrice}>
-          <Text style={{color: `${this.state.colorBoolean}`}}>
+          <Text style={{color: `${this.state.colorBoolean}`, fontWeight: 'bold'}}>
             {this.state.prevPriceString} {`$${this.state.prevPriceNum}`}
           </Text>
         </Text>
@@ -198,17 +189,12 @@ class btc extends Component {
           buttons={buttons}
           containerStyle={styles.btnGroupStyle}
          />
-
-       <Text style={styles.feedTitle}>
-          BTC Feed:
-        </Text>
-
         <ScrollView>
-          <Text style={{color: '#185A9D', textAlign: 'center', fontWeight: 'bold', fontSize: 15}}>
+          <Text style={{color: '#185A9D', textAlign: 'center', fontWeight: 'bold', fontSize: 15, marginBottom: 10}}>
             BitCoin Tweets
           </Text>
           <BitCoinTweets />
-          <Text style={{color: '#185A9D', textAlign: 'center', fontWeight: 'bold', fontSize: 15, paddingTop: 10, paddingBottom: 5}}>
+          <Text style={{color: '#185A9D', textAlign: 'center', fontWeight: 'bold', fontSize: 15, paddingTop: 10, paddingBottom: 5, marginBottom: 5}}>
             BitCoin RSS Feeds
           </Text>
           <RSSFeed />
@@ -262,12 +248,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF'
   },
   backBTNStyle: {
-    flexDirection: 'row',
-    marginTop: 30
+    flexDirection: 'column',
+    marginTop: 30,
+    marginLeft: -300,
+    marginBottom: -50,
+    color:"#185A9D"
   },
   btnGroupStyle: {
-    height: 50,
-    marginTop: 10
+    height: 30,
+    marginTop: 10,
+    marginBottom: 10
   },
   coinPriceTitle: {
     flex: 1,
@@ -277,7 +267,8 @@ const styles = StyleSheet.create({
   },
   coinPriceText: {
     fontSize: 30,
-    textAlign: 'center'
+    textAlign: 'center',
+    fontWeight: '400'
   },
   yDay: {
     fontSize: 17,
@@ -286,7 +277,8 @@ const styles = StyleSheet.create({
   feedTitle: {
     fontSize: 20,
     paddingTop: 15,
-    paddingBottom: 7
+    paddingBottom: 0,
+    fontWeight: "500"
   },
   buySellBtnStyleLeft: {
     backgroundColor: '#185A9D',
@@ -303,6 +295,18 @@ const styles = StyleSheet.create({
     marginRight: 20,
     marginLeft: -20,
     width: "100%"
+  },
+  coinHeader: {
+    flexDirection: 'row'
+  },
+  coinTitle: {
+    fontSize: 20,
+    fontWeight: '700',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+    marginTop: 6,
+    paddingRight: 10
   }
 });
 

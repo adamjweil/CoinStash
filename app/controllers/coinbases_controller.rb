@@ -59,7 +59,7 @@ class CoinbasesController < ActionController::API
 
   def transactions
     client
-    render json: @client.primary_account.transactionsp
+    render json: @client.primary_account.transactions
   end
 
   def account_id
@@ -73,7 +73,7 @@ class CoinbasesController < ActionController::API
   end
 
   def send_payment
-    
+
     client
     primary_account = client.primary_account
     response = primary_account.send({:to => params[:to],

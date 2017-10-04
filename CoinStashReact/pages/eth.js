@@ -38,7 +38,8 @@ class eth extends Component {
       ethereumYdayPrice: "",
       selectedIndex: 0,
       prevPriceString: "",
-      prevPriceNum: ""
+      prevPriceNum: "",
+      colorBoolean: ""
     }
     this.updateIndex = this.updateIndex.bind(this)
   }
@@ -65,6 +66,8 @@ class eth extends Component {
           let yDayETH = yDayCalcETH.toFixed(2);
           console.log(todayNum)
           this.setState({prevPriceNum: yDayETH });
+          let colorBool = (yDayETH >= 0) ? "green" : "red";
+          this.setState({colorBoolean: colorBool})
         })
       })
     }
@@ -88,6 +91,8 @@ class eth extends Component {
           let lWeekETH = lWeekCalcETH.toFixed(2);
           console.log(lWeekETH)
           this.setState({prevPriceNum: lWeekETH });
+          let colorBool = (lWeekETH >= 0) ? "green" : "red";
+          this.setState({colorBoolean: colorBool})
         })
       })
     }
@@ -111,6 +116,8 @@ class eth extends Component {
           let lMonthETH = lMonthCalcETH.toFixed(2);
           console.log(lMonthETH)
           this.setState({prevPriceNum: lMonthETH });
+          let colorBool = (lMonthETH >= 0) ? "green" : "red";
+          this.setState({colorBoolean: colorBool})
         })
       })
     }
@@ -134,6 +141,8 @@ class eth extends Component {
           let lYearETH = lYearCalcETH.toFixed(2);
           console.log(lYearETH)
           this.setState({prevPriceNum: lYearETH });
+          let colorBool = (lYearETH >= 0) ? "green" : "red";
+          this.setState({colorBoolean: colorBool})
         })
       })
     }
@@ -155,11 +164,11 @@ class eth extends Component {
     this.updateIndex()
     setInterval(this.updateIndex, 100000);
 
-    let today = this.state.ethereumPrice
-    let yday = Math.round(this.state.ethereumYdayPrice)
-    let diff = this.state.ethereumPrice - this.state.ethereumYdayPrice
-    let change = diff.toFixed(2);
-    let colorBool = (change >= 0) ? "green" : "red";
+    // let today = this.state.ethereumPrice
+    // let yday = Math.round(this.state.ethereumYdayPrice)
+    // let diff = this.state.ethereumPrice - this.state.ethereumYdayPrice
+    // let change = diff.toFixed(2);
+    // let colorBool = (change >= 0) ? "green" : "red";
 
   }
 
@@ -198,7 +207,7 @@ class eth extends Component {
           </Text>
 
           <Text style={styles.yDayPrice}>
-            <Text style={{color: colorBool}}>
+            <Text style={{color: `${this.state.colorBoolean}`}}>
               {this.state.prevPriceString} {`$${this.state.prevPriceNum}`}
             </Text>
           </Text>

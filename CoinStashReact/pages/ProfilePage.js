@@ -8,7 +8,6 @@ import TransactionDetails from './Transactions/TransactionDetails';
 import BitTransactions from './Transactions/BitTransactions';
 import Button from 'apsl-react-native-button'
 import { AppRegistry, StyleSheet, Text, View, Image, ScrollView } from 'react-native';
-import CryptoNews from '../NavComponent/CryptoNews';
 
 class ProfilePage extends Component {
   constructor() {

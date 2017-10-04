@@ -26,7 +26,7 @@ export default class home extends Component {
   }
   componentDidMount() {
       this.getCurrentNews();
-      setInterval(this.getCurrentNews, 10000);
+      setInterval(this.getCurrentNews, 100000);
       this.getCurrentPrice();
       setInterval(this.getCurrentPrice, 10000);
     }
@@ -47,7 +47,7 @@ export default class home extends Component {
     getCurrentNews = () => {
       // TechCrunch
       // fetch('https://newsapi.org/v1/articles?source=techcrunch&sortBy=top&apiKey=ed62d0aea575414fbdf6a1351c0fa66a')
-      fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fnews.bitcoin.com%2Ffeed%2F')
+      fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fnews.bitcoin.com%2Ffeed%2F&api_key=d92ks2w1mac3z34wxbpajfqfhpb6cke3jlxzhagd')
       .then(function(response) {
         return response.json();
       })
@@ -278,9 +278,7 @@ export default class home extends Component {
         </LinearGradient>
       );
     }
-    componentWillUnMount(){
-      this.setState({isMounted: false})
-    }
+
   }
 
   const styles = StyleSheet.create({

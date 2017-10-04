@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   get '/coinbases/btcwallet', to: 'coinbases#btc_wallet'
   get '/coinbases/primaryaccount', to: 'coinbases#primary_account'
   get '/coinbases/transactions', to: 'coinbases#transactions'
-  get '/coinbases/sendpayment', to: 'coinbases#send_payment'
+  post '/coinbases/sendpayment', to: 'coinbases#send_payment'
   get '/coinbases/accountid', to: 'coinbases#account_id'
   get '/coinbases/transactions/btc', to: 'coinbases#btc_transactions'
   get '/coinbases/transactions/eth', to: 'coinbases#eth_transactions'

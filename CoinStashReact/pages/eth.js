@@ -166,10 +166,6 @@ class eth extends Component {
   };
 
   render() {
-    let yday = Math.round(this.state.ethereumYdayPrice)
-    let diff = this.state.ethereumPrice - this.state.ethereumYdayPrice
-    let change = diff.toFixed(2);
-    let colorBool = (change >= 0) ? "green" : "red";
 
     const { ethereumPrice, ethereumYdayPrice } = this.state
     const { navigate } = this.props.navigation;

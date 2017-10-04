@@ -55,7 +55,6 @@ class ltc extends Component {
         return response.json();
       }).then((obj) => {
         let yday = obj.LTC.USD;
-        // console.log(yday);
         fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=LTC&tsyms=USD')
         .then(function(response) {
           return response.json();
@@ -64,7 +63,6 @@ class ltc extends Component {
           let todayNum = Math.floor(today)
           let yDayCalcLTC = today - yday
           let yDayLTC = yDayCalcLTC.toFixed(2);
-          console.log(todayNum)
           this.setState({prevPriceNum: yDayLTC });
           let colorBool = (yDayLTC >= 0) ? "green" : "red";
           this.setState({colorBoolean: colorBool})
@@ -80,7 +78,6 @@ class ltc extends Component {
         return response.json();
       }).then((obj) => {
         let lWeek = obj.LTC.USD;
-        console.log(lWeek);
         fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=LTC&tsyms=USD')
         .then(function(response) {
           return response.json();
@@ -89,7 +86,6 @@ class ltc extends Component {
           let todayNum = Math.floor(today)
           let lWeekCalcLTC = todayNum - lWeek
           let lWeekLTC = lWeekCalcLTC.toFixed(2);
-          console.log(lWeekLTC)
           this.setState({prevPriceNum: lWeekLTC });
           let colorBool = (lWeekLTC >= 0) ? "green" : "red";
           this.setState({colorBoolean: colorBool})
@@ -105,7 +101,6 @@ class ltc extends Component {
         return response.json();
       }).then((obj) => {
         let lMonth = obj.LTC.USD;
-        console.log(lMonth);
         fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=LTC&tsyms=USD')
         .then(function(response) {
           return response.json();
@@ -114,7 +109,6 @@ class ltc extends Component {
           let todayNum = Math.floor(today)
           let lMonthCalcLTC = todayNum - lMonth
           let lMonthLTC = lMonthCalcLTC.toFixed(2);
-          console.log(lMonthLTC)
           this.setState({prevPriceNum: lMonthLTC });
           let colorBool = (lMonthLTC >= 0) ? "green" : "red";
           this.setState({colorBoolean: colorBool})
@@ -130,7 +124,6 @@ class ltc extends Component {
         return response.json();
       }).then((obj) => {
         let lYear = obj.LTC.USD;
-        console.log(lYear);
         fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=LTC&tsyms=USD')
         .then(function(response) {
           return response.json();
@@ -139,7 +132,6 @@ class ltc extends Component {
           let todayNum = Math.floor(today)
           let lYearCalcLTC = todayNum - lYear
           let lYearLTC = lYearCalcLTC.toFixed(2);
-          console.log(lYearLTC)
           this.setState({prevPriceNum: lYearLTC });
           let colorBool = (lYearLTC >= 0) ? "green" : "red";
           this.setState({colorBoolean: colorBool})
@@ -162,12 +154,6 @@ class ltc extends Component {
     setInterval(this.getCurrentPrice, 100000);
     this.updateIndex()
     setInterval(this.updateIndex, 100000);
-
-    let today = this.state.liteCoinPrice
-    let yday = Math.round(this.state.liteCoinYdayPrice)
-    let diff = this.state.liteCoinPrice - this.state.liteCoinYdayPrice
-    let change = diff.toFixed(2);
-    let colorBool = (change >= 0) ? "green" : "red";
   }
 
   // componentWillUnmount() {
@@ -179,11 +165,6 @@ class ltc extends Component {
   };
 
   render() {
-    let today = this.state.liteCoinPrice
-    let yday = Math.round(this.state.liteCoinYdayPrice)
-    let diff = this.state.liteCoinPrice - this.state.liteCoinYdayPrice
-    let change = diff.toFixed(2);
-    let colorBool = (change >= 0) ? "green" : "red";
 
     const { liteCoinPrice, liteCoinYdayPrice } = this.state
     const { navigate } = this.props.navigation;

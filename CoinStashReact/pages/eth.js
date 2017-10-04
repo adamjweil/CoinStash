@@ -10,7 +10,12 @@ import { Header } from 'react-native-elements';
 import RSSFeed from '../NavComponent/RSSFeed';
 import TweetsComponent from '../NavComponent/TweetsComponent';
 import EthereumTweets from '../NavComponent/EthereumTweets';
-import { Button, ButtonGroup, FormLabel, FormInput } from 'react-native-elements';
+import {
+  Button,
+  ButtonGroup,
+  FormLabel,
+  FormInput
+  } from 'react-native-elements';
 import { StackNavigator} from 'react-navigation';
 import buyETHForm from './forms/buyETHForm';
 import sellETHForm from './forms/sellETHForm';

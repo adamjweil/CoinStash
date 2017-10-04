@@ -12,20 +12,27 @@ import RegisterForm from './RegisterForm'
 export default class Register extends Component {
   render () {
     return (
-    <KeyboardAvoidingView behavior="padding" style={styles.container}>
-      <View style={styles.logoContainer}>
-        <Image style={styles.logo} source={require('../../images/logo-placeholder.png')} />
-        <Text style={styles.title}>CoinStash</Text>
-        <Text style={styles.subtitle}>Register for CoinStash</Text>
-      </View>
-      <View style={styles.formContainer}>
-        <RegisterForm />
-      </View>
-    </KeyboardAvoidingView>
+    <View style={styles.wrapper}>
+      <KeyboardAvoidingView behavior="padding" style={styles.container}>
+        <View style={styles.logoContainer}>
+          <Text style={styles.title}>CoinStash</Text>
+          <Text style={styles.subtitle}>Register for CoinStash</Text>
+        </View>
+        <View style={styles.formContainer}>
+          <RegisterForm handleToken2={this.props.handleToken} switchPages={this.props.switchPages} stringTokenCallBack={this.stringTokenCallBack}/>
+        </View>
+      </KeyboardAvoidingView>
+    </View>
     );
   }
 }
 const styles = StyleSheet.create({
+  wrapper: {
+    backgroundColor: '#bdc3c7',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   container: {
     flex: 1,
   },

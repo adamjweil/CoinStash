@@ -5,7 +5,11 @@
  */
 'use strict';
 import React, { Component } from 'react';
-import { Button, FormLabel, FormInput } from 'react-native-elements'
+import {
+  Button,
+  FormLabel,
+  FormInput
+} from 'react-native-elements'
 import SelectInput from 'react-native-select-input-ios';
 
 import {
@@ -18,7 +22,7 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
-// var MarqueeLabel = require('@remobile/react-native-marquee-label');
+
 
 export default class form extends Component {
   constructor() {

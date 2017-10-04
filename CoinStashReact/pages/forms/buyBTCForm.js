@@ -1,11 +1,15 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+* Sample React Native App
+* https://github.com/facebook/react-native
+* @flow
+*/
 'use strict';
 import React, { Component } from 'react';
-import { Button, FormLabel, FormInput } from 'react-native-elements'
+import {
+  Button,
+  FormLabel,
+  FormInput
+} from 'react-native-elements'
 import SelectInput from 'react-native-select-input-ios';
 
 import {
@@ -19,7 +23,6 @@ import {
   TextInput,
   Picker
 } from 'react-native';
-// var MarqueeLabel = require('@remobile/react-native-marquee-label');
 
 export default class form extends Component {
   constructor() {
@@ -31,13 +34,13 @@ export default class form extends Component {
   }
   getPickerOptionsPaymentMethod() {
     return [
-      { value: 0, label: 'USD Wallet'      },
+      { value: 0, label: 'USD Wallet' },
     ];
   }
 
   getPickerOptionsDepositTo() {
     return [
-      { value: 0, label: 'BTC Wallet'      },
+      { value: 0, label: 'BTC Wallet' },
     ];
   }
 
@@ -62,16 +65,16 @@ export default class form extends Component {
       <View style={styles.container}>
         <Text style={styles.formTitle}></Text>
 
-          <View style={styles.inputContainer}>
-            <Text style={styles.labelTitle}>Payment Method:</Text>
-            <SelectInput
-              value={state.valueLarge}
-              options={this.getPickerOptionsPaymentMethod()}
-              onCancelEditing={() => console.log('onCancel')}
-              onSubmitEditing={this.onSubmitPaymentMethod.bind(this)}
-              style={[styles.paymentMethod, styles.selectInputLarge]}
-            />
-          </View>
+        <View style={styles.inputContainer}>
+          <Text style={styles.labelTitle}>Payment Method:</Text>
+          <SelectInput
+            value={state.valueLarge}
+            options={this.getPickerOptionsPaymentMethod()}
+            onCancelEditing={() => console.log('onCancel')}
+            onSubmitEditing={this.onSubmitPaymentMethod.bind(this)}
+            style={[styles.paymentMethod, styles.selectInputLarge]}
+          />
+        </View>
 
         <View style={styles.twoColumnLayout}>
 
@@ -83,21 +86,21 @@ export default class form extends Component {
                 style={styles.paymentInteger}
                 onChangeText={(usdInput) => this.setState({usdInput})}
                 value={this.state.usdInput}
-                />
+              />
             </View>
           </View>
 
           <View style={styles.flexDirectionColumn, styles.secondPaymentColumn}>
             <View style={styles.currencyInputContainer}>
               <Text style={styles.currencyPriceLabel}>
-                  BTC
+                BTC
               </Text>
               <TextInput
                 keyboardType={'numeric'}
                 style={styles.paymentInteger}
                 onChangeText={(btcInput) => this.setState({btcInput})}
                 value={this.state.btcInput}
-                />
+              />
             </View>
           </View>
 

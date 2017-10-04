@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { StackNavigator } from 'react-navigation';
 import {
   AsyncStorage,
   Text,
@@ -7,12 +8,14 @@ import {
   TextInput,
   TouchableOpacity,
   StatusBar
-
 } from 'react-native';
 
 const ACCESS_TOKEN = 'access_token';
 
 export default class LoginForm extends Component {
+  static navigationOptions = {
+    title: 'Login Here'
+  };
   constructor(){
     super();
 
@@ -37,7 +40,7 @@ export default class LoginForm extends Component {
       this.setState({showProgress: true})
       const { session } = this.state
 
-      var responseJson = await fetch("http://192.168.169.43:3000/login", {
+      var responseJson = await fetch("http://localhost:3000/login", {
         method: 'post',
         headers: {
           'Accept': 'application/json',
@@ -50,24 +53,21 @@ export default class LoginForm extends Component {
 
       let accessToken = responseJson.access_token
 
-      // console.log('key is: ', ACCESS_TOKEN)
-      // console.log('value is: ', accessToken)
-
-      await AsyncStorage.setItem(ACCESS_TOKEN, accessToken, (err)=> {
+      await AsyncStorage.setItem('access_token', accessToken, (err)=> {
         if(err){
           console.error("an error");
           console.error(err);
         }
       })
-
-      var value = await AsyncStorage.getItem(ACCESS_TOKEN)
-
-      console.log(value)
+      this.props.handleToken2()
+      this.props.stringTokenCallBack()
+      debugger
+      var value = await AsyncStorage.getItem('access_token')
+      debugger
   }
 
 
   handleUserSubmit = this.handlePress.bind(this)
-
 
   render () {
     return (
@@ -102,6 +102,13 @@ export default class LoginForm extends Component {
         style={styles.buttonContainer}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={this.props.switchPages}
+        style={styles.buttonContainer}>
+        <Text style={styles.buttonText}>Sign Up</Text>
+      </TouchableOpacity>
+
       <Text style={styles.error}>
           {this.state.error}
         </Text>

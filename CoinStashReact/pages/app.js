@@ -14,7 +14,7 @@ import Ethereum from './eth';
 import LiteCoin from './ltc';
 
 import p2pForm from './p2pform';
-
+import ProfilePage from './ProfilePage';
 
 const CoinStashReact = DrawerNavigator(
   {
@@ -27,7 +27,8 @@ const CoinStashReact = DrawerNavigator(
     },
     Ethereum: { screen: Ethereum },
     LiteCoin: { screen: LiteCoin },
-    p2pForm: { screen: p2pForm }
+    p2pForm: { screen: p2pForm },
+    Profile: { screen: ProfilePage }
   },
   {
     initialRouteName: 'Home',

@@ -7,8 +7,12 @@ import {
   Image,
   Linking
 } from 'react-native';
-
-import { ListItem, Thumbnail, Text, Body } from 'native-base';
+import {
+  ListItem,
+  Thumbnail,
+  Text,
+  Body
+} from 'native-base';
 
 
 export default class TweetsComponent extends Component {

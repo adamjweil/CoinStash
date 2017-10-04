@@ -7,7 +7,7 @@ export class BackToHomeBTN extends Component {
     const { navigate } = this.props
     return(
       <Text
-        style={{ paddingLeft: 15, paddingRight: 15, paddingTop: 20}}
+        style={{ paddingLeft: 15, paddingRight: 15, paddingTop: 20, color: "185A9D"}}
         onPress={() => navigate('Home')}>
         BACK
       </Text>

@@ -1,27 +1,35 @@
 'use strict';
 import React, { Component } from 'react';
 import { StackNavigator} from 'react-navigation';
-import { Button, ButtonGroup, FormLabel, FormInput } from 'react-native-elements';
-
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  ScrollView
-} from 'react-native';
-
+import { FormLabel, FormInput } from 'react-native-elements';
+import { AppRegistry, StyleSheet, Text, View, ScrollView } from 'react-native';
 import { ListItem, Thumbnail, Body } from 'native-base';
+import Button from 'apsl-react-native-button'
 
 class Transactions extends Component {
   constructor() {
     super();
     this.state = {
-      transactions: []
+      transactions: [],
+
     };
+    this.callFunc = this.callFunc.bind(this)
+  }
+
+  callFunc(){
+    if(this.transBoolean){
+      this.setState({transBoolean: false});
+    } else {
+      this.setState({transBoolean: true});
+    }
   }
 
   componentDidMount() {
+    this.getTransactions()
+    setInterval(this.getTransactions, 10000);
+  }
+
+  getTransactions = () => {
     fetch('http://localhost:3000/coinbases/transactions')
     .then(function(response){
       return response.json();
@@ -58,7 +66,9 @@ class Transactions extends Component {
                   </View>
                 </Body>
             </ListItem>
+
           </View>
+
       )}
     </ScrollView>
     );
@@ -68,9 +78,10 @@ class Transactions extends Component {
 
 const styles = StyleSheet.create({
   transactionTitle: {
-    fontSize: 30,
+    fontSize: 20,
     fontWeight: 'bold',
-    textAlign: 'center'
+    textAlign: 'center',
+    fontWeight: '400'
   },
   nameContainer: {
     flexDirection: 'row'

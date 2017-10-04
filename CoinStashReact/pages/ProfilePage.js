@@ -1,22 +1,12 @@
-
 'use strict';
 import React, { Component } from 'react';
-
 import { StackNavigator} from 'react-navigation';
 import  { BackToHomeBTN }  from '../NavComponent/BackToHomeBTN';
 import { ButtonGroup, FormLabel, FormInput } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
 import Transactions from './Transactions';
 import Button from 'apsl-react-native-button'
-
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ScrollView
-} from 'react-native';
+import { AppRegistry, StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 
 class ProfilePage extends Component {
   constructor() {
@@ -34,18 +24,38 @@ class ProfilePage extends Component {
       ethName: "",
       ethBal: "",
       ethCCY: "",
+      transBoolean: false,
+      transLabel: "Show Transactions",
+      accounts: []
     };
+    this.showTrans = this.showTrans.bind(this);
+    this.hideTrans = this.hideTrans.bind(this);
   }
-  showTransactions() {
-    return(
-      <View>
-        <Transactions />
-      </View>
-    );
+  showTrans(){
+    if(this.state.transBoolean){
+      this.setState({transBoolean: false});
+      this.setState({transLabel: "Show Transactions"})
+    } else {
+      this.setState({transBoolean: true});
+      this.setState({transLabel: "Hide Transactions"})
+    }
+  }
+  hideTrans(){
+    if(this.state.transBoolean){
+    this.setState({transBoolean: false})
+  } else {
+    this.setState({transBoolean: true})
+    }
   }
 
-
-  componentDidMount() {
+  getAccounts = () => {
+    fetch('http://localhost:3000/coinbases/accounts')
+    .then(function(response) {
+      return response.json();
+    }).then((obj) => {
+      console.log(obj)
+      this.setState({accounts: obj})
+    })
     fetch('http://localhost:3000/coinbases/usdwallet')
     .then(function(response) {
       return response.json();
@@ -83,16 +93,18 @@ class ProfilePage extends Component {
       let ltcC = obj.balance.currency
     this.setState({ltcName: ltcN, ltcBal: ltcB, ltcCCY: ltcC})
   })
-
 }
 
+  componentDidMount() {
+    this.getAccounts()
+    setInterval(this.getAccounts, 30000);
+  }
 
   static navigationOptions = {
     title: 'Profile Page',
   };
 
   render() {
-
     const { navigate } = this.props.navigation;
     return (
       <LinearGradient colors={['#43cea2', '#185a9d']} style={styles.linearGradient}>
@@ -111,41 +123,24 @@ class ProfilePage extends Component {
         </View>
 
         <ScrollView style={styles.scrollView}>
-          <View>
+
             <View style={styles.accountWrapper}>
-              <View style={styles.accouontInfo}>
-                <Text style={styles.accountName}>Account Name: {this.state.usdName}{'\n'}</Text>
-                <Text>Balance: {this.state.usdBal}{'\n'}</Text>
-                <Text style={styles.currency}>Currency: {this.state.usdCCY}</Text>
-              </View>
-
-              <View style={styles.accouontInfo}>
-                <Text style={styles.accountName}>Account Name: {this.state.btcName}{'\n'}</Text>
-                <Text>Balance: {this.state.btcBal}{'\n'}</Text>
-                <Text style={styles.currency}>Currency: {this.state.btcCCY}{'\n'}</Text>
-              </View>
-
-              <View style={styles.accouontInfo}>
-                <Text style={styles.accountName}>Account Name: {this.state.ethName}{'\n'}</Text>
-                <Text>Balance: {this.state.ethBal}{'\n'}</Text>
-                <Text style={styles.currency}>Currency: {this.state.ethCCY}{'\n'}</Text>
-              </View>
-
-              <View style={styles.accouontInfo}>
-                <Text style={styles.accountName}>Account Name: {this.state.ltcName}{'\n'}</Text>
-                <Text>Balance: {this.state.ltcBal}{'\n'}</Text>
-                <Text style={styles.currency}>Currency: {this.state.ltcCCY}{'\n'}</Text>
-              </View>
-            </View>
+              {this.state.accounts.map((account, i)=>
+                <View style={styles.accouontInfo}>
+                  <Text style={styles.accountName}>Account Name: {account.name}{'\n'}</Text>
+                  <Text>Balance: {account.balance.amount}{'\n'}</Text>
+                  <Text style={styles.currency}>Currency: {account.balance.currency}</Text>
+                </View>
+                )}
           </View>
 
-          <View>
-            <Button style={styles.transactionButton}
-                    onPress={() => this.showTransactions}>
-                    <Text>Transactions</Text>
+          <View style={{flexDirection: 'row'}}>
+            <Button style={styles.showTransactionButton}
+                    onPress={() => { this.showTrans(); }}>
+                    <Text>{this.state.transLabel}</Text>
             </Button>
-            <Transactions />
           </View>
+            {this.state.transBoolean && <Transactions />}
 
     </ScrollView>
   </LinearGradient>
@@ -183,12 +178,20 @@ const styles = StyleSheet.create({
   accountWrapper: {
     alignItems: 'center'
   },
-  transactionButton: {
+  showTransactionButton: {
+    backgroundColor: 'orange',
+    borderRadius: 17,
+    borderWidth: 2,
+    width: 150,
+    marginLeft: 220,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  hideTransactionButton: {
     backgroundColor: 'orange',
     borderRadius: 5,
     borderWidth: 2,
-    width: 300,
-    marginLeft: 40,
+    width: 150,
     alignItems: 'center',
     justifyContent: 'center'
   },

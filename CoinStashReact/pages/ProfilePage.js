@@ -141,7 +141,9 @@ class ProfilePage extends Component {
                     <Text>{this.state.transLabel}</Text>
             </Button>
           </View>
+
             {this.state.transBoolean && <TransactionDetails />}
+
 
     </ScrollView>
   </LinearGradient>

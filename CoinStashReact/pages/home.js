@@ -69,7 +69,7 @@ export default class home extends Component {
 
     static navigationOptions = {
       header: null,
-      title: 'Dashboard',
+      title: 'Home',
     };
 
     render() {

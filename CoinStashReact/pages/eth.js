@@ -5,30 +5,16 @@
 */
 'use strict';
 import React, { Component } from 'react';
-
 import { Header } from 'react-native-elements';
 import RSSFeed from '../NavComponent/RSSFeed';
 import TweetsComponent from '../NavComponent/TweetsComponent';
 import EthereumTweets from '../NavComponent/EthereumTweets';
-import {
-  Button,
-  ButtonGroup,
-  FormLabel,
-  FormInput
-  } from 'react-native-elements';
+import { Button, ButtonGroup, FormLabel, FormInput } from 'react-native-elements';
 import { StackNavigator} from 'react-navigation';
 import buyETHForm from './forms/buyETHForm';
 import sellETHForm from './forms/sellETHForm';
 import { BackToHomeBTN } from '../NavComponent/BackToHomeBTN';
-
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  Image
-} from 'react-native';
+import { AppRegistry, StyleSheet, Text, View, ScrollView, Image } from 'react-native';
 
 class eth extends Component {
   constructor() {
@@ -176,19 +162,22 @@ class eth extends Component {
       <View style={styles.container}>
         <View style={styles.backBTNStyle}>
           <BackToHomeBTN navigate={navigate} />
-          <Text style={styles.coinPriceTitle}>ETH</Text>
+          <Text style={styles.coinPriceTitle}></Text>
           <Text
             style={{color: 'rgba(1,1,1,0)', paddingLeft: 15, paddingRight: 15}}>
             BACK
           </Text>
         </View>
 
+        <View style={styles.coinHeader}>
+          <Text style={styles.coinTitle}>ETH:</Text>
           <Text style={styles.coinPriceText}>
             {`$${this.state.ethereumPrice}`}
           </Text>
+        </View>
 
           <Text style={styles.yDayPrice}>
-            <Text style={{color: `${this.state.colorBoolean}`}}>
+            <Text style={{color: `${this.state.colorBoolean}`, fontWeight: 'bold'}}>
               {this.state.prevPriceString} {`$${this.state.prevPriceNum}`}
             </Text>
           </Text>
@@ -305,6 +294,18 @@ const styles = StyleSheet.create({
     marginRight: 20,
     marginLeft: -20,
     width: "100%"
+  },
+  coinHeader: {
+    flexDirection: 'row'
+  },
+  coinTitle: {
+    fontSize: 20,
+    fontWeight: '700',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+    marginTop: 6,
+    paddingRight: 10
   }
 });
 

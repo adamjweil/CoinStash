@@ -143,7 +143,9 @@ class ProfilePage extends Component {
                     onPress={() => this.showTransactions}>
                     <Text>Transactions</Text>
             </Button>
+            <Transactions />
           </View>
+
     </ScrollView>
   </LinearGradient>
     );

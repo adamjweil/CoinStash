@@ -86,7 +86,6 @@ export default class home extends Component {
           <Image source={{uri: 'http://www.freepngimg.com/thumb/mustache/5-2-no-shave-movember-day-mustache-png-image-thumb.png'}}
             style={{width: 125, height: 125, marginLeft: 110, marginBottom: -75}}
             />
-
           <Text
             style={{color: '#185A9D'}}
             onPress={()=> this.props.navigation.navigate('DrawerOpen')}

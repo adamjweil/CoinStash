@@ -162,7 +162,6 @@ class eth extends Component {
       <View style={styles.container}>
         <View style={styles.backBTNStyle}>
           <BackToHomeBTN navigate={navigate} />
-
           <Text
             style={{color: 'rgba(1,1,1,0)', paddingLeft: 15, paddingRight: 15}}>
             BACK
@@ -174,10 +173,9 @@ class eth extends Component {
           ETH Feed:
         </Text>
 
-          <Text style={styles.coinPriceText}>
-            {`$${this.state.ethereumPrice}`}
-          </Text>
-        </View>
+        <Text style={styles.coinPriceText}>
+          {`$${this.state.ethereumPrice}`}
+        </Text>
 
           <Text style={styles.yDayPrice}>
             <Text style={{color: `${this.state.colorBoolean}`, fontWeight: 'bold'}}>
@@ -191,8 +189,6 @@ class eth extends Component {
           buttons={buttons}
           containerStyle={styles.btnGroupStyle}
           />
-
-
 
         <ScrollView>
           <Text style={{color: '#185A9D', textAlign: 'center', fontWeight: 'bold', fontSize: 15, marginBottom: 10}}>

@@ -167,6 +167,7 @@ class ltc extends Component {
           </Text>
         </View>
 
+
        <Text style={styles.feedTitle}>
          LTC Feed:
        </Text>
@@ -174,6 +175,7 @@ class ltc extends Component {
         <Text style={styles.coinPriceText}>
           {`$${this.state.liteCoinPrice}`}
         </Text>
+
 
         <Text style={styles.yDayPrice}>
           <Text style={{color: `${this.state.colorBoolean}`, fontWeight: 'bold'}}>

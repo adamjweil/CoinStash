@@ -5,7 +5,7 @@ import  { BackToHomeBTN }  from '../NavComponent/BackToHomeBTN';
 import { ButtonGroup, FormLabel, FormInput } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
 import TransactionDetails from './Transactions/TransactionDetails';
-import BitTransactions from './Transactions/BitTransaction';
+import BitTransactions from './Transactions/BitTransactions';
 import Button from 'apsl-react-native-button'
 import { AppRegistry, StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 
@@ -141,7 +141,9 @@ class ProfilePage extends Component {
                     <Text>{this.state.transLabel}</Text>
             </Button>
           </View>
-            {this.state.transBoolean && <BitTransactions />}
+
+            {this.state.transBoolean && <TransactionDetails />}
+
 
     </ScrollView>
   </LinearGradient>

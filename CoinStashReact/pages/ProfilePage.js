@@ -55,13 +55,14 @@ class ProfilePage extends Component {
       let usdC = obj.balance.currency
     this.setState({usdName: usdN, usdBal: usdB, usdCCY: usdC})
   })
-    fetch('http://localhost:3000/coinbases/btcwallet')
+    fetch('http://localhost:3000/coinbases/accounts')
     .then(function(response) {
       return response.json();
     }).then((obj) => {
-        let btcB = obj.balance.amount
-        let btcN = obj.name
-        let btcC = obj.balance.currency
+      console.log(obj)
+        let btcB = obj[3].balance.amount
+        let btcN = obj[3].name
+        let btcC = obj[3].balance.currency
       this.setState({btcName: btcN, btcBal: btcB, btcCCY: btcC})
   })
   fetch('http://localhost:3000/coinbases/ethwallet')

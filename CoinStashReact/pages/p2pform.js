@@ -45,6 +45,7 @@ export default class p2pForm extends Component {
   }
 
 
+
 //   handlePress() {
 //     this.setState()
 //     const { sendMoney } = this.state
@@ -73,6 +74,8 @@ export default class p2pForm extends Component {
 //
 //     var value = await AsyncStorage.getItem('access_token')
 // }
+
+
 
 
 handleUserSubmit = this.handlePress.bind(this)

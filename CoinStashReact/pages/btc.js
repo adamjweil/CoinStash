@@ -151,16 +151,16 @@ class btc extends Component {
 
   componentDidMount() {
     this.getCurrentPrice()
-    setInterval(this.getCurrentPrice, 10000);
+    setInterval(this.getCurrentPrice, 20000);
     this.updateIndex()
     setInterval(this.updateIndex, 10000);
+    //
+    // let today = this.state.bitcoinPrice
+    // let yday = Math.round(this.state.bitcoinYdayPrice)
+    // let diff = this.state.bitcoinPrice - this.state.prevPriceNum
+    // let change = diff.toFixed(2);
 
-    let today = this.state.bitcoinPrice
-    let yday = Math.round(this.state.bitcoinYdayPrice)
-    let diff = this.state.bitcoinPrice - this.state.prevPriceNum
-    let change = diff.toFixed(2);
-
-    console.log(change)
+    // console.log(change)
     // let colorBool = (change >= 0) ? "green" : "red";
 
   }
@@ -186,14 +186,13 @@ class btc extends Component {
     return (
 
       <View style={styles.container}>
-        <View style={{flexDirection: 'row', marginTop: 30}}>
           <BackToHomeBTN navigate={navigate} />
-          <Text style={styles.coinPriceTitle}>BTC</Text>
+
           <Text
             style={{color: 'rgba(1,1,1,0)', paddingLeft: 15, paddingRight: 15}}>
             BACK
+
           </Text>
-        </View>
 
         <Text style={styles.coinPriceText}>
           {`$${this.state.bitcoinPrice}`}

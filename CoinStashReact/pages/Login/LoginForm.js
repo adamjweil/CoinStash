@@ -24,7 +24,8 @@ export default class LoginForm extends Component {
       password: "",
       error: "",
       showProgress: false
-    }};
+    }
+   };
   }
 
     handleInputChange(name, val) {
@@ -61,9 +62,8 @@ export default class LoginForm extends Component {
       })
       this.props.handleToken2()
       this.props.stringTokenCallBack()
-      debugger
+
       var value = await AsyncStorage.getItem('access_token')
-      debugger
   }
 
 

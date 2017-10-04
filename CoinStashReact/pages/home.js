@@ -7,7 +7,6 @@
 import React, { Component } from 'react';
 import { Button } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
-import { CoinStashReact2 } from './app'
 import {
   AppRegistry,
   StyleSheet,
@@ -68,7 +67,7 @@ export default class home extends Component {
       })
     }
 
-    componentDidMount() {
+    componentWillMount() {
       this.getCurrentNews();
       setInterval(this.getCurrentNews, 10000);
       this.getCurrentPrice();

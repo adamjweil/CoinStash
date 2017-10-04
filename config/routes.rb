@@ -30,6 +30,11 @@ Rails.application.routes.draw do
   get '/coinbases/transactions/ltc', to: 'coinbases#ltc_transactions'
   get '/coinbases/transactions/usd', to: 'coinbases#usd_transactions'
   get '/coinbases/paymentmethods', to: 'coinbases#payment_methods'
-  get '/coinbases/sell', to: 'coinbases#sell'
-  get '/coinbases/buy', to: 'coinbases#buy'
+
+  post '/coinbases/sellBTC', to: 'coinbases#sellBTC'
+  post '/coinbases/buyBTC', to: 'coinbases#buyBTC'
+  post '/coinbases/sellETH', to: 'coinbases#sellETH'
+  post '/coinbases/buyETH', to: 'coinbases#buyETH'
+  post '/coinbases/sellLTC', to: 'coinbases#sellLTC'
+  post '/coinbases/buyLTC', to: 'coinbases#buyLTC'
 end

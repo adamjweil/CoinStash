@@ -6,7 +6,7 @@ import {
   View
 } from 'react-native';
 
-import { DrawerNavigator } from 'react-navigation';
+import { DrawerNavigator, DrawerItems } from 'react-navigation';
 
 import HomeScreen from './home';
 import BitCoin from './btc';
@@ -15,6 +15,9 @@ import LiteCoin from './ltc';
 
 import p2pForm from './p2pform';
 import ProfilePage from './ProfilePage';
+
+
+
 
 const CoinStashReact = DrawerNavigator(
   {
@@ -35,7 +38,5 @@ const CoinStashReact = DrawerNavigator(
     drawerPosition: 'left'
   }
 );
-
-
 
 export default CoinStashReact;

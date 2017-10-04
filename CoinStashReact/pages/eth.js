@@ -55,7 +55,6 @@ class eth extends Component {
         return response.json();
       }).then((obj) => {
         let yday = obj.ETH.USD;
-        // console.log(yday);
         fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=ETH&tsyms=USD')
         .then(function(response) {
           return response.json();
@@ -64,7 +63,6 @@ class eth extends Component {
           let todayNum = Math.floor(today)
           let yDayCalcETH = today - yday
           let yDayETH = yDayCalcETH.toFixed(2);
-          console.log(todayNum)
           this.setState({prevPriceNum: yDayETH });
           let colorBool = (yDayETH >= 0) ? "green" : "red";
           this.setState({colorBoolean: colorBool})
@@ -80,7 +78,6 @@ class eth extends Component {
         return response.json();
       }).then((obj) => {
         let lWeek = obj.ETH.USD;
-        console.log(lWeek);
         fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=ETH&tsyms=USD')
         .then(function(response) {
           return response.json();
@@ -89,7 +86,6 @@ class eth extends Component {
           let todayNum = Math.floor(today)
           let lWeekCalcETH = todayNum - lWeek
           let lWeekETH = lWeekCalcETH.toFixed(2);
-          console.log(lWeekETH)
           this.setState({prevPriceNum: lWeekETH });
           let colorBool = (lWeekETH >= 0) ? "green" : "red";
           this.setState({colorBoolean: colorBool})
@@ -105,7 +101,6 @@ class eth extends Component {
         return response.json();
       }).then((obj) => {
         let lMonth = obj.ETH.USD;
-        console.log(lMonth);
         fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=ETH&tsyms=USD')
         .then(function(response) {
           return response.json();
@@ -114,7 +109,6 @@ class eth extends Component {
           let todayNum = Math.floor(today)
           let lMonthCalcETH = todayNum - lMonth
           let lMonthETH = lMonthCalcETH.toFixed(2);
-          console.log(lMonthETH)
           this.setState({prevPriceNum: lMonthETH });
           let colorBool = (lMonthETH >= 0) ? "green" : "red";
           this.setState({colorBoolean: colorBool})
@@ -130,7 +124,6 @@ class eth extends Component {
         return response.json();
       }).then((obj) => {
         let lYear = obj.ETH.USD;
-        console.log(lYear);
         fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=ETH&tsyms=USD')
         .then(function(response) {
           return response.json();
@@ -139,7 +132,6 @@ class eth extends Component {
           let todayNum = Math.floor(today)
           let lYearCalcETH = todayNum - lYear
           let lYearETH = lYearCalcETH.toFixed(2);
-          console.log(lYearETH)
           this.setState({prevPriceNum: lYearETH });
           let colorBool = (lYearETH >= 0) ? "green" : "red";
           this.setState({colorBoolean: colorBool})
@@ -163,13 +155,6 @@ class eth extends Component {
     setInterval(this.getCurrentPrice, 100000);
     this.updateIndex()
     setInterval(this.updateIndex, 100000);
-
-    // let today = this.state.ethereumPrice
-    // let yday = Math.round(this.state.ethereumYdayPrice)
-    // let diff = this.state.ethereumPrice - this.state.ethereumYdayPrice
-    // let change = diff.toFixed(2);
-    // let colorBool = (change >= 0) ? "green" : "red";
-
   }
 
   // componentWillUnmount() {
@@ -177,7 +162,7 @@ class eth extends Component {
   // }
 
   static navigationOptions = {
-    title: 'Ethereum',
+    header: null
   };
 
   render() {
@@ -192,66 +177,70 @@ class eth extends Component {
     const { selectedIndex } = this.state
     return (
 
-        <View style={styles.container}>
-          <View style={{marginTop: 30, flexDirection: 'row'}}>
-            <BackToHomeBTN navigate={navigate} />
-            <Text style={styles.coinPriceTitle}>ETH</Text>
-            <Text
-              style={{color: 'rgba(1,1,1,0)', paddingLeft: 15, paddingRight: 15}}>
-              BACK
-            </Text>
-          </View>
-
-          <Text style={styles.coinPriceText}>
-            {`$${this.state.ethereumPrice}`}
+      <View style={styles.container}>
+        <View style={styles.backBTNStyle}>
+          <BackToHomeBTN navigate={navigate} />
+          <Text style={styles.coinPriceTitle}>ETH</Text>
+          <Text
+            style={{color: 'rgba(1,1,1,0)', paddingLeft: 15, paddingRight: 15}}>
+            BACK
           </Text>
+        </View>
+
 
           <Text style={styles.yDayPrice}>
             <Text style={{color: `${this.state.colorBoolean}`}}>
               {this.state.prevPriceString} {`$${this.state.prevPriceNum}`}
             </Text>
+
+            <Text style={styles.coinPriceText}>
+              {`$${this.state.ethereumPrice}`}
+            </Text>
           </Text>
+        
+        <ButtonGroup
+          onPress={this.updateIndex}
+          selectedIndex={selectedIndex}
+          buttons={buttons}
+          containerStyle={styles.btnGroupStyle}
+          />
 
-          <ButtonGroup
-            onPress={this.updateIndex}
-            selectedIndex={selectedIndex}
-            buttons={buttons}
-            containerStyle={{height: 30}}
-           />
+        <Text style={styles.feedTitle}>
+          ETH Feed:
+        </Text>
 
-          <Text style={{fontSize: 20, paddingTop: 15, paddingBottom: 5}}>
-            ETH Feed:
-          </Text>
-
-          <ScrollView>
-          <RSSFeed />
-          <Text>
+        <ScrollView>
+          <Text style={{color: '#185A9D', textAlign: 'center', fontWeight: 'bold', fontSize: 15}}>
             Ethereum Tweets
           </Text>
           <EthereumTweets />
-          </ScrollView>
-          <View style={{flexDirection: 'row'}}>
-            <Button
-              buttonStyle={{backgroundColor: '#185A9D', borderRadius: 0, marginTop: 0, marginRight: -20, marginLeft: 20, width: "100%"}}
-              textStyle={{textAlign: 'center'}}
-              title={`BUY`}
-              onPress={()=> navigate('buyETHForm')}
-              />
-            <Button
-              buttonStyle={{backgroundColor: '#185A9D', borderRadius: 0, marginTop: 0, marginLeft: -20, width: "100%"}}
-              textStyle={{textAlign: 'center'}}
-              title={`SELL`}
-              onPress={()=> navigate('sellETHForm')}
-              />
-          </View>
+          <Text style={{color: '#185A9D', textAlign: 'center', fontWeight: 'bold', fontSize: 15, paddingTop: 10, paddingBottom: 5}}>
+            Ethereum RSS Feeds
+          </Text>
+          <RSSFeed />
+        </ScrollView>
+        <View style={{flexDirection: 'row'}}>
+          <Button
+            buttonStyle={styles.buySellBtnStyleLeft}
+            textStyle={{textAlign: 'center'}}
+            title={`BUY`}
+            onPress={()=> navigate('buyETHForm')}
+            />
+          <Button
+            buttonStyle={styles.buySellBtnStyleRight}
+            textStyle={{textAlign: 'center'}}
+            title={`SELL`}
+            onPress={()=> navigate('sellETHForm')}
+            />
         </View>
+      </View>
     );
   }
 }
 
 const ethNav = StackNavigator({
   selfETH: {
-    screen: eth
+    screen: eth,
   },
   buyETHForm: {
     screen: buyETHForm,
@@ -276,7 +265,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#F5FCFF'
+  },
+  backBTNStyle: {
+    flexDirection: 'row',
+    marginTop: 30
+  },
+  btnGroupStyle: {
+    height: 50,
+    marginTop: 10
   },
   coinPriceTitle: {
     flex: 1,
@@ -289,10 +286,29 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   yDay: {
-    fontSize: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    textAlign: 'center',
+    fontSize: 17,
+    textAlign: 'center'
+  },
+  feedTitle: {
+    fontSize: 20,
+    paddingTop: 15,
+    paddingBottom: 7
+  },
+  buySellBtnStyleLeft: {
+    backgroundColor: '#185A9D',
+    borderRadius: 0,
+    marginTop: 0,
+    marginRight: -20,
+    marginLeft: 20,
+    width: "100%"
+  },
+  buySellBtnStyleRight: {
+    backgroundColor: '#185A9D',
+    borderRadius: 0,
+    marginTop: 0,
+    marginRight: 20,
+    marginLeft: -20,
+    width: "100%"
   }
 });
 

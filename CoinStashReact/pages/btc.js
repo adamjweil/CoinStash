@@ -162,10 +162,6 @@ class btc extends Component {
 
         <View style={styles.backBTNStyle}>
           <BackToHomeBTN navigate={navigate} />
-          <Text
-            style={{color: 'rgba(1,1,1,0)', paddingLeft: 15, paddingRight: 15}}>
-            BACK
-          </Text>
         </View>
 
         <Text style={styles.feedTitle}>
@@ -199,7 +195,7 @@ class btc extends Component {
           </Text>
           <RSSFeed />
         </ScrollView>
-        <View style={{flexDirection: 'row'}}>
+        <View style={{flexDirection: 'row', height: 70}}>
           <Button
             buttonStyle={styles.buySellBtnStyleLeft}
             textStyle={{textAlign: 'center'}}
@@ -286,7 +282,8 @@ const styles = StyleSheet.create({
     marginTop: 0,
     marginRight: -20,
     marginLeft: 20,
-    width: "100%"
+    width: "100%",
+    height: 70
   },
   buySellBtnStyleRight: {
     backgroundColor: '#185A9D',
@@ -294,7 +291,8 @@ const styles = StyleSheet.create({
     marginTop: 0,
     marginRight: 20,
     marginLeft: -20,
-    width: "100%"
+    width: "100%",
+    height: 70
   },
   coinHeader: {
     flexDirection: 'row'

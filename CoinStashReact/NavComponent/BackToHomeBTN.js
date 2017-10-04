@@ -1,16 +1,23 @@
 'use strict';
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
+import { Icon } from 'react-native-elements';
+
 
 export class BackToHomeBTN extends Component {
   render() {
     const { navigate } = this.props
     return(
-      <Text
-        style={{ paddingLeft: 15, paddingRight: 15, paddingTop: 20, color: "185A9D"}}
+      <View
+        style={{ paddingLeft: 15, paddingRight: 15, paddingTop: 15, color: "#185A9D"}}
         onPress={() => navigate('Home')}>
-        BACK
-      </Text>
+        <Icon
+          name='angle-double-left'
+          type='font-awesome'
+          color='#000'
+          onPress={() => navigate('Home')} />
+      </View>
+
     );
   }
 }

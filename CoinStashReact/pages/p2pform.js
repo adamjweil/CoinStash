@@ -7,7 +7,7 @@
 'use strict';
 import React, { Component } from 'react';
 import { Button, ButtonGroup, FormLabel, FormInput } from 'react-native-elements'
-
+import { BackToHomeBTN } from '../NavComponent/BackToHomeBTN';
 import {
   AppRegistry,
   StyleSheet,
@@ -31,7 +31,7 @@ export default class p2pForm extends Component {
   };
     this.updateIndex = this.updateIndex.bind(this)
   }
-  
+
   updateIndex (selectedIndex) {
     this.setState({selectedIndex})
   }
@@ -78,6 +78,7 @@ handleUserSubmit = this.handlePress.bind(this)
     const { selectedIndex } = this.state
     return (
       <View style={styles.container}>
+      <BackToHomeBTN navigate={navigate} />
 
         <Text style={styles.formTitle}>Send</Text>
 

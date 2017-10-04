@@ -7,7 +7,16 @@
 import React, { Component } from 'react';
 import { Button } from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
-import { AppRegistry, StyleSheet, Text, View, Image, ScrollView, TouchableOpacity, Linking } from 'react-native';
+import {
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+  Linking
+} from 'react-native';
 
 export default class home extends Component {
   constructor() {
@@ -24,13 +33,6 @@ export default class home extends Component {
       newsFeed8: []
     };
   }
-  componentDidMount() {
-      this.getCurrentNews();
-      setInterval(this.getCurrentNews, 10000);
-      this.getCurrentPrice();
-      setInterval(this.getCurrentPrice, 10000);
-    }
-
   getCurrentPrice = () => {
     fetch('https://api.lionshare.capital/api/prices')
     .then(function(response) {
@@ -41,31 +43,36 @@ export default class home extends Component {
         bitcoinPrice: obj.data.BTC[obj.data.BTC.length - 1],
         ethereumPrice: obj.data.ETH[obj.data.ETH.length - 1],
         liteCoinPrice: obj.data.LTC[obj.data.LTC.length - 1]})
-        })
+      })
     }
 
     getCurrentNews = () => {
       // TechCrunch
       // fetch('https://newsapi.org/v1/articles?source=techcrunch&sortBy=top&apiKey=ed62d0aea575414fbdf6a1351c0fa66a')
-      fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fnews.bitcoin.com%2Ffeed%2F')
+      fetch('https://newsapi.org/v1/articles?source=business-insider&sortBy=latest&apiKey=ed62d0aea575414fbdf6a1351c0fa66a')
       .then(function(response) {
         return response.json();
       })
        .catch((error) => console.warn("fetch error:", error))
-       .then((obj) => {
-        this.setState({newsFeed0: obj.items[obj.items.length - 1]})
-        this.setState({newsFeed1: obj.items[obj.items.length - 2]})
-        this.setState({newsFeed2: obj.items[obj.items.length - 3]})
-        this.setState({newsFeed3: obj.items[obj.items.length - 4]})
-        this.setState({newsFeed4: obj.items[obj.items.length - 5]})
-        this.setState({newsFeed5: obj.items[obj.items.length - 6]})
-        this.setState({newsFeed6: obj.items[obj.items.length - 7]})
-        this.setState({newsFeed7: obj.items[obj.items.length - 8]})
-        this.setState({newsFeed8: obj.items[obj.items.length - 9]})
-        })
+       .then((response) => {
+        this.setState({newsFeed0: response.articles[response.articles.length - 1]})
+        this.setState({newsFeed1: response.articles[response.articles.length - 2]})
+        this.setState({newsFeed2: response.articles[response.articles.length - 3]})
+        this.setState({newsFeed3: response.articles[response.articles.length - 4]})
+        this.setState({newsFeed4: response.articles[response.articles.length - 5]})
+        this.setState({newsFeed5: response.articles[response.articles.length - 6]})
+        this.setState({newsFeed6: response.articles[response.articles.length - 7]})
+        this.setState({newsFeed7: response.articles[response.articles.length - 8]})
+        this.setState({newsFeed8: response.articles[response.articles.length - 9]})
+      })
     }
 
-
+    componentWillMount() {
+      this.getCurrentNews();
+      setInterval(this.getCurrentNews, 10000);
+      this.getCurrentPrice();
+      setInterval(this.getCurrentPrice, 10000);
+    }
 
     static navigationOptions = {
       header: null,
@@ -86,13 +93,13 @@ export default class home extends Component {
           <View style={styles.buttonContainer}>
             <Text style={styles.navTextContainer} >
               <Text style={styles.navButtons}>
-                {`ETH:\n $${this.state.ethereumPrice}`}
+                {`BTC:\n $${this.state.bitcoinPrice}`}
               </Text>
             </Text>
             <View style={{marginHorizontal: 11}}>
               <Text style={styles.navTextContainer} >
                 <Text style={styles.navButtons}>
-                  {`BTC:\n $${this.state.bitcoinPrice}`}
+                  {`ETH:\n $${this.state.ethereumPrice}`}
                 </Text>
               </Text>
             </View>
@@ -108,17 +115,17 @@ export default class home extends Component {
           <ScrollView style={styles.scrollView}>
             <View style={styles.container}>
               <View style={styles.newsPhoto}>
-                <Image source={{uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYJT_XrXsSNRTL4jw6C8aFWGMh3J9ha-z50AK9r-4wGKVWZYTLjw"}} style={styles.photo} />
+                <Image source={{uri: `${this.state.newsFeed0.urlToImage}`}} style={styles.photo} />
               </View>
               <View style={styles.newsItem}>
                 <View style={styles.newsText}>
                   <View style={styles.text_container}>
                     <Text style={styles.title}>{this.state.newsFeed0.title}</Text>
-                    <Text style={styles.description}>posted by{'\n'}{this.state.newsFeed0.author}</Text>
+                    <Text style={styles.description}>{this.state.newsFeed0.description}</Text>
                     <Button
                       fontWeight={"700"}
                       buttonStyle={styles.readMoreButtton}
-                      onPress={()=> Linking.openURL(this.state.newsFeed0.link)}
+                      onPress={()=> Linking.openURL(this.state.newsFeed0.url)}
                       title={`READ ME`}
                       />
                   </View>
@@ -126,18 +133,18 @@ export default class home extends Component {
               </View>
 
               <View style={styles.newsPhoto}>
-                <Image source={{uri: "https://bit-media.org/wp-content/uploads/2017/07/graph-163509_1280-800x450.jpg"}} style={styles.photo} />
+                <Image source={{uri: `${this.state.newsFeed1.urlToImage}`}} style={styles.photo} />
               </View>
               <View style={styles.newsItem}>
 
                 <View style={styles.newsText}>
                   <View style={styles.text_container}>
                     <Text style={styles.title}>{this.state.newsFeed1.title}</Text>
-                    <Text style={styles.description}>posted by{'\n'}{this.state.newsFeed1.author}</Text>
+                    <Text style={styles.description}>{this.state.newsFeed1.description}</Text>
                     <Button
                       fontWeight={"700"}
                       buttonStyle={styles.readMoreButtton}
-                      onPress={()=> Linking.openURL(this.state.newsFeed1.link)}
+                      onPress={()=> Linking.openURL(this.state.newsFeed1.url)}
                       title={`READ ME`}
                       />
                   </View>
@@ -145,17 +152,17 @@ export default class home extends Component {
               </View>
 
               <View style={styles.newsPhoto}>
-                <Image source={{uri: "https://news.bitcoin.com/wp-content/uploads/2017/05/shutterstock_497337487.jpg"}} style={styles.photo} />
+                <Image source={{uri: `${this.state.newsFeed2.urlToImage}`}} style={styles.photo} />
               </View>
               <View style={styles.newsItem}>
                 <View style={styles.newsText}>
                   <View style={styles.text_container}>
                     <Text style={styles.title}>{this.state.newsFeed2.title}</Text>
-                    <Text style={styles.description}>posted by{'\n'}{this.state.newsFeed2.author}</Text>
+                    <Text style={styles.description}>{this.state.newsFeed2.description}</Text>
                     <Button
                       fontWeight={"700"}
                       buttonStyle={styles.readMoreButtton}
-                      onPress={()=> Linking.openURL(this.state.newsFeed2.link)}
+                      onPress={()=> Linking.openURL(this.state.newsFeed2.url)}
                       title={`READ ME`}
                       />
                   </View>
@@ -164,17 +171,17 @@ export default class home extends Component {
 
 
               <View style={styles.newsPhoto}>
-                <Image source={{uri: "https://i.ytimg.com/vi/_KrFDXApp5M/maxresdefault.jpg"}} style={styles.photo} />
+                <Image source={{uri: `${this.state.newsFeed3.urlToImage}`}} style={styles.photo} />
               </View>
               <View style={styles.newsItem}>
                 <View style={styles.newsText}>
                   <View style={styles.text_container}>
                     <Text style={styles.title}>{this.state.newsFeed3.title}</Text>
-                    <Text style={styles.description}>posted by{'\n'}{this.state.newsFeed3.author}</Text>
+                    <Text style={styles.description}>{this.state.newsFeed3.description}</Text>
                     <Button
                       fontWeight={"700"}
                       buttonStyle={styles.readMoreButtton}
-                      onPress={()=> Linking.openURL(this.state.newsFeed3.link)}
+                      onPress={()=> Linking.openURL(this.state.newsFeed3.url)}
                       title={`READ ME`}
                       />
                   </View>
@@ -183,103 +190,27 @@ export default class home extends Component {
 
 
               <View style={styles.newsPhoto}>
-                <Image source={{uri: "https://cointelegraph.com/images/725_Ly9jb2ludGVsZWdyYXBoLmNvbS9zdG9yYWdlL3VwbG9hZHMvdmlldy9iMjI5NGU5NDRkOWQxZWY3NzEzNDRhNzg4OTU3ZTA2Ny5qcGc=.jpg"}} style={styles.photo} />
+                <Image source={{uri: `${this.state.newsFeed4.urlToImage}`}} style={styles.photo} />
               </View>
               <View style={styles.newsItem}>
                 <View style={styles.newsText}>
                   <View style={styles.text_container}>
                     <Text style={styles.title}>{this.state.newsFeed4.title}</Text>
-                    <Text style={styles.description}>posted by{'\n'}{this.state.newsFeed4.author}</Text>
+                    <Text style={styles.description}>{this.state.newsFeed4.description}</Text>
                     <Button
                       fontWeight={"700"}
                       buttonStyle={styles.readMoreButtton}
-                      onPress={()=> Linking.openURL(this.state.newsFeed4.link)}
+                      onPress={()=> Linking.openURL(this.state.newsFeed4.url)}
                       title={`Read More`}
+
                       />
                   </View>
                 </View>
               </View>
-
-              <View style={styles.newsPhoto}>
-                <Image source={{uri: "https://www.thesun.co.uk/wp-content/uploads/2017/03/nintchdbpict000306226097.jpg?strip=all&w=960"}} style={styles.photo} />
-              </View>
-              <View style={styles.newsItem}>
-                <View style={styles.newsText}>
-                  <View style={styles.text_container}>
-                    <Text style={styles.title}>{this.state.newsFeed5.title}</Text>
-                    <Text style={styles.description}>posted by{'\n'}{this.state.newsFeed5.author}</Text>
-                    <Button
-                      fontWeight={"700"}
-                      buttonStyle={styles.readMoreButtton}
-                      onPress={()=> Linking.openURL(this.state.newsFeed5.link)}
-                      title={`READ ME`}
-                      />
-                  </View>
-                </View>
-              </View>
-
-              <View style={styles.newsPhoto}>
-                <Image source={{uri: "https://news.bitpanda.com/wp-content/uploads/2017/07/the-rise-and-rise-of-bitcoin-54b8c08957db0.jpg"}} style={styles.photo} />
-              </View>
-              <View style={styles.newsItem}>
-                <View style={styles.newsText}>
-                  <View style={styles.text_container}>
-                    <Text style={styles.title}>{this.state.newsFeed6.title}</Text>
-                    <Text style={styles.description}>posted by{'\n'}{this.state.newsFeed6.author}</Text>
-                    <Button
-                      fontWeight={"700"}
-                      buttonStyle={styles.readMoreButtton}
-                      onPress={()=> Linking.openURL(this.state.newsFeed6.link)}
-                      title={`READ ME`}
-                      />
-                  </View>
-                </View>
-              </View>
-
-              <View style={styles.newsPhoto}>
-                <Image source={{uri: "https://sophosnews.files.wordpress.com/2016/08/bitcoin.png?w=780&h=408&crop=1"}} style={styles.photo} />
-              </View>
-              <View style={styles.newsItem}>
-                <View style={styles.newsText}>
-                  <View style={styles.text_container}>
-                    <Text style={styles.title}>{this.state.newsFeed7.title}</Text>
-                    <Text style={styles.description}>posted by{'\n'}{this.state.newsFeed7.author}</Text>
-                    <Button
-                      fontWeight={"700"}
-                      buttonStyle={styles.readMoreButtton}
-                      onPress={()=> Linking.openURL(this.state.newsFeed7.link)}
-                      title={`READ ME`}
-                      />
-                  </View>
-                </View>
-              </View>
-
-              <View style={styles.newsPhoto}>
-                <Image source={{uri: "http://i.huffpost.com/gen/1528575/images/o-BITCOIN-facebook.jpg"}} style={styles.photo} />
-              </View>
-              <View style={styles.newsItem}>
-                <View style={styles.newsText}>
-                  <View style={styles.text_container}>
-                    <Text style={styles.title}>{this.state.newsFeed8.title}</Text>
-                    <Text style={styles.description}>posted by{'\n'}{this.state.newsFeed8.author}</Text>
-                    <Button
-                      fontWeight={"700"}
-                      buttonStyle={styles.readMoreButtton}
-                      onPress={()=> Linking.openURL(this.state.newsFeed8.link)}
-                      title={`READ ME`}
-                      />
-                  </View>
-                </View>
-              </View>
-
-
             </View>
           </ScrollView>
         </LinearGradient>
       );
-    }
-    componentWillUnMount(){
-      this.setState({isMounted: false})
     }
   }
 
@@ -338,13 +269,6 @@ export default class home extends Component {
       fontWeight: '300',
       fontStyle: 'italic',
     },
-    description: {
-      fontSize: 12,
-      color: '#333333',
-      textAlign: 'left',
-      fontWeight: '300',
-      fontStyle: 'italic',
-    },
     newsAuthor: {
       fontSize: 16,
       color: '#333333',
@@ -366,7 +290,6 @@ export default class home extends Component {
       color: '#185A9D',
       textAlign: 'center',
       fontSize: 20,
-      fontWeight: '600'
       // backgroundColor: "#0A2540"
     },
     navTextContainer: {

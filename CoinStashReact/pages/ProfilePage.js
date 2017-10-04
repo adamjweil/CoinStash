@@ -8,7 +8,6 @@ import TransactionDetails from './Transactions/TransactionDetails';
 import BitTransactions from './Transactions/BitTransactions';
 import Button from 'apsl-react-native-button'
 import { AppRegistry, StyleSheet, Text, View, Image, ScrollView } from 'react-native';
-import CryptoNews from '../NavComponent/CryptoNews';
 
 class ProfilePage extends Component {
   constructor() {
@@ -33,17 +32,10 @@ class ProfilePage extends Component {
     this.showTrans = this.showTrans.bind(this);
     this.hideTrans = this.hideTrans.bind(this);
   }
-
-  componentDidMount() {
-    this.getAccounts()
-    setInterval(this.getAccounts, 30000);
-  }
-
   showTrans(){
     if(this.state.transBoolean){
       this.setState({transBoolean: false});
       this.setState({transLabel: "Show Transactions"})
-
     } else {
       this.setState({transBoolean: true});
       this.setState({transLabel: "Hide Transactions"})
@@ -52,7 +44,6 @@ class ProfilePage extends Component {
   hideTrans(){
     if(this.state.transBoolean){
     this.setState({transBoolean: false})
-
   } else {
     this.setState({transBoolean: true})
     }
@@ -79,6 +70,7 @@ class ProfilePage extends Component {
     .then(function(response) {
       return response.json();
     }).then((obj) => {
+      console.log(obj)
         let btcB = obj[3].balance.amount
         let btcN = obj[3].name
         let btcC = obj[3].balance.currency
@@ -100,9 +92,14 @@ class ProfilePage extends Component {
       let ltcB = obj.balance.amount
       let ltcN = obj.name
       let ltcC = obj.balance.currency
-      this.setState({ltcName: ltcN, ltcBal: ltcB, ltcCCY: ltcC})
+    this.setState({ltcName: ltcN, ltcBal: ltcB, ltcCCY: ltcC})
   })
 }
+
+  componentDidMount() {
+    this.getAccounts()
+    setInterval(this.getAccounts, 30000);
+  }
 
   static navigationOptions = {
     title: 'Profile Page',

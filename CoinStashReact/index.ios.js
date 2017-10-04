@@ -21,7 +21,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      accessToken: false,
+      accessToken: true, //set this to true to disable login
       loginOrRegister: true
       // false = register
       // true = login page

@@ -1,13 +1,5 @@
 import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  View,
-  ScrollView,
-  Image,
-  Linking,
-  TouchableOpacity
-} from 'react-native';
+import { AppRegistry, StyleSheet, View, ScrollView, Image, Linking, TouchableOpacity } from 'react-native';
 
 import {
   ListItem,

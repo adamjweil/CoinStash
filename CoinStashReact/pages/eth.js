@@ -187,17 +187,16 @@ class eth extends Component {
           </Text>
         </View>
 
+          <Text style={styles.coinPriceText}>
+            {`$${this.state.ethereumPrice}`}
+          </Text>
 
           <Text style={styles.yDayPrice}>
             <Text style={{color: `${this.state.colorBoolean}`}}>
               {this.state.prevPriceString} {`$${this.state.prevPriceNum}`}
             </Text>
-
-            <Text style={styles.coinPriceText}>
-              {`$${this.state.ethereumPrice}`}
-            </Text>
           </Text>
-        
+
         <ButtonGroup
           onPress={this.updateIndex}
           selectedIndex={selectedIndex}
@@ -270,6 +269,7 @@ const styles = StyleSheet.create({
   backBTNStyle: {
     flexDirection: 'row',
     marginTop: 30
+    // marginLeft: 0
   },
   btnGroupStyle: {
     height: 50,

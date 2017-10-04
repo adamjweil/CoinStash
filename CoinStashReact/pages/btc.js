@@ -249,7 +249,7 @@ class btc extends Component {
 
 const btcNav = StackNavigator({
   selfBTC: {
-    screen: btc,
+    screen: btc
   },
   buyBTCForm: {
     screen: buyBTCForm,

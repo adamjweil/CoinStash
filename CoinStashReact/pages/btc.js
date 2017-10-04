@@ -37,7 +37,8 @@ class btc extends Component {
       bitcoinYdayPrice: "",
       selectedIndex: 0,
       prevPriceString: "",
-      prevPriceNum: ""
+      prevPriceNum: "",
+      colorBoolean: ""
     }
     this.updateIndex = this.updateIndex.bind(this)
   }
@@ -52,7 +53,6 @@ class btc extends Component {
         return response.json();
       }).then((obj) => {
         let yday = obj.BTC.USD;
-        // console.log(yday);
         fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=BTC&tsyms=USD')
         .then(function(response) {
           return response.json();
@@ -61,8 +61,9 @@ class btc extends Component {
           let todayNum = Math.floor(today)
           let yDayCalcBTC = today - yday
           let yDayBTC = yDayCalcBTC.toFixed(2);
-          console.log(todayNum)
-          this.setState({prevPriceNum: yDayBTC });
+          this.setState({prevPriceNum: yDayBTC })
+          let colorBool = (yDayBTC >= 0) ? "green" : "red";
+          this.setState({colorBoolean: colorBool})
         })
       })
     }
@@ -75,7 +76,6 @@ class btc extends Component {
         return response.json();
       }).then((obj) => {
         let lWeek = obj.BTC.USD;
-        console.log(lWeek);
         fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=BTC&tsyms=USD')
         .then(function(response) {
           return response.json();
@@ -84,8 +84,9 @@ class btc extends Component {
           let todayNum = Math.floor(today)
           let lWeekCalcBTC = todayNum - lWeek
           let lWeekBTC = lWeekCalcBTC.toFixed(2);
-          console.log(lWeekBTC)
-          this.setState({prevPriceNum: lWeekBTC });
+          this.setState({prevPriceNum: lWeekBTC })
+          let colorBool = (lWeekBTC >= 0) ? "green" : "red";
+          this.setState({colorBoolean: colorBool})
         })
       })
     }
@@ -98,7 +99,6 @@ class btc extends Component {
         return response.json();
       }).then((obj) => {
         let lMonth = obj.BTC.USD;
-        console.log(lMonth);
         fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=BTC&tsyms=USD')
         .then(function(response) {
           return response.json();
@@ -107,8 +107,9 @@ class btc extends Component {
           let todayNum = Math.floor(today)
           let lMonthCalcBTC = todayNum - lMonth
           let lMonthBTC = lMonthCalcBTC.toFixed(2);
-          console.log(lMonthBTC)
-          this.setState({prevPriceNum: lMonthBTC });
+          this.setState({prevPriceNum: lMonthBTC })
+          let colorBool = (lMonthBTC >= 0) ? "green" : "red";
+          this.setState({colorBoolean: colorBool})
         })
       })
     }
@@ -121,7 +122,6 @@ class btc extends Component {
         return response.json();
       }).then((obj) => {
         let lYear = obj.BTC.USD;
-        console.log(lYear);
         fetch('https://min-api.cryptocompare.com/data/pricehistorical?fsym=BTC&tsyms=USD')
         .then(function(response) {
           return response.json();
@@ -130,8 +130,9 @@ class btc extends Component {
           let todayNum = Math.floor(today)
           let lYearCalcBTC = todayNum - lYear
           let lYearBTC = lYearCalcBTC.toFixed(2);
-          console.log(lYearBTC)
-          this.setState({prevPriceNum: lYearBTC });
+          this.setState({prevPriceNum: lYearBTC })
+          let colorBool = (lYearBTC >= 0) ? "green" : "red";
+          this.setState({colorBoolean: colorBool})
         })
       })
     }
@@ -170,9 +171,11 @@ class btc extends Component {
 
     let today = this.state.bitcoinPrice
     let yday = Math.round(this.state.bitcoinYdayPrice)
-    let diff = this.state.bitcoinPrice - this.state.bitcoinYdayPrice
+    let diff = this.state.bitcoinPrice - this.state.prevPriceNum
     let change = diff.toFixed(2);
-    let colorBool = (change >= 0) ? "green" : "red";
+
+    console.log(change)
+    // let colorBool = (change >= 0) ? "green" : "red";
 
   }
 
@@ -186,7 +189,7 @@ class btc extends Component {
 
   render() {
     let yday = Math.round(this.state.bitcoinYdayPrice)
-    let diff = this.state.bitcoinPrice - this.state.bitcoinYdayPrice
+    let diff = this.state.bitcoinPrice - this.state.prevPriceNum
     let change = diff.toFixed(2);
     let colorBool = (change >= 0) ? "green" : "red";
 
@@ -212,7 +215,7 @@ class btc extends Component {
         </Text>
 
         <Text style={styles.yDayPrice}>
-          <Text style={{color: colorBool}}>
+          <Text style={{color: `${this.state.colorBoolean}`}}>
             {this.state.prevPriceString} {`$${this.state.prevPriceNum}`}
           </Text>
         </Text>

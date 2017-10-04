@@ -5,29 +5,16 @@
 */
 'use strict';
 import React, { Component } from 'react';
-
 import { Header } from 'react-native-elements';
 import RSSFeed from '../NavComponent/RSSFeed';
 import TweetsComponent from '../NavComponent/TweetsComponent';
 import BitCoinTweets from '../NavComponent/BitCoinTweets';
-import { Button,
-  ButtonGroup,
-  FormLabel,
-  FormInput
-} from 'react-native-elements';
+import { Button, ButtonGroup, FormLabel, FormInput } from 'react-native-elements';
 import { StackNavigator} from 'react-navigation';
 import buyBTCForm from './forms/buyBTCForm';
 import sellBTCForm from './forms/sellBTCForm';
 import { BackToHomeBTN } from '../NavComponent/BackToHomeBTN';
-
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  Image
-} from 'react-native';
+import { AppRegistry, StyleSheet, Text, View, ScrollView, Image } from 'react-native';
 
 class btc extends Component {
   constructor() {
@@ -164,7 +151,6 @@ class btc extends Component {
   }
 
   render() {
-
     const { bitcoinPrice, bitcoinYdayPrice } = this.state
     const { navigate } = this.props.navigation
     const buttons = ['Daily', 'Weekly', 'Monthly', 'Yearly']
@@ -176,18 +162,22 @@ class btc extends Component {
 
         <View style={styles.backBTNStyle}>
           <BackToHomeBTN navigate={navigate} />
+          <Text style={styles.coinPriceTitle}></Text>
           <Text
             style={{color: 'rgba(1,1,1,0)', paddingLeft: 15, paddingRight: 15}}>
             BACK
           </Text>
         </View>
 
-        <Text style={styles.coinPriceText}>
-          {`$${this.state.bitcoinPrice}`}
-        </Text>
+        <View style={styles.coinHeader}>
+          <Text style={styles.coinTitle}>BTC:</Text>
+          <Text style={styles.coinPriceText}>
+            {`$${this.state.bitcoinPrice}`}
+          </Text>
+        </View>
 
         <Text style={styles.yDayPrice}>
-          <Text style={{color: `${this.state.colorBoolean}`}}>
+          <Text style={{color: `${this.state.colorBoolean}`, fontWeight: 'bold'}}>
             {this.state.prevPriceString} {`$${this.state.prevPriceNum}`}
           </Text>
         </Text>
@@ -277,7 +267,8 @@ const styles = StyleSheet.create({
   },
   coinPriceText: {
     fontSize: 30,
-    textAlign: 'center'
+    textAlign: 'center',
+    fontWeight: '400'
   },
   yDay: {
     fontSize: 17,
@@ -303,6 +294,18 @@ const styles = StyleSheet.create({
     marginRight: 20,
     marginLeft: -20,
     width: "100%"
+  },
+  coinHeader: {
+    flexDirection: 'row'
+  },
+  coinTitle: {
+    fontSize: 20,
+    fontWeight: '700',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+    marginTop: 6,
+    paddingRight: 10
   }
 });
 

@@ -11,8 +11,8 @@ import TweetsComponent from '../NavComponent/TweetsComponent';
 import EthereumTweets from '../NavComponent/EthereumTweets';
 import { Button, ButtonGroup, FormLabel, FormInput } from 'react-native-elements';
 import { StackNavigator} from 'react-navigation';
-import BuyETHForm from './forms/BuyETHForm';
-import SellETHForm from './forms/SellETHForm';
+import BuyETHForm from './forms/buyETHForm';
+import SellETHForm from './forms/sellETHForm';
 import { BackToHomeBTN } from '../NavComponent/BackToHomeBTN';
 import { AppRegistry, StyleSheet, Text, View, ScrollView, Image } from 'react-native';
 

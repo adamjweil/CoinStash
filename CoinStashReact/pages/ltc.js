@@ -11,8 +11,8 @@ import TweetsComponent from '../NavComponent/TweetsComponent';
 import LiteCoinTweets from '../NavComponent/LiteCoinTweets'
 import { Button, ButtonGroup, FormLabel, FormInput } from 'react-native-elements';
 import { StackNavigator} from 'react-navigation';
-import BuyLTCForm from './forms/BuyLTCForm';
-import SellLTCForm from './forms/SellLTCForm';
+import BuyLTCForm from './forms/buyLTCForm';
+import SellLTCForm from './forms/sellLTCForm';
 import { BackToHomeBTN } from '../NavComponent/BackToHomeBTN';
 import { AppRegistry, StyleSheet, Text, View, ScrollView, Image } from 'react-native';
 

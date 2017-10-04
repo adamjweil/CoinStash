@@ -166,7 +166,7 @@ class btc extends Component {
   render() {
 
     const { bitcoinPrice, bitcoinYdayPrice } = this.state
-    const { navigate } = this.props.navigation;
+    const { navigate } = this.props.navigation
     const buttons = ['Daily', 'Weekly', 'Monthly', 'Yearly']
     const { selectedIndex } = this.state
 
@@ -205,11 +205,11 @@ class btc extends Component {
 
         <ScrollView>
           <Text style={{color: '#185A9D', textAlign: 'center', fontWeight: 'bold', fontSize: 15}}>
-            Ethereum Tweets
+            BitCoin Tweets
           </Text>
           <BitCoinTweets />
           <Text style={{color: '#185A9D', textAlign: 'center', fontWeight: 'bold', fontSize: 15, paddingTop: 10, paddingBottom: 5}}>
-            Ethereum RSS Feeds
+            BitCoin RSS Feeds
           </Text>
           <RSSFeed />
         </ScrollView>

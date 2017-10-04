@@ -28,12 +28,33 @@ class CoinbasesController < ActionController::API
   end
 
   def btc_wallet
-     render json: @client.accounts[3]
+      client
+      render json: @client.accounts[3]
   end
 
   def primary_account
     client
     render json: @client.primary_account
+  end
+
+  def btc_transactions
+    client
+    render json: @client.accounts[3].transactions
+  end
+
+  def eth_transactions
+    client
+    render json: @client.accounts[1].transactions
+  end
+
+  def ltc_transactions
+    client
+    render json: @client.accounts[0].transactions
+  end
+
+  def usd_transactions
+    client
+    render json: @client.accounts[2].transactions
   end
 
   def transactions
@@ -43,15 +64,40 @@ class CoinbasesController < ActionController::API
 
   def account_id
     client
-    render json: @client[0].id
+    render json: @client.accounts[0].id
+  end
+
+  def payment_methods
+    client
+    render json: @client.payment_methods
   end
 
   def send_payment
     client
     primary_account = client.primary_account
-    response = primary_account.send({:to => 'WALLET_ADDRESS',
-                           :amount => '0.001',
+    response = primary_account.send({:to => 'example@gmail.com',
+                           :amount => '0.0008',
                            :currency => 'BTC'})
+  end
+
+  def buy
+    client
+    account = client.primary_account
+    payment_method = client.payment_methods.first
+    buy = account.buy({:amount => "1.36",
+                     :currency => "USD",
+                     :payment_method => payment_method.id})
+  end
+
+  def sell
+    client
+    account = client.primary_account
+    payment_method = client.payment_methods.first
+
+    sell = account.sell({:amount => ".00004",
+                       :currency => "BTC",
+                       :payment_method => payment_method.id})
+
   end
 
   private

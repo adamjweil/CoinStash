@@ -3,11 +3,11 @@
 * https://github.com/facebook/react-native
 * @flow
 */
-
 'use strict';
 import React, { Component } from 'react';
 
 import { Header } from 'react-native-elements';
+import RSSFeed from '../NavComponent/RSSFeed';
 import TweetsComponent from '../NavComponent/TweetsComponent';
 import BitCoinTweets from '../NavComponent/BitCoinTweets';
 import { Button,
@@ -42,6 +42,7 @@ class btc extends Component {
     }
     this.updateIndex = this.updateIndex.bind(this)
   }
+
   updateIndex (selectedIndex) {
     this.setState({selectedIndex})
     if (this.state.selectedIndex === 0){
@@ -148,26 +149,11 @@ class btc extends Component {
     })
   }
 
-  getYesterdayPrice = () => {
-    fetch('https://api.coindesk.com/v1/bpi/historical/close.json?for=yesterday')
-    .then(function(response) {
-      return response.json();
-    })
-    .then((obj) => {
-      let o = JSON.stringify(obj.bpi)
-      let split = o.split(":")
-      let yDay = split[1]
-      let choppedYdayPrice = yDay.substring(0, yDay.length - 1);
-
-      this.setState({bitcoinYdayPrice: choppedYdayPrice})
-    })
-  }
-
   componentDidMount() {
     this.getCurrentPrice()
     setInterval(this.getCurrentPrice, 10000);
-    this.getYesterdayPrice()
-    setInterval(this.getYesterdayPrice, 10000);
+    this.updateIndex()
+    setInterval(this.updateIndex, 10000);
 
     let today = this.state.bitcoinPrice
     let yday = Math.round(this.state.bitcoinYdayPrice)
@@ -183,8 +169,7 @@ class btc extends Component {
   //   clearInterval()
   // }
   static navigationOptions = {
-    header: null,
-    title: 'BTC'
+    title: 'BitCoin'
   }
 
   render() {

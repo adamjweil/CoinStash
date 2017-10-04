@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import { StackNavigator} from 'react-navigation';
 import  { BackToHomeBTN }  from '../NavComponent/BackToHomeBTN';
 import { Button, ButtonGroup, FormLabel, FormInput } from 'react-native-elements';
+import LinearGradient from 'react-native-linear-gradient';
 import Transactions from './Transactions';
 
 import {
@@ -12,6 +13,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
   ScrollView
 } from 'react-native';
 
@@ -82,46 +84,50 @@ class ProfilePage extends Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
-
-      <ScrollView style={styles.scrollView}>
+      <LinearGradient colors={['#43cea2', '#185a9d']} style={styles.linearGradient}>
+        <Image source={{uri: 'http://www.freepngimg.com/thumb/mustache/5-2-no-shave-movember-day-mustache-png-image-thumb.png'}}
+          style={{width: 125, height: 50, marginLeft: 120, marginBottom: -75}}
+          />
         <View style={{flexDirection: 'row', marginTop: 30}}>
           <BackToHomeBTN navigate={navigate} />
             <Text
               style={{color: 'rgba(1,1,1,0)', paddingLeft: 15, paddingRight: 15}}>
               BACK
             </Text>
-        </View>
-        <View>
-          <Text style={styles.title}>{'\n'}{'\n'}Profile Page</Text>
-        </View>
-
-        <View style={styles.accouontInfo}>
-          <Text style={styles.accountName}>Account Name: {this.state.usdName}{'\n'}</Text>
-          <Text>Balance: {this.state.usdBal}{'\n'}</Text>
-          <Text style={styles.currency}>Currency: {this.state.usdCCY}</Text>
+            <View>
+              <Text style={styles.title}>{'\n'}{'\n'}Profile Page</Text>
+            </View>
         </View>
 
-        <View style={styles.accouontInfo}>
-          <Text style={styles.accountName}>Account Name: {this.state.btcName}{'\n'}</Text>
-          <Text>Balance: {this.state.btcBal}{'\n'}</Text>
-          <Text style={styles.currency}>Currency: {this.state.btcCCY}{'\n'}</Text>
-        </View>
+        <ScrollView style={styles.scrollView}>
+          <View style={styles.accountWrapper}>
+            <View style={styles.accouontInfo}>
+              <Text style={styles.accountName}>Account Name: {this.state.usdName}{'\n'}</Text>
+              <Text>Balance: {this.state.usdBal}{'\n'}</Text>
+              <Text style={styles.currency}>Currency: {this.state.usdCCY}</Text>
+            </View>
 
-        <View style={styles.accouontInfo}>
-          <Text style={styles.accountName}>Account Name: {this.state.ethName}{'\n'}</Text>
-          <Text>Balance: {this.state.ethBal}{'\n'}</Text>
-          <Text style={styles.currency}>Currency: {this.state.ethCCY}{'\n'}</Text>
-        </View>
+            <View style={styles.accouontInfo}>
+              <Text style={styles.accountName}>Account Name: {this.state.btcName}{'\n'}</Text>
+              <Text>Balance: {this.state.btcBal}{'\n'}</Text>
+              <Text style={styles.currency}>Currency: {this.state.btcCCY}{'\n'}</Text>
+            </View>
 
-        <View style={styles.accouontInfo}>
-          <Text style={styles.accountName}>Account Name: {this.state.ltcName}{'\n'}</Text>
-          <Text>Balance: {this.state.ltcBal}{'\n'}</Text>
-          <Text style={styles.currency}>Currency: {this.state.ltcCCY}{'\n'}</Text>
-        </View>
+            <View style={styles.accouontInfo}>
+              <Text style={styles.accountName}>Account Name: {this.state.ethName}{'\n'}</Text>
+              <Text>Balance: {this.state.ethBal}{'\n'}</Text>
+              <Text style={styles.currency}>Currency: {this.state.ethCCY}{'\n'}</Text>
+            </View>
 
+            <View style={styles.accouontInfo}>
+              <Text style={styles.accountName}>Account Name: {this.state.ltcName}{'\n'}</Text>
+              <Text>Balance: {this.state.ltcBal}{'\n'}</Text>
+              <Text style={styles.currency}>Currency: {this.state.ltcCCY}{'\n'}</Text>
+            </View>
+          </View>
       <Transactions />
     </ScrollView>
-
+  </LinearGradient>
     );
   }
 }
@@ -152,6 +158,9 @@ const styles = StyleSheet.create({
   },
   currency: {
     fontWeight: '200'
+  },
+  accountWrapper: {
+    alignItems: 'center'
   }
 });
 

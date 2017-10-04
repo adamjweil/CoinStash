@@ -168,7 +168,7 @@ class eth extends Component {
   // }
 
   static navigationOptions = {
-    title: 'Ethereum',
+    header: null
   };
 
   render() {
@@ -183,66 +183,69 @@ class eth extends Component {
     const { selectedIndex } = this.state
     return (
 
-        <View style={styles.container}>
-          <View style={{marginTop: 30, flexDirection: 'row'}}>
-            <BackToHomeBTN navigate={navigate} />
-            <Text style={styles.coinPriceTitle}>ETH</Text>
-            <Text
-              style={{color: 'rgba(1,1,1,0)', paddingLeft: 15, paddingRight: 15}}>
-              BACK
-            </Text>
-          </View>
-
-          <Text style={styles.coinPriceText}>
-            {`$${this.state.ethereumPrice}`}
+      <View style={styles.container}>
+        <View style={styles.backBTNStyle}>
+          <BackToHomeBTN navigate={navigate} />
+          <Text style={styles.coinPriceTitle}>ETH</Text>
+          <Text
+            style={{color: 'rgba(1,1,1,0)', paddingLeft: 15, paddingRight: 15}}>
+            BACK
           </Text>
+        </View>
 
-          <Text style={styles.yDayPrice}>
-            <Text style={{color: colorBool}}>
-              {this.state.prevPriceString} {`$${this.state.prevPriceNum}`}
-            </Text>
+        <Text style={styles.coinPriceText}>
+          {`$${this.state.ethereumPrice}`}
+        </Text>
+
+        <Text style={styles.yDayPrice}>
+          <Text style={{color: colorBool}}>
+            {this.state.prevPriceString} {`$${this.state.prevPriceNum}`}
           </Text>
+        </Text>
 
-          <ButtonGroup
-            onPress={this.updateIndex}
-            selectedIndex={selectedIndex}
-            buttons={buttons}
-            containerStyle={{height: 30}}
-           />
+        <ButtonGroup
+          onPress={this.updateIndex}
+          selectedIndex={selectedIndex}
+          buttons={buttons}
+          containerStyle={styles.btnGroupStyle}
+          />
 
-          <Text style={{fontSize: 20, paddingTop: 15, paddingBottom: 5}}>
-            ETH Feed:
-          </Text>
+        <Text style={styles.feedTitle}>
+          ETH Feed:
+        </Text>
 
-          <ScrollView>
-          <RSSFeed />
-          <Text>
+        <ScrollView>
+          <Text style={{color: '#185A9D', textAlign: 'center', fontWeight: 'bold', fontSize: 15}}>
             Ethereum Tweets
           </Text>
           <EthereumTweets />
-          </ScrollView>
-          <View style={{flexDirection: 'row'}}>
-            <Button
-              buttonStyle={{backgroundColor: '#185A9D', borderRadius: 0, marginTop: 0, marginRight: -20, marginLeft: 20, width: "100%"}}
-              textStyle={{textAlign: 'center'}}
-              title={`BUY`}
-              onPress={()=> navigate('buyETHForm')}
-              />
-            <Button
-              buttonStyle={{backgroundColor: '#185A9D', borderRadius: 0, marginTop: 0, marginLeft: -20, width: "100%"}}
-              textStyle={{textAlign: 'center'}}
-              title={`SELL`}
-              onPress={()=> navigate('sellETHForm')}
-              />
-          </View>
+          <Text style={{color: '#185A9D', textAlign: 'center', fontWeight: 'bold', fontSize: 15, paddingTop: 10, paddingBottom: 5}}>
+            Ethereum RSS Feeds
+          </Text>
+          <RSSFeed />
+        </ScrollView>
+        <View style={{flexDirection: 'row'}}>
+          <Button
+            buttonStyle={styles.buySellBtnStyleLeft}
+            textStyle={{textAlign: 'center'}}
+            title={`BUY`}
+            onPress={()=> navigate('buyETHForm')}
+            />
+          <Button
+            buttonStyle={styles.buySellBtnStyleRight}
+            textStyle={{textAlign: 'center'}}
+            title={`SELL`}
+            onPress={()=> navigate('sellETHForm')}
+            />
         </View>
+      </View>
     );
   }
 }
 
 const ethNav = StackNavigator({
   selfETH: {
-    screen: eth
+    screen: eth,
   },
   buyETHForm: {
     screen: buyETHForm,
@@ -267,7 +270,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#F5FCFF'
+  },
+  backBTNStyle: {
+    flexDirection: 'row',
+    marginTop: 30
+  },
+  btnGroupStyle: {
+    height: 50,
+    marginTop: 10
   },
   coinPriceTitle: {
     flex: 1,
@@ -280,10 +291,29 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   yDay: {
-    fontSize: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    textAlign: 'center',
+    fontSize: 17,
+    textAlign: 'center'
+  },
+  feedTitle: {
+    fontSize: 20,
+    paddingTop: 15,
+    paddingBottom: 7
+  },
+  buySellBtnStyleLeft: {
+    backgroundColor: '#185A9D',
+    borderRadius: 0,
+    marginTop: 0,
+    marginRight: -20,
+    marginLeft: 20,
+    width: "100%"
+  },
+  buySellBtnStyleRight: {
+    backgroundColor: '#185A9D',
+    borderRadius: 0,
+    marginTop: 0,
+    marginRight: 20,
+    marginLeft: -20,
+    width: "100%"
   }
 });
 

@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
 
   },
   rssPubDate: {
-    fontSize: 8,
+    fontSize: 9,
     fontWeight: '300'
   },
   redditReadMore: {

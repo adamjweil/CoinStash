@@ -166,7 +166,7 @@ class ltc extends Component {
   // }
 
   static navigationOptions = {
-    title: 'LiteCoin',
+    header: null
   };
 
   render() {
@@ -182,7 +182,7 @@ class ltc extends Component {
     const { selectedIndex } = this.state
     return (
       <View style={styles.container}>
-        <View style={{marginTop: 30, flexDirection: 'row'}}>
+        <View style={styles.backBTNStyle}>
           <BackToHomeBTN navigate={navigate} />
           <Text style={styles.coinPriceTitle}>LTC</Text>
           <Text
@@ -205,30 +205,35 @@ class ltc extends Component {
           onPress={this.updateIndex}
           selectedIndex={selectedIndex}
           buttons={buttons}
-          containerStyle={{height: 30}}
+          containerStyle={styles.btnGroupStyle}
          />
 
-        <Text style={{fontSize: 20, paddingTop: 15, paddingBottom: 5}}>
+        <Text style={styles.feedTitle}>
           LTC Feed:
         </Text>
 
         <ScrollView>
-          <RSSFeed />
-          <Text>
-            LiteCoin Tweets
-          </Text>
-          <LiteCoinTweets />
+
+        <Text style={{color: '#185A9D', textAlign: 'center', fontWeight: 'bold', fontSize: 15}}>
+          LiteCoin Tweets
+        </Text>
+        <LiteCoinTweets />
+        <Text style={{color: '#185A9D', textAlign: 'center', fontWeight: 'bold', fontSize: 15, paddingTop: 10, paddingBottom: 5}}>
+          LiteCoin RSS Feeds
+        </Text>
+        <RSSFeed />
+
         </ScrollView>
         <View style={{flexDirection: 'row'}}>
           <Button
-            buttonStyle={{backgroundColor: '#185A9D', borderRadius: 0, marginTop: 0, marginRight: -20, marginLeft: 20, width: "100%"}}
+            buttonStyle={styles.buySellBtnStyleLeft}
             textStyle={{textAlign: 'center'}}
             title={`BUY`}
             onPress={()=> navigate('buyLTCForm')}
           />
           <Button
             raised
-            buttonStyle={{backgroundColor: '#185A9D', borderRadius: 0, marginTop: 0, marginLeft: -20, width: "100%"}}
+            buttonStyle={styles.buySellBtnStyleRight}
             textStyle={{textAlign: 'center'}}
             title={`SELL`}
             onPress={()=> navigate('sellLTCForm')}
@@ -266,7 +271,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#F5FCFF'
+  },
+  backBTNStyle: {
+    flexDirection: 'row',
+    marginTop: 30
+  },
+  btnGroupStyle: {
+    height: 50,
+    marginTop: 10
   },
   coinPriceTitle: {
     flex: 1,
@@ -279,10 +292,30 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   yDay: {
-    fontSize: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
+    fontSize: 17,
     textAlign: 'center',
+
+  },
+  feedTitle: {
+    fontSize: 20,
+    paddingTop: 15,
+    paddingBottom: 7
+  },
+  buySellBtnStyleLeft: {
+    backgroundColor: '#185A9D',
+    borderRadius: 0,
+    marginTop: 0,
+    marginRight: -20,
+    marginLeft: 20,
+    width: "100%"
+  },
+  buySellBtnStyleRight: {
+    backgroundColor: '#185A9D',
+    borderRadius: 0,
+    marginTop: 0,
+    marginRight: 20,
+    marginLeft: -20,
+    width: "100%"
   }
 });
 

@@ -26,7 +26,7 @@ class ProfilePage extends Component {
       ethBal: "",
       ethCCY: "",
       transBoolean: false,
-      transLabel: "Show Transactions",
+      transLabel: "SHOW TRANSACTIONS",
       accounts: []
     };
     this.showTrans = this.showTrans.bind(this);
@@ -35,10 +35,10 @@ class ProfilePage extends Component {
   showTrans(){
     if(this.state.transBoolean){
       this.setState({transBoolean: false});
-      this.setState({transLabel: "Show Transactions"})
+      this.setState({transLabel: "SHOW TRANSACTIONS"})
     } else {
       this.setState({transBoolean: true});
-      this.setState({transLabel: "Hide Transactions"})
+      this.setState({transLabel: "HIDE TRANSACTIONS"})
     }
   }
   hideTrans(){
@@ -108,18 +108,18 @@ class ProfilePage extends Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <LinearGradient colors={['#43cea2', '#185a9d']} style={styles.linearGradient}>
+      <LinearGradient colors={['#F5FCFF', '#F5FCFF']} style={styles.linearGradient}>
         <Image source={{uri: 'http://www.freepngimg.com/thumb/mustache/5-2-no-shave-movember-day-mustache-png-image-thumb.png'}}
-          style={{width: 125, height: 50, marginLeft: 120, marginBottom: -75}}
+          style={{width: 125, height: 90, marginLeft: 123, marginBottom: 0, marginTop: 50}}
           />
-        <View style={{flexDirection: 'row', marginTop: 30}}>
+        <View style={{flexDirection: 'row', marginTop: -120}}>
           <BackToHomeBTN navigate={navigate} />
             <Text
               style={{color: 'rgba(1,1,1,0)', paddingLeft: 15, paddingRight: 15}}>
               BACK
             </Text>
             <View>
-              <Text style={styles.title}>{'\n'}{'\n'}Profile Page</Text>
+              <Text style={styles.title}>Wallets</Text>
             </View>
         </View>
 
@@ -128,9 +128,9 @@ class ProfilePage extends Component {
             <View style={styles.accountWrapper}>
               {this.state.accounts.map((account, i)=>
                 <View style={styles.accouontInfo}>
-                  <Text style={styles.accountName}>Account Name: {account.name}{'\n'}</Text>
-                  <Text>Balance: {account.balance.amount}{'\n'}</Text>
-                  <Text style={styles.currency}>Currency: {account.balance.currency}</Text>
+                  <Text style={styles.accountName}>{account.name}: </Text>
+                  <Text style={styles.balance}>Balance: {account.balance.amount} {account.currency}</Text>
+
                 </View>
                 )}
           </View>
@@ -138,7 +138,7 @@ class ProfilePage extends Component {
           <View style={{flexDirection: 'row'}}>
             <Button style={styles.showTransactionButton}
                     onPress={() => { this.showTrans(); }}>
-                    <Text>{this.state.transLabel}</Text>
+                    <Text style={styles.transLabel}>{this.state.transLabel}</Text>
             </Button>
           </View>
 
@@ -156,24 +156,31 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+
+  },
+  linearGradient: {
+    height: "100%"
   },
   accouontInfo: {
-    // alignItems: 'left',
+    alignItems: 'center',
     padding: 10,
     marginBottom: 10,
     width: 350,
-    height: 120,
-    borderRadius: 10,
-    borderWidth: 2,
-    backgroundColor: '#F8F8F8'
+    height: 60,
+    backgroundColor: '#FFF',
+
   },
   title: {
     fontSize: 30,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    marginTop: 100,
+    marginBottom: 10,
+
   },
   accountName: {
     fontWeight: 'bold',
+    color: "#185A9D",
+    fontSize: 16
   },
   currency: {
     fontWeight: '200'
@@ -182,24 +189,33 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   showTransactionButton: {
-    backgroundColor: 'orange',
-    borderRadius: 17,
-    borderWidth: 2,
-    width: 150,
-    marginLeft: 220,
+    backgroundColor: '#185A9D',
+    color: "#FFF",
+    width: 350,
+    marginLeft: 12.25,
+    marginRight: 10,
+    borderRadius: 0,
+    borderWidth: 0,
+    height: 60,
+
     alignItems: 'center',
     justifyContent: 'center'
   },
   hideTransactionButton: {
-    backgroundColor: 'orange',
-    borderRadius: 5,
-    borderWidth: 2,
+    backgroundColor: '#185A9D',
+    color: "#FFF",
     width: 150,
     alignItems: 'center',
     justifyContent: 'center'
   },
   transactionButtonFont: {
     fontSize:18,
+  },
+  balance: {
+    fontWeight: '200'
+  },
+  transLabel: {
+    color: "#FFF"
   }
 });
 

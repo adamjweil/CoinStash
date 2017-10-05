@@ -57,7 +57,7 @@ class ProfilePage extends Component {
   }
 
   getAccounts = () => {
-    fetch('http://localhost:3000/coinbases/accounts')
+    fetch('https://rocky-atoll-80901.herokuapp.com/coinbases/accounts')
     .then(function(response) {
       return response.json();
     }).then((obj) => {

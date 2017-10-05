@@ -50,7 +50,7 @@ export default class BTCBuyForm extends Component {
         'Confirm Transfer',
         'Pls Confirm Transfer'
         [
-          {text: 'Confirmed', onPress: () => this._navigate()}
+          {text: 'Confirmed', onPress: () => console.log('hello')}
         ]
       )
     })

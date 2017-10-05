@@ -42,7 +42,7 @@ export default class BuyLTCForm extends Component {
 
   handlePress() {
     const { session } = this.state
-    let responseJson = fetch ("http://localhost:3000/coinbases/buyLTC", {
+    let responseJson = fetch ("https://rocky-atoll-80901.herokuapp.com/coinbases/buyLTC", {
       method: 'post',
       headers: {
         'Accept': 'application/json',
@@ -57,7 +57,7 @@ export default class BuyLTCForm extends Component {
         'Confirm Transfer',
         'Pls Confirm Transfer'
         [
-          {text: 'Confirmed', onPress: () => this._navigate()}
+          {text: 'Confirmed', onPress: () => console.log('hello')}
         ]
       )
     })

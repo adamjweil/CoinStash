@@ -26,7 +26,7 @@ export default class home extends Component {
   }
   componentDidMount() {
       this.getCurrentNews();
-      setInterval(this.getCurrentNews, 100000);
+      setInterval(this.getCurrentNews, 10000);
       this.getCurrentPrice();
       setInterval(this.getCurrentPrice, 10000);
     }

@@ -7,7 +7,7 @@
 import React, { Component } from 'react';
 import { Button, FormLabel, FormInput } from 'react-native-elements'
 import SelectInput from 'react-native-select-input-ios';
-
+import { StackNavigator} from 'react-navigation';
 import {
   AppRegistry,
   StyleSheet,
@@ -17,7 +17,8 @@ import {
   ScrollView,
   TouchableOpacity,
   TextInput,
-  Picker
+  Picker,
+  Alert
 } from 'react-native';
 
 
@@ -51,12 +52,22 @@ export default class BuyLTCForm extends Component {
         amount: session.amount
       })
     })
-    .then(function(response) {return response.json()} )
-    .catch(error => console.error("fetch error: ", error))
-
+    .then(function(response) {
+      Alert.alert(
+        'Confirm Transfer',
+        'Pls Confirm Transfer'
+        [
+          {text: 'Confirmed', onPress: () => this._navigate()}
+        ]
+      )
+    })
     let sendParams = responseJson
-  }
-
+}
+_navigate(){
+  this.props.navigation.push({
+    name: 'ProfilePage'
+  })
+}
   handleUserSubmit = this.handlePress.bind(this)
 
   getPickerOptionsPaymentMethod() {

@@ -13,7 +13,7 @@ export default class RSSFeed extends Component {
 
   componentDidMount() {
     this.getCurrentReddit();
-    setInterval(this.getCurrentReddit, 200000);
+    setInterval(this.getCurrentReddit, 10000);
   }
 
   getCurrentReddit = () => {

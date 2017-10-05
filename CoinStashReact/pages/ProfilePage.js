@@ -176,6 +176,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 100,
     marginBottom: 10,
+    marginLeft: 25
 
   },
   accountName: {

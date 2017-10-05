@@ -29,7 +29,7 @@ export default class LiteCoinTweets extends Component {
   }
 
   getLitecoinTweets = () => {
-    fetch('http://localhost:3000/tweets/litecoin')
+    fetch('https://rocky-atoll-80901.herokuapp.com/tweets/litecoin')
     .then(function(response) {
       return response.json();
     })

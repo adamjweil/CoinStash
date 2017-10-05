@@ -29,7 +29,7 @@ export default class EthereumTweets extends Component {
   }
 
   getEthereumTweets = () => {
-    fetch('http://localhost:3000/tweets/ethereum')
+    fetch('https://rocky-atoll-80901.herokuapp.com/tweets/ethereum')
     .then(function(response) {
       return response.json();
     })

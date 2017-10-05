@@ -41,7 +41,7 @@ export default class LoginForm extends Component {
       this.setState({showProgress: true})
       const { session } = this.state
 
-      var responseJson = await fetch("http://localhost:3000/login", {
+      var responseJson = await fetch("https://rocky-atoll-80901.herokuapp.com/login", {
         method: 'post',
         headers: {
           'Accept': 'application/json',

@@ -44,7 +44,7 @@ export default class BTCBuyForm extends Component {
 
   handlePress() {
     const { session } = this.state
-    let responseJson = fetch ("http://localhost:3000/coinbases/buyBTC", {
+    let responseJson = fetch ("https://rocky-atoll-80901.herokuapp.com/coinbases/buyBTC", {
       method: 'post',
       headers: {
         'Accept': 'application/json',

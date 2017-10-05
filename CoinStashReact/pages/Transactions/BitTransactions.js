@@ -22,7 +22,7 @@ class BitTransactions extends Component {
   }
 
   getTransactions = () => {
-    fetch('http://localhost:3000/coinbases/transactions/btc')
+    fetch('https://rocky-atoll-80901.herokuapp.com/coinbases/transactions/btc')
     .then(function(response){
       return response.json();
     }).then((obj) => {

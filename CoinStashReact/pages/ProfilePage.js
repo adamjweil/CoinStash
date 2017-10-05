@@ -64,7 +64,7 @@ class ProfilePage extends Component {
       console.log(obj)
       this.setState({accounts: obj})
     })
-    fetch('http://localhost:3000/coinbases/usdwallet')
+    fetch('https://rocky-atoll-80901.herokuapp.com/coinbases/usdwallet')
     .then(function(response) {
       return response.json();
     }).then((obj) => {
@@ -73,7 +73,7 @@ class ProfilePage extends Component {
       let usdC = obj.balance.currency
     this.setState({usdName: usdN, usdBal: usdB, usdCCY: usdC})
   })
-    fetch('http://localhost:3000/coinbases/accounts')
+    fetch('https://rocky-atoll-80901.herokuapp.com/coinbases/accounts')
     .then(function(response) {
       return response.json();
     }).then((obj) => {
@@ -82,7 +82,7 @@ class ProfilePage extends Component {
         let btcC = obj[3].balance.currency
       this.setState({btcName: btcN, btcBal: btcB, btcCCY: btcC})
   })
-  fetch('http://localhost:3000/coinbases/ethwallet')
+  fetch('https://rocky-atoll-80901.herokuapp.com/coinbases/ethwallet')
   .then(function(response) {
     return response.json();
   }).then((obj) => {
@@ -91,7 +91,7 @@ class ProfilePage extends Component {
       let ethC = obj.balance.currency
     this.setState({ethName: ethN, ethBal: ethB, ethCCY: ethC})
   })
-  fetch('http://localhost:3000/coinbases/ltcwallet')
+  fetch('https://rocky-atoll-80901.herokuapp.com/coinbases/ltcwallet')
   .then(function(response) {
     return response.json();
   }).then((obj) => {

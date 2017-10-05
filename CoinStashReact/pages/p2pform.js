@@ -46,7 +46,7 @@ export default class p2pForm extends Component {
 
   handlePress() {
     const { session } = this.state
-    let responseJson = fetch ("http://localhost:3000/coinbases/sendpayment", {
+    let responseJson = fetch ("https://rocky-atoll-80901.herokuapp.com/coinbases/sendpayment", {
       method: 'post',
       headers: {
         'Accept': 'application/json',

@@ -40,7 +40,7 @@ export default class SellBTCForm extends Component {
 
   handlePress() {
     const { session } = this.state
-    let responseJson = fetch ("http://localhost:3000/coinbases/sellBTC", {
+    let responseJson = fetch ("https://rocky-atoll-80901.herokuapp.com/coinbases/sellBTC", {
       method: 'post',
       headers: {
         'Accept': 'application/json',

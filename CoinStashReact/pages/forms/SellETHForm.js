@@ -44,7 +44,7 @@ export default class SellETHForm extends Component {
 
   handlePress() {
     const { session } = this.state
-    let responseJson = fetch ("http://localhost:3000/coinbases/sellETH", {
+    let responseJson = fetch ("https://rocky-atoll-80901.herokuapp.com//coinbases/sellETH", {
       method: 'post',
       headers: {
         'Accept': 'application/json',

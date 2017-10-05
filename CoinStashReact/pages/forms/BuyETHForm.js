@@ -11,17 +11,8 @@ import {
   FormInput
 } from 'react-native-elements'
 import SelectInput from 'react-native-select-input-ios';
-
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ScrollView,
-  TouchableOpacity,
-  TextInput,
-  Picker
+import { StackNavigator} from 'react-navigation';
+import { AppRegistry, StyleSheet, Text, View, Image, ScrollView, TouchableOpacity, TextInput, Picker, Alert
 } from 'react-native';
 
 
@@ -45,7 +36,7 @@ export default class BuyETHForm extends Component {
 
   handlePress() {
     const { session } = this.state
-    let responseJson = fetch ("http://localhost:3000/coinbases/buyETH", {
+    let responseJson = fetch ("https://rocky-atoll-80901.herokuapp.com/coinbases/buyETH", {
       method: 'post',
       headers: {
         'Accept': 'application/json',
@@ -55,12 +46,22 @@ export default class BuyETHForm extends Component {
         amount: session.amount
       })
     })
-    .then(function(response) {return response.json()} )
-    .catch(error => console.error("fetch error: ", error))
-
+    .then(function(response) {
+      Alert.alert(
+        'Confirm Transfer',
+        'Pls Confirm Transfer'
+        [
+          {text: 'Confirmed', onPress: () => this._navigate()}
+        ]
+      )
+    })
     let sendParams = responseJson
-  }
-
+}
+_navigate(){
+  this.props.navigation.push({
+    name: 'ProfilePage'
+  })
+}
   handleUserSubmit = this.handlePress.bind(this)
 
   getPickerOptionsPaymentMethod() {

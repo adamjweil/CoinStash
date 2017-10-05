@@ -8,18 +8,11 @@
 import React, { Component } from 'react';
 import { Button, ButtonGroup, FormLabel, FormInput } from 'react-native-elements'
 import { BackToHomeBTN } from '../NavComponent/BackToHomeBTN';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ScrollView,
-  TouchableOpacity,
-  TextInput,
-} from 'react-native';
+import { AppRegistry, StyleSheet, Text, View, Image, ScrollView, TouchableOpacity, TextInput, Alert } from 'react-native';
+import { StackNavigator} from 'react-navigation';
+import ProfilePage from './ProfilePage';
 
-export default class p2pForm extends Component {
+class p2pForm extends Component {
   constructor() {
     super();
     this.state = { session: {
@@ -44,9 +37,10 @@ export default class p2pForm extends Component {
   onChangeEmail = this.handleInputChange.bind(this, "to")
   onChangeAmount = this.handleInputChange.bind(this, "amount")
 
+
   handlePress() {
     const { session } = this.state
-    let responseJson = fetch ("http://localhost:3000/coinbases/sendpayment", {
+    let responseJson = fetch ("https://rocky-atoll-80901.herokuapp.com/coinbases/sendpayment", {
       method: 'post',
       headers: {
         'Accept': 'application/json',
@@ -58,18 +52,28 @@ export default class p2pForm extends Component {
         currency: session.currency
        })
     })
-    .then(function(response) {return response.json()} )
-    .catch(error => console.error("fetch error: ", error))
-
+    .then(function(response) {
+      Alert.alert(
+        'Confirm Transfer',
+        'Pls Confirm Transfer'
+        [
+          {text: 'Confirmed', onPress: () => this._navigate()}
+        ]
+      )
+    })
     let sendParams = responseJson
 }
-
+_navigate(){
+  this.props.navigation.push({
+    name: 'ProfilePage'
+  })
+}
 
 handleUserSubmit = this.handlePress.bind(this)
 
-  static navigationOptions = {
-    title: 'p2pForm',
-  };
+static navigationOptions = {
+  header: null
+}
 
   render() {
     let state = this.state;
@@ -128,6 +132,21 @@ handleUserSubmit = this.handlePress.bind(this)
         );
       }
     }
+    const confirmXfer = StackNavigator({
+      p2pForm: {
+        screen: p2pForm
+      },
+      ProfilePage: {
+        screen: ProfilePage,
+        navigationOptions: {
+          title: 'ProfilePage',
+          headerBackTitle: 'ProfilePage'
+        }
+      }
+    },
+    {
+      initialRouteName: 'p2pForm'
+  })
 
     const styles = StyleSheet.create({
       container: {
@@ -170,3 +189,5 @@ handleUserSubmit = this.handlePress.bind(this)
         marginLeft: "-80%"
       }
     });
+
+    export default confirmXfer;

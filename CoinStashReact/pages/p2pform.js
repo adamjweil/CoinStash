@@ -78,8 +78,9 @@ handleUserSubmit = this.handlePress.bind(this)
     const { selectedIndex } = this.state
     return (
       <View style={styles.container}>
-      <BackToHomeBTN navigate={navigate} />
-
+        <View style={styles.BackToHomeBTN}>
+        <BackToHomeBTN navigate={navigate} />
+        </View>
         <Text style={styles.formTitle}>Send</Text>
 
         <View style={styles.formContainer}>
@@ -165,4 +166,7 @@ handleUserSubmit = this.handlePress.bind(this)
         marginBottom: 10,
         fontSize: 18,
       },
+      BackToHomeBTN: {
+        marginLeft: "-80%"
+      }
     });

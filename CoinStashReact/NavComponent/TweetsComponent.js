@@ -1,18 +1,6 @@
 import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  View,
-  ScrollView,
-  Image,
-  Linking
-} from 'react-native';
-import {
-  ListItem,
-  Thumbnail,
-  Text,
-  Body
-} from 'native-base';
+import { AppRegistry, StyleSheet, View, ScrollView, Image, Linking } from 'react-native';
+import { ListItem, Thumbnail, Text, Body } from 'native-base';
 
 
 export default class TweetsComponent extends Component {
@@ -28,7 +16,7 @@ export default class TweetsComponent extends Component {
   }
 
   getCurrentTweets = () => {
-    fetch('http://localhost:3000/tweets/hashtag')
+    fetch('https://rocky-atoll-80901.herokuapp.com/tweets/hashtag')
     .then(function(response) {
       return response.json();
     })

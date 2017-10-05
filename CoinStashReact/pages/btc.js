@@ -251,7 +251,7 @@ const styles = StyleSheet.create({
     color:"#185A9D"
   },
   btnGroupStyle: {
-    height: 30,
+    height: 50,
     marginTop: 10,
     marginBottom: 10
   },

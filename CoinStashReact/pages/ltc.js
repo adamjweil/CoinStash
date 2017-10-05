@@ -197,7 +197,7 @@ class ltc extends Component {
         <RSSFeed />
 
         </ScrollView>
-        <View style={{flexDirection: 'row', height: 70}}>
+        <View style={{flexDirection: 'row', height: 60}}>
           <Button
             buttonStyle={styles.buySellBtnStyleLeft}
             textStyle={{textAlign: 'center'}}
@@ -253,7 +253,7 @@ const styles = StyleSheet.create({
     marginBottom: -50
   },
   btnGroupStyle: {
-    height: 30,
+    height: 50,
     marginTop: 10,
     marginBottom: 10
   },
@@ -272,7 +272,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   feedTitle: {
-    fontSize: 20,
+    fontSize: 25,
     paddingTop: 15,
     paddingBottom: 0,
     fontWeight: "500"
@@ -284,7 +284,7 @@ const styles = StyleSheet.create({
     marginRight: -20,
     marginLeft: 20,
     width: "100%",
-    height: 70
+    height: 60
   },
   buySellBtnStyleRight: {
     backgroundColor: '#185A9D',
@@ -293,7 +293,7 @@ const styles = StyleSheet.create({
     marginRight: 20,
     marginLeft: -20,
     width: "100%",
-    height: 70
+    height: 60
   },
   coinHeader: {
     flexDirection: 'row'

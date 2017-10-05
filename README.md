@@ -50,7 +50,7 @@
  Screenshot in Repo
 
 # Heroku
-https://dashboard.heroku.com/apps/fierce-bastion-98685
+https://rocky-atoll-80901.herokuapp.com/
 
 # API's
   - https://api.lionshare.capital/api/prices

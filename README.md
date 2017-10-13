@@ -50,7 +50,7 @@
  Screenshot in Repo
 
 # Heroku
-https://rocky-atoll-80901.herokuapp.com/
+  # https://coinstache-backend.herokuapp.com
 
 # API's
   - https://api.lionshare.capital/api/prices

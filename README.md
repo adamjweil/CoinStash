@@ -1,4 +1,13 @@
-# CoinStash
+# Coin'Stache
+
+# Post-Presentation To-Do List
+    - Detail all the API's we used in this Readme
+      - Maybe go thru other presentation points in this Readme (for the benefit of ppl we want to display this to)
+    - Add a detailed description of the application
+    - Should we make this viewable on a web browser to ppl dont need to build remotely to run?
+    - Get screenshots together to put in this repo
+    - Clean up all the code. ie, try to get rid of those yellow errors
+    - Feel free to add stuff as you guys see fit...
 
 # Team Contract
       Sarah / Abe / John / Adam
@@ -13,7 +22,6 @@
 # Issues
   -Address issues early and often. Don't get stuck on things for more than 30mins.
 
-
 # Workflow
   -Always use solid Git workflow. Pull from master frequently.. Don't go more than an hour or two without pulling from master.
 
@@ -22,8 +30,7 @@
  - Preferred method of communication is via iMessage, however Slack is below
   - #coinstash slack
     https://nighthawks2017nyc.slack.com/messages/C7BDD97UN/
-
-- Have fun, don't stress!
+ - Have fun, don't stress!
 
 # MVP
 
@@ -45,12 +52,10 @@
     - Send messages based on news?
 
 # Back-End
- -> Schema
- https://schemadesigner.devbootcamp.com/
- Screenshot in Repo
+ - Screenshot in Repo
 
 # Heroku
-  # https://coinstache-backend.herokuapp.com
+    https://coinstache-backend.herokuapp.com
 
 # API's
   - https://api.lionshare.capital/api/prices

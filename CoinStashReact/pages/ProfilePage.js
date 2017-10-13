@@ -131,6 +131,7 @@ class ProfilePage extends Component {
                 <View style={styles.accouontInfo}>
                   <Text style={styles.accountName}>{account.name}: </Text>
                   <Text style={styles.balance}>Balance: {account.balance.amount} {account.currency}</Text>
+                  <Text style={styles.nativeBalance}>USD Equiv. ${account.native_balance.amount}</Text>
 
                 </View>
                 )}
@@ -215,6 +216,9 @@ const styles = StyleSheet.create({
   },
   balance: {
     fontWeight: '200'
+  },
+  nativeBalance: {
+    fontWeight: '500'
   },
   transLabel: {
     color: "#FFF"

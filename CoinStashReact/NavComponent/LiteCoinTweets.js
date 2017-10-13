@@ -29,7 +29,7 @@ export default class LiteCoinTweets extends Component {
   }
 
   getLitecoinTweets = () => {
-    fetch('https://rocky-atoll-80901.herokuapp.com/tweets/litecoin')
+    fetch('https://coinstache-backend.herokuapp.com/tweets/litecoin')
     .then(function(response) {
       return response.json();
     })

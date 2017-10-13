@@ -28,7 +28,7 @@ class TransactionDetails extends Component {
   }
 
   getTransactions = () => {
-    fetch('https://rocky-atoll-80901.herokuapp.com/coinbases/transactions')
+    fetch('https://coinstache-backend.herokuapp.com/coinbases/transactions')
     .then(function(response){
       return response.json();
     }).then((obj) => {

@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, View, ScrollView, Image, Linking, TouchableOpacity } from 'react-native';
-
-import {
-  ListItem,
-  Thumbnail,
-  Text,
-  Body
-} from 'native-base';
+import { ListItem, Thumbnail, Text, Body } from 'native-base';
 
 export default class BitCoinTweets extends Component {
   constructor() {

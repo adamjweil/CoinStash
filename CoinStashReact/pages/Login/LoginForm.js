@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
 import { StackNavigator } from 'react-navigation';
-import {
-  AsyncStorage,
-  Text,
-  StyleSheet,
-  View,
-  TextInput,
-  TouchableOpacity,
-  StatusBar
-} from 'react-native';
+import { AsyncStorage, Text, StyleSheet, View, TextInput, TouchableOpacity, StatusBar } from 'react-native';
 
 const ACCESS_TOKEN = 'access_token';
 

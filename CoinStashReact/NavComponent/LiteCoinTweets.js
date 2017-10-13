@@ -1,20 +1,6 @@
 import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  View,
-  ScrollView,
-  Image,
-  Linking,
-  TouchableOpacity
-} from 'react-native';
-
-import {
-  ListItem,
-  Thumbnail,
-  Text,
-  Body
-} from 'native-base';
+import { AppRegistry, StyleSheet, View, ScrollView, Image, Linking, TouchableOpacity } from 'react-native';
+import { ListItem, Thumbnail, Text, Body } from 'native-base';
 
 export default class LiteCoinTweets extends Component {
   constructor() {
@@ -34,7 +20,6 @@ export default class LiteCoinTweets extends Component {
       return response.json();
     })
     .then((obj) => {
-      // console.log(obj[0])
       this.setState({LiteCoinTweets: obj})
     })
   }
@@ -97,5 +82,4 @@ const styles = StyleSheet.create({
     paddingLeft: 30,
     marginLeft: 30
   }
-
 });

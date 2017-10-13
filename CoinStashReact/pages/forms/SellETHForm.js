@@ -5,23 +5,10 @@
  */
 'use strict';
 import React, { Component } from 'react';
-import {
-  Button,
-  FormLabel,
-  FormInput
-} from 'react-native-elements'
+import { Button, FormLabel, FormInput } from 'react-native-elements'
 import SelectInput from 'react-native-select-input-ios';
 import { StackNavigator} from 'react-navigation';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ScrollView,
-  TouchableOpacity,
-  TextInput,
-  Alert
+import { AppRegistry, StyleSheet, Text, View, Image, ScrollView, TouchableOpacity, TextInput, Picker, Alert
 } from 'react-native';
 
 

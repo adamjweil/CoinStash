@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import { StackNavigator } from 'react-navigation';
-import {
-  AsyncStorage,
-  Text,
-  StyleSheet,
-  View,
-  Image,
-  } from 'react-native';
+import { AsyncStorage, Text, StyleSheet, View, Image } from 'react-native';
 import LoginForm from './LoginForm'
 
 

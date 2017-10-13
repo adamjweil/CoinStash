@@ -2,13 +2,7 @@
 
 import React, { Component } from 'react';
 import { Header } from 'react-native-elements';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
-
+import { AppRegistry, StyleSheet, Text, View } from 'react-native';
 var MarqueeLabel = require('@remobile/react-native-marquee-label');
 
 export default class TopNewsMarquee extends Component {

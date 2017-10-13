@@ -22,7 +22,7 @@ export default class BitCoinTweets extends Component {
   }
 
   getBitcoinTweets = () => {
-    fetch('https://rocky-atoll-80901.herokuapp.com/tweets/bitcoin')
+    fetch('https://coinstache-backend.herokuapp.com/tweets/bitcoin')
     .then(function(response) {
       return response.json();
     })

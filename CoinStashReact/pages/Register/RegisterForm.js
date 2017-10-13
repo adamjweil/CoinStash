@@ -41,7 +41,7 @@ export default class RegisterForm extends Component {
     this.setState({showProgress: true})
     const { user } = this.state
 
-    var accessToken = await fetch("https://rocky-atoll-80901.herokuapp.com/users", {
+    var accessToken = await fetch("https://coinstache-backend.herokuapp.com/users", {
       method: 'post',
       headers: {
         'Accept': 'application/json',

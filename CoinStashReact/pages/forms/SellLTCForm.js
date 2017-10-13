@@ -40,7 +40,7 @@ export default class SellLTCForm extends Component {
 
   handlePress() {
     const { session } = this.state
-    let responseJson = fetch ("https://rocky-atoll-80901.herokuapp.com/coinbases/sellLTC", {
+    let responseJson = fetch ("https://coinstache-backend.herokuapp.com/coinbases/sellLTC", {
       method: 'post',
       headers: {
         'Accept': 'application/json',

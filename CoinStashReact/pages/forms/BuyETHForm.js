@@ -36,7 +36,7 @@ export default class BuyETHForm extends Component {
 
   handlePress() {
     const { session } = this.state
-    let responseJson = fetch ("https://rocky-atoll-80901.herokuapp.com/coinbases/buyETH", {
+    let responseJson = fetch ("https://coinstache-backend.herokuapp.com/coinbases/buyETH", {
       method: 'post',
       headers: {
         'Accept': 'application/json',

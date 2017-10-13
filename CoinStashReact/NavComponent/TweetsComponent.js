@@ -16,7 +16,7 @@ export default class TweetsComponent extends Component {
   }
 
   getCurrentTweets = () => {
-    fetch('https://rocky-atoll-80901.herokuapp.com/tweets/hashtag')
+    fetch('https://coinstache-backend.herokuapp.com/tweets/hashtag')
     .then(function(response) {
       return response.json();
     })

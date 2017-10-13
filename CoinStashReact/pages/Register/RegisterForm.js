@@ -1,13 +1,5 @@
 import React, { Component } from 'react';
-import {
-  AsyncStorage,
-  Text,
-  StyleSheet,
-  View,
-  TextInput,
-  TouchableOpacity,
-  StatusBar
-} from 'react-native';
+import { AsyncStorage, Text, StyleSheet, View, TextInput, TouchableOpacity, StatusBar } from 'react-native';
 
 
 export default class RegisterForm extends Component {

@@ -1,12 +1,5 @@
 import React, { Component } from 'react';
-import {
-  Text,
-  StyleSheet,
-  View,
-  Image,
-  TouchableHighlight,
-  KeyboardAvoidingView
-} from 'react-native';
+import { Text, StyleSheet, View, Image, TouchableHighlight, KeyboardAvoidingView } from 'react-native';
 import RegisterForm from './RegisterForm'
 
 export default class Register extends Component {

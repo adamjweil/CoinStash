@@ -6,12 +6,7 @@
 
 import React, { Component } from 'react';
 import { Header } from 'react-native-elements';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import { AppRegistry, StyleSheet, Text, View } from 'react-native';
 
 export default class NewsFeed extends Component {
   constructor() {
@@ -28,13 +23,10 @@ export default class NewsFeed extends Component {
     })
     .then((obj) => {
       this.setState({newsFeed: obj.articles})
-      console.logx(newsFeed)
-
     })
   }
 
   render() {
-
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>

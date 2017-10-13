@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
-
+import { AppRegistry, StyleSheet, Text, View } from 'react-native';
 import { DrawerNavigator, DrawerItems } from 'react-navigation';
 
 import HomeScreen from './home';

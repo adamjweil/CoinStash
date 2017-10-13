@@ -21,12 +21,11 @@ export default class TweetsComponent extends Component {
       return response.json();
     })
     .then((obj) => {
-      // console.log(obj[0])
       this.setState({tweets: obj})
     })
   }
+  
   render() {
-
     return (
       <ScrollView style={styles.scrollView}>
         {this.state.tweets.map((tweet, i) =>

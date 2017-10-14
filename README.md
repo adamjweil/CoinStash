@@ -1,4 +1,29 @@
-# Coin'Stache
+# Team
+  Sarah Schaab / Abe Kwak / John Herbener / Adam Weil
+
+# Heroku
+https://coinstache-backend.herokuapp.com
+
+# Coin'Stache Application
+
+![coin stache_images1](https://user-images.githubusercontent.com/25589910/31578714-0619e110-b0f5-11e7-9433-30530184c16a.png)
+
+![images4](https://user-images.githubusercontent.com/25589910/31578878-29edabdc-b0f8-11e7-9dc8-dfbae7f8ff7e.png)
+
+# API's That We Used
+  1. Current Market Prices for Ethereum Bitcoin and Litecoin
+    - Lionshare Capital Prices API
+      - https://api.lionshare.capital/api/prices
+    - Coindesk Current Price API
+      - https://api.coindesk.com/v1/bpi/currentprice.json
+  2. Cryptocurrency Related News
+    - News API
+      - https://newsapi.org | login: adamjweil@gmail.com | key: ed62d0aea575414fbdf6a1351c0fa66a
+    - Reddit RSS Feed
+      - RSS to JSON API
+    - Twitter API
+  3. Wallet Functionality
+    - Coinbase API
 
 # Post-Presentation To-Do List
     - Detail all the API's we used in this Readme
@@ -8,9 +33,6 @@
     - Get screenshots together to put in this repo
     - Clean up all the code. ie, try to get rid of those yellow errors
     - Feel free to add stuff as you guys see fit...
-
-# Team Contract
-      Sarah / Abe / John / Adam
 
 # Team Standups
   -Team standups will be done every morning, after lunch, and at end of day. If anybody is stuck on anything, additional stand ups can be done on a more informal basis.
@@ -34,7 +56,6 @@
 
 # MVP
 
-
 # User Stories
   - User should be able to sign up
   - User should be able to log in
@@ -53,21 +74,3 @@
 
 # Back-End
  - Screenshot in Repo
-
-# Heroku
-    https://coinstache-backend.herokuapp.com
-
-# API's
-  - https://api.lionshare.capital/api/prices
-  - https://api.coindesk.com/v1/bpi/currentprice.json
-  News
-  - https://newsapi.org | login: adamjweil@gmail.com | key: ed62d0aea575414fbdf6a1351c0fa66a
-   - http://localhost:3000/tweets/hashtag
-   - http://localhost:3000/tweets
-
-# Coin'Stache
-
-![coin stache_images1](https://user-images.githubusercontent.com/25589910/31578714-0619e110-b0f5-11e7-9433-30530184c16a.png)
-
-![images5](https://user-images.githubusercontent.com/25589910/31578890-6c900548-b0f8-11e7-8dae-e13c27912228.png)
-

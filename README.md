@@ -66,6 +66,7 @@
    - http://localhost:3000/tweets
 
 # Coin'Stache
-<img width="654" alt="coin stache_mainpage" src="https://user-images.githubusercontent.com/25589910/31578436-32568e46-b0ef-11e7-8f58-ab2ed634b7cc.png">
 
 ![coin stache_images1](https://user-images.githubusercontent.com/25589910/31578714-0619e110-b0f5-11e7-9433-30530184c16a.png)
+
+![coin stache_images2](https://user-images.githubusercontent.com/25589910/31578845-90fa5e66-b0f7-11e7-85e4-989d9f1c6dd1.png)

@@ -64,3 +64,6 @@
   - https://newsapi.org | login: adamjweil@gmail.com | key: ed62d0aea575414fbdf6a1351c0fa66a
    - http://localhost:3000/tweets/hashtag
    - http://localhost:3000/tweets
+
+# Coin'Stache
+<img width="654" alt="coin stache_mainpage" src="https://user-images.githubusercontent.com/25589910/31578436-32568e46-b0ef-11e7-8f58-ab2ed634b7cc.png">

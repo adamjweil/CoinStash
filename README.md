@@ -69,4 +69,4 @@
 
 ![coin stache_images1](https://user-images.githubusercontent.com/25589910/31578714-0619e110-b0f5-11e7-9433-30530184c16a.png)
 
-![coin stache_images2](https://user-images.githubusercontent.com/25589910/31578845-90fa5e66-b0f7-11e7-85e4-989d9f1c6dd1.png)
+![images2](https://user-images.githubusercontent.com/25589910/31578870-f3388d46-b0f7-11e7-972b-de95526f096c.png)

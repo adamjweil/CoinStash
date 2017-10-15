@@ -12,7 +12,7 @@ export default class BitCoinTweets extends Component {
 
   componentWillMount() {
     this.getBitcoinTweets();
-    setInterval(this.getBitcoinTweets, 1000);
+    setInterval(this.getBitcoinTweets, 30000);
   }
 
   getBitcoinTweets = () => {

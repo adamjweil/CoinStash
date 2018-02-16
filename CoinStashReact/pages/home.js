@@ -38,9 +38,10 @@ export default class home extends Component {
       return response.json()
     }).then((obj) => {
       this.setState({
-        bitcoinPrice: obj.data.BTC[obj.data.BTC.length - 1],
-        ethereumPrice: obj.data.ETH[obj.data.ETH.length - 1],
-        liteCoinPrice: obj.data.LTC[obj.data.LTC.length - 1]})
+        bitcoinPrice: Math.round(obj.data.BTC[obj.data.BTC.length - 1]),
+        ethereumPrice: Math.round(obj.data.ETH[obj.data.ETH.length - 1]),
+        liteCoinPrice: Math.round(obj.data.LTC[obj.data.LTC.length - 1])
+          })
         })
     }
 

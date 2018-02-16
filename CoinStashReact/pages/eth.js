@@ -132,7 +132,7 @@ class eth extends Component {
       return response.json()
     })
     .then((obj) => {
-      this.setState({ethereumPrice: obj.data.ETH[obj.data.ETH.length - 1]})
+      this.setState({ethereumPrice: Math.round(obj.data.ETH[obj.data.ETH.length - 1])})
     })
   }
 

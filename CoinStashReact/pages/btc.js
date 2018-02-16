@@ -132,7 +132,7 @@ class btc extends Component {
       return response.json()
     })
     .then((obj) => {
-      this.setState({bitcoinPrice: obj.data.BTC[obj.data.BTC.length - 1]})
+      this.setState({bitcoinPrice: Math.round(obj.data.BTC[obj.data.BTC.length - 1])})
     })
   }
 

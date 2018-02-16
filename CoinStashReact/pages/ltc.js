@@ -131,7 +131,7 @@ class ltc extends Component {
     .then(function(response) {
       return response.json()
     }).then((obj) => {
-      this.setState({liteCoinPrice: obj.data.LTC[obj.data.LTC.length - 1]})
+      this.setState({liteCoinPrice: Math.round(obj.data.LTC[obj.data.LTC.length - 1])})
     })
   }
 
